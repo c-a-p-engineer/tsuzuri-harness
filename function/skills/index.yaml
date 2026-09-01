@@ -1,0 +1,16 @@
+schema_version: 1
+id: acquired-skill-registry
+status: canonical
+purpose: >-
+  Registry for specialist capabilities acquired by one instance through experience.
+  A blank instance starts with no acquired specialist skills.
+loading:
+  policy: selective
+  eager_load: false
+rules:
+  - The harness kernel is not an acquired specialist skill.
+  - Do not copy skills from another instance without explicit import and provenance.
+  - Temporary task competence does not automatically become a durable skill.
+  - Prefer updating or consolidating an existing skill over creating redundant skills.
+  - Keep project-specific procedures in the owning project when they are not cross-project capabilities.
+acquired_skills: []
