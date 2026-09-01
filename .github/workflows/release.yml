@@ -21,14 +21,47 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ github.ref_name }}
+          REPOSITORY: ${{ github.repository }}
         run: |
           set -euo pipefail
+
           if gh release view "$TAG" >/dev/null 2>&1; then
             echo "Release $TAG already exists; nothing to do."
             exit 0
           fi
 
+          gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            "repos/${REPOSITORY}/releases/generate-notes" \
+            -f tag_name="$TAG" \
+            --jq '.body' > release-notes.md
+
+          declare -A labels=(
+            [ja]="日本語"
+            [zh-CN]="简体中文"
+            [zh-TW]="繁體中文"
+            [ko]="한국어"
+            [es]="Español"
+          )
+
+          translations=()
+          for locale in ja zh-CN zh-TW ko es; do
+            file="docs/releases/${TAG}.${locale}.md"
+            if [[ -f "$file" ]]; then
+              url="https://github.com/${REPOSITORY}/blob/${TAG}/${file}"
+              translations+=("- [${labels[$locale]}](${url})")
+            fi
+          done
+
+          if (( ${#translations[@]} > 0 )); then
+            {
+              printf '\n## Translations\n\n'
+              printf '%s\n' "${translations[@]}"
+            } >> release-notes.md
+          fi
+
           gh release create "$TAG" \
             --verify-tag \
             --title "$TAG" \
-            --generate-notes
+            --notes-file release-notes.md
