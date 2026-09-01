@@ -1,0 +1,36 @@
+name: Bug report
+description: Report incorrect or inconsistent harness behavior
+title: "bug: "
+labels: [bug]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Provide the smallest safe reproduction. Do not include private instance data.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Harness version or commit
+      placeholder: v0.1.0 or commit SHA
+  - type: input
+    id: host
+    attributes:
+      label: Host
+      placeholder: Codex, Claude Code, Gemini CLI, other
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Data safety
+      options:
+        - label: I removed credentials and real private identity/memory data.
+          required: true

@@ -1,0 +1,35 @@
+name: Feature proposal
+description: Propose a new harness capability or improvement
+title: "feat: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Need
+      description: What problem or capability gap exists?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or scenario
+      description: Why should this become a durable harness feature instead of a local instance adaptation?
+    validations:
+      required: true
+  - type: textarea
+    id: minimal
+    attributes:
+      label: Smallest viable change
+      description: Can an existing mechanism be extended instead of adding a new layer or gate?
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - Kernel behavior
+        - Host adapter
+        - Instance tooling
+        - Evaluation
+        - Documentation
+        - Website / distribution

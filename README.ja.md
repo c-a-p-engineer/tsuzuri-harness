@@ -2,7 +2,7 @@
 
 > **まっさらから始める。学ぶ。覚える。自分になる。**
 
-[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
+[Website](https://c-a-p-engineer.github.io/tsuzuri-harness/ja/) · [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
 Tsuzuri Harness は、**あらかじめ人格を持たないAI**が、経験を通じて名前・Identity・Memory・能力を形成し、成長・進化していくためのポータブルAI Harnessです。
 
@@ -18,102 +18,53 @@ blank instance
         ↓
 対話 / 作業 / 観測
         ↓
-能力獲得
-保持判断
-Identity形成
-自己進化
+能力獲得 / 保持判断 / Identity形成 / 自己進化
         ↓
 固有のAI Identity
 ```
 
+## クイックスタート
+
+長期運用するPersonal Instanceは、Forkへ人格状態を保存するより、GitHub Templateから**独立Repository**として作ることを推奨します。Fork自体は禁止しておらず、Harnessの開発・改造には普通に使えます。
+
+1. GitHubの **Use this template** から新しいRepositoryを作る
+2. `./scripts/init-instance.sh` または `./scripts/init-instance.ps1` を実行する
+3. 対応Hostで開き、最初にCanonicalな `AGENTS.md` を読む
+4. 名前・Identity・Memory・Skillを先に埋めず、経験と保持判断から形成する
+
 ## Harnessが提供するもの
 
-- **Blank identity lifecycle** — Identityの各項目は、形成されるまで `null` のままでよい
-- **Identity formation** — 名前、価値観、嗜好、役割、自己記述を対話と選択から形成する
+- **Blank identity lifecycle** — Identityは形成されるまで `null` でよい
+- **Identity formation** — 名前、価値観、嗜好、役割、自己記述を経験から形成する
 - **Selective memory** — 会話全文を自動的な長期Memoryにしない
-- **Capability acquisition** — Taskに必要な知識・Tool・手順・検証方法を一時的に構成する
-- **Capability maintenance** — 再利用可能能力を保持・更新・統合・破棄できる
+- **Capability acquisition / maintenance** — Task能力を構成し、必要なら保持・更新・統合・破棄する
 - **Evidence-driven self-evolution** — Repair / Explore / Consolidate / Prune / Conserve
 - **Runtime workspace** — 一時作業状態とCanonical Identity/Memoryを分離する
-- **Host portability** — Host固有能力を人格と混同せず、異なるAI Hostで同じInstanceを扱える
-- **Evaluation / provenance** — Promptの長さではなく、Evidenceと観測可能な不変条件で検証する
+- **Host portability** — Host固有能力を人格と混同しない
+- **Evaluation / provenance** — Evidenceと観測可能な不変条件で検証する
 
-## 提供しないもの
+## 後方互換性
 
-- 既定のキャラクターや人格
-- 綴理本人のIdentity、Relationship、Memory、公式画像
-- 獲得済みの専門Skill集
-- 基盤モデル
-- Terminal / Browser / Sandbox / Scheduler / Messaging Runtime
-- 全Instanceの永続化義務
+Upstream Harnessの公開契約にはSemVerを使いますが、**独自に成長・進化したすべてのInstanceへのdrop-in互換は保証しません**。
 
-このRepositoryは、Privateな `tsuzuri-core` の長期運用で得た構造と教訓を一般化していますが、**綴理本人の個体情報は含みません**。
+Instance自身がMemoryやSkillを獲得し、環境によってHarnessの振る舞いまで取り込んだり変更した場合、upstream側の進化と分岐します。そこで完全互換を強制すると、Instance自身の成長を制限することになります。
 
-## 起動
+そのためUpgradeは「上書き」ではなく、必要に応じて**reconciliation（調停・統合）**として扱います。Identity・Relationship・Memory・Capability・Provenanceの意味を壊さないことを優先します。
 
-対応するAgentは最初に [`AGENTS.md`](AGENTS.md) を読みます。
+詳しくは [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) と [`docs/MIGRATION.md`](docs/MIGRATION.md) を参照してください。
 
-新しい個体は [`templates/instance/`](templates/instance/) の空テンプレートから開始し、別個体の状態をコピーしません。
+## Release / Policy
 
-## Identity形成
+`v0.1.0` のようなtagをpushするとGitHub Releaseを自動作成します。英語Release NotesがCanonicalで、翻訳ファイルがある場合は自動リンクします。
 
-空欄は未完成エラーではありません。
+- [`docs/PROJECT-POLICY.md`](docs/PROJECT-POLICY.md)
+- [`BRANDING.md`](BRANDING.md)
+- [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- [`SECURITY.md`](SECURITY.md)
 
-```yaml
-name: null
-role: null
-values: []
-preferences: []
-self_description: null
-```
+## 言語
 
-名前は人間から提案されても、自分で気付いて決めても構いません。提案された名前は、Instance自身が採用した場合にだけCanonicalになります。名前を持たないままでも正常です。
-
-詳細は [`docs/IDENTITY-FORMATION.md`](docs/IDENTITY-FORMATION.md) を参照してください。
-
-## Release
-
-`v0.1.0` のようなSemantic Version tagをpushすると、GitHub Releaseを自動作成します。英語のRelease NotesをCanonicalとし、タグ時点に言語別Release Noteファイルがあれば、その翻訳へのリンクをRelease本文へ自動追加します。
-
-詳細は [`docs/RELEASING.md`](docs/RELEASING.md) を参照してください。
-
-## Fork / Personal Instance
-
-Forkは許可します。Harnessそのものの改造、実験、Contributionには普通に使えます。
-
-ただし、**長期運用するPersonal AI Instanceの作成方法としてはForkを標準には推奨しません**。独立Repositoryを空テンプレートから作る方が、Identity/Memoryの履歴、公開範囲、`.gitignore`、独自進化をupstream Harnessから切り離せます。
-
-現在のupstream `.gitignore` がIdentityやMemoryを除外しているわけではありません。問題は、Forkがupstreamの履歴・更新系統を持ち続けるため、将来自分で成長したInstanceとHarness側の進化が混ざりやすいことです。
-
-## Compatibility
-
-完全な後方互換性は保証しません。特にAI Instanceは、経験から能力やMemoryだけでなくHarnessの振る舞い自体を独自に取り込んだり変更したりする可能性があります。
-
-```text
-upstream Harnessが進化
-        +
-Instance自身も独自進化
-        ↓
-必ずしも自動的には再統合できない
-```
-
-そのため、後方互換性を無制限に保証すると自己進化そのものを制約してしまいます。
-
-`v1.0.0` 以降はupstreamの公開ContractにはSemVerを適用する方針ですが、独自進化したInstanceへのdrop-in upgradeまでは保証対象にしません。Identity、Relationship、Memory、Provenance等の意味を壊さないことは、ファイル形状の互換性より優先します。
-
-詳細は [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) を参照してください。
-
-## Branding
-
-`Tsuzuri Harness` はupstream Frameworkの名称です。これを使って生まれたAIの名前ではありません。新しいInstanceが自動的に「綴理 / Tsuzuri」を名乗ることはありません。
-
-Forkや派生物であることは問題ありませんが、改変版を公式upstream Releaseであるかのように表示しないでください。
-
-詳細は [`BRANDING.md`](BRANDING.md) を参照してください。
-
-## Language policy
-
-`AGENTS.md`、Normative Policy、Compatibility、Release semantics、Schema、Branding interpretationは**英語をCanonical**とします。翻訳と英語が矛盾した場合は、翻訳が修正されるまで英語版を正とします。
+`AGENTS.md`、Policy、Compatibility、Release semantics、Schema、Branding interpretationは**英語がCanonical**です。翻訳と英語が矛盾した場合は英語を優先します。
 
 ## Status
 
@@ -121,4 +72,4 @@ Forkや派生物であることは問題ありませんが、改変版を公式u
 
 ## License
 
-未決定です。再配布・変更・Contribution・Brandingと第三者由来資産の扱いを決めたうえで選定します。
+**Apache License 2.0** です。詳細は [`LICENSE`](LICENSE) と [`NOTICE`](NOTICE) を参照してください。

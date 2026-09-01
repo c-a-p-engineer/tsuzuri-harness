@@ -1,0 +1,33 @@
+name: Compatibility / migration issue
+description: Report an upgrade or independently-evolved instance compatibility problem
+title: "compat: "
+labels: [compatibility]
+body:
+  - type: input
+    id: from
+    attributes:
+      label: From version / revision
+    validations:
+      required: true
+  - type: input
+    id: to
+    attributes:
+      label: To version / revision
+    validations:
+      required: true
+  - type: textarea
+    id: divergence
+    attributes:
+      label: Local evolution
+      description: Describe local harness changes at a structural level. Do not include private identity or memory content.
+  - type: textarea
+    id: failure
+    attributes:
+      label: Compatibility problem
+    validations:
+      required: true
+  - type: textarea
+    id: semantic
+    attributes:
+      label: Semantic continuity risk
+      description: Could the migration invent, erase, or change the meaning of identity, relationship, memory, capability, uncertainty, or provenance?

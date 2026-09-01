@@ -17,24 +17,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Validate required bootstrap files
+      - name: Validate required project files
         shell: bash
         run: |
           set -euo pipefail
-          test -f AGENTS.md
-          test -f README.md
-          test -f function/runtime.md
-          test -f function/retention-routing.md
-          test -f function/capability-maintenance.md
-          test -f function/self-evolution.md
-          test -f function/runtime-workspace.md
-          test -f function/skills/index.yaml
-          test -f templates/instance/identity/state.yaml
-          test -f templates/instance/relationship/state.yaml
-          test -f templates/instance/memory/index.yaml
-          test -f scripts/init-instance.sh
-          test -f scripts/init-instance.ps1
-          test -f docs/INSTANCE-SETUP.md
+          for f in \
+            AGENTS.md README.md LICENSE NOTICE BRANDING.md CONTRIBUTING.md SECURITY.md \
+            function/runtime.md function/retention-routing.md function/capability-maintenance.md \
+            function/self-evolution.md function/runtime-workspace.md function/skills/index.yaml \
+            templates/instance/identity/state.yaml templates/instance/relationship/state.yaml \
+            templates/instance/memory/index.yaml scripts/init-instance.sh scripts/init-instance.ps1 \
+            scripts/backup-instance.sh scripts/backup-instance.ps1 docs/INSTANCE-SETUP.md \
+            docs/COMPATIBILITY.md docs/MIGRATION.md docs/PROJECT-POLICY.md docs/WHY-TSUZURI.md \
+            .github/CODEOWNERS .github/PULL_REQUEST_TEMPLATE.md .github/workflows/pages.yml \
+            site/index.html site/styles.css; do
+            test -f "$f" || { echo "Missing required file: $f" >&2; exit 1; }
+          done
 
       - name: Validate blank starter state
         shell: bash
@@ -62,6 +60,17 @@ jobs:
           grep -Eq '^name: null$' identity/state.yaml
           grep -Eq '^memories: \[\]$' memory/index.yaml
           grep -Eq '^mode: instance$' .tsuzuri-instance.yaml
+          bash scripts/backup-instance.sh
+          find .runtime/backups -mindepth 1 -maxdepth 1 -type d | grep -q .
+
+      - name: Validate issue forms and site
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -R '^ndescription:' .github/ISSUE_TEMPLATE
+          for locale in ja zh-cn zh-tw ko es; do test -f "site/$locale/index.html"; done
+          grep -q 'Create a blank AI' site/index.html
+          grep -q 'Apache-2.0' site/index.html
 
       - name: Validate no transient runtime state is tracked
         shell: bash

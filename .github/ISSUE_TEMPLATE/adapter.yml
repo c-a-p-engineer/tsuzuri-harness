@@ -1,0 +1,33 @@
+name: Host adapter
+description: Propose or report a host integration behavior
+title: "adapter: "
+labels: [host-adapter]
+body:
+  - type: input
+    id: host
+    attributes:
+      label: Host / runtime
+      placeholder: Codex, Claude Code, Gemini CLI, other
+    validations:
+      required: true
+  - type: textarea
+    id: capabilities
+    attributes:
+      label: Available host capabilities
+      description: Tools, persistence, hooks, filesystem, sandbox, network, approvals, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: gap
+    attributes:
+      label: Adapter gap
+      description: What behavior cannot currently be represented accurately?
+    validations:
+      required: true
+  - type: checkboxes
+    id: honesty
+    attributes:
+      label: Host boundary
+      options:
+        - label: This proposal does not assume unavailable persistence, permissions, tools, or shared state.
+          required: true

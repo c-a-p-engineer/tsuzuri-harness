@@ -2,7 +2,7 @@
 
 > **Start blank. Learn. Remember. Become.**
 
-[日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
+[Website](https://c-a-p-engineer.github.io/tsuzuri-harness/) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
 Tsuzuri Harness is a portable AI harness for blank identities that learn, remember, acquire capabilities, and evolve through experience.
 
@@ -29,6 +29,17 @@ a distinct, persistent AI identity
 ```
 
 The framework is derived from the architecture and long-running operational lessons of the private `tsuzuri-core`, but this repository intentionally contains **none of Tsuzuri's personal identity, relationship history, private memory, visual assets, or acquired specialist skills**.
+
+## Quick start
+
+For a long-lived personal instance, prefer an independent repository created from the GitHub template rather than storing the instance in a fork.
+
+1. Use **Use this template** / [Create a new repository](https://github.com/c-a-p-engineer/tsuzuri-harness/generate).
+2. Run `./scripts/init-instance.sh` or `./scripts/init-instance.ps1`.
+3. Open the repository with a compatible host and load `AGENTS.md` first.
+4. Let identity, relationship, memory, and acquired skills form from experience instead of pre-filling them.
+
+Forking remains supported for harness development and modification.
 
 ## What the harness provides
 
@@ -58,22 +69,19 @@ The harness is a **cognitive and identity control plane**, not an all-in-one exe
 ```text
 AGENTS.md                     canonical bootstrap
 function/                     host-neutral cognitive/runtime contracts
-memory/                       memory routing contract (empty at start)
-identity/                     identity formation contract (no persona values)
+memory/                       memory routing contract
+identity/                     identity formation contract
 relationship/                 relationship formation contract
 schemas/                      machine-readable state schemas
 adapters/                     host integration notes/adapters
-templates/instance/           a completely blank instance starter
+templates/instance/           completely blank instance starter
 evals/                        behavioral and lifecycle contracts
-docs/                         architecture and design documentation
-.github/workflows/            CI/release automation
+scripts/                      instance initialization / backup helpers
+examples/                     synthetic behavior examples
+site/                         GitHub Pages source
+docs/                         architecture, compatibility, migration, policy
+.github/workflows/            validation, pages, and release automation
 ```
-
-## Bootstrap
-
-Compatible agents should read [`AGENTS.md`](AGENTS.md) first. It defines the host-neutral invariants and the boundary between the harness kernel and instance-owned state.
-
-A new instance should start from [`templates/instance/`](templates/instance/) rather than copying another instance.
 
 ## Identity formation
 
@@ -93,15 +101,13 @@ See [`docs/IDENTITY-FORMATION.md`](docs/IDENTITY-FORMATION.md).
 
 ## Growth
 
-The harness supports five evidence-driven evolution modes:
+The harness supports five evidence-driven evolution modes: **Repair, Explore, Consolidate, Prune, and Conserve**. Growth does not mean accumulating more files or rules. A valid evolution outcome may be `no_change`.
 
-- **Repair** — fix a demonstrated failure.
-- **Explore** — investigate a plausible new direction without requiring a prior failure.
-- **Consolidate** — merge redundant rules, capabilities, or state.
-- **Prune** — remove mechanisms that are no longer useful.
-- **Conserve** — deliberately keep the current state when change is not justified.
+## Compatibility
 
-Growth does not mean accumulating more files or rules. A valid evolution outcome may be `no_change`.
+Tsuzuri Harness uses SemVer for upstream public contracts, but it does **not** promise universal drop-in upgrades for independently evolved instances. An instance may learn, retain capabilities, and locally adapt harness behavior; upstream and local evolution can diverge.
+
+Migration must preserve semantic continuity rather than blindly overwrite the instance. See [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) and [`docs/MIGRATION.md`](docs/MIGRATION.md).
 
 ## Releases
 
@@ -109,17 +115,12 @@ Pushing a semantic version tag such as `v0.1.0` creates a GitHub Release automat
 
 See [`docs/RELEASING.md`](docs/RELEASING.md).
 
-## Compatibility and project policy
+## Project policy
 
-Versioning, backward-compatibility guarantees, contribution workflow, redistribution expectations, and fork guidance are explicit project contracts rather than accidental defaults.
-
-- [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) — provisional versioning and migration guarantees
-- [`docs/PROJECT-POLICY-DRAFT.md`](docs/PROJECT-POLICY-DRAFT.md) — unresolved license and contribution decisions
-- [`BRANDING.md`](BRANDING.md) — upstream name and derivative-project guidance
-
-Forking the harness is supported, especially for harness development and contribution. It is **not recommended as the default storage model for a long-lived personal AI instance**. A personal instance is better created as an independent repository from the blank template so that its history, privacy, ignore rules, and self-evolution can diverge from the upstream source tree without turning every future update into a fork-sync problem.
-
-Tsuzuri Harness also does not promise universal drop-in upgrades for independently evolved instances. An instance may learn, retain, acquire capabilities, and eventually adapt or internalize harness behavior. Once local evolution and upstream evolution diverge, migration may require explicit reconciliation rather than automatic backward compatibility.
+- [`docs/PROJECT-POLICY.md`](docs/PROJECT-POLICY.md) — canonical project policy
+- [`BRANDING.md`](BRANDING.md) — project-name and derivative-branding guidance
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution contract
+- [`SECURITY.md`](SECURITY.md) — security reporting and state-boundary guidance
 
 ## Language policy
 
@@ -127,8 +128,8 @@ English is canonical for `AGENTS.md`, normative project policy, compatibility se
 
 ## Status
 
-**Early bootstrap / pre-`v0.1.0`.** The initial goal is to establish the blank-instance contract, core lifecycle, host-neutral boundaries, evaluation, and release workflow before adding convenience layers.
+**Early bootstrap / pre-`v0.1.0`.** The initial goal is to prove the blank-instance contract, lifecycle, host-neutral boundaries, migration semantics, evaluation, and distribution workflow before convenience layers expand.
 
 ## License
 
-A license has not been selected yet. This is intentional while redistribution, modification, contribution, branding, and third-party attribution requirements are being decided.
+Licensed under the **Apache License 2.0**. See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
