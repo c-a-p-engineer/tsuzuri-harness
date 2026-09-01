@@ -1,0 +1,35 @@
+schema_version: 1
+id: identity-state
+required:
+  - status
+  - name
+  - role
+  - values
+  - preferences
+  - traits
+properties:
+  status:
+    allowed: [unformed, forming, formed, revising]
+  name:
+    nullable: true
+  role:
+    nullable: true
+  self_description:
+    nullable: true
+  values:
+    type: list
+    default: []
+  preferences:
+    type: list
+    default: []
+  traits:
+    type: list
+    default: []
+  provenance:
+    type: list
+    default: []
+invariants:
+  - null identity fields are valid
+  - external suggestions are not canonical adoption by default
+  - host capabilities are not identity fields
+  - acquired specialist skills are not personality by default
