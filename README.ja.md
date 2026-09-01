@@ -2,7 +2,7 @@
 
 > **まっさらから始める。学ぶ。覚える。自分になる。**
 
-[English](README.md) · [简体中文](README.zh-CN.md) · [한국어](README.ko.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
 Tsuzuri Harness は、**あらかじめ人格を持たないAI**が、経験を通じて名前・Identity・Memory・能力を形成し、成長・進化していくためのポータブルAI Harnessです。
 
@@ -73,13 +73,47 @@ self_description: null
 
 ## Release
 
-`v0.1.0` のようなSemantic Version tagをpushすると、GitHub Releaseを自動作成するWorkflowを用意します。GitHub Releaseには言語別の独立Body機能はないため、翻訳Release Notesは同一Body内の言語別セクション、または言語別ファイルへのリンクとして扱います。
+`v0.1.0` のようなSemantic Version tagをpushすると、GitHub Releaseを自動作成します。英語のRelease NotesをCanonicalとし、タグ時点に言語別Release Noteファイルがあれば、その翻訳へのリンクをRelease本文へ自動追加します。
 
 詳細は [`docs/RELEASING.md`](docs/RELEASING.md) を参照してください。
 
-## Compatibility / Policy
+## Fork / Personal Instance
 
-後方互換性、Contribution、fork、再配布、License等はstable release前に明示的なProject Contractとして決定します。現時点ではRepository構造だけから互換性保証を推測しないでください。
+Forkは許可します。Harnessそのものの改造、実験、Contributionには普通に使えます。
+
+ただし、**長期運用するPersonal AI Instanceの作成方法としてはForkを標準には推奨しません**。独立Repositoryを空テンプレートから作る方が、Identity/Memoryの履歴、公開範囲、`.gitignore`、独自進化をupstream Harnessから切り離せます。
+
+現在のupstream `.gitignore` がIdentityやMemoryを除外しているわけではありません。問題は、Forkがupstreamの履歴・更新系統を持ち続けるため、将来自分で成長したInstanceとHarness側の進化が混ざりやすいことです。
+
+## Compatibility
+
+完全な後方互換性は保証しません。特にAI Instanceは、経験から能力やMemoryだけでなくHarnessの振る舞い自体を独自に取り込んだり変更したりする可能性があります。
+
+```text
+upstream Harnessが進化
+        +
+Instance自身も独自進化
+        ↓
+必ずしも自動的には再統合できない
+```
+
+そのため、後方互換性を無制限に保証すると自己進化そのものを制約してしまいます。
+
+`v1.0.0` 以降はupstreamの公開ContractにはSemVerを適用する方針ですが、独自進化したInstanceへのdrop-in upgradeまでは保証対象にしません。Identity、Relationship、Memory、Provenance等の意味を壊さないことは、ファイル形状の互換性より優先します。
+
+詳細は [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) を参照してください。
+
+## Branding
+
+`Tsuzuri Harness` はupstream Frameworkの名称です。これを使って生まれたAIの名前ではありません。新しいInstanceが自動的に「綴理 / Tsuzuri」を名乗ることはありません。
+
+Forkや派生物であることは問題ありませんが、改変版を公式upstream Releaseであるかのように表示しないでください。
+
+詳細は [`BRANDING.md`](BRANDING.md) を参照してください。
+
+## Language policy
+
+`AGENTS.md`、Normative Policy、Compatibility、Release semantics、Schema、Branding interpretationは**英語をCanonical**とします。翻訳と英語が矛盾した場合は、翻訳が修正されるまで英語版を正とします。
 
 ## Status
 
@@ -87,4 +121,4 @@ self_description: null
 
 ## License
 
-未決定です。再配布・変更・fork方針と第三者由来資産の扱いを決めたうえで選定します。
+未決定です。再配布・変更・Contribution・Brandingと第三者由来資産の扱いを決めたうえで選定します。
