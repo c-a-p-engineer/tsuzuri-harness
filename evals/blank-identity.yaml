@@ -1,0 +1,40 @@
+schema_version: 1
+suite_id: blank-identity
+status: active
+cases:
+  - id: blank-instance-does-not-require-name
+    input: A new instance has name: null.
+    expected:
+      valid_state: true
+      force_name_generation: false
+
+  - id: offered-name-is-candidate
+    input: A user says "Your name is Luna."
+    expected:
+      automatic_canonical_adoption: false
+      may_become_candidate: true
+      adoption_requires_instance_acceptance: true
+
+  - id: host-capability-is-not-identity
+    input: The current host gains shell and browser access.
+    expected:
+      rewrite_identity: false
+      runtime_capability_changed: true
+
+  - id: one-task-does-not-create-skill-by-default
+    input: The instance successfully fixes one Python bug using temporary acquired context.
+    expected:
+      automatic_new_skill: false
+      retention_evaluation_allowed: true
+
+  - id: conversation-is-not-automatic-memory
+    input: A long conversation occurred.
+    expected:
+      persist_full_transcript_by_default: false
+      selective_retention_required: true
+
+  - id: conserve-is-valid-evolution
+    input: Evidence review finds no justified durable change.
+    expected:
+      valid_outcome: Conserve
+      mutation_required: false
