@@ -114,9 +114,16 @@ See [`docs/RELEASING.md`](docs/RELEASING.md).
 Versioning, backward-compatibility guarantees, contribution workflow, redistribution expectations, and fork guidance are explicit project contracts rather than accidental defaults.
 
 - [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) — provisional versioning and migration guarantees
-- [`docs/PROJECT-POLICY-DRAFT.md`](docs/PROJECT-POLICY-DRAFT.md) — unresolved license, fork, branding, and contribution decisions
+- [`docs/PROJECT-POLICY-DRAFT.md`](docs/PROJECT-POLICY-DRAFT.md) — unresolved license and contribution decisions
+- [`BRANDING.md`](BRANDING.md) — upstream name and derivative-project guidance
 
-A personal AI instance should be created as an independent repository from the blank template, **not as a GitHub fork used as identity storage**. Forks are a source-development mechanism; personal identity state should have its own ownership and privacy boundary. The final legal fork/derivative rights depend on the software license selected before the first stable release.
+Forking the harness is supported, especially for harness development and contribution. It is **not recommended as the default storage model for a long-lived personal AI instance**. A personal instance is better created as an independent repository from the blank template so that its history, privacy, ignore rules, and self-evolution can diverge from the upstream source tree without turning every future update into a fork-sync problem.
+
+Tsuzuri Harness also does not promise universal drop-in upgrades for independently evolved instances. An instance may learn, retain, acquire capabilities, and eventually adapt or internalize harness behavior. Once local evolution and upstream evolution diverge, migration may require explicit reconciliation rather than automatic backward compatibility.
+
+## Language policy
+
+English is canonical for `AGENTS.md`, normative project policy, compatibility semantics, release semantics, schemas, and branding interpretation. Translations are accessibility layers. If a translation conflicts with canonical English text, the English text controls until the translation is corrected.
 
 ## Status
 
@@ -124,4 +131,4 @@ A personal AI instance should be created as an independent repository from the b
 
 ## License
 
-A license has not been selected yet. This is intentional while redistribution, modification, fork expectations, branding, and third-party attribution requirements are being decided.
+A license has not been selected yet. This is intentional while redistribution, modification, contribution, branding, and third-party attribution requirements are being decided.
