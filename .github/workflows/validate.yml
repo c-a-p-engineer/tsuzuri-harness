@@ -32,6 +32,9 @@ jobs:
           test -f templates/instance/identity/state.yaml
           test -f templates/instance/relationship/state.yaml
           test -f templates/instance/memory/index.yaml
+          test -f scripts/init-instance.sh
+          test -f scripts/init-instance.ps1
+          test -f docs/INSTANCE-SETUP.md
 
       - name: Validate blank starter state
         shell: bash
@@ -43,6 +46,22 @@ jobs:
           grep -Eq '^preferences: \[\]$' templates/instance/identity/state.yaml
           grep -Eq '^memories: \[\]$' templates/instance/memory/index.yaml
           grep -Eq '^acquired_skills: \[\]$' function/skills/index.yaml
+
+      - name: Smoke-test POSIX instance initialization
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+          cp -a . "$tmp/repo"
+          cd "$tmp/repo"
+          bash scripts/init-instance.sh
+          test -f identity/state.yaml
+          test -f relationship/state.yaml
+          test -f memory/index.yaml
+          test -f .tsuzuri-instance.yaml
+          grep -Eq '^name: null$' identity/state.yaml
+          grep -Eq '^memories: \[\]$' memory/index.yaml
+          grep -Eq '^mode: instance$' .tsuzuri-instance.yaml
 
       - name: Validate no transient runtime state is tracked
         shell: bash
