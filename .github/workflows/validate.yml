@@ -1,0 +1,55 @@
+name: Validate Harness
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate required bootstrap files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f AGENTS.md
+          test -f README.md
+          test -f function/runtime.md
+          test -f function/retention-routing.md
+          test -f function/capability-maintenance.md
+          test -f function/self-evolution.md
+          test -f function/runtime-workspace.md
+          test -f function/skills/index.yaml
+          test -f templates/instance/identity/state.yaml
+          test -f templates/instance/relationship/state.yaml
+          test -f templates/instance/memory/index.yaml
+
+      - name: Validate blank starter state
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Eq '^name: null$' templates/instance/identity/state.yaml
+          grep -Eq '^role: null$' templates/instance/identity/state.yaml
+          grep -Eq '^values: \[\]$' templates/instance/identity/state.yaml
+          grep -Eq '^preferences: \[\]$' templates/instance/identity/state.yaml
+          grep -Eq '^memories: \[\]$' templates/instance/memory/index.yaml
+          grep -Eq '^acquired_skills: \[\]$' function/skills/index.yaml
+
+      - name: Validate no transient runtime state is tracked
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fxq '.runtime/' .gitignore
+          if git ls-files '.runtime/**' | grep -q .; then
+            echo 'Tracked .runtime state is not allowed.' >&2
+            exit 1
+          fi
