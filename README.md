@@ -2,7 +2,7 @@
 
 > **Start blank. Learn. Remember. Become.**
 
-[日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [한국어](README.ko.md)
+[日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
 Tsuzuri Harness is a portable AI harness for blank identities that learn, remember, acquire capabilities, and evolve through experience.
 
@@ -105,20 +105,23 @@ Growth does not mean accumulating more files or rules. A valid evolution outcome
 
 ## Releases
 
-Pushing a semantic version tag such as `v0.1.0` is configured to create a GitHub Release automatically. Release notes are generated from GitHub history; localization policy is documented separately because GitHub provides one Markdown release body per release rather than native per-language release variants.
+Pushing a semantic version tag such as `v0.1.0` creates a GitHub Release automatically. GitHub-generated English notes are canonical. If localized note files such as `docs/releases/v0.1.0.ja.md` exist in the tagged revision, the release workflow appends links to those translations automatically.
 
 See [`docs/RELEASING.md`](docs/RELEASING.md).
 
 ## Compatibility and project policy
 
-Versioning, backward-compatibility guarantees, contribution workflow, redistribution expectations, and fork guidance are intentionally treated as explicit project contracts rather than accidental defaults.
+Versioning, backward-compatibility guarantees, contribution workflow, redistribution expectations, and fork guidance are explicit project contracts rather than accidental defaults.
 
-Those policies are being defined before the first stable release. Until they are finalized, do not infer stability guarantees from the repository structure alone.
+- [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) — provisional versioning and migration guarantees
+- [`docs/PROJECT-POLICY-DRAFT.md`](docs/PROJECT-POLICY-DRAFT.md) — unresolved license, fork, branding, and contribution decisions
+
+A personal AI instance should be created as an independent repository from the blank template, **not as a GitHub fork used as identity storage**. Forks are a source-development mechanism; personal identity state should have its own ownership and privacy boundary. The final legal fork/derivative rights depend on the software license selected before the first stable release.
 
 ## Status
 
-**Early bootstrap / pre-`v0.1.0`.** The initial goal is to establish the blank-instance contract, core lifecycle, host-neutral boundaries, and release workflow before adding convenience layers.
+**Early bootstrap / pre-`v0.1.0`.** The initial goal is to establish the blank-instance contract, core lifecycle, host-neutral boundaries, evaluation, and release workflow before adding convenience layers.
 
 ## License
 
-A license has not been selected yet. This is intentional while redistribution, modification, fork expectations, and third-party attribution requirements are being decided.
+A license has not been selected yet. This is intentional while redistribution, modification, fork expectations, branding, and third-party attribution requirements are being decided.
