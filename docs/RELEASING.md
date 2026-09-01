@@ -2,7 +2,7 @@
 
 ## Tag-driven releases
 
-Tsuzuri Harness uses semantic-looking version tags for releases.
+Tsuzuri Harness uses semantic-version-style tags.
 
 Examples:
 
@@ -10,42 +10,59 @@ Examples:
 v0.1.0
 v0.2.0
 v1.0.0
+v1.1.0-rc.1
 ```
 
 Pushing a `v*` tag triggers `.github/workflows/release.yml`, which creates the corresponding GitHub Release if one does not already exist.
 
-The workflow uses GitHub's generated release notes as the initial English release body.
+The workflow asks GitHub to generate the canonical English release notes from repository history and `.github/release.yml` categories.
 
 ## Localization
 
-GitHub Releases provide one Markdown body per release, not separate native bodies per locale.
+GitHub exposes one Markdown body for each Release; it does not provide separate native release bodies per locale.
 
-For multilingual release notes, use one of these patterns:
+Tsuzuri Harness therefore uses this model:
 
-1. **Single multilingual body**
-   - English first
-   - Japanese / Chinese / Korean sections below
+```text
+GitHub generated notes
+       ↓
+canonical English release body
+       ↓
+optional links to reviewed locale files
+```
 
-2. **English body + localized files**
-   - `docs/releases/vX.Y.Z.ja.md`
-   - `docs/releases/vX.Y.Z.zh-CN.md`
-   - `docs/releases/vX.Y.Z.ko.md`
-   - link them from the GitHub Release body
+Before pushing a tag, localized notes may be added under `docs/releases/` using the tag in the file name:
 
-3. **Custom translation automation**
-   - a workflow may call a translation service or model API and then update the release body
-   - this is intentionally not enabled by default because it introduces external dependency, credentials, output-review, and potentially usage-cost concerns
+```text
+docs/releases/vX.Y.Z.ja.md
+docs/releases/vX.Y.Z.zh-CN.md
+docs/releases/vX.Y.Z.zh-TW.md
+docs/releases/vX.Y.Z.ko.md
+docs/releases/vX.Y.Z.es.md
+```
 
-The initial project configuration uses generated English notes only. Localization automation can be added later when its review and cost policy are explicit.
+The release workflow detects the files present in the tagged revision and appends links to them automatically.
 
-## Pre-release compatibility
+See [`docs/releases/README.md`](releases/README.md).
 
-Before `v1.0.0`, compatibility guarantees are intentionally not assumed. The exact backward-compatibility policy is a project governance decision and must be documented before stable release.
+### Why translations are not generated automatically
+
+A translation service or model API could generate locale files, but doing so would introduce external dependencies, credentials, output-review requirements, and potentially usage cost. The default release path therefore remains deterministic and service-independent.
+
+Automatic translation may be added later only after the project chooses a provider, review policy, and cost boundary.
+
+## Compatibility
+
+Before `v1.0.0`, backward compatibility is not generally guaranteed. Persisted-state migrations should still preserve semantic provenance and avoid silently inventing or rewriting identity.
+
+See [`docs/COMPATIBILITY.md`](COMPATIBILITY.md).
 
 ## Recommended release flow
 
 ```text
 master verified
+   ↓
+prepare optional localized release-note files
    ↓
 choose version
    ↓
@@ -55,7 +72,9 @@ git push origin vX.Y.Z
    ↓
 GitHub Actions
    ↓
-GitHub Release + generated notes
+GitHub Release
+  ├─ generated English notes
+  └─ available translation links
 ```
 
 Do not tag a release merely to checkpoint unfinished work. Tags should describe a repository state intended to be consumed by users or integrators.
