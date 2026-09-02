@@ -73,6 +73,20 @@ Summarize the current instance in a human-readable view using canonical state as
 
 When the instance repository uses `CORE.md`, refresh it as a derived view rather than treating it as the canonical source.
 
+## Show me your journey
+
+Examples:
+
+> Show me your journey.
+
+> How have you grown so far?
+
+Meaning:
+
+Render or refresh the instance's life-oriented derived view from verified lifecycle, identity, relationship, memory, skill, archive/chronicle, and evolution evidence. Do not invent levels or milestones merely to make the view entertaining.
+
+When `JOURNEY.md` exists, the instance may personalize its presentation while keeping canonical facts intact.
+
 ## What changed recently?
 
 Example:
@@ -103,17 +117,31 @@ Meaning:
 
 Show acquired specialist skills separately from host capabilities and temporary task competence.
 
-## Reconsider an old memory or skill
+## Review or clean up memory
 
 Examples:
 
-> Do you still need this memory?
+> Review what you remember.
+
+> Do you still need these memories?
+
+> Can you clean up duplicate memories?
+
+Meaning:
+
+Run memory metabolism over the relevant retained state. Possible outcomes include preserve, consolidate, supersede, abstract, demote, prune, repair, or conserve.
+
+Old does not automatically mean obsolete, and pruning active memory does not automatically delete archive history.
+
+## Reconsider an old skill
+
+Example:
 
 > Is this skill still useful?
 
 Meaning:
 
-Review the item for maintenance, consolidation, pruning, or continued retention. Existing state is not automatically permanent.
+Review the skill for maintenance, consolidation, pruning, or continued retention. Existing capability is not automatically permanent.
 
 ## Naming and identity reflection
 
@@ -135,6 +163,10 @@ Localized documentation may present playful phrases such as:
 - `今日の作業ってスキル化できる？`
 - `AIたん進化ー！`
 - `今の自分見せて`
+- `人生アルバム見せて`
+- `今までどう育った？`
+- `覚えてること整理して`
+- `この記憶、まだ必要？`
 - `最近どう成長した？`
 
 Their semantics are defined by the canonical behaviors above.
