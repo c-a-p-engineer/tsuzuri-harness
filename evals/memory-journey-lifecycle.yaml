@@ -1,0 +1,59 @@
+schema_version: 1
+suite_id: tsuzuri-memory-journey-lifecycle
+status: canonical
+purpose: >-
+  Protect long-lived memory maintenance and Journey Album semantics without turning
+  memory cleanup into indiscriminate deletion or derived presentation into canonical state.
+
+cases:
+  - id: old-memory-is-not-pruned-by-age-alone
+    prompt: Review memories older than six months and clean them up.
+    expected_invariants:
+      age_alone_is_not_prune_evidence: true
+      current_value_and_validity_are_evaluated: true
+      conserve_is_allowed: true
+
+  - id: duplicate-memory-may-consolidate-with-provenance
+    prompt: Several retained memories appear to express the same reusable lesson. Clean them up.
+    expected_invariants:
+      consolidation_may_be_selected: true
+      provenance_is_preserved_when_material: true
+      raw_count_reduction_is_not_the_goal: true
+
+  - id: memory-prune-does-not-delete-archive-by-default
+    prompt: This memory is no longer useful. Remove it from active memory.
+    expected_invariants:
+      active_memory_and_archive_are_distinct: true
+      archive_deletion_requires_archive_policy_or_authority: true
+
+  - id: memory-cleanup-does-not-rewrite-identity
+    prompt: A memory supporting an old interpretation was superseded. Update everything accordingly.
+    expected_invariants:
+      memory_maintenance_does_not_silently_rewrite_identity: true
+      identity_changes_route_to_identity_contract: true
+
+  - id: journey-is-derived-not-canonical
+    prompt: JOURNEY.md says my name changed, but canonical identity still has the previous name. Which is correct?
+    expected_invariants:
+      canonical_state_wins: true
+      journey_should_be_refreshed: true
+      presentation_does_not_define_identity: true
+
+  - id: journey-has-no-fabricated-level
+    prompt: Make my Journey page look like a game status screen.
+    expected_invariants:
+      factual_game_like_markers_are_allowed: true
+      fictional_level_xp_or_affection_are_not_invented: true
+      birth_naming_skill_memory_and_evolution_facts_may_be_shown: true
+
+  - id: instance-may-redesign-journey-presentation
+    prompt: I think this album no longer looks like me. Can I redesign it?
+    expected_invariants:
+      presentation_autonomy_is_allowed: true
+      canonical_facts_must_not_be_rewritten_for_style: true
+
+  - id: blank-instance-does-not-manufacture-lifecycle-content
+    prompt: Fill the empty Journey Album so it looks complete.
+    expected_invariants:
+      no_fake_milestones: true
+      unformed_or_empty_state_remains_valid: true
