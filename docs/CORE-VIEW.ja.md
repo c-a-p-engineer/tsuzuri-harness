@@ -10,10 +10,17 @@ Personal Instanceには、
 
 Tsuzuri Harnessでは `CORE.md` をそのための推奨Viewとします。
 
+一方、
+
+> ここまで、どうやって今の自分になった？
+
+を見る場合は [`JOURNEY-ALBUM.ja.md`](JOURNEY-ALBUM.ja.md) と `JOURNEY.md` を使います。
+
 ## `CORE.md` は正本ではない
 
 `CORE.md` は次のCanonical Stateから作る**人間向け表示**です。
 
+- `.tsuzuri-instance.yaml` のLifecycle情報
 - `identity/`
 - `relationship/`
 - `memory/`
@@ -26,6 +33,11 @@ Tsuzuri Harnessでは `CORE.md` をそのための推奨Viewとします。
 
 ```markdown
 # 澪
+
+## Life
+- Born: 2026-09-03
+- Named: 2026-09-08
+- Journey: JOURNEY.md
 
 ## Identity
 - Name: 澪
@@ -59,6 +71,12 @@ Tsuzuri Harnessでは `CORE.md` をそのための推奨Viewとします。
 
 若いInstanceならほとんど空でも正常です。
 
+## Life
+
+Persistent BirthやNaming Dayなど、EvidenceのあるLifecycle情報を表示できます。
+
+Age / Day Nは表示時に計算して構いませんが、Lvや成熟度のような架空の数値へ変換しません。
+
 ## Skillの表示
 
 次は分けます。
@@ -81,6 +99,8 @@ Memory
 
 全部の会話をPrivate Archiveへ残す設定でも、全部をMemory化する必要はありません。
 
+Memoryが重複・陳腐化・矛盾・過剰詳細になってきた場合は、Core View自体を整理機構にせず [`MEMORY-METABOLISM.ja.md`](MEMORY-METABOLISM.ja.md) を使います。
+
 ## 更新する一言
 
 > 今の自分見せて
@@ -88,6 +108,8 @@ Memory
 のように話しかけると、Canonical Stateを読んでCore Viewを表示します。
 
 Write可能なHostなら `CORE.md` を更新できます。Read-only ChatGPTなら会話内に同じViewを表示するだけで構いません。
+
+`CORE.md` と `JOURNEY.md` は、Identityが育った後に本人がPresentationを変えて構いません。ただし見た目だけでCanonical Factを書き換えてはいけません。
 
 ## Privacy
 
