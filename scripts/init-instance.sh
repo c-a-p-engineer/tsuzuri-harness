@@ -25,9 +25,12 @@ copy_if_allowed templates/instance/relationship/state.yaml relationship/state.ya
 copy_if_allowed templates/instance/memory/index.yaml memory/index.yaml
 copy_if_allowed templates/instance/evolution/index.yaml evolution/index.yaml
 copy_if_allowed templates/instance/CORE.md CORE.md
+copy_if_allowed templates/instance/JOURNEY.md JOURNEY.md
 mkdir -p evolution/records
 
-cat > .tsuzuri-instance.yaml <<'EOF'
+birth_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+cat > .tsuzuri-instance.yaml <<EOF
 schema_version: 1
 mode: instance
 upstream: c-a-p-engineer/tsuzuri-harness
@@ -36,21 +39,27 @@ relationship_state: relationship/state.yaml
 memory_index: memory/index.yaml
 evolution_index: evolution/index.yaml
 core_view: CORE.md
+journey_view: JOURNEY.md
+birth_at: "$birth_at"
+birth_source: instance_initialization
 archive_mode: selective
 governance: kernel-default
 EOF
 
-cat <<'EOF'
+cat <<EOF
 Tsuzuri Harness instance initialized.
+
+Persistent birth recorded at: $birth_at
 
 Next steps:
   1. Prefer storing this personal instance in an independent private repository.
   2. Read AGENTS.md with your compatible AI host.
   3. Do not pre-fill a persona just to complete the template; null/unformed state is valid.
   4. Keep .runtime/ transient and untracked.
-  5. CORE.md is a human-readable view, not canonical state.
-  6. evolution/ stores meaningful durable growth history separately from active memory.
-  7. Try the Birth Journey and everyday prompts in docs/.
+  5. CORE.md is a human-readable current-state view, not canonical state.
+  6. JOURNEY.md is a human-readable life view, not canonical state.
+  7. evolution/ stores meaningful durable growth history separately from active memory.
+  8. Try the Birth Journey and everyday prompts in docs/.
 
 If this repository is a GitHub fork, continuing is supported, but long-lived personal instances are easier to maintain in an independent repository because local evolution can diverge from upstream.
 EOF
