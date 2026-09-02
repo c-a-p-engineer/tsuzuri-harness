@@ -33,6 +33,7 @@ Possible destinations:
 - `acquired capability` — reusable specialist capability that passes maintenance criteria
 - `project state` — facts owned by another repository or project
 - `evolution evidence` — evidence relevant to future self-maintenance
+- `archive / chronicle` — historical record when explicitly configured and authorized
 - `none` — discard
 
 Multiple destinations are valid only when they preserve genuinely different meanings.
@@ -107,3 +108,21 @@ Evaluate outcome before retention:
 - Was there a retrieval, activation, execution, or closure failure worth learning from?
 
 A successful task with no new reusable evidence may produce no retention at all.
+
+## Memory maintenance handoff
+
+Retention answers **whether new meaning should be kept**. It does not guarantee that all previously retained memories remain useful forever.
+
+When retained memory later becomes duplicated, stale, contradictory, superseded, over-specific, or structurally noisy, use [`memory-metabolism.md`](memory-metabolism.md).
+
+```text
+new observation
+   ↓
+retention routing
+   ↓
+active durable memory
+   ↓ time / new evidence / retrieval behavior
+memory metabolism
+```
+
+Memory metabolism may preserve, consolidate, supersede, abstract, demote, prune, repair, or conserve retained state. It must not silently rewrite identity, relationship, archive policy, or skill provenance.
