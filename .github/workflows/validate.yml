@@ -63,7 +63,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          grep -q 'read-only Birth Test' docs/CHATGPT.md
+          grep -q 'read-only birth test' docs/CHATGPT.md
           grep -q 'Layer 1 — Read-only birth test' docs/TESTING.md
           grep -q 'Hard read-only boundary' prompts/chatgpt-readonly-birth-test.md
           grep -q 'Dashboard' README.md
