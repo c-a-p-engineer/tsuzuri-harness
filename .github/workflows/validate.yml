@@ -29,6 +29,8 @@ jobs:
             templates/instance/memory/index.yaml scripts/init-instance.sh scripts/init-instance.ps1 \
             scripts/backup-instance.sh scripts/backup-instance.ps1 docs/INSTANCE-SETUP.md \
             docs/COMPATIBILITY.md docs/MIGRATION.md docs/PROJECT-POLICY.md docs/WHY-TSUZURI.md \
+            docs/IDENTITY-FORMATION.md docs/VALIDATION.md \
+            evals/blank-identity.yaml evals/birth-readonly-first-session.yaml \
             .github/CODEOWNERS .github/PULL_REQUEST_TEMPLATE.md .github/workflows/pages.yml \
             site/index.html site/styles.css; do
             test -f "$f" || { echo "Missing required file: $f" >&2; exit 1; }
@@ -44,6 +46,16 @@ jobs:
           grep -Eq '^preferences: \[\]$' templates/instance/identity/state.yaml
           grep -Eq '^memories: \[\]$' templates/instance/memory/index.yaml
           grep -Eq '^acquired_skills: \[\]$' function/skills/index.yaml
+
+      - name: Validate birth and retention regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'same-context-repetition-is-correlated' evals/blank-identity.yaml
+          grep -q 'generalized_from_observed_readonly_birth_test' evals/birth-readonly-first-session.yaml
+          grep -q 'raw observation count' docs/VALIDATION.md
+          grep -q 'independent evidence contexts' docs/IDENTITY-FORMATION.md
+          grep -q 'Correlated evidence is not independent evidence' function/retention-routing.md
 
       - name: Smoke-test POSIX instance initialization
         shell: bash
