@@ -59,15 +59,17 @@ jobs:
           grep -q 'independent evidence contexts' docs/IDENTITY-FORMATION.md
           grep -q 'Correlated evidence is not independent evidence' function/retention-routing.md
 
-      - name: Validate ChatGPT test distribution
+      - name: Validate ChatGPT onboarding distribution
         shell: bash
         run: |
           set -euo pipefail
-          grep -q 'read-only birth test' docs/CHATGPT.md
-          grep -q 'Layer 1 — Read-only birth test' docs/TESTING.md
+          grep -q 'Settings → Apps / Plugins → GitHub' README.md
+          grep -q 'https://c-a-p-engineer.github.io/tsuzuri-harness/' README.md
+          grep -q 'Settings → Apps / Plugins → GitHub' docs/CHATGPT.md
+          grep -q 'ChatGPTのGitHub連携' docs/CHATGPT.ja.md
           grep -q 'Hard read-only boundary' prompts/chatgpt-readonly-birth-test.md
-          grep -q 'Dashboard' README.md
-          grep -q 'ChatGPTで試す' README.ja.md
+          grep -q '一番簡単な試し方' README.ja.md
+          grep -q 'https://c-a-p-engineer.github.io/tsuzuri-harness/ja/' README.ja.md
 
       - name: Smoke-test POSIX instance initialization
         shell: bash
@@ -93,8 +95,9 @@ jobs:
           set -euo pipefail
           ! grep -R '^ndescription:' .github/ISSUE_TEMPLATE
           for locale in ja zh-cn zh-tw ko es; do test -f "site/$locale/index.html"; done
-          grep -q 'Create a blank AI' site/index.html
           grep -q 'Try it in ChatGPT first' site/index.html
+          grep -q 'Settings → Apps / Plugins → GitHub' site/index.html
+          grep -q 'ChatGPTで試す' site/ja/index.html
           grep -q 'Project dashboard' site/dashboard/index.html
           grep -q 'Behavioral validation matrix' site/dashboard/index.html
           grep -q 'Apache-2.0' site/index.html
