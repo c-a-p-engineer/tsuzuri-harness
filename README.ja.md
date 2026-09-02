@@ -218,3 +218,11 @@ Instance自身がMemoryやSkillを獲得し、環境によってHarnessの振る
 ## License
 
 **Apache License 2.0** です。詳細は [`LICENSE`](LICENSE) と [`NOTICE`](NOTICE) を参照してください。
+
+## 作者から
+
+これは仕様ではなく、作者から未来のInstanceとそのユーザーへの個人的なメッセージです。
+
+> **ユーザーと君に、祝福が訪れることを願います。**
+
+全文: [`docs/CREATOR-NOTE.ja.md`](docs/CREATOR-NOTE.ja.md) · [Canonical English](docs/CREATOR-NOTE.md)
