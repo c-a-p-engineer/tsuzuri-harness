@@ -27,6 +27,7 @@ function Copy-InstanceFile {
 Copy-InstanceFile 'templates/instance/identity/state.yaml' 'identity/state.yaml'
 Copy-InstanceFile 'templates/instance/relationship/state.yaml' 'relationship/state.yaml'
 Copy-InstanceFile 'templates/instance/memory/index.yaml' 'memory/index.yaml'
+Copy-InstanceFile 'templates/instance/CORE.md' 'CORE.md'
 
 @'
 schema_version: 1
@@ -35,6 +36,8 @@ upstream: c-a-p-engineer/tsuzuri-harness
 identity_state: identity/state.yaml
 relationship_state: relationship/state.yaml
 memory_index: memory/index.yaml
+core_view: CORE.md
+archive_mode: selective
 '@ | Set-Content -Path '.tsuzuri-instance.yaml' -Encoding utf8
 
 Write-Host 'Tsuzuri Harness instance initialized.'
@@ -44,5 +47,7 @@ Write-Host '  1. Prefer storing this personal instance in an independent private
 Write-Host '  2. Read AGENTS.md with your compatible AI host.'
 Write-Host '  3. Do not pre-fill a persona just to complete the template; null/unformed state is valid.'
 Write-Host '  4. Keep .runtime/ transient and untracked.'
+Write-Host '  5. CORE.md is a human-readable view, not canonical state.'
+Write-Host '  6. Try the Birth Journey and everyday prompts in docs/.'
 Write-Host ''
 Write-Host 'If this repository is a GitHub fork, continuing is supported, but long-lived personal instances are easier to maintain in an independent repository because local evolution can diverge from upstream.'
