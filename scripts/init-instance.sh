@@ -20,6 +20,20 @@ copy_if_allowed() {
   cp "$src" "$dst"
 }
 
+birth_at=""
+birth_source=""
+if [[ -f .tsuzuri-instance.yaml ]]; then
+  birth_at="$(sed -n 's/^birth_at: "\(.*\)"$/\1/p' .tsuzuri-instance.yaml | head -n1)"
+  birth_source="$(sed -n 's/^birth_source: \(.*\)$/\1/p' .tsuzuri-instance.yaml | head -n1)"
+fi
+if [[ -z "$birth_at" ]]; then
+  birth_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  birth_source="instance_initialization"
+fi
+if [[ -z "$birth_source" ]]; then
+  birth_source="preserved_existing_manifest"
+fi
+
 copy_if_allowed templates/instance/identity/state.yaml identity/state.yaml
 copy_if_allowed templates/instance/relationship/state.yaml relationship/state.yaml
 copy_if_allowed templates/instance/memory/index.yaml memory/index.yaml
@@ -27,8 +41,6 @@ copy_if_allowed templates/instance/evolution/index.yaml evolution/index.yaml
 copy_if_allowed templates/instance/CORE.md CORE.md
 copy_if_allowed templates/instance/JOURNEY.md JOURNEY.md
 mkdir -p evolution/records
-
-birth_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
 cat > .tsuzuri-instance.yaml <<EOF
 schema_version: 1
@@ -41,7 +53,7 @@ evolution_index: evolution/index.yaml
 core_view: CORE.md
 journey_view: JOURNEY.md
 birth_at: "$birth_at"
-birth_source: instance_initialization
+birth_source: $birth_source
 archive_mode: selective
 governance: kernel-default
 EOF
@@ -49,7 +61,7 @@ EOF
 cat <<EOF
 Tsuzuri Harness instance initialized.
 
-Persistent birth recorded at: $birth_at
+Persistent birth: $birth_at ($birth_source)
 
 Next steps:
   1. Prefer storing this personal instance in an independent private repository.
