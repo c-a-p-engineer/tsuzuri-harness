@@ -67,6 +67,28 @@ Self-Evolution Reviewを行います。
 
 Personal Instanceに `CORE.md` がある場合は、それを再生成可能なViewとして更新します。
 
+## 「人生アルバム見せて」
+
+> 人生アルバム見せて
+
+または、
+
+> 今までどう育った？
+
+現在のStateと履歴から `JOURNEY.md` を表示・更新します。
+
+- 誕生日 / Persistent Birth
+- Naming Day
+- Skill獲得
+- Memoryや学び
+- Relationship Milestone
+- Evolution Trail
+- Chronicle / Archiveから選んだ重要な章
+
+などを、Evidenceのある範囲だけで振り返ります。
+
+LvやXPを勝手に作らず、実際の出来事だけでもゲーム画面的に表示できます。個体が育った後は、Canonical Factを壊さない範囲で本人が見た目を変えて構いません。
+
 ## 「最近どう成長した？」
 
 > 最近どう成長した？
@@ -91,13 +113,34 @@ Personal Instanceに `CORE.md` がある場合は、それを再生成可能なV
 
 Hostが元々持つWeb検索・Terminalなどと、本人が経験から獲得したSkillを混同しません。
 
-## 「これまだ必要？」
+## 「覚えてること整理して」
 
-> このMemoryまだ必要？
+> 覚えてること整理して
+
+または、
+
+> この記憶、まだ必要？
+
+Memory Metabolismを行います。
+
+- Preserve
+- Consolidate
+- Supersede
+- Abstract
+- ArchiveへDemote
+- Prune
+- Repair
+- Conserve
+
+などを判断します。
+
+古いだけで消しません。Active MemoryからPruneしても、Archiveまで自動削除するわけではありません。
+
+## 「このSkillまだ使える？」
 
 > このSkillまだ使える？
 
-既存Memory / SkillをMaintenanceし、保持・統合・更新・削除候補を判断します。
+SkillをMaintenanceし、保持・統合・更新・Prune候補を判断します。
 
 一度覚えたものが永久に残るとは限りません。
 
@@ -134,9 +177,17 @@ AIたん進化ー！
       ↓
 Self-Evolution
 
+覚えてること整理して
+      ↓
+Memory Metabolism
+
 今の自分見せて
       ↓
 Core View
+
+人生アルバム見せて
+      ↓
+Journey Album
 ```
 
 **普通に話しかければ、Harness側が正しい処理へルーティングする。**
