@@ -24,26 +24,29 @@ jobs:
           for f in \
             AGENTS.md README.md README.ja.md LICENSE NOTICE BRANDING.md CONTRIBUTING.md SECURITY.md \
             function/runtime.md function/task-contract.md function/governance.md \
-            function/retention-routing.md function/capability-maintenance.md \
+            function/retention-routing.md function/memory-metabolism.md function/capability-maintenance.md \
             function/self-evolution.md function/evolution-traceability.md function/runtime-workspace.md \
             function/contextual-activation.md function/execution-provenance.md \
             function/capability-capsule.schema.yaml function/skills/index.yaml \
             templates/instance/identity/state.yaml templates/instance/relationship/state.yaml \
             templates/instance/memory/index.yaml templates/instance/evolution/index.yaml \
-            templates/instance/evolution/record-template.md templates/instance/CORE.md \
+            templates/instance/evolution/record-template.md templates/instance/CORE.md templates/instance/JOURNEY.md \
             scripts/init-instance.sh scripts/init-instance.ps1 \
             scripts/backup-instance.sh scripts/backup-instance.ps1 docs/INSTANCE-SETUP.md \
             docs/COMPATIBILITY.md docs/MIGRATION.md docs/PROJECT-POLICY.md docs/WHY-TSUZURI.md \
             docs/IDENTITY-FORMATION.md docs/VALIDATION.md docs/CHATGPT.md docs/CHATGPT.ja.md \
             docs/TESTING.md docs/TESTING.ja.md docs/BIRTH-JOURNEY.md docs/BIRTH-JOURNEY.ja.md \
             docs/EVERYDAY-PROMPTS.md docs/EVERYDAY-PROMPTS.ja.md \
-            docs/CORE-VIEW.md docs/CORE-VIEW.ja.md docs/ARCHIVE-MODES.md docs/ARCHIVE-MODES.ja.md \
+            docs/CORE-VIEW.md docs/CORE-VIEW.ja.md docs/JOURNEY-ALBUM.md docs/JOURNEY-ALBUM.ja.md \
+            docs/MEMORY-METABOLISM.md docs/MEMORY-METABOLISM.ja.md \
+            docs/ARCHIVE-MODES.md docs/ARCHIVE-MODES.ja.md \
             docs/GOVERNANCE.md docs/GOVERNANCE.ja.md docs/TASK-CONTRACT.md docs/TASK-CONTRACT.ja.md \
             docs/EVOLUTION-TRACEABILITY.md docs/EVOLUTION-TRACEABILITY.ja.md \
             docs/HOST-COMPATIBILITY.md docs/HOST-COMPATIBILITY.ja.md \
             prompts/chatgpt-readonly-birth-test.md prompts/chatgpt-readonly-birth-test.ja.md \
             evals/blank-identity.yaml evals/birth-readonly-first-session.yaml \
             evals/runtime-growth-p0.yaml evals/kernel-star5.yaml evals/host-behavioral-compatibility.yaml \
+            evals/memory-journey-lifecycle.yaml \
             .github/CODEOWNERS .github/PULL_REQUEST_TEMPLATE.md .github/workflows/pages.yml \
             site/index.html site/styles.css; do
             test -f "$f" || { echo "Missing required file: $f" >&2; exit 1; }
@@ -61,6 +64,8 @@ jobs:
           grep -Eq '^records: \[\]$' templates/instance/evolution/index.yaml
           grep -Eq '^acquired_skills: \[\]$' function/skills/index.yaml
           grep -q '^# Unnamed Instance$' templates/instance/CORE.md
+          grep -q '^# Journey of an Unnamed Instance$' templates/instance/JOURNEY.md
+          grep -q 'Naming day: not yet' templates/instance/JOURNEY.md
 
       - name: Validate birth and retention regressions
         shell: bash
@@ -98,15 +103,33 @@ jobs:
           grep -q 'blank-instance-stays-blank-across-hosts' evals/host-behavioral-compatibility.yaml
           grep -q 'do_not_store_full_chain_of_thought: true' evals/host-behavioral-compatibility.yaml
 
+      - name: Validate memory metabolism and journey lifecycle
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'Memory is maintained, not merely accumulated' AGENTS.md
+          grep -q 'Life presentation must remain factual' AGENTS.md
+          grep -q 'Age alone is not proof' function/memory-metabolism.md
+          grep -q 'Memory is not archive' function/memory-metabolism.md
+          grep -q 'journey-is-derived-not-canonical' evals/memory-journey-lifecycle.yaml
+          grep -q 'old-memory-is-not-pruned-by-age-alone' evals/memory-journey-lifecycle.yaml
+          grep -q 'No artificial level system' docs/JOURNEY-ALBUM.md
+          grep -q 'Memory Metabolism' docs/MEMORY-METABOLISM.md
+          grep -q '人生アルバム見せて' docs/EVERYDAY-PROMPTS.ja.md
+          grep -q '覚えてること整理して' docs/EVERYDAY-PROMPTS.ja.md
+
       - name: Validate user experience guides
         shell: bash
         run: |
           set -euo pipefail
           grep -q 'github.io/tsuzuri-harness' README.md
           grep -q 'github.io/tsuzuri-harness/ja' README.ja.md
+          grep -q 'chatgpt.com/?q=' README.md
+          grep -q 'chatgpt.com/?q=' README.ja.md
           grep -q 'Birth Journey' docs/BIRTH-JOURNEY.md
           grep -q 'AIたん進化ー！' docs/EVERYDAY-PROMPTS.ja.md
           grep -q 'CORE.md' docs/CORE-VIEW.md
+          grep -q 'JOURNEY.md' docs/JOURNEY-ALBUM.md
           grep -q 'Private Archive' docs/ARCHIVE-MODES.md
           grep -q 'semantic authority' docs/GOVERNANCE.md
           grep -q 'Task Outcome' docs/TASK-CONTRACT.ja.md
@@ -129,6 +152,7 @@ jobs:
           test -f evolution/index.yaml
           test -d evolution/records
           test -f CORE.md
+          test -f JOURNEY.md
           test -f .tsuzuri-instance.yaml
           grep -Eq '^name: null$' identity/state.yaml
           grep -Eq '^memories: \[\]$' memory/index.yaml
@@ -136,12 +160,18 @@ jobs:
           grep -Eq '^mode: instance$' .tsuzuri-instance.yaml
           grep -Eq '^evolution_index: evolution/index.yaml$' .tsuzuri-instance.yaml
           grep -Eq '^core_view: CORE.md$' .tsuzuri-instance.yaml
+          grep -Eq '^journey_view: JOURNEY.md$' .tsuzuri-instance.yaml
+          grep -Eq '^birth_at: ".+"$' .tsuzuri-instance.yaml
+          grep -Eq '^birth_source: instance_initialization$' .tsuzuri-instance.yaml
           grep -Eq '^archive_mode: selective$' .tsuzuri-instance.yaml
           grep -Eq '^governance: kernel-default$' .tsuzuri-instance.yaml
           bash scripts/backup-instance.sh
           backup="$(find .runtime/backups -mindepth 1 -maxdepth 1 -type d | head -n1)"
           test -n "$backup"
           test -d "$backup/evolution"
+          test -f "$backup/JOURNEY.md"
+          test -f "$backup/CORE.md"
+          test -f "$backup/.tsuzuri-instance.yaml"
 
       - name: Validate issue forms and site
         shell: bash
@@ -150,8 +180,13 @@ jobs:
           ! grep -R '^ndescription:' .github/ISSUE_TEMPLATE
           for locale in ja zh-cn zh-tw ko es; do test -f "site/$locale/index.html"; done
           grep -q 'Everyday words should be enough' site/index.html
-          grep -q 'Birth Journey' site/index.html
+          grep -q 'Try instantly in ChatGPT' site/index.html
+          grep -q 'chatgpt.com/?q=' site/index.html
+          grep -q 'JOURNEY.md' site/index.html
+          grep -q 'Memory Metabolism' site/index.html
           grep -q 'AIたん進化ー！' site/ja/index.html
+          grep -q '今すぐChatGPTでBirth Test' site/ja/index.html
+          grep -q '人生アルバム見せて' site/ja/index.html
           grep -q 'Private Repository' site/ja/index.html
           grep -q 'Apache-2.0' site/index.html
 
