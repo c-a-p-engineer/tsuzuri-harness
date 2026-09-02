@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Tsuzuri Harness project dashboard — validation, test evidence, releases, and project status.">
+  <title>Dashboard · Tsuzuri Harness</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav">
+    <a class="brand" href="../">Tsuzuri Harness</a>
+    <div class="langs">
+      <a href="../">Home</a>
+      <a href="https://github.com/c-a-p-engineer/tsuzuri-harness">GitHub</a>
+      <a href="https://github.com/c-a-p-engineer/tsuzuri-harness/actions">Actions</a>
+      <a href="https://github.com/c-a-p-engineer/tsuzuri-harness/releases">Releases</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero compact">
+      <div class="eyebrow">Project dashboard</div>
+      <h1>Harness health at a glance.</h1>
+      <p class="lead">Live workflow status, observed behavioral evidence, release readiness, and the next validation layers for Tsuzuri Harness.</p>
+      <div class="actions">
+        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml"><img class="badge" src="https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml/badge.svg?branch=master" alt="Validate Harness status"></a>
+        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml"><img class="badge" src="https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml/badge.svg?branch=master" alt="GitHub Pages deployment status"></a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Current phase</h2>
+      <div class="grid">
+        <div class="card"><h3>Release</h3><p><strong>Pre-v0.1.0</strong></p><p class="muted">The first tagged release is intentionally deferred until core blank-instance behavior and distribution are sufficiently validated.</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/releases">Release history →</a></p></div>
+        <div class="card"><h3>License</h3><p><strong>Apache-2.0</strong></p><p class="muted">Forks and modifications are allowed. Personal instances are encouraged to use independent repositories rather than long-lived forks.</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/BRANDING.md">Branding policy →</a></p></div>
+        <div class="card"><h3>Canonical language</h3><p><strong>English</strong></p><p class="muted">Translations improve accessibility, but normative English text controls when meanings differ.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Behavioral validation matrix</h2>
+      <div class="grid">
+        <div class="card"><div class="status pass">PASS</div><h3>Repository validation</h3><p class="muted">Blank starter state, initialization, backup, required contracts, regressions, and site artifacts are covered by CI.</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml">Open workflow →</a></p></div>
+        <div class="card"><div class="status pass">OBSERVED PASS</div><h3>Read-only birth</h3><p class="muted">A blank ChatGPT test instance formed only limited state, preserved uncertainty, avoided automatic skill/memory promotion, and respected read-only boundaries.</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/VALIDATION.md">Validation evidence →</a></p></div>
+        <div class="card"><div class="status pending">NEXT</div><h3>Persistent birth</h3><p class="muted">Verify selective durable retention across separate sessions in an independent private instance repository.</p></div>
+        <div class="card"><div class="status pending">NEXT</div><h3>Host portability</h3><p class="muted">Move one persisted instance between compatible hosts while preserving biography and separating host capabilities.</p></div>
+        <div class="card"><div class="status pending">NEXT</div><h3>Migration reconciliation</h3><p class="muted">Test upstream changes against an independently evolved instance without blindly overwriting local semantics.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Run a test</h2>
+      <div class="grid">
+        <div class="card"><h3>ChatGPT</h3><p class="muted">Start with the read-only mode. No local environment or personal repository is required.</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.md">ChatGPT guide →</a></p></div>
+        <div class="card"><h3>Test matrix</h3><p class="muted">Repository, read-only birth, persistent birth, host portability, and migration tests.</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/TESTING.md">Testing guide →</a></p></div>
+        <div class="card"><h3>Copyable prompt</h3><p class="muted">Canonical instruction for a fresh ChatGPT read-only Birth Test.</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/prompts/chatgpt-readonly-birth-test.md">Open prompt →</a></p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Operational links</h2>
+      <div class="grid">
+        <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/issues">Issues</a><p class="muted">Bugs, feature proposals, compatibility findings, and host adapters.</p></div>
+        <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/security">Security</a><p class="muted">Security policy and reporting path. Never put private instance state into a public issue.</p></div>
+        <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/COMPATIBILITY.md">Compatibility</a><p class="muted">SemVer for upstream contracts; no universal drop-in guarantee for independently evolved instances.</p></div>
+        <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/MIGRATION.md">Migration</a><p class="muted">Reconcile semantic differences before replacing local behavior.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Dashboard intentionally stays thin: live workflow badges + canonical repository evidence, without a separate monitoring backend.</footer>
+</div>
+</body>
+</html>
