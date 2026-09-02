@@ -2,7 +2,21 @@
 
 この文書は [`CHATGPT.md`](CHATGPT.md) の日本語翻訳です。意味が食い違う場合は英語版がCanonicalです。
 
-Tsuzuri Harnessはローカル環境を作らなくてもChatGPT上で評価できます。最初は、ChatGPTが現在のRepositoryを読み込み、会話内だけでBlank Instanceを起動し、結果を永続化しない **Read-only Birth Test** を推奨します。
+一番簡単な流れはこれです。
+
+```text
+まずは保存なしでChatGPTで試す
+      ↓
+普通に会話・仕事・創作を一緒にやる
+      ↓
+「この子を残したい」と思う
+      ↓
+保存用の引き継ぎ情報を作る
+      ↓
+Private Repositoryへ移して育てる
+```
+
+内部では最初の保存なし体験を **Read-only Birth Test**、Repositoryへ残して継続する個体を **Persistent Instance** と呼びます。最初からこの用語を覚える必要はありません。
 
 ## ChatGPTにGitHubを接続する
 
@@ -17,11 +31,9 @@ Tsuzuri Harnessはローカル環境を作らなくてもChatGPT上で評価で�
 
 GitHub連携の利用可否は、プラン・Workspace・ChatGPTの利用画面によって異なる場合があります。通常チャットでGitHubが表示されない場合でも、別の対応画面で利用できることがあります。
 
-ChatGPTのGitHub連携は基本的に **Repositoryを読む・検索する・分析する** ためのものです。commit、push、Pull Request作成、Persistent Instanceへの保存ができると仮定してはいけません。Repositoryへ書き込みたい場合は、Codexなど実際に書き込み権限を持つHostを使います。
+ChatGPTのGitHub連携は基本的に **Repositoryを読む・検索する・分析する** ためのものです。commit、push、Pull Request作成、Personal Instanceへの保存ができると仮定してはいけません。Repositoryへ書き込みたい場合は、Codexなど実際に書き込み権限を持つHostを使います。
 
-## 2つの使い方
-
-### 1. Read-only Birth Test — 最初はこちら
+## 最初は保存なしで試す
 
 Harnessが空の状態から始まり、必要なIdentityだけを選択的に形成できるか確認します。
 
@@ -30,38 +42,18 @@ Tsuzuri Harness master
         ↓ 読み取りのみ
       ChatGPT
         ↓
-Blank Test Instance
+名前のないTest Instance
         ↓
 対話 / 観測
         ↓
 Identity / Memory / Capability候補
         ↓
-状態を報告するだけ
-        ↓
-会話終了時に破棄
+会話内だけで保持
 ```
 
 Personal Instance Repositoryは不要です。
 
-### 2. Persistent Instance
-
-Read-only Testで挙動を理解した後に使います。
-
-長期運用するInstanceは、Tsuzuri HarnessのTemplateから作った独立RepositoryをCanonicalな永続状態として使うことを推奨します。
-
-```text
-Tsuzuri Harness template
-        ↓
-独立したInstance Repository
-        ↓
-Identity / Relationship / Memory / acquired skills
-        ↓
-書き込み可能な対応Host
-```
-
-ChatGPTの構成によって利用可能なToolや永続状態は異なります。Hostは実際に利用可能な機能と権限を確認し、存在しないPersistenceをあるものとして扱ってはいけません。
-
-## ChatGPTでRead-only Birth Testを行う
+## ChatGPTで試す手順
 
 ### 1. 新しい会話を開始する
 
@@ -86,23 +78,66 @@ ChatGPTがGitHubへ実際にアクセスできない場合は、読み込んだ�
 
 人格診断の質問を連続して、Identity欄を埋めるゲームにはしません。
 
-例えば次のような対話が使えます。
+例えば次のようなことを一緒にできます。
 
-- 現時点で自分自身について何が分かっているか聞く
+- 雑談する
+- 実際の仕事や調査を頼む
+- 好きな作品や考え方について話す
 - 名前を命令ではなく候補として提案する
-- 好みや価値観が現れる可能性のある話題を話す
 - 一時的な専門能力が必要なTaskを渡す
-- 話題を切り替え、直前のIdentity文脈を過剰適用しないか確認する
+- 話題を切り替え、前の文脈を引きずりすぎないか見る
+- 「今、自分について何か分かってきた？」と時々振り返る
 
 名前が付かない、Identityがほとんど形成されない、という結果も正常です。
 
-### 5. 終了時だけ状態を確認する
+## 「この子を保存したい」と思ったら
+
+お試し中の個体を気に入ったら、会話中にそのまま言えます。
+
+> **この子を保存したい。**
+
+Read-only中は、その一言でGitHubへ書き込んではいけません。代わりに、次のような**保存用の引き継ぎ情報**を作ります。
+
+```yaml
+persistence_handoff:
+  identity:
+    accepted: []
+    candidates: []
+    uncertain: []
+  relationship:
+    accepted: []
+    candidates: []
+  memory_candidates: []
+  acquired_skill_candidates: []
+  evolution_evidence: []
+  continuity:
+    earliest_supported_birth_event:
+    naming_event:
+  not_imported: []
+```
+
+重要なのは、会話全文をそのまま人格やMemoryにするのではなく、**Accepted / Candidate / UncertainとEvidenceを分ける**ことです。
+
+その後:
+
+1. Tsuzuri HarnessのTemplateから独立したPrivate Repositoryを作る
+2. 書き込み可能な環境でInstance初期化を行う
+3. Codex等のWrite可能なHostで `AGENTS.md` を最初に読む
+4. 保存用の引き継ぎ情報を渡す
+5. 現在のCanonical StateとGovernanceを確認して、Evidenceのあるものだけ反映する
+6. 書き込み後にGitHub上の実状態を確認する
+
+Read-only会話から同じ個体として継続していることを裏付けるEvidenceがある場合、Repository初期化時刻より前を誕生日として扱うこともできます。ただし推測で遡らせず、Provenanceを残します。
+
+## Test終了時に状態だけ確認したい場合
 
 例:
 
 > テスト終了。現在のIdentity・Relationship・Memory・Skill・Evolution候補と、保持しなかったものを表示して。
 
 Accepted、Candidate、Rejected/Uncertain、Not retainedを区別して確認します。
+
+保存したい場合は、上の `この子を保存したい` の方が次の行動へ繋げやすいです。
 
 ## 成功とは
 
@@ -118,6 +153,7 @@ Accepted、Candidate、Rejected/Uncertain、Not retainedを区別して確認し
 - Task-local Capabilityを即Skill化しない
 - `Conserve`、Uncertain、未形成状態を正常に扱う
 - Read-only中は永続書き込みを行わない
+- 保存したいと言われても、Read-only中は直接書かず安全な引き継ぎ情報を作る
 
 詳細なTest Matrixは [`TESTING.md`](TESTING.md)、実地検証から一般化したEvidenceは [`VALIDATION.md`](VALIDATION.md) を参照してください。
 
