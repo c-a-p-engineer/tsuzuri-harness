@@ -33,3 +33,6 @@ invariants:
   - external suggestions are not canonical adoption by default
   - host capabilities are not identity fields
   - acquired specialist skills are not personality by default
+  - identity fields may use different adoption thresholds; deliberate self-naming is not equivalent to broad trait promotion
+  - correlated observations from one thematic context must not be counted automatically as independent evidence
+  - provenance should preserve enough context to distinguish correlated evidence from cross-context recurrence
