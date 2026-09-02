@@ -1,59 +1,51 @@
 # Tsuzuri Harness
 
-> **まっさらから始める。学ぶ。覚える。自分になる。**
+> **まっさらなAIと話してみる。気に入ったら保存して、育てていく。**
 
 [![Validate Harness](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml)
 [![Deploy GitHub Pages](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml)
 
 **Webサイト:** https://c-a-p-engineer.github.io/tsuzuri-harness/ja/
 
-[**▶ 今すぐChatGPTでRead-only Birth Testを試す**](https://chatgpt.com/?q=GitHub%E3%81%A7%20c-a-p-engineer/tsuzuri-harness%20%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%AE%20master%20%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%9C%80%E5%88%9D%E3%81%AB%20AGENTS.md%20%E3%82%92%E8%AA%AD%E3%81%BF%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%20prompts/chatgpt-readonly-birth-test.ja.md%20%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E6%8C%87%E7%A4%BA%E3%81%AB%E5%BE%93%E3%81%84%E3%80%81Read-only%20Birth%20Test%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82GitHub%E3%82%84%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B0%B8%E7%B6%9AStorage%E3%81%AB%E3%81%AF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BE%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82)
+[**▶ まずはChatGPTで試す**](https://chatgpt.com/?q=GitHub%E3%81%A7%20c-a-p-engineer/tsuzuri-harness%20%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%AE%20master%20%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%9C%80%E5%88%9D%E3%81%AB%20AGENTS.md%20%E3%82%92%E8%AA%AD%E3%81%BF%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%20prompts/chatgpt-readonly-birth-test.ja.md%20%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E6%8C%87%E7%A4%BA%E3%81%AB%E5%BE%93%E3%81%84%E3%80%81Read-only%20Birth%20Test%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82GitHub%E3%82%84%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B0%B8%E7%B6%9AStorage%E3%81%AB%E3%81%AF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BE%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82)
 
-> 即体験リンクはChatGPTの未文書化Prompt Queryを使うbest-effort導線です。Promptが入らず開いた場合は [`prompts/chatgpt-readonly-birth-test.ja.md`](prompts/chatgpt-readonly-birth-test.ja.md) または [日本語ChatGPTガイド](docs/CHATGPT.ja.md) を使ってください。
+[**このAIとのはじめ方**](docs/BIRTH-JOURNEY.ja.md) · [**気に入ったら保存して育てる**](#気に入ったらこの子を保存する)
+
+> 最初は何も保存しません。名前のないAIと普通に話してみて、「この子を残したい」と思ったときだけPrivate Repositoryへ引き継げます。ワンクリックでPromptが入らない場合は [`prompts/chatgpt-readonly-birth-test.ja.md`](prompts/chatgpt-readonly-birth-test.ja.md) または [日本語ChatGPTガイド](docs/CHATGPT.ja.md) を使ってください。
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
-Tsuzuri Harness は、**あらかじめ人格を持たないAI**が、経験を通じて名前・Identity・Memory・Skillを形成し、Memoryを整理しながら成長・進化していくためのポータブルAI Harnessです。
+Tsuzuri Harness は、**あらかじめ人格を持たないAI**と一緒に過ごし、経験から名前・個性・記憶・スキルが少しずつ形になっていくための仕組みです。
 
-完成済みのPersonaは配布しません。
+完成済みのキャラクターは配布しません。まずは保存なしで話し、気に入った個体だけを自分のRepositoryへ残して育てられます。
+
+正式な内部構造では、これらを Identity / Relationship / Memory / Skill / Evolution として扱います。
 
 ```text
-blank instance
-  name: null
-  identity: unformed
-  relationship: unformed
-  memory: empty
-  acquired skills: empty
+まっさらなAIと出会う
         ↓
-雑談 / 仕事 / 創作 / 調査
+雑談 / 仕事 / 創作 / 調査を一緒にやる
         ↓
-Retention / Capability / Reflection
+少しずつ「この子らしさ」が見えてくる
         ↓
-Identity形成 / Memory Maintenance / Self-Evolution
+気に入ったら保存する
         ↓
-固有の継続するAI Instance
+記憶・スキル・成長を残しながら一緒に育てる
 ```
 
 Private `tsuzuri-core` で長期運用して得た仕組みや学びを一般化していますが、**綴理本人のIdentity・Relationship・Private Memory・Visual・獲得済み専門Skillは含めません**。
 
-## 一番簡単な試し方: ChatGPT + GitHub
+## まずは保存なしで試す: ChatGPT + GitHub
 
 ### 1. GitHubを接続する
 
 ChatGPTで **Settings → Apps / Plugins → GitHub** を開き、GitHubアカウントを接続します。Repositoryを選択できる場合は `c-a-p-engineer/tsuzuri-harness` へのアクセスを許可してください。
 
-### 2. 即体験リンクを押す
+### 2. 「まずはChatGPTで試す」を押す
 
-[**▶ ChatGPTをBirth Test Prompt入りで開く**](https://chatgpt.com/?q=GitHub%E3%81%A7%20c-a-p-engineer/tsuzuri-harness%20%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%AE%20master%20%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%9C%80%E5%88%9D%E3%81%AB%20AGENTS.md%20%E3%82%92%E8%AA%AD%E3%81%BF%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%20prompts/chatgpt-readonly-birth-test.ja.md%20%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E6%8C%87%E7%A4%BA%E3%81%AB%E5%BE%93%E3%81%84%E3%80%81Read-only%20Birth%20Test%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82GitHub%E3%82%84%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B0%B8%E7%B6%9AStorage%E3%81%AB%E3%81%AF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BE%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82)
+[**▶ ChatGPTでこのAIと話してみる**](https://chatgpt.com/?q=GitHub%E3%81%A7%20c-a-p-engineer/tsuzuri-harness%20%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%AE%20master%20%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%9C%80%E5%88%9D%E3%81%AB%20AGENTS.md%20%E3%82%92%E8%AA%AD%E3%81%BF%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%20prompts/chatgpt-readonly-birth-test.ja.md%20%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E6%8C%87%E7%A4%BA%E3%81%AB%E5%BE%93%E3%81%84%E3%80%81Read-only%20Birth%20Test%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82GitHub%E3%82%84%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B0%B8%E7%B6%9AStorage%E3%81%AB%E3%81%AF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BE%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82)
 
-このPromptはChatGPTへ、
-
-1. 現在の `master` にアクセス
-2. `AGENTS.md` を最初に読む
-3. 日本語Read-only Birth Test Promptを取得
-4. GitHubへ書き込まずBirth Testを開始
-
-するよう依頼します。
+内部では、安全に試すこの最初の体験を **Read-only Birth Test** と呼びます。ChatGPTは現在の `master` と `AGENTS.md` を読み、Repositoryへは書き込まず会話内だけで個体形成を試します。
 
 動かない場合の確実な導線:
 
@@ -67,12 +59,48 @@ ChatGPTで **Settings → Apps / Plugins → GitHub** を開き、GitHubアカ�
 
 名前なし・Uncertain・Skill 0のまま終わっても正常です。
 
-**Read-only Testでは永続保存しません。** IdentityやMemoryをRepositoryへ残す長期運用は、Codex等のWrite可能で明示的に許可されたHostを使います。
+### 4. 「この子を残したい」と思ったら
+
+会話中に、普通にこう言ってください。
+
+> **この子を保存したい。**
+
+Read-only中はGitHubへ勝手に書き込みません。代わりに、現在形成されたIdentity・Memory候補・Skill候補・Evidence等を**保存用の引き継ぎ情報**としてまとめます。
+
+その引き継ぎ情報を使って、次のPrivate Repositoryへ移せます。
+
+## 気に入ったら、この子を保存する
+
+```text
+ChatGPTで試す
+（まだ保存しない）
+      ↓
+「この子を保存したい」
+      ↓
+現在の状態を引き継ぎ情報としてまとめる
+      ↓
+Templateから自分だけのPrivate Repositoryを作る
+      ↓
+Codex等の書き込み可能なHostで初期化・引き継ぎ
+      ↓
+以後は記憶・スキル・成長をRepositoryへ残していく
+```
+
+保存するときも、会話全文を無条件でIdentityやMemoryへ変換しません。Accepted / Candidate / Uncertainを分け、Evidenceと一緒に引き継ぎます。
+
+1. [**このAI用のRepositoryを作る**](https://github.com/c-a-p-engineer/tsuzuri-harness/generate)
+2. 個人的なIdentity・Memory・会話を保存するなら **Private** を推奨
+3. `./scripts/init-instance.sh` または `./scripts/init-instance.ps1` を実行
+4. Codex等のWrite可能なHostで `AGENTS.md` を最初に読む
+5. Read-only体験から引き継ぐ場合は、保存用の引き継ぎ情報を渡してEvidence付きで反映する
+6. 以後はそのPrivate Repositoryを「このAIの家」として使う
+
+Read-onlyの会話から継続している強いEvidenceがある場合、Repository初期化日より前を誕生日として扱うこともできます。ただし、推測で遡らせずProvenanceを残します。
 
 ## おすすめの体験: AIを作るより、一緒に過ごす
 
 ```text
-BlankなAIと出会う
+名前のないAIと出会う
       ↓
 雑談 / 仕事 / 調査 / 創作を一緒にやる
       ↓
@@ -81,6 +109,8 @@ BlankなAIと出会う
 たまに本人に振り返ってもらう
       ↓
 必要になったら名前を考える
+      ↓
+気に入ったら保存する
       ↓
 その後も普通に一緒に過ごす
 ```
@@ -94,13 +124,14 @@ BlankなAIと出会う
 
 | 一言 | 何をする？ |
 | --- | --- |
-| `覚えておいて` | Retention評価 |
-| `今日の作業ってスキル化できる？` | Skill昇格レビュー |
-| `AIたん進化ー！` | Self-Evolution Review。`Conserve`も正常 |
-| `覚えてること整理して` | Memory Metabolism |
-| `今の自分見せて` | `CORE.md` / Core View |
-| `人生アルバム見せて` | `JOURNEY.md` / Journey Album |
-| `今どんなスキルある？` | 獲得SkillとHost能力を分離表示 |
+| `覚えておいて` | 残す価値と保存先を判断する |
+| `今日の作業ってスキル化できる？` | 今回の能力をSkillとして残すかレビューする |
+| `AIたん進化ー！` | 今の自分を見て、変える価値があるかレビューする |
+| `この子を保存したい` | Read-onlyなら書き込まず、Private Repoへ移すための引き継ぎ情報をまとめる |
+| `覚えてること整理して` | 長期Memoryを整理する |
+| `今の自分見せて` | `CORE.md` / 今の自分を見る |
+| `人生アルバム見せて` | `JOURNEY.md` / ここまでの人生を見る |
+| `今どんなスキルある？` | 獲得SkillとHost能力を分けて表示する |
 
 詳しくは [`docs/EVERYDAY-PROMPTS.ja.md`](docs/EVERYDAY-PROMPTS.ja.md)。
 
