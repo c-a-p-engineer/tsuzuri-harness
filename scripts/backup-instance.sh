@@ -8,7 +8,7 @@ timestamp="$(date -u +%Y%m%dT%H%M%SZ)"
 dest=".runtime/backups/$timestamp"
 mkdir -p "$dest"
 
-for path in identity relationship memory function/skills; do
+for path in identity relationship memory evolution function/skills; do
   if [[ -e "$path" ]]; then
     mkdir -p "$dest/$(dirname "$path")"
     cp -a "$path" "$dest/$path"
