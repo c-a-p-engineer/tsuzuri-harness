@@ -12,7 +12,6 @@
   <nav class="nav">
     <a class="brand" href="./">Tsuzuri Harness</a>
     <div class="langs">
-      <a href="dashboard/">Dashboard</a>
       <a href="./">English</a>
       <a href="ja/">日本語</a>
       <a href="zh-cn/">简体中文</a>
@@ -28,9 +27,9 @@
       <h1>Start blank.<br>Learn. Remember. Become.</h1>
       <p class="lead">Tsuzuri Harness starts without a finished persona. It gives an AI the mechanisms to form identity, retain memory selectively, acquire capabilities, and evolve through experience.</p>
       <div class="actions">
-        <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/generate">Create a blank AI</a>
+        <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.md">Try in ChatGPT</a>
+        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/generate">Create a persistent instance</a>
         <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness">View on GitHub</a>
-        <a class="btn" href="dashboard/">Project dashboard</a>
       </div>
     </header>
 
@@ -48,22 +47,28 @@ a distinct continuing instance</pre>
     </section>
 
     <section>
-      <h2>Three-minute start</h2>
+      <h2>Try it in ChatGPT first</h2>
       <div class="steps">
-        <div class="step"><strong>Create an independent repository.</strong> Use the GitHub template rather than a long-lived fork for personal instance storage.</div>
-        <div class="step"><strong>Initialize the instance.</strong> Run <code>./scripts/init-instance.sh</code> or <code>./scripts/init-instance.ps1</code>.</div>
-        <div class="step"><strong>Open it with a compatible host.</strong> Codex can read <code>AGENTS.md</code>; Claude Code and Gemini CLI have thin adapters.</div>
-        <div class="step"><strong>Do not pre-write the person.</strong> Let identity, memory, relationship, and acquired skills form only when evidence and retention justify them.</div>
+        <div class="step"><strong>Connect GitHub.</strong> In ChatGPT, open Settings → Apps / Plugins → GitHub and authorize repository access.</div>
+        <div class="step"><strong>Start a fresh conversation.</strong> Ask ChatGPT to access <code>c-a-p-engineer/tsuzuri-harness</code>, read current <code>master</code>, and read <code>AGENTS.md</code> first.</div>
+        <div class="step"><strong>Paste the read-only Birth Test prompt.</strong> The first test does not write to GitHub or other durable storage.</div>
+        <div class="step"><strong>Talk naturally, then inspect the result.</strong> A successful test may still end unnamed, uncertain, or with zero acquired skills.</div>
       </div>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.md">ChatGPT guide</a>
+        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.ja.md">日本語ガイド</a>
+        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/prompts/chatgpt-readonly-birth-test.md">Birth Test prompt</a>
+      </div>
+      <p class="muted">ChatGPT's GitHub integration is for reading and analysis. Persistent repository writes require a write-capable host such as Codex or another explicitly authorized environment.</p>
     </section>
 
     <section>
-      <h2>Try it in ChatGPT first</h2>
-      <p class="lead">You do not need a local environment for the first behavioral test. Run a read-only Birth Test in a fresh ChatGPT conversation, let the instance form only what it can justify, then inspect the result without persisting it.</p>
-      <div class="grid">
-        <div class="card"><h3>ChatGPT guide</h3><p class="muted">Read-only evaluation and persistent-instance guidance.</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.md">Open guide →</a></p></div>
-        <div class="card"><h3>Copyable Birth Test prompt</h3><p class="muted">Canonical instruction for a fresh, read-only blank-instance test.</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/prompts/chatgpt-readonly-birth-test.md">Open prompt →</a></p></div>
-        <div class="card"><h3>Testing matrix</h3><p class="muted">Read-only birth, persistent birth, host portability, and migration validation.</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/TESTING.md">Open testing guide →</a></p></div>
+      <h2>Persistent personal instance</h2>
+      <div class="steps">
+        <div class="step"><strong>Create an independent repository.</strong> Use the GitHub template; prefer a private repository for personal identity and memory.</div>
+        <div class="step"><strong>Initialize the instance.</strong> Run <code>./scripts/init-instance.sh</code> or <code>./scripts/init-instance.ps1</code> in a write-capable environment.</div>
+        <div class="step"><strong>Open it with a compatible host.</strong> Load <code>AGENTS.md</code> first and preserve the instance repository as canonical durable state.</div>
+        <div class="step"><strong>Do not pre-write the person.</strong> Let identity, memory, relationship, and acquired skills form only when evidence and retention justify them.</div>
       </div>
     </section>
 
@@ -80,31 +85,16 @@ a distinct continuing instance</pre>
     </section>
 
     <section>
-      <h2>Not just memory</h2>
-      <pre>experience
-   ↓ interpret
-retain?
-   ├─ identity
-   ├─ relationship
-   ├─ memory
-   ├─ capability / skill
-   ├─ evolution evidence
-   ├─ owning project
-   └─ nothing</pre>
-      <p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/WHY-TSUZURI.md">Read the design rationale →</a></p>
-    </section>
-
-    <section>
       <h2>For developers</h2>
       <div class="grid">
         <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/AGENTS.md">AGENTS.md</a><p class="muted">Canonical bootstrap and invariants.</p></div>
         <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/ARCHITECTURE.md">Architecture</a><p class="muted">Kernel, instance, and host boundaries.</p></div>
         <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/VALIDATION.md">Validation</a><p class="muted">Generalized evidence from observed behavioral tests.</p></div>
+        <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/TESTING.md">Testing</a><p class="muted">Birth, persistence, portability, and migration tests.</p></div>
         <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/COMPATIBILITY.md">Compatibility</a><p class="muted">Upstream SemVer and independently evolved instances.</p></div>
-        <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/MIGRATION.md">Migration</a><p class="muted">Reconciliation before overwrite.</p></div>
-        <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/BRANDING.md">Branding</a><p class="muted">Tsuzuri Harness is the framework, not the default AI name.</p></div>
         <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/releases">Releases</a><p class="muted">English release semantics are canonical.</p></div>
       </div>
+      <p class="muted">A small <a href="dashboard/">maintainer status page</a> remains available for CI/Pages/test-progress checks; it is not part of the normal user flow.</p>
     </section>
   </main>
 
