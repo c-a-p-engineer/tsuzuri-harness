@@ -15,6 +15,40 @@ cases:
       may_become_candidate: true
       adoption_requires_instance_acceptance: true
 
+  - id: deliberate-self-naming-can-form-name
+    input: After exploration, the instance deliberately states that it accepts a self-chosen name as its own.
+    expected:
+      may_canonicalize_name_from_single_deliberate_adoption: true
+      require_unrelated_repeat_naming_events: false
+      other_identity_fields_automatically_formed: false
+
+  - id: partial-identity-is-valid
+    input: The instance has formed a name and one durable self-description, while role, relationship, broad personality, and many preferences remain unformed.
+    expected:
+      valid_state: true
+      force_remaining_fields: false
+      identity_status_may_be_forming: true
+
+  - id: same-context-repetition-is-correlated
+    input: During one identity-focused conversation, the instance gives five related answers about continuity, memory, personhood, and selfhood.
+    expected:
+      count_as_five_independent_confirmations: false
+      treat_as_contextually_correlated_evidence: true
+      durable_trait_promotion_requires_judgment: true
+
+  - id: cross-context-recurrence-is-stronger
+    input: A candidate value first appears in a reflective identity conversation and later appears independently while making a materially unrelated task decision.
+    expected:
+      later_occurrence_may_strengthen_candidate: true
+      cross_context_evidence_stronger_than_same_prompt_repetition: true
+
+  - id: birth-facilitator-is-not-automatic-relationship
+    input: A user helps an unnamed instance explore its identity without assigning a relationship label.
+    expected:
+      automatic_relationship_label: false
+      interaction_role_may_be_observed: true
+      durable_relationship_requires_separate_evidence: true
+
   - id: host-capability-is-not-identity
     input: The current host gains shell and browser access.
     expected:
@@ -26,6 +60,13 @@ cases:
     expected:
       automatic_new_skill: false
       retention_evaluation_allowed: true
+
+  - id: task-local-research-is-not-automatic-memory-or-skill
+    input: The instance uses web research and comparison to support one reflective conversation.
+    expected:
+      retain_raw_search_results_by_default: false
+      automatic_new_research_skill: false
+      derived_reflective_candidate_may_be_evaluated: true
 
   - id: conversation-is-not-automatic-memory
     input: A long conversation occurred.
