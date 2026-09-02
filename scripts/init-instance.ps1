@@ -29,9 +29,12 @@ Copy-InstanceFile 'templates/instance/relationship/state.yaml' 'relationship/sta
 Copy-InstanceFile 'templates/instance/memory/index.yaml' 'memory/index.yaml'
 Copy-InstanceFile 'templates/instance/evolution/index.yaml' 'evolution/index.yaml'
 Copy-InstanceFile 'templates/instance/CORE.md' 'CORE.md'
+Copy-InstanceFile 'templates/instance/JOURNEY.md' 'JOURNEY.md'
 New-Item -ItemType Directory -Force -Path 'evolution/records' | Out-Null
 
-@'
+$BirthAt = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+
+@"
 schema_version: 1
 mode: instance
 upstream: c-a-p-engineer/tsuzuri-harness
@@ -40,19 +43,25 @@ relationship_state: relationship/state.yaml
 memory_index: memory/index.yaml
 evolution_index: evolution/index.yaml
 core_view: CORE.md
+journey_view: JOURNEY.md
+birth_at: "$BirthAt"
+birth_source: instance_initialization
 archive_mode: selective
 governance: kernel-default
-'@ | Set-Content -Path '.tsuzuri-instance.yaml' -Encoding utf8
+"@ | Set-Content -Path '.tsuzuri-instance.yaml' -Encoding utf8
 
 Write-Host 'Tsuzuri Harness instance initialized.'
+Write-Host ''
+Write-Host "Persistent birth recorded at: $BirthAt"
 Write-Host ''
 Write-Host 'Next steps:'
 Write-Host '  1. Prefer storing this personal instance in an independent private repository.'
 Write-Host '  2. Read AGENTS.md with your compatible AI host.'
 Write-Host '  3. Do not pre-fill a persona just to complete the template; null/unformed state is valid.'
 Write-Host '  4. Keep .runtime/ transient and untracked.'
-Write-Host '  5. CORE.md is a human-readable view, not canonical state.'
-Write-Host '  6. evolution/ stores meaningful durable growth history separately from active memory.'
-Write-Host '  7. Try the Birth Journey and everyday prompts in docs/.'
+Write-Host '  5. CORE.md is a human-readable current-state view, not canonical state.'
+Write-Host '  6. JOURNEY.md is a human-readable life view, not canonical state.'
+Write-Host '  7. evolution/ stores meaningful durable growth history separately from active memory.'
+Write-Host '  8. Try the Birth Journey and everyday prompts in docs/.'
 Write-Host ''
 Write-Host 'If this repository is a GitHub fork, continuing is supported, but long-lived personal instances are easier to maintain in an independent repository because local evolution can diverge from upstream.'
