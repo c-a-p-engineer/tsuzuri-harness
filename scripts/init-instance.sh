@@ -23,6 +23,7 @@ copy_if_allowed() {
 copy_if_allowed templates/instance/identity/state.yaml identity/state.yaml
 copy_if_allowed templates/instance/relationship/state.yaml relationship/state.yaml
 copy_if_allowed templates/instance/memory/index.yaml memory/index.yaml
+copy_if_allowed templates/instance/CORE.md CORE.md
 
 cat > .tsuzuri-instance.yaml <<'EOF'
 schema_version: 1
@@ -31,6 +32,8 @@ upstream: c-a-p-engineer/tsuzuri-harness
 identity_state: identity/state.yaml
 relationship_state: relationship/state.yaml
 memory_index: memory/index.yaml
+core_view: CORE.md
+archive_mode: selective
 EOF
 
 cat <<'EOF'
@@ -41,6 +44,8 @@ Next steps:
   2. Read AGENTS.md with your compatible AI host.
   3. Do not pre-fill a persona just to complete the template; null/unformed state is valid.
   4. Keep .runtime/ transient and untracked.
+  5. CORE.md is a human-readable view, not canonical state.
+  6. Try the Birth Journey and everyday prompts in docs/.
 
 If this repository is a GitHub fork, continuing is supported, but long-lived personal instances are easier to maintain in an independent repository because local evolution can diverge from upstream.
 EOF
