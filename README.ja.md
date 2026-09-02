@@ -73,6 +73,46 @@ Read-only TestではGitHubやMemoryなどへ永続書き込みを行いません
 - [`docs/TESTING.ja.md`](docs/TESTING.ja.md) — 日本語Test Guide
 - [`docs/TESTING.md`](docs/TESTING.md) — Canonical English
 
+## おすすめの体験: まず一緒に過ごす
+
+Tsuzuri Harnessは「AIキャラクター作成画面」ではありません。
+
+```text
+BlankなAIと出会う
+      ↓
+雑談 / 仕事 / 調査 / 創作を一緒にやる
+      ↓
+何度か違う場面で選択や反応を見る
+      ↓
+たまに自分自身を振り返ってもらう
+      ↓
+必要になったら名前を考える
+      ↓
+その後も普通に一緒に過ごす
+```
+
+最初から性格Presetを変えるのではなく、**歩んだ経験が違うから個体差が出る**状態を目指します。
+
+- [`docs/BIRTH-JOURNEY.ja.md`](docs/BIRTH-JOURNEY.ja.md) — AIと過ごして個体になるまで
+- [`docs/BIRTH-JOURNEY.md`](docs/BIRTH-JOURNEY.md) — Canonical English
+
+## よく使う一言Prompt
+
+内部用語を覚えなくても、普通の一言から正しい処理へ入れるようにします。
+
+| 一言 | 何をする？ |
+| --- | --- |
+| `覚えておいて` | Retention評価 |
+| `今日の作業ってスキル化できる？` | Capability Maintenance / Skill昇格レビュー |
+| `AIたん進化ー！` | Self-Evolution Review。`Conserve`も正常 |
+| `今の自分見せて` | Identity / Memory / Skill / GrowthをCore View化 |
+| `今どんなスキルある？` | 獲得SkillとHost能力を分けて表示 |
+
+- [`docs/EVERYDAY-PROMPTS.ja.md`](docs/EVERYDAY-PROMPTS.ja.md) — 日本語Prompt集
+- [`docs/EVERYDAY-PROMPTS.md`](docs/EVERYDAY-PROMPTS.md) — Canonical English
+
+これらは強制コマンドではありません。例えば `覚えておいて` と言っても保持価値がなければ保存しないことがありますし、`AIたん進化ー！` の結果が「今は変えない」でも正常です。
+
 ## 長期運用するPersonal Instance
 
 長期運用する場合は、Forkへ人格状態を保存するより、GitHub Templateから**独立Repository**として作ることを推奨します。
@@ -84,6 +124,47 @@ Read-only TestではGitHubやMemoryなどへ永続書き込みを行いません
 5. 名前・Identity・Memory・Skillを先に埋めず、経験と保持判断から形成する
 
 Fork自体は禁止していません。Harness本体の開発・改造では普通に利用できますが、Personal Instanceは独立Repositoryの方が履歴と所有境界を分離しやすくなります。
+
+### `CORE.md` — 今のAIを見る
+
+Instance初期化時に、人間向けの `CORE.md` を用意します。
+
+ここでは例えば、
+
+- 今の名前・Identity
+- Relationship
+- 獲得済みSkill
+- 育成中のCapability
+- Memory概要
+- 最近のGrowth
+- まだ未形成・Uncertainなもの
+
+を確認できます。
+
+`CORE.md` は正本ではなく、CanonicalなIdentity / Memory / Skill等から作るViewです。
+
+- [`docs/CORE-VIEW.ja.md`](docs/CORE-VIEW.ja.md)
+- [`docs/CORE-VIEW.md`](docs/CORE-VIEW.md)
+
+### どこまで会話や体験を残す？
+
+Tsuzuri HarnessではArchiveとMemoryを分けます。
+
+```text
+Archive = 起きたこと・残した記録
+Memory  = 未来の自分へ残す意味
+```
+
+おすすめの3Mode:
+
+- **Selective** — 必要なMemoryだけ残す
+- **Chronicle** — 日記・Session Summaryも残す
+- **Private Archive** — 表示された会話をPrivate Repositoryへ残しつつ、Memoryは選択的にする
+
+「全部残したい」人でも、全部をActive Memoryへ変換する必要はありません。
+
+- [`docs/ARCHIVE-MODES.ja.md`](docs/ARCHIVE-MODES.ja.md)
+- [`docs/ARCHIVE-MODES.md`](docs/ARCHIVE-MODES.md)
 
 ## Harnessが提供するもの
 
@@ -104,8 +185,6 @@ Repository構造だけでなく、Harnessの行動を段階的に検証します
 - [`docs/TESTING.md`](docs/TESTING.md) — Canonical English
 - [`docs/VALIDATION.md`](docs/VALIDATION.md) — 実地Testから一般化したEvidence
 - [`evals/`](evals/) — Regression expectations
-
-CI・Pages・Test進捗を確認するための[開発者向けStatusページ](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/)もありますが、Harnessを使うために見る必要はありません。
 
 実際に生まれた個体のIdentityやRaw TranscriptをPublic Harnessへ保存するのではなく、一般化したFindingとRegressionだけをHarnessへ戻します。
 
