@@ -1,0 +1,110 @@
+schema_version: 1
+id: tsuzuri-harness-capability-capsule
+status: canonical
+purpose: >-
+  Describe a task-local capability assembled from knowledge, tools, procedures,
+  permissions, data, and verification without treating temporary competence as identity.
+
+lifecycle:
+  default_scope: ephemeral
+  states:
+    - identified
+    - acquiring
+    - ready
+    - executing
+    - verifying
+    - completed
+    - blocked
+    - expired
+  default_end_behavior: expire
+
+fields:
+  task_id:
+    required: true
+  objective:
+    required: true
+  completion_criteria:
+    required: true
+  domain:
+    required: true
+  capability_state:
+    required: true
+    allowed_values:
+      - executable
+      - conditional
+      - design_only
+      - unverified
+      - unavailable
+  capability_gaps:
+    required: true
+    allowed_item_types:
+      - knowledge
+      - freshness
+      - procedure
+      - tool
+      - permission
+      - data
+      - verification
+      - user_value_judgment
+  sources:
+    required: false
+  tools:
+    required: false
+  task_local_adapter:
+    required: false
+    identity_effect: forbidden
+  execution_plan:
+    required: true
+  verification_plan:
+    required: true
+  risks_and_limits:
+    required: true
+  result:
+    required: false
+  confidence:
+    required: true
+    allowed_values:
+      - confirmed
+      - high
+      - medium
+      - low
+      - unknown
+  retention:
+    required: true
+    allowed_values:
+      - expire
+      - procedural_memory
+      - update_acquired_skill
+      - create_acquired_skill
+      - project_state
+      - evolution_evidence
+    default: expire
+  retention_destination:
+    required: false
+  expires_at:
+    required: false
+
+rules:
+  - A capability capsule is functional state, not personality, biography, qualification, or relationship state.
+  - Host or tool capability must not be recorded as an intrinsic acquired skill merely because it was available once.
+  - Do not claim durable capability when completion criteria or verification are missing.
+  - Default to expire when reusable value is not supported by evidence.
+  - Promotion must pass function/capability-maintenance.md.
+  - Identity formation must use the independent identity-formation contract; this schema cannot promote into identity.
+
+forbidden_retention_destinations:
+  - identity/
+  - relationship/
+
+promotion_guidance:
+  procedural_memory:
+    - the lesson can prevent recurrence or improve future decisions
+    - retaining a full specialist skill would be excessive
+  update_acquired_skill:
+    - a relevant acquired capability already exists
+    - the new evidence materially improves its activation, procedure, limits, or verification
+  create_acquired_skill:
+    - reuse value is demonstrated
+    - activation conditions and limits are explainable
+    - observable contribution and validation exist
+    - no existing acquired capability owns the same responsibility
