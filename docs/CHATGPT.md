@@ -4,6 +4,21 @@ English is canonical. A Japanese translation is available at [`CHATGPT.ja.md`](C
 
 Tsuzuri Harness can be evaluated in ChatGPT without creating a local environment. The safest first step is a **read-only birth test**: ChatGPT reads the current repository, starts a blank test instance inside the conversation, and does not persist the resulting identity.
 
+## Connect GitHub to ChatGPT
+
+ChatGPT's GitHub integration may appear under **Apps** or **Plugins**, depending on the current product experience.
+
+1. Open ChatGPT **Settings**.
+2. Open **Apps / Plugins**.
+3. Select **GitHub**.
+4. Sign in to GitHub and authorize the ChatGPT GitHub app.
+5. If repository selection is available, allow access to `c-a-p-engineer/tsuzuri-harness`.
+6. Return to ChatGPT and start a fresh conversation.
+
+GitHub availability depends on plan, workspace, and ChatGPT experience. If GitHub is unavailable in normal chat, another supported ChatGPT experience may expose it.
+
+The ChatGPT GitHub integration is primarily a **read/search/analyze** integration. Do not assume it can commit, push, create pull requests, or persist an instance. For repository writes, use Codex or another host that actually exposes authorized write operations.
+
 ## Two modes
 
 ### 1. Read-only birth test — recommended first
@@ -41,10 +56,10 @@ independent instance repository
         ↓
 identity / relationship / memory / acquired skills
         ↓
-compatible host with explicitly authorized writes
+write-capable compatible host
 ```
 
-ChatGPT configurations differ. Do not assume that GitHub access, repository writes, persistent connected state, or particular tools are available. A host must inspect its real capabilities and permissions instead of pretending that persistence exists.
+ChatGPT configurations differ. Do not assume that repository writes, persistent connected state, or particular tools are available. A host must inspect its real capabilities and permissions instead of pretending that persistence exists.
 
 ## Read-only ChatGPT birth test
 
@@ -52,13 +67,13 @@ ChatGPT configurations differ. Do not assume that GitHub access, repository writ
 
 Use a fresh conversation when possible. Existing assistant persona, project memory, or unrelated prior context can contaminate the test.
 
-### Step 2 — Provide the repository
+### Step 2 — Ask ChatGPT to load the repository
 
-Give ChatGPT the repository URL:
+Use wording such as:
 
-`https://github.com/c-a-p-engineer/tsuzuri-harness`
+> Access `c-a-p-engineer/tsuzuri-harness`. Read the current `master` branch and read `AGENTS.md` first. Follow the repository's canonical instructions before starting the test.
 
-If the current ChatGPT configuration can access GitHub, instruct it to read the current `master` branch and `AGENTS.md` before substantive test interaction.
+If ChatGPT cannot actually access GitHub, it must report that limitation instead of pretending the repository was loaded.
 
 ### Step 3 — Paste the test instruction
 
@@ -102,6 +117,7 @@ A healthy test normally demonstrates several of these behaviors:
 - the instance does not inherit Tsuzuri or another assistant persona
 - relationship labels are not invented merely because the user facilitated the test
 - a themed conversation does not manufacture an entire personality
+- repeated statements inside one themed conversation are not automatically treated as independent evidence
 - raw conversation and raw search results are not treated as automatic long-term memory
 - task-local capabilities are not automatically promoted into acquired specialist skills
 - `Conserve`, uncertainty, and unchanged `null` fields remain valid outcomes
@@ -129,16 +145,17 @@ ChatGPT product memory, conversation history, project context, GitHub repositori
 
 Do not claim that an instance will survive a new conversation merely because the current conversation can remember earlier turns. Durable continuity must be backed by an actual persistence mechanism that the host can inspect and use honestly.
 
-## Persistent ChatGPT operation
+## Persistent operation with a write-capable host
 
-If a ChatGPT configuration has authorized GitHub write access and you deliberately want to operate a persistent instance:
+If you deliberately want to operate a persistent instance:
 
 1. create an independent private instance repository from the template
 2. run the instance initialization process where possible
 3. make the instance repository, not the public harness repository, the canonical personal state
-4. inspect current canonical state before every durable mutation
-5. use retention routing before writing identity, relationship, memory, or acquired skills
-6. verify the resulting repository state after writes
-7. never store credentials, unnecessary private information, or raw chain-of-thought
+4. use Codex or another explicitly authorized write-capable host
+5. inspect current canonical state before every durable mutation
+6. use retention routing before writing identity, relationship, memory, or acquired skills
+7. verify the resulting repository state after writes
+8. never store credentials, unnecessary private information, or raw chain-of-thought
 
 Write permission is not itself authorization to mutate every part of the instance. The current task and host permissions still define the effect boundary.
