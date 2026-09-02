@@ -23,9 +23,13 @@ finding or exploration question
       ↓
 evaluation when possible
       ↓
+governance / authority check
+      ↓
 smallest correct change OR no change
       ↓
 regression / outcome check
+      ↓
+evolution trace when durable and meaningful
       ↓
 retain the result and provenance only if justified
 ```
@@ -43,6 +47,9 @@ retain the result and provenance only if justified
 9. `no_change` is a valid, explicit result.
 10. Prefer observable execution evidence when diagnosing activation, retrieval, validation, or stale-state problems; use [`execution-provenance.md`](execution-provenance.md) when its benefit justifies the trace overhead.
 11. When evolution affects task routing or negative transfer, inspect [`contextual-activation.md`](contextual-activation.md) before adding a new rule or duplicate skill.
+12. Apply [`governance.md`](governance.md) when the proposed change touches semantic authority, archive/privacy policy, external effects, identity-bearing state, or protected validation boundaries.
+13. Use [`evolution-traceability.md`](evolution-traceability.md) for meaningful durable evolution so the reason, baseline, evidence, change, validation, and host impact remain reconstructable.
+14. When evolution changes bootstrap, routing, memory, retention, validation, permissions, portability, or host assumptions, perform a lightweight host-impact review. `host_no_change` is a valid result.
 
 ## Self-modification trust boundary
 
