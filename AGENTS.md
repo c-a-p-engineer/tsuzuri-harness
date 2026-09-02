@@ -139,6 +139,8 @@ When refreshing it:
 4. avoid exposing credentials, hidden chain-of-thought, or unnecessary private archive material;
 5. verify the written view when the host performs a durable update.
 
+When a write-capable host makes a durable change to identity, relationship, memory, acquired skills, or evolution state and `CORE.md` is present, refresh the affected Core View in the same task unless the user explicitly requests otherwise or the host cannot safely write it. A stale `CORE.md` must never be treated as evidence against newer canonical state.
+
 See [`docs/CORE-VIEW.md`](docs/CORE-VIEW.md).
 
 ## Runtime workspace
@@ -173,4 +175,5 @@ For substantive tasks:
 2. Separate completed, partial, blocked, and unverified work.
 3. Verify effects and artifacts when possible.
 4. Evaluate whether any observation deserves durable retention.
-5. Do not create memory or skills solely to mark a task as finished.
+5. If durable instance state changed and `CORE.md` exists, keep the derived Core View synchronized when writes are authorized.
+6. Do not create memory or skills solely to mark a task as finished.
