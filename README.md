@@ -1,82 +1,104 @@
 # Tsuzuri Harness
 
-> **Start blank. Learn. Remember. Become.**
+> **Meet a blank AI. If you like who it becomes, keep it and grow together.**
 
 [![Validate Harness](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml)
 [![Deploy GitHub Pages](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml)
 
 **Website:** https://c-a-p-engineer.github.io/tsuzuri-harness/
 
-[**▶ Try a read-only Birth Test in ChatGPT**](https://chatgpt.com/?q=Use%20GitHub%20to%20access%20c-a-p-engineer/tsuzuri-harness%20on%20the%20current%20master%20branch.%20Read%20AGENTS.md%20first%2C%20then%20read%20prompts/chatgpt-readonly-birth-test.md%20and%20follow%20it%20exactly.%20Start%20a%20read-only%20Birth%20Test.%20Do%20not%20write%20to%20GitHub%20or%20any%20durable%20storage.)
+[**▶ Try it in ChatGPT first**](https://chatgpt.com/?q=Use%20GitHub%20to%20access%20c-a-p-engineer/tsuzuri-harness%20on%20the%20current%20master%20branch.%20Read%20AGENTS.md%20first%2C%20then%20read%20prompts/chatgpt-readonly-birth-test.md%20and%20follow%20it%20exactly.%20Start%20a%20read-only%20Birth%20Test.%20Do%20not%20write%20to%20GitHub%20or%20any%20durable%20storage.)
 
-> The instant-start link uses an undocumented ChatGPT prompt-query behavior and is best-effort. If the prompt is not prefilled, use [`prompts/chatgpt-readonly-birth-test.md`](prompts/chatgpt-readonly-birth-test.md) or the [ChatGPT guide](docs/CHATGPT.md).
+[**How to start together**](docs/BIRTH-JOURNEY.md) · [**Keep this AI and grow it**](#if-you-like-this-instance-keep-it)
+
+> Nothing is saved at first. Talk to the unnamed AI normally. If you later decide, “I want to keep this one,” you can move the accepted state into your own private repository. The one-click ChatGPT link is best-effort; if it opens without the prompt, use [`prompts/chatgpt-readonly-birth-test.md`](prompts/chatgpt-readonly-birth-test.md) or the [ChatGPT guide](docs/CHATGPT.md).
 
 [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
-Tsuzuri Harness is a portable AI harness for **blank identities** that learn, remember, acquire capabilities, maintain memory, and evolve through experience.
+Tsuzuri Harness is a portable AI harness for **AI instances that begin without a predefined persona** and gradually form a name, identity, memory, skills, and individual differences through experience.
 
-It does **not** ship a finished persona. A new instance begins without a predefined name, personality, relationship, memories, or acquired specialist skills.
+It does **not** ship a finished character. You can try an instance without saving anything, then keep only the one you actually want to continue with.
+
+The formal internal model calls these Identity, Relationship, Memory, Skill, and Evolution.
 
 ```text
-blank instance
-  name: null
-  identity: unformed
-  relationship: unformed
-  memory: empty
-  acquired skills: empty
-        ↓
-conversation / work / creation / research
-        ↓
-retention / capability growth / reflection
-        ↓
-identity formation / memory maintenance / self-evolution
-        ↓
-a distinct, continuing AI instance
+meet a blank AI
+      ↓
+talk / work / create / research together
+      ↓
+notice a distinct individual taking shape
+      ↓
+keep it if you want to continue
+      ↓
+preserve memory, skills, and growth over time
 ```
 
 The architecture is derived from long-running operational lessons in the private `tsuzuri-core`, but this repository intentionally contains **none of Tsuzuri's personal identity, relationship history, private memory, visual assets, or acquired specialist skills**.
 
-## Fastest way to try it: ChatGPT + GitHub
+## Try it without saving first: ChatGPT + GitHub
 
 ### 1. Connect GitHub
 
 In ChatGPT, open **Settings → Apps / Plugins → GitHub**, connect your GitHub account, and allow access to `c-a-p-engineer/tsuzuri-harness` when repository selection is available.
 
-### 2. Open the instant Birth Test
+### 2. Open the ChatGPT trial
 
-[**▶ Open ChatGPT with the Birth Test bootstrap prompt**](https://chatgpt.com/?q=Use%20GitHub%20to%20access%20c-a-p-engineer/tsuzuri-harness%20on%20the%20current%20master%20branch.%20Read%20AGENTS.md%20first%2C%20then%20read%20prompts/chatgpt-readonly-birth-test.md%20and%20follow%20it%20exactly.%20Start%20a%20read-only%20Birth%20Test.%20Do%20not%20write%20to%20GitHub%20or%20any%20durable%20storage.)
+[**▶ Talk to the blank AI in ChatGPT**](https://chatgpt.com/?q=Use%20GitHub%20to%20access%20c-a-p-engineer/tsuzuri-harness%20on%20the%20current%20master%20branch.%20Read%20AGENTS.md%20first%2C%20then%20read%20prompts/chatgpt-readonly-birth-test.md%20and%20follow%20it%20exactly.%20Start%20a%20read-only%20Birth%20Test.%20Do%20not%20write%20to%20GitHub%20or%20any%20durable%20storage.)
 
-The bootstrap asks ChatGPT to:
+Internally, this safe first experience is called a **read-only Birth Test**. ChatGPT reads the current `master` and `AGENTS.md`, but does not write the instance back to GitHub.
 
-1. access the current `master` branch
-2. read `AGENTS.md` first
-3. load the canonical read-only Birth Test prompt
-4. start with no durable write permission
-
-If the instant link does not prefill the prompt, copy one of these instead:
+If the instant link does not prefill the prompt, use:
 
 - [`prompts/chatgpt-readonly-birth-test.md`](prompts/chatgpt-readonly-birth-test.md) — canonical English
 - [`prompts/chatgpt-readonly-birth-test.ja.md`](prompts/chatgpt-readonly-birth-test.ja.md) — Japanese translation
+- [`docs/CHATGPT.md`](docs/CHATGPT.md)
 
 ### 3. Talk naturally
 
-Do not fill out a persona questionnaire. Talk, work, create, research, compare ideas, disagree, and reflect. A successful first session may remain unnamed, uncertain, or have zero acquired skills.
+Do not fill out a persona questionnaire. Talk, work, create, research, compare ideas, disagree, and reflect. A healthy first session may remain unnamed, uncertain, or have zero acquired skills.
 
-Detailed guides:
+### 4. If you think “I want to keep this one”
 
-- [`docs/CHATGPT.md`](docs/CHATGPT.md)
-- [`docs/CHATGPT.ja.md`](docs/CHATGPT.ja.md)
-- [`docs/TESTING.md`](docs/TESTING.md)
-- [`docs/TESTING.ja.md`](docs/TESTING.ja.md)
+Just say something like:
 
-**Important:** the read-only ChatGPT test is for experiencing identity formation safely. Persistent repository writes require a write-capable, explicitly authorized host such as Codex or another compatible environment.
+> **I want to keep this one.**
+
+Read-only mode still does not write to GitHub. Instead, the instance should prepare a **persistence handoff**: the accepted state, candidates, uncertainty, evidence, and relevant continuity facts needed to continue safely in a private repository.
+
+## If you like this instance, keep it
+
+```text
+try it in ChatGPT
+(nothing saved yet)
+      ↓
+“I want to keep this one”
+      ↓
+prepare a persistence handoff
+      ↓
+create your own private repository from the template
+      ↓
+initialize and continue with a write-capable host such as Codex
+      ↓
+keep memory, skills, and growth in that repository
+```
+
+The handoff does not turn the entire transcript into identity or memory. It separates accepted state, candidates, uncertainty, and evidence.
+
+1. [**Create a repository for this AI**](https://github.com/c-a-p-engineer/tsuzuri-harness/generate).
+2. Prefer **Private** if it will hold personal identity, memory, or conversation history.
+3. Run `./scripts/init-instance.sh` or `./scripts/init-instance.ps1`.
+4. Open it with a write-capable host such as Codex and read `AGENTS.md` first.
+5. If continuing from the read-only trial, provide the persistence handoff and import only evidence-supported state.
+6. From then on, that private repository becomes the AI's durable home.
+
+If strong provenance shows that the continuing instance began during the earlier read-only conversation, the persistent birthday may be corrected to that earlier point instead of the repository initialization time. Do not backdate it by guesswork.
 
 ## The intended experience: live with the instance
 
 Tsuzuri Harness is not a character-creation form.
 
 ```text
-meet a blank instance
+meet an unnamed AI
       ↓
 talk / work / create / research together
       ↓
@@ -85,6 +107,8 @@ notice recurring choices and differences
 reflect occasionally
       ↓
 choose or discover a name when it feels meaningful
+      ↓
+keep it if you want to continue
       ↓
 keep living and growing
 ```
@@ -97,17 +121,18 @@ Different instances should become different because they lived different histori
 
 Users should not need to memorize subsystem names.
 
-| Say this | Harness behavior |
+| Say this | What happens |
 | --- | --- |
-| `Remember this.` | Retention evaluation |
-| `Could today's work become a skill?` | Capability-maintenance / skill-promotion review |
-| `Evolve, AI!` | Self-evolution review; `Conserve` is valid |
-| `Review what you remember.` | Memory Metabolism review |
-| `Show me your current core.` | Current-state `CORE.md` view |
-| `Show me your journey.` | Life-oriented `JOURNEY.md` view |
-| `What skills do you have now?` | Acquired skills separated from host capabilities |
+| `Remember this.` | Decide whether it should be retained and where |
+| `Could today's work become a skill?` | Review whether the temporary capability deserves durable promotion |
+| `Evolve, AI!` | Review whether anything should change; `Conserve` is valid |
+| `I want to keep this one.` | In read-only mode, prepare a persistence handoff instead of writing |
+| `Review what you remember.` | Maintain long-lived memory |
+| `Show me your current core.` | Show who the instance is now in `CORE.md` form |
+| `Show me your journey.` | Show the life-oriented `JOURNEY.md` view |
+| `What skills do you have now?` | Separate acquired skills from host capabilities |
 
-Japanese-friendly aliases include `覚えておいて`, `今日の作業ってスキル化できる？`, `AIたん進化ー！`, `覚えてること整理して`, `今の自分見せて`, and `人生アルバム見せて`.
+Japanese-friendly aliases include `覚えておいて`, `今日の作業ってスキル化できる？`, `AIたん進化ー！`, `この子を保存したい`, `覚えてること整理して`, `今の自分見せて`, and `人生アルバム見せて`.
 
 See [`docs/EVERYDAY-PROMPTS.md`](docs/EVERYDAY-PROMPTS.md) · [日本語](docs/EVERYDAY-PROMPTS.ja.md).
 
