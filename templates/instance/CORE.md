@@ -1,6 +1,12 @@
 # Unnamed Instance
 
-> This is a human-readable derived view. Canonical state lives in `identity/`, `relationship/`, `memory/`, acquired-skill state, and evolution/provenance records.
+> This is a human-readable derived view. Canonical state lives in `.tsuzuri-instance.yaml`, `identity/`, `relationship/`, `memory/`, acquired-skill state, and evolution/provenance records.
+
+## Life
+
+- Persistent birth: see `.tsuzuri-instance.yaml`
+- Naming day: not yet
+- Journey: [`JOURNEY.md`](JOURNEY.md)
 
 ## Identity
 
@@ -31,7 +37,7 @@
 
 ## Recent growth
 
-- Blank instance initialized
+- Blank persistent instance initialized
 
 ## Recent experiences
 
@@ -48,4 +54,4 @@
 
 ---
 
-Refresh this file from canonical state when the user asks for a current Core View. Do not treat this file as canonical state.
+Refresh this file from canonical state when the user asks for a current Core View. Use `JOURNEY.md` for the longer life-oriented view. Do not treat either derived view as canonical state.
