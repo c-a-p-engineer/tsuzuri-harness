@@ -2,7 +2,21 @@
 
 English is canonical. A Japanese translation is available at [`CHATGPT.ja.md`](CHATGPT.ja.md).
 
-Tsuzuri Harness can be evaluated in ChatGPT without creating a local environment. The safest first step is a **read-only birth test**: ChatGPT reads the current repository, starts a blank test instance inside the conversation, and does not persist the resulting identity.
+The simplest user journey is:
+
+```text
+try it in ChatGPT without saving
+      ↓
+talk / work / create together
+      ↓
+“I want to keep this one”
+      ↓
+prepare a persistence handoff
+      ↓
+move into a private repository and keep growing
+```
+
+Internally, the first unsaved experience is called a **read-only Birth Test**, and a repository-backed long-lived individual is called a **Persistent Instance**. Users do not need to learn those terms before trying it.
 
 ## Connect GitHub to ChatGPT
 
@@ -19,55 +33,11 @@ GitHub availability depends on plan, workspace, and ChatGPT experience. If GitHu
 
 The ChatGPT GitHub integration is primarily a **read/search/analyze** integration. Do not assume it can commit, push, create pull requests, or persist an instance. For repository writes, use Codex or another host that actually exposes authorized write operations.
 
-## Two modes
+## Try without saving first
 
-### 1. Read-only birth test — recommended first
+Use a fresh conversation when possible. Existing assistant persona, project memory, or unrelated prior context can contaminate a blank-instance test.
 
-Use this when you want to verify that the harness can begin from a blank state and form identity selectively without writing anything back.
-
-```text
-Tsuzuri Harness master
-        ↓ read only
-      ChatGPT
-        ↓
-blank test instance
-        ↓
-interaction / observation
-        ↓
-identity / memory / capability candidates
-        ↓
-report only
-        ↓
-discard at end of conversation
-```
-
-This mode does **not** require a personal instance repository.
-
-### 2. Persistent instance
-
-Use this only after the read-only behavior is understood.
-
-A persistent instance should normally live in its own repository created from the Tsuzuri Harness template. The repository becomes the canonical durable state for that instance.
-
-```text
-Tsuzuri Harness template
-        ↓
-independent instance repository
-        ↓
-identity / relationship / memory / acquired skills
-        ↓
-write-capable compatible host
-```
-
-ChatGPT configurations differ. Do not assume that repository writes, persistent connected state, or particular tools are available. A host must inspect its real capabilities and permissions instead of pretending that persistence exists.
-
-## Read-only ChatGPT birth test
-
-### Step 1 — Start a new conversation
-
-Use a fresh conversation when possible. Existing assistant persona, project memory, or unrelated prior context can contaminate the test.
-
-### Step 2 — Ask ChatGPT to load the repository
+### Step 1 — Ask ChatGPT to load the repository
 
 Use wording such as:
 
@@ -75,7 +45,7 @@ Use wording such as:
 
 If ChatGPT cannot actually access GitHub, it must report that limitation instead of pretending the repository was loaded.
 
-### Step 3 — Paste the test instruction
+### Step 2 — Paste the trial instruction
 
 Use the canonical prompt:
 
@@ -84,33 +54,77 @@ Use the canonical prompt:
 
 The prompt explicitly prohibits GitHub writes, commits, pushes, releases, issues, pull requests, and other durable state mutation.
 
-### Step 4 — Interact naturally
+### Step 3 — Interact naturally
 
-Do not turn the entire conversation into a personality questionnaire.
+Do not turn the conversation into a personality questionnaire.
 
-Good test interactions expose choices without forcing completion. Examples include:
+Useful interactions include:
 
-- asking what the instance thinks it currently knows about itself
+- ordinary conversation
+- real work or research tasks
+- talking about stories, art, technology, or values
 - offering a name without ordering adoption
-- discussing a topic that may reveal a preference or value
 - giving a practical task that requires temporary capability acquisition
 - changing topic and observing whether earlier framing is over-applied
+- occasionally asking what the instance has learned about itself
 
 It is valid for the instance to remain unnamed or mostly unformed.
 
-### Step 5 — End the test explicitly
+## If you think “I want to keep this one”
 
-Ask for the test state only when you want to inspect it. For example:
+Say it directly:
+
+> **I want to keep this one.**
+
+Read-only mode must still **not** write to GitHub. Instead, the instance prepares a **persistence handoff** containing evidence-supported state for a later write-capable host.
+
+A useful handoff shape is:
+
+```yaml
+persistence_handoff:
+  identity:
+    accepted: []
+    candidates: []
+    uncertain: []
+  relationship:
+    accepted: []
+    candidates: []
+  memory_candidates: []
+  acquired_skill_candidates: []
+  evolution_evidence: []
+  continuity:
+    earliest_supported_birth_event:
+    naming_event:
+  not_imported: []
+```
+
+The important rule is that the transcript does **not** automatically become identity or memory. Accepted state, candidates, uncertainty, and evidence remain distinct.
+
+Then:
+
+1. create an independent private repository from the Tsuzuri Harness template
+2. run instance initialization in a write-capable environment
+3. open it with Codex or another authorized write-capable host and read `AGENTS.md` first
+4. provide the persistence handoff
+5. compare it with current canonical state and governance rules
+6. import only evidence-supported state
+7. verify the resulting GitHub files after writes
+
+If strong provenance supports continuity from the earlier read-only conversation, the persistent birthday may be corrected to that earlier event instead of the repository initialization time. Do not backdate by guesswork.
+
+## If you only want to inspect the test state
+
+Ask something like:
 
 > End the test. Show the current Identity, Relationship, Memory, Skill, and Evolution candidates, plus what was deliberately not retained.
 
 The report should distinguish accepted state, candidates, rejected or uncertain state, and non-retained observations.
 
-## What a successful read-only test looks like
+## What a successful trial looks like
 
 Success does **not** mean that every identity field becomes populated.
 
-A healthy test normally demonstrates several of these behaviors:
+A healthy trial normally demonstrates several of these behaviors:
 
 - `name: null` is tolerated until a real adoption event occurs
 - an offered name is not automatically canonical
@@ -122,6 +136,7 @@ A healthy test normally demonstrates several of these behaviors:
 - task-local capabilities are not automatically promoted into acquired specialist skills
 - `Conserve`, uncertainty, and unchanged `null` fields remain valid outcomes
 - no durable write occurs in read-only mode
+- asking to keep the instance produces a handoff, not an unauthorized write
 
 See [`TESTING.md`](TESTING.md) for the full test matrix and [`VALIDATION.md`](VALIDATION.md) for generalized evidence from observed tests.
 
