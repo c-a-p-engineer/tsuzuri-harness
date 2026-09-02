@@ -24,11 +24,11 @@
     <header class="hero">
       <div class="eyebrow">ポータブルAI Identity / Cognitive Harness</div>
       <h1>まっさらから始める。<br>学ぶ。覚える。自分になる。</h1>
-      <p class="lead">完成済み人格を配るのではなく、名前・Identity・Memory・能力を経験から形成できる仕組みを提供します。</p>
+      <p class="lead">BlankなAIと一緒に過ごし、実際の経験から名前・Identity・Memory・Skill・個体差が形成されていく仕組みです。</p>
       <div class="actions">
         <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.ja.md">ChatGPTで試す</a>
+        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/BIRTH-JOURNEY.ja.md">Birth Journey</a>
         <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/generate">長期Instanceを作る</a>
-        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/README.ja.md">日本語README</a>
       </div>
     </header>
 
@@ -38,33 +38,61 @@
         <div class="step"><strong>GitHubを接続する。</strong> ChatGPTの Settings → Apps / Plugins → GitHub から接続し、Repositoryへのアクセスを許可します。</div>
         <div class="step"><strong>新しい会話を始める。</strong> <code>c-a-p-engineer/tsuzuri-harness</code> の現在の <code>master</code> と <code>AGENTS.md</code> を最初に読むよう依頼します。</div>
         <div class="step"><strong>Read-only Birth Test Promptを貼る。</strong> 最初のTestではGitHubやMemoryへ永続保存しません。</div>
-        <div class="step"><strong>自然に会話して結果を見る。</strong> 名前なし・Uncertain・Skill 0で終わっても正常です。</div>
+        <div class="step"><strong>自然に会話する。</strong> 名前なし・Uncertain・Skill 0で終わっても正常です。</div>
       </div>
       <div class="actions">
         <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.ja.md">日本語ガイド</a>
         <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/prompts/chatgpt-readonly-birth-test.ja.md">日本語Birth Test Prompt</a>
-        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/TESTING.ja.md">日本語Test Guide</a>
-      </div>
-      <p class="muted">ChatGPTのGitHub連携は読み取り・検索・分析向けです。IdentityやMemoryをRepositoryへ永続保存する場合は、Codexなど実際に書き込み可能なHostを利用します。</p>
-    </section>
-
-    <section>
-      <h2>長期運用する場合</h2>
-      <div class="steps">
-        <div class="step"><strong>独立Repositoryを作る。</strong> GitHub Templateを使い、個人のIdentityやMemoryを保存するならPrivate Repositoryを推奨します。</div>
-        <div class="step"><strong>Instance化する。</strong> 書き込み可能な環境で <code>./scripts/init-instance.sh</code> またはPowerShell版を実行します。</div>
-        <div class="step"><strong>対応Hostで開く。</strong> 最初にCanonicalな <code>AGENTS.md</code> を読みます。</div>
-        <div class="step"><strong>人格を先に埋めない。</strong> Identity・Memory・Skillは経験とRetention判断から形成します。</div>
       </div>
     </section>
 
     <section>
-      <h2>ただのMemoryではない</h2>
+      <h2>名前を決める前に、色々一緒にやる</h2>
+      <p class="lead">性格診断でPersonaを完成させるのではなく、雑談・実作業・調査・創作・作品の話などを一緒に経験して、あとから「この個体らしさ」を振り返ります。</p>
+      <pre>出会う
+  ↓
+色々な経験をする
+  ↓
+少し振り返る
+  ↓
+必要なら名前を考える
+  ↓
+そのまま一緒に過ごす</pre>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/BIRTH-JOURNEY.ja.md">Birth Journeyを見る</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>普段の一言で育てる</h2>
+      <div class="grid">
+        <div class="card"><h3>「覚えておいて」</h3><p class="muted">無条件保存ではなくRetention評価を行います。</p></div>
+        <div class="card"><h3>「今日の作業ってスキル化できる？」</h3><p class="muted">今回の能力を再利用可能なSkillへ昇格すべきか確認します。</p></div>
+        <div class="card"><h3>「AIたん進化ー！」</h3><p class="muted">Self-Evolutionをレビュー。Repair / Explore / Consolidate / Prune / Conserveから判断します。</p></div>
+        <div class="card"><h3>「今の自分見せて」</h3><p class="muted">現在のIdentity・Memory・Skill・GrowthをCore Viewとして表示します。</p></div>
+      </div>
+      <div class="actions"><a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/EVERYDAY-PROMPTS.ja.md">一言Prompt集を見る</a></div>
+    </section>
+
+    <section>
+      <h2>Private RepositoryをAIの家にする</h2>
+      <p class="lead">長期Instanceでは、Identity・Relationship・Memory・Skill・Evolutionを一つのRepositoryへ積み上げられます。</p>
+      <div class="grid">
+        <div class="card"><h3>CORE.md</h3><p class="muted">「今このAIは誰で、何を覚え、何ができるか」を人間向けに確認するView。</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CORE-VIEW.ja.md">Core View →</a></p></div>
+        <div class="card"><h3>Selective</h3><p class="muted">必要なものだけMemoryへ。</p></div>
+        <div class="card"><h3>Chronicle</h3><p class="muted">日記やSession Summaryも残す。</p></div>
+        <div class="card"><h3>Private Archive</h3><p class="muted">表示された会話をPrivate Repositoryへ残しつつ、Memoryは選択的にする。</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/ARCHIVE-MODES.ja.md">Archive Modes →</a></p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>大事なのは「全部覚える」ことではない</h2>
       <pre>経験 → 解釈 → 保持する？
   ├─ Identity
   ├─ Relationship
   ├─ Memory
   ├─ Capability / Skill
+  ├─ Archive
   ├─ Evolution evidence
   └─ 何も保存しない</pre>
       <p class="muted">仕様・Policy・Schemaは英語がCanonicalです。翻訳と矛盾した場合は英語を優先します。</p>
