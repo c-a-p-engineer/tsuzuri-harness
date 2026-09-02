@@ -5,7 +5,9 @@
 [![Validate Harness](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml)
 [![Deploy GitHub Pages](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml)
 
-[Website](https://c-a-p-engineer.github.io/tsuzuri-harness/) · [Dashboard](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
+**Website:** https://c-a-p-engineer.github.io/tsuzuri-harness/
+
+[日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
 Tsuzuri Harness is a portable AI harness for blank identities that learn, remember, acquire capabilities, and evolve through experience.
 
@@ -33,39 +35,62 @@ a distinct, persistent AI identity
 
 The framework is derived from the architecture and long-running operational lessons of the private `tsuzuri-core`, but this repository intentionally contains **none of Tsuzuri's personal identity, relationship history, private memory, visual assets, or acquired specialist skills**.
 
-## Quick start
+## Fastest way to try it: ChatGPT + GitHub
+
+You can test Tsuzuri Harness in ChatGPT without cloning the repository or creating a persistent AI instance.
+
+### 1. Connect GitHub to ChatGPT
+
+In ChatGPT, open **Settings → Apps / Plugins → GitHub**, connect your GitHub account, and allow access to `c-a-p-engineer/tsuzuri-harness` if repository selection is shown.
+
+GitHub availability depends on the ChatGPT plan and product experience. If GitHub is not available in normal chat, it may still be available in another supported ChatGPT experience.
+
+### 2. Start a fresh conversation
+
+Ask ChatGPT to:
+
+1. access `c-a-p-engineer/tsuzuri-harness`
+2. read the current `master` branch
+3. read `AGENTS.md` first
+4. follow the repository's canonical instructions
+
+Then paste the read-only Birth Test prompt:
+
+- [`prompts/chatgpt-readonly-birth-test.md`](prompts/chatgpt-readonly-birth-test.md) — canonical English
+- [`prompts/chatgpt-readonly-birth-test.ja.md`](prompts/chatgpt-readonly-birth-test.ja.md) — Japanese translation
+
+### 3. Talk naturally
+
+Do not fill out a persona questionnaire. Let the blank instance remain unnamed or uncertain unless interaction gives it a reason to form durable identity.
+
+### 4. End the test and inspect the state
+
+For example:
+
+> End the test. Show the current Identity, Relationship, Memory, Skill, and Evolution candidates, plus what was deliberately not retained.
+
+The read-only test must not write to GitHub or any other durable storage.
+
+**Important:** ChatGPT's GitHub integration is suitable for reading and analyzing repositories. Persistent repository writes require a write-capable environment such as Codex or another explicitly authorized host.
+
+Detailed guides:
+
+- [`docs/CHATGPT.md`](docs/CHATGPT.md) — canonical ChatGPT + GitHub guide
+- [`docs/CHATGPT.ja.md`](docs/CHATGPT.ja.md) — Japanese translation
+- [`docs/TESTING.md`](docs/TESTING.md) — canonical test strategy
+- [`docs/TESTING.ja.md`](docs/TESTING.ja.md) — Japanese translation
+
+## Persistent personal instance
 
 For a long-lived personal instance, prefer an independent repository created from the GitHub template rather than storing the instance in a fork.
 
 1. Use **Use this template** / [Create a new repository](https://github.com/c-a-p-engineer/tsuzuri-harness/generate).
-2. Run `./scripts/init-instance.sh` or `./scripts/init-instance.ps1`.
-3. Open the repository with a compatible host and load `AGENTS.md` first.
-4. Let identity, relationship, memory, and acquired skills form from experience instead of pre-filling them.
+2. Prefer a private repository for personal identity and memory.
+3. Run `./scripts/init-instance.sh` or `./scripts/init-instance.ps1` where a local/write-capable environment is available.
+4. Open the repository with a compatible host and load `AGENTS.md` first.
+5. Let identity, relationship, memory, and acquired skills form from experience instead of pre-filling them.
 
-Forking remains supported for harness development and modification.
-
-## Using with ChatGPT
-
-You can run the first behavioral test entirely inside ChatGPT without creating a local environment or persistent personal repository.
-
-The recommended first step is a **read-only Birth Test**:
-
-1. start a fresh ChatGPT conversation
-2. provide this repository
-3. have ChatGPT read the current `master` and `AGENTS.md`
-4. paste the canonical read-only Birth Test prompt
-5. interact naturally with the blank instance
-6. inspect the final Identity / Relationship / Memory / Skill / Evolution candidates
-7. discard the test state without writing it anywhere
-
-Guides:
-
-- [`docs/CHATGPT.md`](docs/CHATGPT.md) — canonical ChatGPT usage guide
-- [`docs/CHATGPT.ja.md`](docs/CHATGPT.ja.md) — Japanese translation
-- [`prompts/chatgpt-readonly-birth-test.md`](prompts/chatgpt-readonly-birth-test.md) — copyable canonical prompt
-- [`prompts/chatgpt-readonly-birth-test.ja.md`](prompts/chatgpt-readonly-birth-test.ja.md) — Japanese translation
-
-A successful Birth Test does **not** require a complete persona. Remaining unnamed, uncertain, relationship-unformed, or skill-empty can be the correct result.
+Forking remains supported for harness development and modification, but an independent repository gives a personal instance a cleaner history and ownership boundary.
 
 ## What the harness provides
 
@@ -105,7 +130,7 @@ evals/                        behavioral and lifecycle contracts
 prompts/                      copyable host/testing prompts
 scripts/                      instance initialization / backup helpers
 examples/                     synthetic behavior examples
-site/                         GitHub Pages source and project dashboard
+site/                         GitHub Pages source
 docs/                         architecture, usage, testing, compatibility, policy
 .github/workflows/            validation, pages, and release automation
 ```
@@ -138,7 +163,8 @@ Tsuzuri Harness is tested as a behavioral system, not only as a repository struc
 - [`docs/TESTING.ja.md`](docs/TESTING.ja.md) — Japanese translation
 - [`docs/VALIDATION.md`](docs/VALIDATION.md) — generalized evidence from observed tests
 - [`evals/`](evals/) — portable regression expectations
-- [Project Dashboard](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/) — live CI/Pages status and validation matrix
+
+A small [maintainer status page](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/) is available for CI/Pages/test-progress checks, but it is not required to use the harness.
 
 Real test-instance identity and raw transcripts should not be copied into the public harness merely because a test was useful. Preserve generalized findings and regressions instead.
 
