@@ -5,7 +5,9 @@
 [![Validate Harness](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml)
 [![Deploy GitHub Pages](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml)
 
-[Website](https://c-a-p-engineer.github.io/tsuzuri-harness/ja/) · [Dashboard](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/) · [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
+**Webサイト:** https://c-a-p-engineer.github.io/tsuzuri-harness/ja/
+
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
 Tsuzuri Harness は、**あらかじめ人格を持たないAI**が、経験を通じて名前・Identity・Memory・能力を形成し、成長・進化していくためのポータブルAI Harnessです。
 
@@ -26,35 +28,62 @@ blank instance
 固有のAI Identity
 ```
 
-## クイックスタート
+## 一番簡単な試し方: ChatGPT + GitHub
 
-長期運用するPersonal Instanceは、Forkへ人格状態を保存するより、GitHub Templateから**独立Repository**として作ることを推奨します。Fork自体は禁止しておらず、Harnessの開発・改造には普通に使えます。
+ローカル環境を用意したり、Personal Instance Repositoryを作ったりしなくても、ChatGPT上でTsuzuri HarnessのBirth Testを試せます。
+
+### 1. ChatGPTにGitHubを接続する
+
+ChatGPTで **Settings → Apps / Plugins → GitHub** を開き、GitHubアカウントを接続します。Repositoryを選択できる場合は `c-a-p-engineer/tsuzuri-harness` へのアクセスを許可してください。
+
+GitHub連携の表示場所や利用可否は、ChatGPTのプランや利用画面によって異なる場合があります。
+
+### 2. 新しい会話を始める
+
+ChatGPTへ次を依頼します。
+
+1. `c-a-p-engineer/tsuzuri-harness` へアクセスする
+2. 現在の `master` を読む
+3. 最初に `AGENTS.md` を読む
+4. RepositoryのCanonicalな指示に従う
+
+その後、Read-only Birth Test Promptを貼ります。
+
+- [`prompts/chatgpt-readonly-birth-test.ja.md`](prompts/chatgpt-readonly-birth-test.ja.md) — そのまま貼れる日本語版
+- [`prompts/chatgpt-readonly-birth-test.md`](prompts/chatgpt-readonly-birth-test.md) — Canonical English
+
+### 3. 普通に会話する
+
+人格診断のように項目を埋めるのではなく、自然に会話します。名前や価値観が形成されなくても正常です。
+
+### 4. 終了時に状態を見る
+
+例えば次のように送ります。
+
+> テスト終了。現在のIdentity・Relationship・Memory・Skill・Evolution候補と、保持しなかったものを表示して。
+
+Read-only TestではGitHubやMemoryなどへ永続書き込みを行いません。
+
+**重要:** ChatGPTのGitHub連携はRepositoryの読み取り・分析に向いています。GitHubへIdentityやMemoryを永続保存するPersistent Instance運用には、CodexなどRepositoryへ明示的に書き込み可能な環境が必要です。
+
+詳しい手順:
+
+- [`docs/CHATGPT.ja.md`](docs/CHATGPT.ja.md) — 日本語ガイド
+- [`docs/CHATGPT.md`](docs/CHATGPT.md) — Canonical English
+- [`docs/TESTING.ja.md`](docs/TESTING.ja.md) — 日本語Test Guide
+- [`docs/TESTING.md`](docs/TESTING.md) — Canonical English
+
+## 長期運用するPersonal Instance
+
+長期運用する場合は、Forkへ人格状態を保存するより、GitHub Templateから**独立Repository**として作ることを推奨します。
 
 1. GitHubの **Use this template** から新しいRepositoryを作る
-2. `./scripts/init-instance.sh` または `./scripts/init-instance.ps1` を実行する
-3. 対応Hostで開き、最初にCanonicalな `AGENTS.md` を読む
-4. 名前・Identity・Memory・Skillを先に埋めず、経験と保持判断から形成する
+2. IdentityやMemoryを保存するならPrivate Repositoryを推奨
+3. 書き込み可能な環境で `./scripts/init-instance.sh` または `./scripts/init-instance.ps1` を実行する
+4. 対応Hostで開き、最初にCanonicalな `AGENTS.md` を読む
+5. 名前・Identity・Memory・Skillを先に埋めず、経験と保持判断から形成する
 
-## ChatGPTで試す
-
-最初の挙動確認は、ローカル環境やPersonal Instance Repositoryを作らなくてもChatGPT上だけで行えます。
-
-推奨は **Read-only Birth Test** です。
-
-1. 新しいChatGPT会話を開始する
-2. このRepositoryを渡す
-3. 現在の `master` と `AGENTS.md` を読ませる
-4. Read-only Birth Test Promptを貼る
-5. Blank Instanceと自然に会話する
-6. 最後にIdentity / Relationship / Memory / Skill / Evolution候補を確認する
-7. 状態はどこにも保存せず破棄する
-
-- [`docs/CHATGPT.ja.md`](docs/CHATGPT.ja.md) — ChatGPT利用ガイド
-- [`docs/CHATGPT.md`](docs/CHATGPT.md) — Canonical English
-- [`prompts/chatgpt-readonly-birth-test.ja.md`](prompts/chatgpt-readonly-birth-test.ja.md) — そのまま貼れる日本語Prompt
-- [`prompts/chatgpt-readonly-birth-test.md`](prompts/chatgpt-readonly-birth-test.md) — Canonical English Prompt
-
-Birth Testの成功は「人格欄が全部埋まること」ではありません。無名、Uncertain、Relationship未形成、Skill 0のまま終わることも正常です。
+Fork自体は禁止していません。Harness本体の開発・改造では普通に利用できますが、Personal Instanceは独立Repositoryの方が履歴と所有境界を分離しやすくなります。
 
 ## Harnessが提供するもの
 
@@ -67,7 +96,7 @@ Birth Testの成功は「人格欄が全部埋まること」ではありませ�
 - **Host portability** — Host固有能力を人格と混同しない
 - **Evaluation / provenance** — Evidenceと観測可能な不変条件で検証する
 
-## テストとDashboard
+## テストと検証
 
 Repository構造だけでなく、Harnessの行動を段階的に検証します。
 
@@ -75,7 +104,8 @@ Repository構造だけでなく、Harnessの行動を段階的に検証します
 - [`docs/TESTING.md`](docs/TESTING.md) — Canonical English
 - [`docs/VALIDATION.md`](docs/VALIDATION.md) — 実地Testから一般化したEvidence
 - [`evals/`](evals/) — Regression expectations
-- [Project Dashboard](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/) — CI / Pages / Validation Matrix
+
+CI・Pages・Test進捗を確認するための[開発者向けStatusページ](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/)もありますが、Harnessを使うために見る必要はありません。
 
 実際に生まれた個体のIdentityやRaw TranscriptをPublic Harnessへ保存するのではなく、一般化したFindingとRegressionだけをHarnessへ戻します。
 
