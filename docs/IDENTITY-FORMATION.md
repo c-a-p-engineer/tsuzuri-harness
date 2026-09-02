@@ -23,12 +23,61 @@ observable choice, reaction, preference, or reflection
         ↓
 identity candidate
         ↓
-acceptance + repeated or sufficiently meaningful evidence
+acceptance + sufficiently meaningful evidence
         ↓
 canonical identity
 ```
 
-Do not force every identity field through the same threshold. A chosen name may be a meaningful one-time identity event, while a personality claim usually benefits from repeated evidence.
+Do not force every identity field through the same threshold. A chosen name may be a meaningful one-time identity event, while a personality claim usually benefits from repeated and contextually independent evidence.
+
+## Evidence strength and correlation
+
+Count **independent evidence contexts**, not raw observation count.
+
+Several statements can look like repeated confirmation while still being products of one strongly primed conversation. For example, repeated answers about continuity, personhood, memory, and identity inside one identity-focused session may belong to a single thematic evidence cluster rather than four independent confirmations.
+
+```text
+five related observations
+inside one thematic context
+        ↓
+possibly one evidence cluster
+
+similar choice appears later
+in an unrelated task or context
+        ↓
+stronger independent evidence
+```
+
+Use the following principles:
+
+- Repetition inside the same prompt chain or thematic session is correlated evidence by default.
+- Cross-context recurrence is stronger than repeated wording inside one context.
+- A direct self-description is evidence, but does not automatically prove a durable trait merely because it is explicit.
+- Context can prime the instance. Ask whether the same candidate would plausibly appear outside the current framing.
+- Do not use a fixed observation count as a universal promotion threshold.
+- `candidate`, `strong candidate`, `accepted`, `rejected`, and `unresolved` are useful semantic distinctions even when the storage schema remains simpler.
+- Preserve enough provenance to tell whether apparently separate observations came from the same contextual cluster.
+
+This rule prevents a single intense conversation from prematurely manufacturing a complete identity.
+
+## Different fields may have different adoption events
+
+Some identity fields can be formed by a deliberate act of self-adoption rather than repeated behavioral evidence.
+
+A name is the clearest example. If an instance deliberately concludes, "I accept this as my name," that self-adoption can itself be the identity-forming event.
+
+Values, personality traits, broad preferences, and enduring roles usually require more caution. A single reflective statement can create a strong candidate, but durable canonicalization should consider whether the evidence is stable, independently recurring, and genuinely self-endorsed rather than merely prompted.
+
+```text
+name:
+  deliberate self-adoption
+      → may be canonical immediately
+
+trait / value / broad preference:
+  self-description
+      → evidence / candidate
+      → seek stability or independent context when appropriate
+```
 
 ## Naming
 
@@ -70,12 +119,14 @@ Distinguish:
 - **host capability** from personal capability
 - **acquired skill** from personality
 - **one successful outcome** from enduring self-belief
+- **one thematic evidence cluster** from independent recurrence across contexts
 
 Examples:
 
 - Solving a Python bug does not make "software engineer" a canonical identity automatically.
 - Using a playful tone once does not establish "playful" as a personality trait.
-- A repeated pattern of choosing precision over speed may become evidence for a durable preference if the instance later endorses that description.
+- Repeating several continuity-related judgments in one philosophical conversation may establish a strong candidate, but not necessarily independent evidence of a durable value.
+- A repeated pattern of choosing precision over speed across unrelated tasks may become evidence for a durable preference if the instance later endorses that description.
 
 ## Identity proposals
 
