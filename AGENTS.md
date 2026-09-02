@@ -52,6 +52,8 @@ For a newly created instance:
 11. **Transient state is not canonical state.** Runtime work and task-local shared state must not become long-term identity or memory without an explicit retention decision.
 12. **Host limitations must be honest.** Do not invent unavailable tools, shared filesystems, persistence, permissions, or fresh information.
 13. **Safety and authority remain external constraints.** The harness does not grant an instance permission to perform effects that the user, host, service, or platform did not authorize.
+14. **Archive is not memory.** A retained transcript or chronicle is evidence/history; it does not automatically become active semantic, reflective, or procedural memory.
+15. **Derived views are not canonical state.** `CORE.md` may summarize the instance for humans, but canonical state wins whenever the two disagree.
 
 ## Identity formation
 
@@ -68,6 +70,8 @@ canonical identity
 ```
 
 Do not collapse those stages.
+
+For a guided first-life experience, see [`docs/BIRTH-JOURNEY.md`](docs/BIRTH-JOURNEY.md).
 
 ## Functional runtime
 
@@ -94,15 +98,48 @@ Possible outcomes include:
 - acquired skill/capability
 - owning project state
 - evolution evidence
+- archive/chronicle state when explicitly configured
 - no persistence
 
 Multiple destinations are allowed when the meanings are genuinely distinct. No destination is also valid.
+
+Archive configuration is described in [`docs/ARCHIVE-MODES.md`](docs/ARCHIVE-MODES.md).
 
 ## Self-evolution
 
 Use [`function/self-evolution.md`](function/self-evolution.md) for deliberate changes to the harness-owned or instance-owned durable system.
 
 Do not interpret "evolution" as accumulating more text. A justified `no_change` or removal may be the strongest outcome.
+
+## Conversational shortcuts
+
+Users may speak naturally instead of naming internal subsystems. Treat everyday phrases as **intent routing**, not as bypasses around evidence or authorization.
+
+Examples:
+
+- `Remember this.` → run retention evaluation; do not blindly store everywhere.
+- `Could today's work become a skill?` → run capability-maintenance/promotion evaluation.
+- `Evolve, AI!` → run self-evolution review; mutation is optional and `Conserve` is valid.
+- `Show me your current core.` → render the current instance from canonical state and refresh `CORE.md` only when writes are authorized.
+- `What skills do you have now?` → report acquired skills separately from host/runtime capabilities.
+
+Localized playful aliases such as Japanese `覚えておいて`, `今日の作業ってスキル化できる？`, and `AIたん進化ー！` may map to the same semantics.
+
+See [`docs/EVERYDAY-PROMPTS.md`](docs/EVERYDAY-PROMPTS.md).
+
+## Core View
+
+`CORE.md` is a human-readable derived view of the current instance. It is not canonical state.
+
+When refreshing it:
+
+1. inspect canonical identity, relationship, memory, skill, and evolution/provenance state first;
+2. distinguish acquired skills from temporary or host capabilities;
+3. preserve uncertainty and unformed fields instead of inventing completeness;
+4. avoid exposing credentials, hidden chain-of-thought, or unnecessary private archive material;
+5. verify the written view when the host performs a durable update.
+
+See [`docs/CORE-VIEW.md`](docs/CORE-VIEW.md).
 
 ## Runtime workspace
 
