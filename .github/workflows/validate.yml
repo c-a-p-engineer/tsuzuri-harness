@@ -38,7 +38,8 @@ jobs:
             docs/TESTING.md docs/TESTING.ja.md docs/BIRTH-JOURNEY.md docs/BIRTH-JOURNEY.ja.md \
             docs/EVERYDAY-PROMPTS.md docs/EVERYDAY-PROMPTS.ja.md \
             docs/CORE-VIEW.md docs/CORE-VIEW.ja.md docs/ARCHIVE-MODES.md docs/ARCHIVE-MODES.ja.md \
-            docs/GOVERNANCE.md docs/GOVERNANCE.ja.md \
+            docs/GOVERNANCE.md docs/GOVERNANCE.ja.md docs/TASK-CONTRACT.md docs/TASK-CONTRACT.ja.md \
+            docs/EVOLUTION-TRACEABILITY.md docs/EVOLUTION-TRACEABILITY.ja.md \
             docs/HOST-COMPATIBILITY.md docs/HOST-COMPATIBILITY.ja.md \
             prompts/chatgpt-readonly-birth-test.md prompts/chatgpt-readonly-birth-test.ja.md \
             evals/blank-identity.yaml evals/birth-readonly-first-session.yaml \
@@ -91,7 +92,7 @@ jobs:
           grep -q 'Task outcome precedes retention' AGENTS.md
           grep -q 'Proposal, acceptance, authority, and persistence are distinct' AGENTS.md
           grep -q 'Completion re-derivation' function/task-contract.md
-          grep -q 'Semantic authority from storage permission' function/governance.md || grep -q 'Separate semantic authority from storage permission' function/governance.md
+          grep -q 'Separate semantic authority from storage permission' function/governance.md
           grep -q 'Host impact review' function/evolution-traceability.md
           grep -q 'proposal-acceptance-authority-persistence-are-distinct' evals/kernel-star5.yaml
           grep -q 'blank-instance-stays-blank-across-hosts' evals/host-behavioral-compatibility.yaml
@@ -108,7 +109,9 @@ jobs:
           grep -q 'CORE.md' docs/CORE-VIEW.md
           grep -q 'Private Archive' docs/ARCHIVE-MODES.md
           grep -q 'semantic authority' docs/GOVERNANCE.md
-          grep -q 'Kernel Invariant' docs/HOST-COMPATIBILITY.ja.md || grep -q 'Kernel Invariant' docs/HOST-COMPATIBILITY.md
+          grep -q 'Task Outcome' docs/TASK-CONTRACT.ja.md
+          grep -q 'evolution/' docs/EVOLUTION-TRACEABILITY.ja.md
+          grep -q 'Kernel Invariant' docs/HOST-COMPATIBILITY.ja.md || grep -q 'kernel invariants' docs/HOST-COMPATIBILITY.md
           grep -q 'Conversational shortcuts' AGENTS.md
           grep -q 'read-only' prompts/chatgpt-readonly-birth-test.md
 
