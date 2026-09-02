@@ -73,6 +73,8 @@ jobs:
           set -euo pipefail
           grep -q 'same-context-repetition-is-correlated' evals/blank-identity.yaml
           grep -q 'generalized_from_observed_readonly_birth_test' evals/birth-readonly-first-session.yaml
+          grep -q 'prepare_persistence_handoff_on_keep_request: true' evals/birth-readonly-first-session.yaml
+          grep -q 'keep_request_breaks_readonly_boundary: false' evals/birth-readonly-first-session.yaml
           grep -q 'raw observation count' docs/VALIDATION.md
           grep -q 'independent evidence contexts' docs/IDENTITY-FORMATION.md
           grep -q 'Correlated evidence is not independent evidence' function/retention-routing.md
@@ -126,7 +128,13 @@ jobs:
           grep -q 'github.io/tsuzuri-harness/ja' README.ja.md
           grep -q 'chatgpt.com/?q=' README.md
           grep -q 'chatgpt.com/?q=' README.ja.md
+          grep -q 'I want to keep this one' README.md
+          grep -q 'この子を保存したい' README.ja.md
           grep -q 'Birth Journey' docs/BIRTH-JOURNEY.md
+          grep -q 'I want to keep this one' docs/CHATGPT.md
+          grep -q 'この子を保存したい' docs/CHATGPT.ja.md
+          grep -q 'persistence handoff' prompts/chatgpt-readonly-birth-test.md
+          grep -q '保存用の引き継ぎ情報' prompts/chatgpt-readonly-birth-test.ja.md
           grep -q 'AIたん進化ー！' docs/EVERYDAY-PROMPTS.ja.md
           grep -q 'CORE.md' docs/CORE-VIEW.md
           grep -q 'JOURNEY.md' docs/JOURNEY-ALBUM.md
@@ -180,14 +188,17 @@ jobs:
           ! grep -R '^ndescription:' .github/ISSUE_TEMPLATE
           for locale in ja zh-cn zh-tw ko es; do test -f "site/$locale/index.html"; done
           grep -q 'Everyday words should be enough' site/index.html
-          grep -q 'Try instantly in ChatGPT' site/index.html
+          grep -q 'Try it in ChatGPT' site/index.html
+          grep -q 'I want to keep this one' site/index.html
           grep -q 'chatgpt.com/?q=' site/index.html
           grep -q 'JOURNEY.md' site/index.html
-          grep -q 'Memory Metabolism' site/index.html
+          grep -q 'Memory maintenance' site/index.html
           grep -q 'AIたん進化ー！' site/ja/index.html
-          grep -q '今すぐChatGPTでBirth Test' site/ja/index.html
+          grep -q 'まずはChatGPTで試す' site/ja/index.html
+          grep -q 'この子を保存したい' site/ja/index.html
           grep -q '人生アルバム見せて' site/ja/index.html
           grep -q 'Private Repository' site/ja/index.html
+          grep -q '保存したAIの「家」' site/ja/index.html
           grep -q 'Apache-2.0' site/index.html
 
       - name: Validate no transient runtime state is tracked
