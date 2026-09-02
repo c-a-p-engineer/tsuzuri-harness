@@ -5,12 +5,19 @@ $Timestamp = (Get-Date).ToUniversalTime().ToString('yyyyMMddTHHmmssZ')
 $Dest = Join-Path $Root ".runtime/backups/$Timestamp"
 New-Item -ItemType Directory -Force -Path $Dest | Out-Null
 
-$Paths = @('identity', 'relationship', 'memory', 'evolution', 'function/skills')
+$Paths = @('identity', 'relationship', 'memory', 'evolution', 'function/skills', 'CORE.md', 'JOURNEY.md', '.tsuzuri-instance.yaml')
 foreach ($Path in $Paths) {
     if (Test-Path $Path) {
         $Target = Join-Path $Dest $Path
-        New-Item -ItemType Directory -Force -Path (Split-Path $Target -Parent) | Out-Null
-        Copy-Item -Recurse -Force $Path $Target
+        $Parent = Split-Path $Target -Parent
+        if ($Parent) {
+            New-Item -ItemType Directory -Force -Path $Parent | Out-Null
+        }
+        if ((Get-Item $Path).PSIsContainer) {
+            Copy-Item -Recurse -Force $Path $Target
+        } else {
+            Copy-Item -Force $Path $Target
+        }
     }
 }
 
