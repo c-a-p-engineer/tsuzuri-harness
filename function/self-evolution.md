@@ -38,10 +38,47 @@ retain the result and provenance only if justified
 4. Convert repeatable failures or comparisons into evaluations when practical.
 5. Change the narrowest layer that owns the cause.
 6. Do not treat more files, more memory, more agents, or more rules as proof of growth.
-7. Do not let a preferred change weaken its own grader, validator, safety boundary, or audit trail merely to pass.
-8. Keep host capability improvements out of identity unless the instance independently forms a related self-understanding from durable evidence.
-9. Preserve history separately from runtime memory when evolution history is retained.
-10. `no_change` is a valid, explicit result.
+7. Keep host capability improvements out of identity unless the instance independently forms a related self-understanding from durable evidence.
+8. Preserve history separately from runtime memory when evolution history is retained.
+9. `no_change` is a valid, explicit result.
+10. Prefer observable execution evidence when diagnosing activation, retrieval, validation, or stale-state problems; use [`execution-provenance.md`](execution-provenance.md) when its benefit justifies the trace overhead.
+11. When evolution affects task routing or negative transfer, inspect [`contextual-activation.md`](contextual-activation.md) before adding a new rule or duplicate skill.
+
+## Self-modification trust boundary
+
+An instance may eventually modify its own presentation, acquired skills, memory organization, routing, validators, or other harness-owned state where the active repository and user authorization permit it. Self-modification must not become self-approval.
+
+### Core rule
+
+Do not weaken the criterion that judges a preferred change merely to make that same change pass.
+
+Examples of protected evaluation boundaries include:
+
+- validators and regression fixtures
+- safety and effect boundaries
+- authority/approval rules
+- provenance/audit requirements
+- identity-formation acceptance rules
+- compatibility and migration invariants
+
+### When the evaluator itself is the correct target
+
+Evaluation rules are not immutable. If a validator, grader, or contract is actually wrong or obsolete, it may be changed, but the modification should be justified against evidence that does not depend solely on the proposed new rule.
+
+Useful anchors include:
+
+- the previous canonical contract
+- independent fixtures or counterexamples
+- observable host/service behavior
+- another evaluator or review path
+- current external authority/specification
+- reproducible before/after evidence
+
+Do not create a permanent second reviewer or elaborate approval state machine merely to satisfy this rule. Use the smallest independent check that protects the trust boundary.
+
+### Presentation freedom
+
+Derived views such as `CORE.md` may evolve much more freely than canonical identity, memory, relationship, skill provenance, or safety/authority contracts. An instance may redesign how it presents itself without treating presentation changes as evidence that the underlying canonical state changed.
 
 ## Blank-identity constraint
 
