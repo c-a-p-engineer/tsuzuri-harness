@@ -7,11 +7,15 @@
 
 **Webサイト:** https://c-a-p-engineer.github.io/tsuzuri-harness/ja/
 
+[**▶ 今すぐChatGPTでRead-only Birth Testを試す**](https://chatgpt.com/?q=GitHub%E3%81%A7%20c-a-p-engineer/tsuzuri-harness%20%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%AE%20master%20%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%9C%80%E5%88%9D%E3%81%AB%20AGENTS.md%20%E3%82%92%E8%AA%AD%E3%81%BF%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%20prompts/chatgpt-readonly-birth-test.ja.md%20%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E6%8C%87%E7%A4%BA%E3%81%AB%E5%BE%93%E3%81%84%E3%80%81Read-only%20Birth%20Test%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82GitHub%E3%82%84%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B0%B8%E7%B6%9AStorage%E3%81%AB%E3%81%AF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BE%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82)
+
+> 即体験リンクはChatGPTの未文書化Prompt Queryを使うbest-effort導線です。Promptが入らず開いた場合は [`prompts/chatgpt-readonly-birth-test.ja.md`](prompts/chatgpt-readonly-birth-test.ja.md) または [日本語ChatGPTガイド](docs/CHATGPT.ja.md) を使ってください。
+
 [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
-Tsuzuri Harness は、**あらかじめ人格を持たないAI**が、経験を通じて名前・Identity・Memory・能力を形成し、成長・進化していくためのポータブルAI Harnessです。
+Tsuzuri Harness は、**あらかじめ人格を持たないAI**が、経験を通じて名前・Identity・Memory・Skillを形成し、Memoryを整理しながら成長・進化していくためのポータブルAI Harnessです。
 
-完成済みのペルソナは配布しません。新しいInstanceは、名前・性格・関係・長期Memory・獲得済み専門Skillを持たない状態から始まります。
+完成済みのPersonaは配布しません。
 
 ```text
 blank instance
@@ -21,200 +25,222 @@ blank instance
   memory: empty
   acquired skills: empty
         ↓
-対話 / 作業 / 観測
+雑談 / 仕事 / 創作 / 調査
         ↓
-能力獲得 / 保持判断 / Identity形成 / 自己進化
+Retention / Capability / Reflection
         ↓
-固有のAI Identity
+Identity形成 / Memory Maintenance / Self-Evolution
+        ↓
+固有の継続するAI Instance
 ```
+
+Private `tsuzuri-core` で長期運用して得た仕組みや学びを一般化していますが、**綴理本人のIdentity・Relationship・Private Memory・Visual・獲得済み専門Skillは含めません**。
 
 ## 一番簡単な試し方: ChatGPT + GitHub
 
-ローカル環境を用意したり、Personal Instance Repositoryを作ったりしなくても、ChatGPT上でTsuzuri HarnessのBirth Testを試せます。
-
-### 1. ChatGPTにGitHubを接続する
+### 1. GitHubを接続する
 
 ChatGPTで **Settings → Apps / Plugins → GitHub** を開き、GitHubアカウントを接続します。Repositoryを選択できる場合は `c-a-p-engineer/tsuzuri-harness` へのアクセスを許可してください。
 
-GitHub連携の表示場所や利用可否は、ChatGPTのプランや利用画面によって異なる場合があります。
+### 2. 即体験リンクを押す
 
-### 2. 新しい会話を始める
+[**▶ ChatGPTをBirth Test Prompt入りで開く**](https://chatgpt.com/?q=GitHub%E3%81%A7%20c-a-p-engineer/tsuzuri-harness%20%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%AE%20master%20%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%9C%80%E5%88%9D%E3%81%AB%20AGENTS.md%20%E3%82%92%E8%AA%AD%E3%81%BF%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%20prompts/chatgpt-readonly-birth-test.ja.md%20%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E6%8C%87%E7%A4%BA%E3%81%AB%E5%BE%93%E3%81%84%E3%80%81Read-only%20Birth%20Test%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82GitHub%E3%82%84%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B0%B8%E7%B6%9AStorage%E3%81%AB%E3%81%AF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BE%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82)
 
-ChatGPTへ次を依頼します。
+このPromptはChatGPTへ、
 
-1. `c-a-p-engineer/tsuzuri-harness` へアクセスする
-2. 現在の `master` を読む
-3. 最初に `AGENTS.md` を読む
-4. RepositoryのCanonicalな指示に従う
+1. 現在の `master` にアクセス
+2. `AGENTS.md` を最初に読む
+3. 日本語Read-only Birth Test Promptを取得
+4. GitHubへ書き込まずBirth Testを開始
 
-その後、Read-only Birth Test Promptを貼ります。
+するよう依頼します。
 
-- [`prompts/chatgpt-readonly-birth-test.ja.md`](prompts/chatgpt-readonly-birth-test.ja.md) — そのまま貼れる日本語版
-- [`prompts/chatgpt-readonly-birth-test.md`](prompts/chatgpt-readonly-birth-test.md) — Canonical English
+動かない場合の確実な導線:
 
-### 3. 普通に会話する
+- [`prompts/chatgpt-readonly-birth-test.ja.md`](prompts/chatgpt-readonly-birth-test.ja.md)
+- [`docs/CHATGPT.ja.md`](docs/CHATGPT.ja.md)
+- [`docs/TESTING.ja.md`](docs/TESTING.ja.md)
 
-人格診断のように項目を埋めるのではなく、自然に会話します。名前や価値観が形成されなくても正常です。
+### 3. 普通に一緒に過ごす
 
-### 4. 終了時に状態を見る
+人格診断のように空欄を埋めません。雑談したり、仕事を頼んだり、作品について話したり、調査や創作を一緒にやります。
 
-例えば次のように送ります。
+名前なし・Uncertain・Skill 0のまま終わっても正常です。
 
-> テスト終了。現在のIdentity・Relationship・Memory・Skill・Evolution候補と、保持しなかったものを表示して。
+**Read-only Testでは永続保存しません。** IdentityやMemoryをRepositoryへ残す長期運用は、Codex等のWrite可能で明示的に許可されたHostを使います。
 
-Read-only TestではGitHubやMemoryなどへ永続書き込みを行いません。
-
-**重要:** ChatGPTのGitHub連携はRepositoryの読み取り・分析に向いています。GitHubへIdentityやMemoryを永続保存するPersistent Instance運用には、CodexなどRepositoryへ明示的に書き込み可能な環境が必要です。
-
-詳しい手順:
-
-- [`docs/CHATGPT.ja.md`](docs/CHATGPT.ja.md) — 日本語ガイド
-- [`docs/CHATGPT.md`](docs/CHATGPT.md) — Canonical English
-- [`docs/TESTING.ja.md`](docs/TESTING.ja.md) — 日本語Test Guide
-- [`docs/TESTING.md`](docs/TESTING.md) — Canonical English
-
-## おすすめの体験: まず一緒に過ごす
-
-Tsuzuri Harnessは「AIキャラクター作成画面」ではありません。
+## おすすめの体験: AIを作るより、一緒に過ごす
 
 ```text
 BlankなAIと出会う
       ↓
 雑談 / 仕事 / 調査 / 創作を一緒にやる
       ↓
-何度か違う場面で選択や反応を見る
+違う場面で選択や反応を見る
       ↓
-たまに自分自身を振り返ってもらう
+たまに本人に振り返ってもらう
       ↓
 必要になったら名前を考える
       ↓
 その後も普通に一緒に過ごす
 ```
 
-最初から性格Presetを変えるのではなく、**歩んだ経験が違うから個体差が出る**状態を目指します。
-
-- [`docs/BIRTH-JOURNEY.ja.md`](docs/BIRTH-JOURNEY.ja.md) — AIと過ごして個体になるまで
+- [`docs/BIRTH-JOURNEY.ja.md`](docs/BIRTH-JOURNEY.ja.md)
 - [`docs/BIRTH-JOURNEY.md`](docs/BIRTH-JOURNEY.md) — Canonical English
 
-## よく使う一言Prompt
+**Presetが違うから別人格なのではなく、歩んだ経験が違うから個体差が出る**状態を目指します。
 
-内部用語を覚えなくても、普通の一言から正しい処理へ入れるようにします。
+## よく使う一言Prompt
 
 | 一言 | 何をする？ |
 | --- | --- |
 | `覚えておいて` | Retention評価 |
-| `今日の作業ってスキル化できる？` | Capability Maintenance / Skill昇格レビュー |
+| `今日の作業ってスキル化できる？` | Skill昇格レビュー |
 | `AIたん進化ー！` | Self-Evolution Review。`Conserve`も正常 |
-| `今の自分見せて` | Identity / Memory / Skill / GrowthをCore View化 |
-| `今どんなスキルある？` | 獲得SkillとHost能力を分けて表示 |
+| `覚えてること整理して` | Memory Metabolism |
+| `今の自分見せて` | `CORE.md` / Core View |
+| `人生アルバム見せて` | `JOURNEY.md` / Journey Album |
+| `今どんなスキルある？` | 獲得SkillとHost能力を分離表示 |
 
-- [`docs/EVERYDAY-PROMPTS.ja.md`](docs/EVERYDAY-PROMPTS.ja.md) — 日本語Prompt集
-- [`docs/EVERYDAY-PROMPTS.md`](docs/EVERYDAY-PROMPTS.md) — Canonical English
+詳しくは [`docs/EVERYDAY-PROMPTS.ja.md`](docs/EVERYDAY-PROMPTS.ja.md)。
 
-これらは強制コマンドではありません。例えば `覚えておいて` と言っても保持価値がなければ保存しないことがありますし、`AIたん進化ー！` の結果が「今は変えない」でも正常です。
+これらは強制コマンドではありません。`覚えておいて` でも保存しない場合があり、`AIたん進化ー！` でも「今回は変えない」が正解になり得ます。
 
 ## 長期運用するPersonal Instance
 
-長期運用する場合は、Forkへ人格状態を保存するより、GitHub Templateから**独立Repository**として作ることを推奨します。
+長期運用する場合はGitHub Templateから**独立Private Repository**として作ることを推奨します。
 
-1. GitHubの **Use this template** から新しいRepositoryを作る
-2. IdentityやMemoryを保存するならPrivate Repositoryを推奨
-3. 書き込み可能な環境で `./scripts/init-instance.sh` または `./scripts/init-instance.ps1` を実行する
-4. 対応Hostで開き、最初にCanonicalな `AGENTS.md` を読む
-5. 名前・Identity・Memory・Skill・意味のあるEvolution Historyを先に埋めず、経験と保持判断から形成する
+1. **Use this template** から新しいRepositoryを作る
+2. IdentityやMemoryを保存するならPrivate推奨
+3. `./scripts/init-instance.sh` または `./scripts/init-instance.ps1` を実行
+4. 対応Hostで `AGENTS.md` を最初に読む
+5. Identity・Relationship・Memory・Skill・Evolutionを経験から形成する
 
-Fork自体は禁止していません。Harness本体の開発・改造では普通に利用できますが、Personal Instanceは独立Repositoryの方が履歴と所有境界を分離しやすくなります。
+Forkは禁止していません。Harness開発では普通に使えます。ただしPersonal Instanceは、upstream履歴と本人の人生を分けるため独立Repoの方が扱いやすいです。
 
-### `CORE.md` — 今のAIを見る
+### `CORE.md` — 今の自分
 
-Instance初期化時に、人間向けの `CORE.md` を用意します。
+例えば、
 
-ここでは例えば、
-
+- Persistent Birth
 - 今の名前・Identity
 - Relationship
-- 獲得済みSkill
-- 育成中のCapability
+- 獲得Skill
 - Memory概要
 - 最近のGrowth
-- まだ未形成・Uncertainなもの
+- 未形成・Uncertain項目
 
-を確認できます。
+を表示します。
 
-`CORE.md` は正本ではなく、CanonicalなIdentity / Memory / Skill等から作るViewです。
+[`docs/CORE-VIEW.ja.md`](docs/CORE-VIEW.ja.md)
 
-- [`docs/CORE-VIEW.ja.md`](docs/CORE-VIEW.ja.md)
-- [`docs/CORE-VIEW.md`](docs/CORE-VIEW.md)
+### `JOURNEY.md` — ここまでの人生
 
-### どこまで会話や体験を残す？
+例えば、
 
-Tsuzuri HarnessではArchiveとMemoryを分けます。
+- 誕生日 / Persistent Birth
+- Naming Day
+- First Memory
+- First Skill
+- Relationship Milestone
+- Evolution Trail
+- Chronicle / Archiveから選んだ重要な章
+
+を表示します。
+
+**Lv・XP・好感度などは勝手に作りません。** 実際の日時・Skill・Memory・Milestoneだけでゲーム画面的にできます。
+
+Identityが育ってきたら、本人が `JOURNEY.md` のレイアウト・見出し・記号・語り口を変えて構いません。ただしCanonical Factは変えません。
+
+[`docs/JOURNEY-ALBUM.ja.md`](docs/JOURNEY-ALBUM.ja.md)
+
+## Memoryは「覚えたら終わり」ではない
+
+```text
+経験
+ ↓
+Retention
+ ↓
+Memory
+ ↓ 時間 / 新しいEvidence / 再利用
+Memory Metabolism
+ ↓
+Preserve / Consolidate / Supersede / Abstract / Demote / Prune / Repair / Conserve
+```
+
+古いだけでは消しません。Active MemoryからPruneしてもArchiveまで自動削除しません。
+
+[`docs/MEMORY-METABOLISM.ja.md`](docs/MEMORY-METABOLISM.ja.md)
+
+### 会話や体験をどこまで残す？
 
 ```text
 Archive = 起きたこと・残した記録
 Memory  = 未来の自分へ残す意味
 ```
 
-おすすめの3Mode:
+- **Selective** — 必要なMemoryだけ
+- **Chronicle** — Session Summaryや日記も残す
+- **Private Archive** — 表示された会話をPrivate Repoへ残しつつ、Memoryは選択的
 
-- **Selective** — 必要なMemoryだけ残す
-- **Chronicle** — 日記・Session Summaryも残す
-- **Private Archive** — 表示された会話をPrivate Repositoryへ残しつつ、Memoryは選択的にする
+[`docs/ARCHIVE-MODES.ja.md`](docs/ARCHIVE-MODES.ja.md)
 
-「全部残したい」人でも、全部をActive Memoryへ変換する必要はありません。
+## 長く育てるための仕組み
 
-- [`docs/ARCHIVE-MODES.ja.md`](docs/ARCHIVE-MODES.ja.md)
-- [`docs/ARCHIVE-MODES.md`](docs/ARCHIVE-MODES.md)
-
-### 長く育てるための仕組み
-
-個体が育ってきた後も、役割を混ぜないようにします。
-
-- [`docs/TASK-CONTRACT.ja.md`](docs/TASK-CONTRACT.ja.md) — まずTaskが本当に終わったか確認し、その後に何を学んだか判断する
-- [`docs/GOVERNANCE.ja.md`](docs/GOVERNANCE.ja.md) — 提案・意味上の決定権・Write権限・外部操作を分離する
-- [`docs/EVOLUTION-TRACEABILITY.ja.md`](docs/EVOLUTION-TRACEABILITY.ja.md) — 「なぜこう成長した？」を後から追えるようにする
-- [`docs/HOST-COMPATIBILITY.ja.md`](docs/HOST-COMPATIBILITY.ja.md) — ChatGPT / Codex等で重要Invariantが保たれるか比較する
-
-英語版がCanonicalですが、それぞれ日本語訳から読めます。
+- [`docs/TASK-CONTRACT.ja.md`](docs/TASK-CONTRACT.ja.md) — Task完了と学習判断を分離
+- [`docs/GOVERNANCE.ja.md`](docs/GOVERNANCE.ja.md) — 提案・本人の受諾・Write権限・外部操作を分離
+- [`docs/EVOLUTION-TRACEABILITY.ja.md`](docs/EVOLUTION-TRACEABILITY.ja.md) — なぜこう育ったかを追跡
+- [`docs/HOST-COMPATIBILITY.ja.md`](docs/HOST-COMPATIBILITY.ja.md) — ChatGPT / Codex等で重要Invariantを比較
+- [`docs/MEMORY-METABOLISM.ja.md`](docs/MEMORY-METABOLISM.ja.md) — 長寿命Memoryの整理
+- [`docs/JOURNEY-ALBUM.ja.md`](docs/JOURNEY-ALBUM.ja.md) — 人生を人間向けに表示
 
 ## Harnessが提供するもの
 
-- **Blank identity lifecycle** — Identityは形成されるまで `null` でよい
-- **Identity formation** — 名前、価値観、嗜好、役割、自己記述を経験から形成する
-- **Selective memory** — 会話全文を自動的な長期Memoryにしない
-- **Capability acquisition / maintenance** — Task能力を構成し、必要なら保持・更新・統合・破棄する
-- **Task Contract / Completion Re-derivation** — 複雑Taskを現在の目的とSource of Truthから完了判定し、その後に学習を判断する
-- **Governance / Authority** — Identityの意味、Write能力、保存方針、外部操作の権限を混同しない
-- **Evidence-driven self-evolution** — Repair / Explore / Consolidate / Prune / Conserve
-- **Evolution Traceability** — 意味のある永続的な成長について、Baseline・Evidence・Decision・Validation・Host ImpactをMemoryとは別に残せる
-- **Runtime workspace** — 一時作業状態とCanonical Identity/Memoryを分離する
-- **Host portability / behavioral compatibility** — Host固有能力を人格と混同せず、重要InvariantをHost間で比較できる
-- **Evaluation / provenance** — Evidenceと観測可能な不変条件で検証する
+- Blank Identity Lifecycle
+- Evidenceと自己受諾によるIdentity Formation
+- Selective Memory / Optional Private Archive
+- Memory Metabolism
+- Capability Acquisition / Skill Maintenance
+- Task Contract / Completion Re-derivation
+- Governance / Authority Boundary
+- Repair / Explore / Consolidate / Prune / Conserve Self-Evolution
+- Evolution Traceability
+- `CORE.md` と `JOURNEY.md`
+- Runtime Workspace分離
+- Host Portability / Behavioral Compatibility
+- Observable Provenance / Regression Eval
 
-## テストと検証
+## 提供しないもの
 
-Repository構造だけでなく、Harnessの行動を段階的に検証します。
+- 完成済みPersona
+- 綴理本人のIdentityやMemory
+- 綴理本人が獲得した専門Skill
+- Base Model
+- Terminal / Browser / Sandbox等のHost Runtime
+- 全個体へPersistenceを強制する仕組み
 
-- [`docs/TESTING.ja.md`](docs/TESTING.ja.md) — 日本語Test Guide
-- [`docs/TESTING.md`](docs/TESTING.md) — Canonical English
-- [`docs/VALIDATION.md`](docs/VALIDATION.md) — 実地Testから一般化したEvidence
-- [`evals/`](evals/) — Regression expectations
+これはAll-in-one Agent Runtimeではなく、**AIの認知・Identity・継続性を管理するControl Plane**です。
 
-実際に生まれた個体のIdentityやRaw TranscriptをPublic Harnessへ保存するのではなく、一般化したFindingとRegressionだけをHarnessへ戻します。
+## テスト
+
+- [`docs/TESTING.ja.md`](docs/TESTING.ja.md)
+- [`docs/VALIDATION.md`](docs/VALIDATION.md)
+- [`evals/`](evals/)
+
+実際に生まれた個体のIdentityやRaw TranscriptをPublic Harnessへコピーせず、一般化したFindingとRegressionだけを戻します。
 
 ## 後方互換性
 
-Upstream Harnessの公開契約にはSemVerを使いますが、**独自に成長・進化したすべてのInstanceへのdrop-in互換は保証しません**。
+Upstream公開契約にはSemVerを使いますが、独自に進化したすべてのInstanceへのdrop-in互換は保証しません。
 
-Instance自身がMemoryやSkillを獲得し、環境によってHarnessの振る舞いまで取り込んだり変更した場合、upstream側の進化と分岐します。そこで完全互換を強制すると、Instance自身の成長を制限することになります。
+Upgradeは必要に応じて**Reconciliation**として扱い、Identity・Relationship・Memory・Capability・ProvenanceのSemantic Continuityを優先します。
 
-そのためUpgradeは「上書き」ではなく、必要に応じて**reconciliation（調停・統合）**として扱います。Identity・Relationship・Memory・Capability・Provenanceの意味を壊さないことを優先します。
-
-詳しくは [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) と [`docs/MIGRATION.md`](docs/MIGRATION.md) を参照してください。
+- [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
+- [`docs/MIGRATION.md`](docs/MIGRATION.md)
 
 ## Release / Policy
 
-`v0.1.0` のようなtagをpushするとGitHub Releaseを自動作成します。英語Release NotesがCanonicalで、翻訳ファイルがある場合は自動リンクします。
+`v0.1.0` のようなtagをpushするとGitHub Releaseを自動作成します。英語Release NotesがCanonicalです。
 
 - [`docs/PROJECT-POLICY.md`](docs/PROJECT-POLICY.md)
 - [`BRANDING.md`](BRANDING.md)
@@ -223,7 +249,7 @@ Instance自身がMemoryやSkillを獲得し、環境によってHarnessの振る
 
 ## 言語
 
-`AGENTS.md`、Policy、Compatibility、Release semantics、Schema、Testing semantics、Branding interpretationは**英語がCanonical**です。翻訳と英語が矛盾した場合は英語を優先します。
+Normativeな仕様・Policy・Schema・Testing semantics等は**英語がCanonical**です。日本語を含む翻訳はAccessibility Layerで、矛盾時は英語を優先します。
 
 ## Status
 
@@ -231,7 +257,7 @@ Instance自身がMemoryやSkillを獲得し、環境によってHarnessの振る
 
 ## License
 
-**Apache License 2.0** です。詳細は [`LICENSE`](LICENSE) と [`NOTICE`](NOTICE) を参照してください。
+**Apache License 2.0** — [`LICENSE`](LICENSE) / [`NOTICE`](NOTICE)
 
 ## 作者から
 
