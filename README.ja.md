@@ -121,7 +121,7 @@ BlankなAIと出会う
 2. IdentityやMemoryを保存するならPrivate Repositoryを推奨
 3. 書き込み可能な環境で `./scripts/init-instance.sh` または `./scripts/init-instance.ps1` を実行する
 4. 対応Hostで開き、最初にCanonicalな `AGENTS.md` を読む
-5. 名前・Identity・Memory・Skillを先に埋めず、経験と保持判断から形成する
+5. 名前・Identity・Memory・Skill・意味のあるEvolution Historyを先に埋めず、経験と保持判断から形成する
 
 Fork自体は禁止していません。Harness本体の開発・改造では普通に利用できますが、Personal Instanceは独立Repositoryの方が履歴と所有境界を分離しやすくなります。
 
@@ -166,15 +166,29 @@ Memory  = 未来の自分へ残す意味
 - [`docs/ARCHIVE-MODES.ja.md`](docs/ARCHIVE-MODES.ja.md)
 - [`docs/ARCHIVE-MODES.md`](docs/ARCHIVE-MODES.md)
 
+### 長く育てるための仕組み
+
+個体が育ってきた後も、役割を混ぜないようにします。
+
+- [`docs/TASK-CONTRACT.ja.md`](docs/TASK-CONTRACT.ja.md) — まずTaskが本当に終わったか確認し、その後に何を学んだか判断する
+- [`docs/GOVERNANCE.ja.md`](docs/GOVERNANCE.ja.md) — 提案・意味上の決定権・Write権限・外部操作を分離する
+- [`docs/EVOLUTION-TRACEABILITY.ja.md`](docs/EVOLUTION-TRACEABILITY.ja.md) — 「なぜこう成長した？」を後から追えるようにする
+- [`docs/HOST-COMPATIBILITY.ja.md`](docs/HOST-COMPATIBILITY.ja.md) — ChatGPT / Codex等で重要Invariantが保たれるか比較する
+
+英語版がCanonicalですが、それぞれ日本語訳から読めます。
+
 ## Harnessが提供するもの
 
 - **Blank identity lifecycle** — Identityは形成されるまで `null` でよい
 - **Identity formation** — 名前、価値観、嗜好、役割、自己記述を経験から形成する
 - **Selective memory** — 会話全文を自動的な長期Memoryにしない
 - **Capability acquisition / maintenance** — Task能力を構成し、必要なら保持・更新・統合・破棄する
+- **Task Contract / Completion Re-derivation** — 複雑Taskを現在の目的とSource of Truthから完了判定し、その後に学習を判断する
+- **Governance / Authority** — Identityの意味、Write能力、保存方針、外部操作の権限を混同しない
 - **Evidence-driven self-evolution** — Repair / Explore / Consolidate / Prune / Conserve
+- **Evolution Traceability** — 意味のある永続的な成長について、Baseline・Evidence・Decision・Validation・Host ImpactをMemoryとは別に残せる
 - **Runtime workspace** — 一時作業状態とCanonical Identity/Memoryを分離する
-- **Host portability** — Host固有能力を人格と混同しない
+- **Host portability / behavioral compatibility** — Host固有能力を人格と混同せず、重要InvariantをHost間で比較できる
 - **Evaluation / provenance** — Evidenceと観測可能な不変条件で検証する
 
 ## テストと検証
