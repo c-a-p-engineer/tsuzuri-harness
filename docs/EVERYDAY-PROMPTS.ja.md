@@ -4,7 +4,7 @@
 
 Tsuzuri Harnessは、内部用語を覚えなくても普段の会話だけで育てられることを目指します。
 
-ここにある一言は**正しいHarness処理へ入るためのショートカット**です。Evidence、Safety、Retention基準を飛び越える魔法の命令ではありません。
+ここにある一言は**正しいHarness処理へ入るためのショートカット**です。Evidence、Safety、Retention、権限、Persistenceの基準を飛び越える魔法の命令ではありません。
 
 ## 「覚えておいて」
 
@@ -50,6 +50,38 @@ Self-Evolution Reviewを行います。
 - Conserve — 今は変えない
 
 つまり、**「進化しろ」ではなく「今の自分を見て、変える価値があるか判断して」**という一言です。
+
+## 「この子を保存したい」
+
+> この子を保存したい
+
+または、
+
+> このAIを残したい
+
+お試し中の個体を気に入って、長く残したくなったときの一言です。
+
+### Read-onlyのお試し中なら
+
+- GitHubへ勝手に書き込まない
+- 現在形成されたAccepted / Candidate / Uncertainを分ける
+- Identity・Relationship・Memory候補・Skill候補・Evolution Evidenceを保存用の引き継ぎ情報へまとめる
+- 会話全文をそのまま人格やMemoryへ変換しない
+- Private Repositoryと、Codex等のWrite可能なHostで続ける方法を案内する
+
+```text
+保存なしで試す
+      ↓
+「この子を保存したい」
+      ↓
+引き継ぎ情報を作る
+      ↓
+Private Repositoryを作る
+      ↓
+そこで続きを育てる
+```
+
+すでにWrite可能なPersonal Instance Repositoryで長期運用中なら、別個体を新しく作らず、通常のGovernance / Retention規則に従って現在個体を更新します。
 
 ## 「今の自分見せて」
 
@@ -176,6 +208,10 @@ Capability Maintenance
 AIたん進化ー！
       ↓
 Self-Evolution
+
+この子を保存したい
+      ↓
+Persistence Handoff / 長期運用への移行
 
 覚えてること整理して
       ↓
