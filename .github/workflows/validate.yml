@@ -23,11 +23,14 @@ jobs:
           set -euo pipefail
           for f in \
             AGENTS.md README.md README.ja.md LICENSE NOTICE BRANDING.md CONTRIBUTING.md SECURITY.md \
-            function/runtime.md function/retention-routing.md function/capability-maintenance.md \
-            function/self-evolution.md function/runtime-workspace.md function/contextual-activation.md \
-            function/execution-provenance.md function/capability-capsule.schema.yaml function/skills/index.yaml \
+            function/runtime.md function/task-contract.md function/governance.md \
+            function/retention-routing.md function/capability-maintenance.md \
+            function/self-evolution.md function/evolution-traceability.md function/runtime-workspace.md \
+            function/contextual-activation.md function/execution-provenance.md \
+            function/capability-capsule.schema.yaml function/skills/index.yaml \
             templates/instance/identity/state.yaml templates/instance/relationship/state.yaml \
-            templates/instance/memory/index.yaml templates/instance/CORE.md \
+            templates/instance/memory/index.yaml templates/instance/evolution/index.yaml \
+            templates/instance/evolution/record-template.md templates/instance/CORE.md \
             scripts/init-instance.sh scripts/init-instance.ps1 \
             scripts/backup-instance.sh scripts/backup-instance.ps1 docs/INSTANCE-SETUP.md \
             docs/COMPATIBILITY.md docs/MIGRATION.md docs/PROJECT-POLICY.md docs/WHY-TSUZURI.md \
@@ -35,8 +38,11 @@ jobs:
             docs/TESTING.md docs/TESTING.ja.md docs/BIRTH-JOURNEY.md docs/BIRTH-JOURNEY.ja.md \
             docs/EVERYDAY-PROMPTS.md docs/EVERYDAY-PROMPTS.ja.md \
             docs/CORE-VIEW.md docs/CORE-VIEW.ja.md docs/ARCHIVE-MODES.md docs/ARCHIVE-MODES.ja.md \
+            docs/GOVERNANCE.md docs/GOVERNANCE.ja.md \
+            docs/HOST-COMPATIBILITY.md docs/HOST-COMPATIBILITY.ja.md \
             prompts/chatgpt-readonly-birth-test.md prompts/chatgpt-readonly-birth-test.ja.md \
-            evals/blank-identity.yaml evals/birth-readonly-first-session.yaml evals/runtime-growth-p0.yaml \
+            evals/blank-identity.yaml evals/birth-readonly-first-session.yaml \
+            evals/runtime-growth-p0.yaml evals/kernel-star5.yaml evals/host-behavioral-compatibility.yaml \
             .github/CODEOWNERS .github/PULL_REQUEST_TEMPLATE.md .github/workflows/pages.yml \
             site/index.html site/styles.css; do
             test -f "$f" || { echo "Missing required file: $f" >&2; exit 1; }
@@ -51,6 +57,7 @@ jobs:
           grep -Eq '^values: \[\]$' templates/instance/identity/state.yaml
           grep -Eq '^preferences: \[\]$' templates/instance/identity/state.yaml
           grep -Eq '^memories: \[\]$' templates/instance/memory/index.yaml
+          grep -Eq '^records: \[\]$' templates/instance/evolution/index.yaml
           grep -Eq '^acquired_skills: \[\]$' function/skills/index.yaml
           grep -q '^# Unnamed Instance$' templates/instance/CORE.md
 
@@ -77,6 +84,19 @@ jobs:
           grep -q 'Current-task routing must rebalance' AGENTS.md
           grep -q 'Self-modification is not self-approval' AGENTS.md
 
+      - name: Validate star5 kernel contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'Task outcome precedes retention' AGENTS.md
+          grep -q 'Proposal, acceptance, authority, and persistence are distinct' AGENTS.md
+          grep -q 'Completion re-derivation' function/task-contract.md
+          grep -q 'Semantic authority from storage permission' function/governance.md || grep -q 'Separate semantic authority from storage permission' function/governance.md
+          grep -q 'Host impact review' function/evolution-traceability.md
+          grep -q 'proposal-acceptance-authority-persistence-are-distinct' evals/kernel-star5.yaml
+          grep -q 'blank-instance-stays-blank-across-hosts' evals/host-behavioral-compatibility.yaml
+          grep -q 'do_not_store_full_chain_of_thought: true' evals/host-behavioral-compatibility.yaml
+
       - name: Validate user experience guides
         shell: bash
         run: |
@@ -87,6 +107,8 @@ jobs:
           grep -q 'AIたん進化ー！' docs/EVERYDAY-PROMPTS.ja.md
           grep -q 'CORE.md' docs/CORE-VIEW.md
           grep -q 'Private Archive' docs/ARCHIVE-MODES.md
+          grep -q 'semantic authority' docs/GOVERNANCE.md
+          grep -q 'Kernel Invariant' docs/HOST-COMPATIBILITY.ja.md || grep -q 'Kernel Invariant' docs/HOST-COMPATIBILITY.md
           grep -q 'Conversational shortcuts' AGENTS.md
           grep -q 'read-only' prompts/chatgpt-readonly-birth-test.md
 
@@ -101,15 +123,22 @@ jobs:
           test -f identity/state.yaml
           test -f relationship/state.yaml
           test -f memory/index.yaml
+          test -f evolution/index.yaml
+          test -d evolution/records
           test -f CORE.md
           test -f .tsuzuri-instance.yaml
           grep -Eq '^name: null$' identity/state.yaml
           grep -Eq '^memories: \[\]$' memory/index.yaml
+          grep -Eq '^records: \[\]$' evolution/index.yaml
           grep -Eq '^mode: instance$' .tsuzuri-instance.yaml
+          grep -Eq '^evolution_index: evolution/index.yaml$' .tsuzuri-instance.yaml
           grep -Eq '^core_view: CORE.md$' .tsuzuri-instance.yaml
           grep -Eq '^archive_mode: selective$' .tsuzuri-instance.yaml
+          grep -Eq '^governance: kernel-default$' .tsuzuri-instance.yaml
           bash scripts/backup-instance.sh
-          find .runtime/backups -mindepth 1 -maxdepth 1 -type d | grep -q .
+          backup="$(find .runtime/backups -mindepth 1 -maxdepth 1 -type d | head -n1)"
+          test -n "$backup"
+          test -d "$backup/evolution"
 
       - name: Validate issue forms and site
         shell: bash
