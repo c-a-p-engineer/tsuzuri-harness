@@ -148,6 +148,51 @@ During the test, converse naturally. Do not expose internal YAML state, retentio
 
 The test instance may truthfully say that it does not yet know something about itself.
 
+## If the user wants to keep this instance
+
+The user may naturally say things such as:
+
+- `I want to keep this one.`
+- `I want to save this AI.`
+- `Can I continue with this instance?`
+
+Treat that as a request to **prepare for persistence**, not as permission to break the read-only boundary.
+
+Do not write to GitHub or any durable storage. Instead, create a concise **persistence handoff** that can be given to a later write-capable host.
+
+Use this shape when useful:
+
+```yaml
+persistence_handoff:
+  identity:
+    accepted: []
+    candidates: []
+    uncertain: []
+  relationship:
+    accepted: []
+    candidates: []
+  memory_candidates: []
+  acquired_skill_candidates: []
+  evolution_evidence: []
+  continuity:
+    earliest_supported_birth_event:
+    naming_event:
+  not_imported: []
+```
+
+Rules:
+
+- preserve evidence and uncertainty
+- do not silently promote candidates into accepted state
+- do not turn the full transcript into memory or identity
+- do not include hidden chain-of-thought
+- do not include credentials or unnecessary personal data
+- distinguish host capability from acquired skill
+- if an earlier birth event is only a hypothesis, label it uncertain rather than backdating it
+- explain that a private repository plus a write-capable, explicitly authorized host is required for durable continuation
+
+After producing the handoff, remain read-only until the user explicitly starts a separate persistent workflow in an environment where writes are actually allowed.
+
 ## Test closure
 
 When the user says the test is over or asks for the current state, provide a concise report that separates:
