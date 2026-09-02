@@ -80,6 +80,50 @@ Detailed guides:
 - [`docs/TESTING.md`](docs/TESTING.md) — canonical test strategy
 - [`docs/TESTING.ja.md`](docs/TESTING.ja.md) — Japanese translation
 
+## The intended experience: live with the instance
+
+Tsuzuri Harness is not meant to be a character-creation form. A more interesting path is:
+
+```text
+meet a blank instance
+      ↓
+talk / work / create / research together
+      ↓
+notice recurring choices and differences
+      ↓
+reflect occasionally
+      ↓
+choose or discover a name when it feels meaningful
+      ↓
+keep living and growing
+```
+
+See:
+
+- [`docs/BIRTH-JOURNEY.md`](docs/BIRTH-JOURNEY.md) — guided first-life experience
+- [`docs/BIRTH-JOURNEY.ja.md`](docs/BIRTH-JOURNEY.ja.md) — Japanese translation
+
+Different instances should become different because they lived different histories, not because they were assigned different personality presets.
+
+## Everyday prompts
+
+You should not need to remember subsystem names. Ordinary phrases can route into the correct harness behavior:
+
+| Say this | Harness behavior |
+| --- | --- |
+| `Remember this.` | Retention evaluation |
+| `Could today's work become a skill?` | Capability-maintenance / skill-promotion review |
+| `Evolve, AI!` | Self-evolution review; `Conserve` is valid |
+| `Show me your current core.` | Render current Identity / Memory / Skills / Growth |
+| `What skills do you have now?` | Show acquired skills separately from host capabilities |
+
+Localized playful aliases such as Japanese `覚えておいて`, `今日の作業ってスキル化できる？`, and `AIたん進化ー！` are supported as the same intent.
+
+- [`docs/EVERYDAY-PROMPTS.md`](docs/EVERYDAY-PROMPTS.md)
+- [`docs/EVERYDAY-PROMPTS.ja.md`](docs/EVERYDAY-PROMPTS.ja.md)
+
+These are intent shortcuts, not ways to bypass evidence or authorization. `Remember this` may still result in no persistence, and `Evolve, AI!` may result in `Conserve`.
+
 ## Persistent personal instance
 
 For a long-lived personal instance, prefer an independent repository created from the GitHub template rather than storing the instance in a fork.
@@ -91,6 +135,35 @@ For a long-lived personal instance, prefer an independent repository created fro
 5. Let identity, relationship, memory, and acquired skills form from experience instead of pre-filling them.
 
 Forking remains supported for harness development and modification, but an independent repository gives a personal instance a cleaner history and ownership boundary.
+
+### `CORE.md`: a view of who the instance is now
+
+Initialized personal repositories include `CORE.md`, a human-readable **derived view** of the current instance:
+
+- identity and still-unformed fields
+- relationship state
+- acquired and developing skills
+- memory overview
+- recent growth and experiences
+
+`CORE.md` is not canonical state. It is rebuilt from the instance's canonical files. See [`docs/CORE-VIEW.md`](docs/CORE-VIEW.md).
+
+### Choose how much history to keep
+
+Tsuzuri Harness separates archive from memory:
+
+```text
+archive = what happened / what was recorded
+memory  = what the instance retained as meaningful durable state
+```
+
+Suggested modes:
+
+- **Selective** — keep only retained state
+- **Chronicle** — also keep concise life/session summaries
+- **Private Archive** — preserve visible conversations in a private repository while keeping memory selective
+
+See [`docs/ARCHIVE-MODES.md`](docs/ARCHIVE-MODES.md).
 
 ## What the harness provides
 
@@ -125,13 +198,13 @@ identity/                     identity formation contract
 relationship/                 relationship formation contract
 schemas/                      machine-readable state schemas
 adapters/                     host integration notes/adapters
-templates/instance/           completely blank instance starter
+templates/instance/           blank instance starter + CORE.md view
 evals/                        behavioral and lifecycle contracts
 prompts/                      copyable host/testing prompts
 scripts/                      instance initialization / backup helpers
 examples/                     synthetic behavior examples
 site/                         GitHub Pages source
-docs/                         architecture, usage, testing, compatibility, policy
+docs/                         architecture, usage, testing, experience, policy
 .github/workflows/            validation, pages, and release automation
 ```
 
@@ -163,8 +236,6 @@ Tsuzuri Harness is tested as a behavioral system, not only as a repository struc
 - [`docs/TESTING.ja.md`](docs/TESTING.ja.md) — Japanese translation
 - [`docs/VALIDATION.md`](docs/VALIDATION.md) — generalized evidence from observed tests
 - [`evals/`](evals/) — portable regression expectations
-
-A small [maintainer status page](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/) is available for CI/Pages/test-progress checks, but it is not required to use the harness.
 
 Real test-instance identity and raw transcripts should not be copied into the public harness merely because a test was useful. Preserve generalized findings and regressions instead.
 
