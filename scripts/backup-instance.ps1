@@ -5,7 +5,7 @@ $Timestamp = (Get-Date).ToUniversalTime().ToString('yyyyMMddTHHmmssZ')
 $Dest = Join-Path $Root ".runtime/backups/$Timestamp"
 New-Item -ItemType Directory -Force -Path $Dest | Out-Null
 
-$Paths = @('identity', 'relationship', 'memory', 'function/skills')
+$Paths = @('identity', 'relationship', 'memory', 'evolution', 'function/skills')
 foreach ($Path in $Paths) {
     if (Test-Path $Path) {
         $Target = Join-Path $Dest $Path
