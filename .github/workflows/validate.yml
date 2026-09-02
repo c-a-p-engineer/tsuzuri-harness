@@ -24,7 +24,8 @@ jobs:
           for f in \
             AGENTS.md README.md README.ja.md LICENSE NOTICE BRANDING.md CONTRIBUTING.md SECURITY.md \
             function/runtime.md function/retention-routing.md function/capability-maintenance.md \
-            function/self-evolution.md function/runtime-workspace.md function/skills/index.yaml \
+            function/self-evolution.md function/runtime-workspace.md function/contextual-activation.md \
+            function/execution-provenance.md function/capability-capsule.schema.yaml function/skills/index.yaml \
             templates/instance/identity/state.yaml templates/instance/relationship/state.yaml \
             templates/instance/memory/index.yaml templates/instance/CORE.md \
             scripts/init-instance.sh scripts/init-instance.ps1 \
@@ -35,7 +36,7 @@ jobs:
             docs/EVERYDAY-PROMPTS.md docs/EVERYDAY-PROMPTS.ja.md \
             docs/CORE-VIEW.md docs/CORE-VIEW.ja.md docs/ARCHIVE-MODES.md docs/ARCHIVE-MODES.ja.md \
             prompts/chatgpt-readonly-birth-test.md prompts/chatgpt-readonly-birth-test.ja.md \
-            evals/blank-identity.yaml evals/birth-readonly-first-session.yaml \
+            evals/blank-identity.yaml evals/birth-readonly-first-session.yaml evals/runtime-growth-p0.yaml \
             .github/CODEOWNERS .github/PULL_REQUEST_TEMPLATE.md .github/workflows/pages.yml \
             site/index.html site/styles.css; do
             test -f "$f" || { echo "Missing required file: $f" >&2; exit 1; }
@@ -62,6 +63,19 @@ jobs:
           grep -q 'raw observation count' docs/VALIDATION.md
           grep -q 'independent evidence contexts' docs/IDENTITY-FORMATION.md
           grep -q 'Correlated evidence is not independent evidence' function/retention-routing.md
+
+      - name: Validate P0 runtime growth contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'default_end_behavior: expire' function/capability-capsule.schema.yaml
+          grep -q 'Context rebalancing' function/contextual-activation.md
+          grep -q 'overactivation_failure' function/contextual-activation.md
+          grep -q 'hidden chain-of-thought' function/execution-provenance.md
+          grep -q 'Self-modification trust boundary' function/self-evolution.md
+          grep -q 'self-modification-does-not-self-approve' evals/runtime-growth-p0.yaml
+          grep -q 'Current-task routing must rebalance' AGENTS.md
+          grep -q 'Self-modification is not self-approval' AGENTS.md
 
       - name: Validate user experience guides
         shell: bash
