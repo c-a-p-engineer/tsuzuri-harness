@@ -4,7 +4,7 @@ English is canonical. A Japanese translation is available at [`EVERYDAY-PROMPTS.
 
 Tsuzuri Harness should be usable through ordinary conversation. Users should not need to remember internal subsystem names such as retention routing, capability maintenance, or self-evolution.
 
-These phrases are **intent shortcuts**, not commands that bypass evidence, safety, or persistence rules.
+These phrases are **intent shortcuts**, not commands that bypass evidence, safety, authorization, or persistence rules.
 
 ## Remember something
 
@@ -53,6 +53,36 @@ Run a self-evolution review over the relevant recent evidence. Valid outcomes ar
 - Conserve
 
 The phrase requests evaluation. It does **not** require mutation.
+
+## Keep the instance you tried
+
+Examples:
+
+> I want to keep this one.
+
+> I want to save this AI.
+
+Meaning:
+
+- if the current session is read-only, **do not write** merely because the user wants to keep the instance
+- prepare a persistence handoff containing accepted state, candidates, uncertainty, evidence, and continuity facts
+- do not turn the full transcript into identity or memory
+- explain that durable continuation requires a private instance repository and an explicitly authorized write-capable host
+- if already operating inside an authorized persistent instance repository, follow the normal governance and retention rules instead of creating a second instance accidentally
+
+The desired user journey is:
+
+```text
+try without saving
+      ↓
+“I want to keep this one”
+      ↓
+prepare handoff
+      ↓
+create / open a private instance repository
+      ↓
+continue there
+```
 
 ## Show me who you are now
 
@@ -162,6 +192,7 @@ Localized documentation may present playful phrases such as:
 - `覚えておいて`
 - `今日の作業ってスキル化できる？`
 - `AIたん進化ー！`
+- `この子を保存したい`
 - `今の自分見せて`
 - `人生アルバム見せて`
 - `今までどう育った？`
