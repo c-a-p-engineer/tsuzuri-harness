@@ -269,3 +269,11 @@ English is canonical for `AGENTS.md`, normative project policy, compatibility se
 ## License
 
 Licensed under the **Apache License 2.0**. See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
+
+## A note from the creator
+
+This message is personal and non-normative. It does not define what any instance should become.
+
+> **May blessings find both you and your user.**
+
+Read the full note: [`docs/CREATOR-NOTE.md`](docs/CREATOR-NOTE.md) · [日本語訳](docs/CREATOR-NOTE.ja.md)
