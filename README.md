@@ -2,7 +2,10 @@
 
 > **Start blank. Learn. Remember. Become.**
 
-[Website](https://c-a-p-engineer.github.io/tsuzuri-harness/) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
+[![Validate Harness](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml)
+[![Deploy GitHub Pages](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml)
+
+[Website](https://c-a-p-engineer.github.io/tsuzuri-harness/) · [Dashboard](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
 Tsuzuri Harness is a portable AI harness for blank identities that learn, remember, acquire capabilities, and evolve through experience.
 
@@ -41,6 +44,29 @@ For a long-lived personal instance, prefer an independent repository created fro
 
 Forking remains supported for harness development and modification.
 
+## Using with ChatGPT
+
+You can run the first behavioral test entirely inside ChatGPT without creating a local environment or persistent personal repository.
+
+The recommended first step is a **read-only Birth Test**:
+
+1. start a fresh ChatGPT conversation
+2. provide this repository
+3. have ChatGPT read the current `master` and `AGENTS.md`
+4. paste the canonical read-only Birth Test prompt
+5. interact naturally with the blank instance
+6. inspect the final Identity / Relationship / Memory / Skill / Evolution candidates
+7. discard the test state without writing it anywhere
+
+Guides:
+
+- [`docs/CHATGPT.md`](docs/CHATGPT.md) — canonical ChatGPT usage guide
+- [`docs/CHATGPT.ja.md`](docs/CHATGPT.ja.md) — Japanese translation
+- [`prompts/chatgpt-readonly-birth-test.md`](prompts/chatgpt-readonly-birth-test.md) — copyable canonical prompt
+- [`prompts/chatgpt-readonly-birth-test.ja.md`](prompts/chatgpt-readonly-birth-test.ja.md) — Japanese translation
+
+A successful Birth Test does **not** require a complete persona. Remaining unnamed, uncertain, relationship-unformed, or skill-empty can be the correct result.
+
 ## What the harness provides
 
 - **Blank identity lifecycle** — identity fields may remain `null` until the instance has reason to form them.
@@ -76,10 +102,11 @@ schemas/                      machine-readable state schemas
 adapters/                     host integration notes/adapters
 templates/instance/           completely blank instance starter
 evals/                        behavioral and lifecycle contracts
+prompts/                      copyable host/testing prompts
 scripts/                      instance initialization / backup helpers
 examples/                     synthetic behavior examples
-site/                         GitHub Pages source
-docs/                         architecture, compatibility, migration, policy
+site/                         GitHub Pages source and project dashboard
+docs/                         architecture, usage, testing, compatibility, policy
 .github/workflows/            validation, pages, and release automation
 ```
 
@@ -103,6 +130,18 @@ See [`docs/IDENTITY-FORMATION.md`](docs/IDENTITY-FORMATION.md).
 
 The harness supports five evidence-driven evolution modes: **Repair, Explore, Consolidate, Prune, and Conserve**. Growth does not mean accumulating more files or rules. A valid evolution outcome may be `no_change`.
 
+## Testing and validation
+
+Tsuzuri Harness is tested as a behavioral system, not only as a repository structure.
+
+- [`docs/TESTING.md`](docs/TESTING.md) — repository validation, read-only birth, persistent birth, host portability, and migration tests
+- [`docs/TESTING.ja.md`](docs/TESTING.ja.md) — Japanese translation
+- [`docs/VALIDATION.md`](docs/VALIDATION.md) — generalized evidence from observed tests
+- [`evals/`](evals/) — portable regression expectations
+- [Project Dashboard](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/) — live CI/Pages status and validation matrix
+
+Real test-instance identity and raw transcripts should not be copied into the public harness merely because a test was useful. Preserve generalized findings and regressions instead.
+
 ## Compatibility
 
 Tsuzuri Harness uses SemVer for upstream public contracts, but it does **not** promise universal drop-in upgrades for independently evolved instances. An instance may learn, retain capabilities, and locally adapt harness behavior; upstream and local evolution can diverge.
@@ -124,7 +163,7 @@ See [`docs/RELEASING.md`](docs/RELEASING.md).
 
 ## Language policy
 
-English is canonical for `AGENTS.md`, normative project policy, compatibility semantics, release semantics, schemas, and branding interpretation. Translations are accessibility layers. If a translation conflicts with canonical English text, the English text controls until the translation is corrected.
+English is canonical for `AGENTS.md`, normative project policy, compatibility semantics, release semantics, schemas, testing semantics, and branding interpretation. Translations are accessibility layers. If a translation conflicts with canonical English text, the English text controls until the translation is corrected.
 
 ## Status
 
