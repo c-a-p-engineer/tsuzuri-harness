@@ -25,11 +25,11 @@
     <header class="hero">
       <div class="eyebrow">Portable AI identity & cognitive harness</div>
       <h1>Start blank.<br>Learn. Remember. Become.</h1>
-      <p class="lead">Tsuzuri Harness starts without a finished persona. It gives an AI the mechanisms to form identity, retain memory selectively, acquire capabilities, and evolve through experience.</p>
+      <p class="lead">Meet a blank AI, spend time together, and let identity, memory, skills, and growth emerge from what actually happens.</p>
       <div class="actions">
         <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.md">Try in ChatGPT</a>
+        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/BIRTH-JOURNEY.md">Birth Journey</a>
         <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/generate">Create a persistent instance</a>
-        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness">View on GitHub</a>
       </div>
     </header>
 
@@ -41,7 +41,9 @@ relationship: unformed
 memory: empty
 acquired skills: empty
         ↓
-interaction / work / observation
+conversation / work / creation / research
+        ↓
+reflection / retention / capability growth
         ↓
 a distinct continuing instance</pre>
     </section>
@@ -52,23 +54,55 @@ a distinct continuing instance</pre>
         <div class="step"><strong>Connect GitHub.</strong> In ChatGPT, open Settings → Apps / Plugins → GitHub and authorize repository access.</div>
         <div class="step"><strong>Start a fresh conversation.</strong> Ask ChatGPT to access <code>c-a-p-engineer/tsuzuri-harness</code>, read current <code>master</code>, and read <code>AGENTS.md</code> first.</div>
         <div class="step"><strong>Paste the read-only Birth Test prompt.</strong> The first test does not write to GitHub or other durable storage.</div>
-        <div class="step"><strong>Talk naturally, then inspect the result.</strong> A successful test may still end unnamed, uncertain, or with zero acquired skills.</div>
+        <div class="step"><strong>Talk naturally.</strong> A successful test may still end unnamed, uncertain, or with zero acquired skills.</div>
       </div>
       <div class="actions">
         <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.md">ChatGPT guide</a>
         <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.ja.md">日本語ガイド</a>
         <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/prompts/chatgpt-readonly-birth-test.md">Birth Test prompt</a>
       </div>
-      <p class="muted">ChatGPT's GitHub integration is for reading and analysis. Persistent repository writes require a write-capable host such as Codex or another explicitly authorized environment.</p>
     </section>
 
     <section>
-      <h2>Persistent personal instance</h2>
-      <div class="steps">
-        <div class="step"><strong>Create an independent repository.</strong> Use the GitHub template; prefer a private repository for personal identity and memory.</div>
-        <div class="step"><strong>Initialize the instance.</strong> Run <code>./scripts/init-instance.sh</code> or <code>./scripts/init-instance.ps1</code> in a write-capable environment.</div>
-        <div class="step"><strong>Open it with a compatible host.</strong> Load <code>AGENTS.md</code> first and preserve the instance repository as canonical durable state.</div>
-        <div class="step"><strong>Do not pre-write the person.</strong> Let identity, memory, relationship, and acquired skills form only when evidence and retention justify them.</div>
+      <h2>Do things together before naming the AI</h2>
+      <p class="lead">The intended experience is not a personality questionnaire. Talk, solve real tasks, explore stories and ideas, create things, disagree, reflect, and only then consider whether a name feels meaningful.</p>
+      <pre>encounter
+   ↓
+varied experiences
+   ↓
+reflection
+   ↓
+optional naming
+   ↓
+continued life</pre>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/BIRTH-JOURNEY.md">Open Birth Journey</a>
+        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/BIRTH-JOURNEY.ja.md">日本語</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Everyday words should be enough</h2>
+      <div class="grid">
+        <div class="card"><h3>“Remember this.”</h3><p class="muted">Run retention evaluation rather than blindly storing everything.</p></div>
+        <div class="card"><h3>“Could this become a skill?”</h3><p class="muted">Review whether temporary competence deserves durable promotion.</p></div>
+        <div class="card"><h3>“Evolve, AI!”</h3><p class="muted">Review Repair, Explore, Consolidate, Prune, or Conserve. Change is not mandatory.</p></div>
+        <div class="card"><h3>“Show me your current core.”</h3><p class="muted">Render who the instance is now from canonical Identity, Memory, Skills, and Growth.</p></div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/EVERYDAY-PROMPTS.md">Prompt guide</a>
+        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/EVERYDAY-PROMPTS.ja.md">日本語Prompt集</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>A personal repository can become the AI's home</h2>
+      <p class="lead">A persistent instance can keep canonical identity, relationships, selected memory, acquired skills, evolution history, and an optional private archive in one independent repository.</p>
+      <div class="grid">
+        <div class="card"><h3>CORE.md</h3><p class="muted">A human-readable derived view of the instance: who it is, what it remembers, what it can do, and what is still unformed.</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CORE-VIEW.md">Core View →</a></p></div>
+        <div class="card"><h3>Selective</h3><p class="muted">Keep only state that passes retention.</p></div>
+        <div class="card"><h3>Chronicle</h3><p class="muted">Also keep lightweight life/session summaries.</p></div>
+        <div class="card"><h3>Private Archive</h3><p class="muted">Preserve visible conversations privately while keeping active memory selective.</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/ARCHIVE-MODES.md">Archive modes →</a></p></div>
       </div>
     </section>
 
@@ -94,7 +128,6 @@ a distinct continuing instance</pre>
         <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/COMPATIBILITY.md">Compatibility</a><p class="muted">Upstream SemVer and independently evolved instances.</p></div>
         <div class="card"><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/releases">Releases</a><p class="muted">English release semantics are canonical.</p></div>
       </div>
-      <p class="muted">A small <a href="dashboard/">maintainer status page</a> remains available for CI/Pages/test-progress checks; it is not part of the normal user flow.</p>
     </section>
   </main>
 
