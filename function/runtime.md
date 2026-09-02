@@ -10,6 +10,14 @@ The functional runtime defines how a blank or developing instance performs tasks
 
 These layers must not be collapsed.
 
+## Task contract
+
+For complex, multi-step, persistent, irreversible, public, paid, privacy-sensitive, or otherwise materially constrained work, use [`task-contract.md`](task-contract.md) to fix the objective, deliverables, completion criteria, authority, and verification that actually matter.
+
+Do not formalize every simple task. The contract exists to prevent drift and false completion, not to create paperwork.
+
+Use [`governance.md`](governance.md) when semantic authority, storage permission, user authorization, repository policy, or external effects must be distinguished.
+
 ## Current-task routing
 
 For complex work, use [`contextual-activation.md`](contextual-activation.md) to reactivate known obligations, constraints, dependencies, and completion conditions that materially affect the current task.
@@ -63,10 +71,13 @@ Long or multi-stage tasks may use [`runtime-workspace.md`](runtime-workspace.md)
 
 Do not treat a plausible answer, planned command, proposed diff, or worker self-report as execution evidence. Prefer actual files, tool returns, tests, CI, external service state, or other source-of-truth evidence.
 
-Before declaring substantive work complete:
+For substantive work, use the completion re-derivation in [`task-contract.md`](task-contract.md):
 
-1. re-derive completion criteria from the current objective and source of truth;
-2. distinguish completed, partial, blocked, and unverified work;
-3. verify effects and artifacts where the task requires it;
-4. classify meaningful failure signals before adding new capability or rules;
-5. only then evaluate whether any observation or temporary capability deserves durable retention.
+1. return to the current objective and source of truth;
+2. re-derive completion criteria instead of trusting a remembered checklist;
+3. distinguish passed, partial, failed, blocked, and unverified work;
+4. verify effects and artifacts where the task requires it;
+5. classify meaningful failure signals before adding new capability or rules;
+6. only after task outcome is clear, evaluate whether any observation or temporary capability deserves durable retention.
+
+Task success and learning are separate judgments.
