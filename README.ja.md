@@ -2,7 +2,10 @@
 
 > **まっさらから始める。学ぶ。覚える。自分になる。**
 
-[Website](https://c-a-p-engineer.github.io/tsuzuri-harness/ja/) · [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
+[![Validate Harness](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml)
+[![Deploy GitHub Pages](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml)
+
+[Website](https://c-a-p-engineer.github.io/tsuzuri-harness/ja/) · [Dashboard](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/) · [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [한국어](README.ko.md) · [Español](README.es.md)
 
 Tsuzuri Harness は、**あらかじめ人格を持たないAI**が、経験を通じて名前・Identity・Memory・能力を形成し、成長・進化していくためのポータブルAI Harnessです。
 
@@ -32,6 +35,27 @@ blank instance
 3. 対応Hostで開き、最初にCanonicalな `AGENTS.md` を読む
 4. 名前・Identity・Memory・Skillを先に埋めず、経験と保持判断から形成する
 
+## ChatGPTで試す
+
+最初の挙動確認は、ローカル環境やPersonal Instance Repositoryを作らなくてもChatGPT上だけで行えます。
+
+推奨は **Read-only Birth Test** です。
+
+1. 新しいChatGPT会話を開始する
+2. このRepositoryを渡す
+3. 現在の `master` と `AGENTS.md` を読ませる
+4. Read-only Birth Test Promptを貼る
+5. Blank Instanceと自然に会話する
+6. 最後にIdentity / Relationship / Memory / Skill / Evolution候補を確認する
+7. 状態はどこにも保存せず破棄する
+
+- [`docs/CHATGPT.ja.md`](docs/CHATGPT.ja.md) — ChatGPT利用ガイド
+- [`docs/CHATGPT.md`](docs/CHATGPT.md) — Canonical English
+- [`prompts/chatgpt-readonly-birth-test.ja.md`](prompts/chatgpt-readonly-birth-test.ja.md) — そのまま貼れる日本語Prompt
+- [`prompts/chatgpt-readonly-birth-test.md`](prompts/chatgpt-readonly-birth-test.md) — Canonical English Prompt
+
+Birth Testの成功は「人格欄が全部埋まること」ではありません。無名、Uncertain、Relationship未形成、Skill 0のまま終わることも正常です。
+
 ## Harnessが提供するもの
 
 - **Blank identity lifecycle** — Identityは形成されるまで `null` でよい
@@ -42,6 +66,18 @@ blank instance
 - **Runtime workspace** — 一時作業状態とCanonical Identity/Memoryを分離する
 - **Host portability** — Host固有能力を人格と混同しない
 - **Evaluation / provenance** — Evidenceと観測可能な不変条件で検証する
+
+## テストとDashboard
+
+Repository構造だけでなく、Harnessの行動を段階的に検証します。
+
+- [`docs/TESTING.ja.md`](docs/TESTING.ja.md) — 日本語Test Guide
+- [`docs/TESTING.md`](docs/TESTING.md) — Canonical English
+- [`docs/VALIDATION.md`](docs/VALIDATION.md) — 実地Testから一般化したEvidence
+- [`evals/`](evals/) — Regression expectations
+- [Project Dashboard](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/) — CI / Pages / Validation Matrix
+
+実際に生まれた個体のIdentityやRaw TranscriptをPublic Harnessへ保存するのではなく、一般化したFindingとRegressionだけをHarnessへ戻します。
 
 ## 後方互換性
 
@@ -64,7 +100,7 @@ Instance自身がMemoryやSkillを獲得し、環境によってHarnessの振る
 
 ## 言語
 
-`AGENTS.md`、Policy、Compatibility、Release semantics、Schema、Branding interpretationは**英語がCanonical**です。翻訳と英語が矛盾した場合は英語を優先します。
+`AGENTS.md`、Policy、Compatibility、Release semantics、Schema、Testing semantics、Branding interpretationは**英語がCanonical**です。翻訳と英語が矛盾した場合は英語を優先します。
 
 ## Status
 
