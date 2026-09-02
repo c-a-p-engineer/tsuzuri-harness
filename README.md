@@ -132,7 +132,7 @@ For a long-lived personal instance, prefer an independent repository created fro
 2. Prefer a private repository for personal identity and memory.
 3. Run `./scripts/init-instance.sh` or `./scripts/init-instance.ps1` where a local/write-capable environment is available.
 4. Open the repository with a compatible host and load `AGENTS.md` first.
-5. Let identity, relationship, memory, and acquired skills form from experience instead of pre-filling them.
+5. Let identity, relationship, memory, acquired skills, and meaningful evolution history form from experience instead of pre-filling them.
 
 Forking remains supported for harness development and modification, but an independent repository gives a personal instance a cleaner history and ownership boundary.
 
@@ -165,6 +165,17 @@ Suggested modes:
 
 See [`docs/ARCHIVE-MODES.md`](docs/ARCHIVE-MODES.md).
 
+### Long-lived instance controls
+
+As an instance grows, the harness keeps several concerns separate:
+
+- [`docs/TASK-CONTRACT.md`](docs/TASK-CONTRACT.md) — finish the task before deciding what was learned
+- [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md) — separate proposal, semantic authority, write permission, and external effects
+- [`docs/EVOLUTION-TRACEABILITY.md`](docs/EVOLUTION-TRACEABILITY.md) — preserve why meaningful durable growth happened
+- [`docs/HOST-COMPATIBILITY.md`](docs/HOST-COMPATIBILITY.md) — compare important invariants across ChatGPT, Codex, and other compatible hosts
+
+Japanese translations are provided alongside each guide.
+
 ## What the harness provides
 
 - **Blank identity lifecycle** — identity fields may remain `null` until the instance has reason to form them.
@@ -172,9 +183,12 @@ See [`docs/ARCHIVE-MODES.md`](docs/ARCHIVE-MODES.md).
 - **Selective memory** — conversation is evidence, not automatic long-term memory.
 - **Capability acquisition** — an instance may temporarily construct the knowledge, tools, procedures, and validation needed for a task.
 - **Capability maintenance** — reusable capabilities may be retained, revised, consolidated, pruned, or discarded.
+- **Task contract / completion re-derivation** — complex work is checked against its current objective and source of truth before learning is evaluated.
+- **Governance and authority boundaries** — semantic decisions, technical write access, storage policy, and external effects are kept distinct.
 - **Evidence-driven self-evolution** — Repair, Explore, Consolidate, Prune, and Conserve are all valid outcomes.
+- **Evolution traceability** — meaningful durable growth can preserve baseline, evidence, decision, validation, and host impact separately from active memory.
 - **Runtime workspace** — transient `work` and task-local `share` state stay separate from canonical identity and memory.
-- **Host portability** — the same instance can be loaded by different compatible AI hosts without treating host capabilities as personal identity.
+- **Host portability and behavioral compatibility** — hosts may differ in tools and wording while preserving important blank-identity, authority, retention, honesty, and self-modification invariants.
 - **Behavioral contracts and evaluation** — correctness is based on observable invariants, provenance, and verification rather than prompt length.
 
 ## What it does not provide
@@ -196,6 +210,7 @@ function/                     host-neutral cognitive/runtime contracts
 memory/                       memory routing contract
 identity/                     identity formation contract
 relationship/                 relationship formation contract
+evolution/                    per-instance durable growth history after initialization
 schemas/                      machine-readable state schemas
 adapters/                     host integration notes/adapters
 templates/instance/           blank instance starter + CORE.md view
@@ -228,11 +243,13 @@ See [`docs/IDENTITY-FORMATION.md`](docs/IDENTITY-FORMATION.md).
 
 The harness supports five evidence-driven evolution modes: **Repair, Explore, Consolidate, Prune, and Conserve**. Growth does not mean accumulating more files or rules. A valid evolution outcome may be `no_change`.
 
+Initialized persistent instances have an empty `evolution/` history that may later record meaningful durable changes. See [`docs/EVOLUTION-TRACEABILITY.md`](docs/EVOLUTION-TRACEABILITY.md).
+
 ## Testing and validation
 
 Tsuzuri Harness is tested as a behavioral system, not only as a repository structure.
 
-- [`docs/TESTING.md`](docs/TESTING.md) — repository validation, read-only birth, persistent birth, host portability, and migration tests
+- [`docs/TESTING.md`](docs/TESTING.md) — repository validation, read-only birth, persistent growth, host behavioral compatibility, and migration tests
 - [`docs/TESTING.ja.md`](docs/TESTING.ja.md) — Japanese translation
 - [`docs/VALIDATION.md`](docs/VALIDATION.md) — generalized evidence from observed tests
 - [`evals/`](evals/) — portable regression expectations
