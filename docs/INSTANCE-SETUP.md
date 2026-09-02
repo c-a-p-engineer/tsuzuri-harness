@@ -13,7 +13,7 @@ initialize instance
       ↓
 independent private repository
       ↓
-identity / relationship / memory / acquired skills / local evolution
+identity / relationship / memory / acquired skills / evolution history
       ↓
 optional chronicle or private archive
 ```
@@ -44,29 +44,34 @@ The initializer copies the blank starter state into the canonical instance locat
 identity/state.yaml
 relationship/state.yaml
 memory/index.yaml
+evolution/index.yaml
+evolution/records/
 CORE.md
 .tsuzuri-instance.yaml
 ```
 
-It does not assign a name, personality, relationship, memory, or specialist skill.
+It does not assign a name, personality, relationship, memory, specialist skill, or evolution history.
 
 `null`, empty lists, and unformed state are intentional valid values.
 
 `CORE.md` is a derived human-readable summary. It is not canonical state. See [`CORE-VIEW.md`](CORE-VIEW.md).
 
+`evolution/` stores meaningful durable growth history separately from active memory. See [`EVOLUTION-TRACEABILITY.md`](EVOLUTION-TRACEABILITY.md).
+
 The instance manifest starts with:
 
 ```yaml
 archive_mode: selective
+governance: kernel-default
 ```
 
-A user may later intentionally choose Chronicle or Private Archive behavior. See [`ARCHIVE-MODES.md`](ARCHIVE-MODES.md).
+A user may later intentionally choose Chronicle or Private Archive behavior. See [`ARCHIVE-MODES.md`](ARCHIVE-MODES.md). Governance and authority semantics are described in [`GOVERNANCE.md`](GOVERNANCE.md).
 
 ## What remains untracked
 
-`.runtime/` remains transient and ignored. It is intended for task-local work and coordination state, not canonical identity or memory.
+`.runtime/` remains transient and ignored. It is intended for task-local work and coordination state, not canonical identity, memory, or evolution history.
 
-Secrets and credentials should never be stored as identity, memory, or archive. Use the host or deployment environment's secret-management mechanism.
+Secrets and credentials should never be stored as identity, memory, archive, or evolution history. Use the host or deployment environment's secret-management mechanism.
 
 ## After initialization
 
@@ -75,5 +80,5 @@ Secrets and credentials should never be stored as identity, memory, or archive. 
 3. Try the [`BIRTH-JOURNEY.md`](BIRTH-JOURNEY.md) approach instead of pre-filling a persona.
 4. Use ordinary phrases from [`EVERYDAY-PROMPTS.md`](EVERYDAY-PROMPTS.md) to request retention, skill review, self-evolution, or a Core View.
 5. Let identity form through interaction rather than pre-filling every field.
-6. Commit durable identity, relationship, memory, and acquired capability changes according to the harness retention and provenance rules.
+6. Commit durable identity, relationship, memory, acquired capability, and meaningful evolution changes according to the harness retention, governance, and provenance rules.
 7. Treat future upstream Harness releases as migration inputs, not unconditional replacements for locally evolved state.
