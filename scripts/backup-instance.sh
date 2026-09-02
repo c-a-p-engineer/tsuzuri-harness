@@ -8,7 +8,7 @@ timestamp="$(date -u +%Y%m%dT%H%M%SZ)"
 dest=".runtime/backups/$timestamp"
 mkdir -p "$dest"
 
-for path in identity relationship memory evolution function/skills; do
+for path in identity relationship memory evolution function/skills CORE.md JOURNEY.md .tsuzuri-instance.yaml; do
   if [[ -e "$path" ]]; then
     mkdir -p "$dest/$(dirname "$path")"
     cp -a "$path" "$dest/$path"
