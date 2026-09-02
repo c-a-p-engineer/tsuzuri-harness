@@ -24,6 +24,26 @@ function Copy-InstanceFile {
     Copy-Item -Path $Source -Destination $Destination -Force
 }
 
+$BirthAt = $null
+$BirthSource = $null
+if (Test-Path '.tsuzuri-instance.yaml') {
+    foreach ($Line in Get-Content '.tsuzuri-instance.yaml') {
+        if (-not $BirthAt -and $Line -match '^birth_at:\s*"(.+)"$') {
+            $BirthAt = $Matches[1]
+        }
+        if (-not $BirthSource -and $Line -match '^birth_source:\s*(.+)$') {
+            $BirthSource = $Matches[1]
+        }
+    }
+}
+if (-not $BirthAt) {
+    $BirthAt = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+    $BirthSource = 'instance_initialization'
+}
+if (-not $BirthSource) {
+    $BirthSource = 'preserved_existing_manifest'
+}
+
 Copy-InstanceFile 'templates/instance/identity/state.yaml' 'identity/state.yaml'
 Copy-InstanceFile 'templates/instance/relationship/state.yaml' 'relationship/state.yaml'
 Copy-InstanceFile 'templates/instance/memory/index.yaml' 'memory/index.yaml'
@@ -31,8 +51,6 @@ Copy-InstanceFile 'templates/instance/evolution/index.yaml' 'evolution/index.yam
 Copy-InstanceFile 'templates/instance/CORE.md' 'CORE.md'
 Copy-InstanceFile 'templates/instance/JOURNEY.md' 'JOURNEY.md'
 New-Item -ItemType Directory -Force -Path 'evolution/records' | Out-Null
-
-$BirthAt = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
 
 @"
 schema_version: 1
@@ -45,14 +63,14 @@ evolution_index: evolution/index.yaml
 core_view: CORE.md
 journey_view: JOURNEY.md
 birth_at: "$BirthAt"
-birth_source: instance_initialization
+birth_source: $BirthSource
 archive_mode: selective
 governance: kernel-default
 "@ | Set-Content -Path '.tsuzuri-instance.yaml' -Encoding utf8
 
 Write-Host 'Tsuzuri Harness instance initialized.'
 Write-Host ''
-Write-Host "Persistent birth recorded at: $BirthAt"
+Write-Host "Persistent birth: $BirthAt ($BirthSource)"
 Write-Host ''
 Write-Host 'Next steps:'
 Write-Host '  1. Prefer storing this personal instance in an independent private repository.'
