@@ -58,30 +58,45 @@
   overflow-wrap: normal;
 }
 
+.game-page .hero-wish {
+  max-width: 660px;
+  margin: 18px 0 0;
+  padding-left: 16px;
+  border-left: 3px solid rgba(45,166,90,.4);
+  color: #557060;
+  font-size: .92rem;
+  font-weight: 760;
+  line-height: 1.75;
+}
+
 .game-page .hero-demo {
   width: 100%;
   max-width: 920px;
   margin-inline: auto;
 }
 
-/* Friendly blank-AI mascot. This is a public demo guide, not canonical
-   appearance for user instances. Keep it readable and charming at small size. */
+/* --------------------------------------------------------------------------
+   Robot growth visual language
+   --------------------------------------------------------------------------
+   These robots are a public visual metaphor. They are not canonical avatars,
+   hidden personality scores, or guaranteed growth outcomes. */
+
 .game-page .ai-orb {
   width: 92px;
-  border-radius: 48% 52% 50% 50% / 47% 47% 53% 53%;
-  background: linear-gradient(145deg, #f5faf6, #c7d7ca);
+  border-radius: 46% 54% 50% 50% / 44% 44% 56% 56%;
+  background: linear-gradient(145deg, #edf7f0, #a9cdb3);
   box-shadow:
-    inset 0 0 0 4px rgba(255,255,255,.86),
-    inset 0 -8px 16px rgba(60, 92, 69, .08),
+    inset 0 0 0 4px rgba(255,255,255,.82),
+    inset 0 -8px 16px rgba(35, 94, 52, .10),
     0 16px 34px rgba(7, 21, 12, .18);
-  transform: rotate(-2deg);
+  transform: rotate(-1deg);
 }
 
 .game-page .ai-orb::before {
   inset: 16% 11% 22%;
-  border-radius: 46% 54% 50% 50% / 47% 47% 53% 53%;
+  border-radius: 44% 56% 49% 51% / 46% 46% 54% 54%;
   background:
-    radial-gradient(circle at 50% 20%, rgba(99, 255, 144, .08), transparent 44%),
+    radial-gradient(circle at 50% 18%, rgba(99, 255, 144, .08), transparent 44%),
     linear-gradient(160deg, #162019, #0b100d 75%);
   box-shadow:
     inset 0 7px 16px rgba(255,255,255,.055),
@@ -93,25 +108,25 @@
   position: absolute;
   z-index: 3;
   width: 22%;
-  height: 11%;
+  height: 10%;
   left: 20%;
   top: 12%;
   border-radius: 50%;
-  background: rgba(255,255,255,.5);
+  background: rgba(255,255,255,.48);
   filter: blur(.4px);
   transform: rotate(-18deg);
   pointer-events: none;
 }
 
 .game-page .ai-eyes {
-  gap: 21px;
-  transform: rotate(2deg) translateY(-4px);
+  gap: 19px;
+  transform: rotate(1deg) translateY(-4px);
 }
 
 .game-page .ai-eyes::before,
 .game-page .ai-eyes::after {
-  width: 12px;
-  height: 16px;
+  width: 10px;
+  height: 14px;
   background: linear-gradient(#ffffff 0 34%, #e4ffeb 35% 100%);
   box-shadow:
     0 0 12px rgba(179,255,202,.9),
@@ -120,11 +135,11 @@
 
 .game-page .ai-mouth {
   bottom: 25%;
-  width: 24px;
-  height: 11px;
-  border-bottom-width: 3px;
+  width: 21px;
+  height: 9px;
+  border-bottom-width: 2px;
   border-radius: 0 0 55% 55%;
-  transform: translateX(-50%) rotate(2deg);
+  transform: translateX(-50%) rotate(1deg);
 }
 
 .game-page .ai-mouth::before,
@@ -132,16 +147,66 @@
   content: "";
   position: absolute;
   top: 1px;
-  width: 10px;
-  height: 5px;
+  width: 9px;
+  height: 4px;
   border-radius: 50%;
-  background: rgba(255, 153, 177, .42);
+  background: rgba(255, 153, 177, .28);
   filter: blur(.3px);
 }
 
-.game-page .ai-mouth::before { left: -20px; }
-.game-page .ai-mouth::after { right: -20px; }
+.game-page .ai-mouth::before { left: -19px; }
+.game-page .ai-mouth::after { right: -19px; }
 
+/* Blank form: intentionally inorganic and emotionally neutral. */
+.game-page .ai-orb.blank-form {
+  width: 88px;
+  border-radius: 30% 30% 24% 24% / 26% 26% 30% 30%;
+  background: linear-gradient(150deg, #e5ebe7, #9ba7a0 68%, #78837c);
+  box-shadow:
+    inset 0 0 0 3px rgba(255,255,255,.62),
+    inset 0 -10px 18px rgba(26,37,30,.13),
+    0 14px 30px rgba(7,21,12,.20);
+  transform: none;
+}
+
+.game-page .ai-orb.blank-form::before {
+  inset: 20% 12% 24%;
+  border-radius: 18%;
+  background: linear-gradient(180deg, #111713, #080c09);
+  box-shadow: inset 0 0 0 1px rgba(174,200,181,.08);
+}
+
+.game-page .ai-orb.blank-form::after {
+  width: 34%;
+  height: 3px;
+  left: 33%;
+  top: 10%;
+  border-radius: 99px;
+  background: rgba(112,132,119,.72);
+  filter: none;
+  transform: none;
+}
+
+.game-page .blank-form .ai-eyes {
+  gap: 18px;
+  transform: translateY(-4px);
+}
+
+.game-page .blank-form .ai-eyes::before,
+.game-page .blank-form .ai-eyes::after {
+  width: 11px;
+  height: 5px;
+  border-radius: 3px;
+  background: #c8f6d4;
+  box-shadow: 0 0 8px rgba(142,235,169,.5);
+}
+
+.game-page .blank-form .ai-mouth {
+  display: none;
+}
+
+/* Forming state: warmer than Blank, but not yet one of the example branches. */
+.game-page .ai-orb.growing-form,
 .game-page .forming .ai-orb {
   background: linear-gradient(145deg, #eafff0, #71dc8e);
   box-shadow:
@@ -150,19 +215,160 @@
     0 16px 38px rgba(45,166,90,.25);
 }
 
-/* Connector direction follows actual layout. The HTML glyph is hidden by app.js
-   and this pseudo element supplies the visual arrow. */
-.game-page .branch-arrow {
-  font-size: 0;
+.game-page .branch-robot {
+  display: grid;
+  place-items: center;
+  min-height: 118px;
+  margin: 10px 0 14px;
 }
 
-.game-page .branch-arrow::before {
-  content: "↓";
-  display: block;
-  color: var(--accent);
-  font-size: 1.75rem;
-  font-weight: 950;
-  line-height: 1;
+/* Cool example: sharper shell, calm sensor-like eyes, cyan technical accent. */
+.game-page .branch-robot.cool-form .ai-orb {
+  width: 100px;
+  border-radius: 31% 31% 26% 26% / 28% 28% 34% 34%;
+  background: linear-gradient(145deg, #f4fbfb, #9fd6da 66%, #5caab1);
+  box-shadow:
+    inset 0 0 0 4px rgba(255,255,255,.78),
+    inset 0 -9px 18px rgba(38,105,116,.12),
+    0 18px 38px rgba(59,105,133,.23);
+  transform: rotate(-1deg);
+}
+
+.game-page .branch-robot.cool-form .ai-orb::before {
+  inset: 18% 10% 23%;
+  border-radius: 20%;
+  background: linear-gradient(160deg, #132127, #071013 78%);
+}
+
+.game-page .branch-robot.cool-form .ai-orb::after {
+  width: 34%;
+  height: 4px;
+  left: 33%;
+  top: 9%;
+  border-radius: 99px;
+  background: #84f1f4;
+  box-shadow: 0 0 12px rgba(91,226,233,.65);
+  filter: none;
+  transform: none;
+}
+
+.game-page .branch-robot.cool-form .ai-eyes {
+  gap: 18px;
+  transform: translateY(-5px);
+}
+
+.game-page .branch-robot.cool-form .ai-eyes::before,
+.game-page .branch-robot.cool-form .ai-eyes::after {
+  width: 15px;
+  height: 6px;
+  border-radius: 99px 99px 55% 55%;
+  background: #d9ffff;
+  box-shadow: 0 0 11px rgba(91,226,233,.9);
+}
+
+.game-page .branch-robot.cool-form .ai-mouth {
+  bottom: 26%;
+  width: 18px;
+  height: 2px;
+  border-bottom: 2px solid rgba(198,255,255,.72);
+  border-radius: 0;
+}
+
+.game-page .branch-robot.cool-form .ai-mouth::before,
+.game-page .branch-robot.cool-form .ai-mouth::after {
+  display: none;
+}
+
+/* Cute example: rounder shell, large expressive eyes, soft pink-violet accent. */
+.game-page .branch-robot.cute-form .ai-orb {
+  width: 100px;
+  border-radius: 50% 50% 47% 53% / 47% 47% 53% 53%;
+  background: linear-gradient(145deg, #fff8fc, #e8bedf 62%, #b892d4);
+  box-shadow:
+    inset 0 0 0 4px rgba(255,255,255,.86),
+    inset 0 -9px 18px rgba(120,63,126,.10),
+    0 18px 38px rgba(125,82,143,.20);
+  transform: rotate(1deg);
+}
+
+.game-page .branch-robot.cute-form .ai-orb::before {
+  inset: 15% 10% 21%;
+  border-radius: 48% 52% 50% 50%;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255,185,231,.08), transparent 44%),
+    linear-gradient(160deg, #251a28, #100b12 78%);
+}
+
+.game-page .branch-robot.cute-form .ai-orb::after {
+  width: 23%;
+  height: 10%;
+  left: 19%;
+  top: 11%;
+  background: rgba(255,255,255,.56);
+}
+
+.game-page .branch-robot.cute-form .ai-eyes {
+  gap: 22px;
+  transform: translateY(-5px);
+}
+
+.game-page .branch-robot.cute-form .ai-eyes::before,
+.game-page .branch-robot.cute-form .ai-eyes::after {
+  width: 14px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(#ffffff 0 30%, #ffe9fb 31% 100%);
+  box-shadow: 0 0 13px rgba(255,181,232,.88);
+}
+
+.game-page .branch-robot.cute-form .ai-mouth {
+  bottom: 24%;
+  width: 25px;
+  height: 11px;
+  border-bottom: 3px solid rgba(255,222,247,.86);
+}
+
+.game-page .branch-robot.cute-form .ai-mouth::before,
+.game-page .branch-robot.cute-form .ai-mouth::after {
+  width: 12px;
+  height: 6px;
+  background: rgba(255,139,187,.55);
+}
+
+/* --------------------------------------------------------------------------
+   Flow semantics without arrow glyphs
+   -------------------------------------------------------------------------- */
+
+.game-page .branch-arrow,
+.game-page .flow-arrow {
+  display: none !important;
+}
+
+.game-page .branch-source {
+  overflow: visible;
+}
+
+.game-page .branch-source::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  bottom: -15px;
+  width: 2px;
+  height: 15px;
+  transform: translateX(-50%);
+  border-radius: 99px;
+  background: linear-gradient(to bottom, rgba(45,166,90,.75), rgba(45,166,90,.12));
+  box-shadow: 0 0 14px rgba(45,166,90,.22);
+}
+
+.game-page .save-flow {
+  position: relative;
+}
+
+.game-page .flow-card {
+  position: relative;
+  z-index: 1;
 }
 
 /* Tablet / narrow desktop: keep the page spacious rather than forcing a
@@ -195,8 +401,8 @@
     min-height: 300px;
   }
 
-  /* Keep the branch source above the outcomes so the connector direction is
-     unambiguous. Outcomes can still benefit from tablet width side-by-side. */
+  /* Keep the branch source above the outcomes. A light connector line replaces
+     the previous arrow glyph. */
   .game-page .branch-stage {
     grid-template-columns: minmax(0, 1fr) !important;
     max-width: 920px;
@@ -205,10 +411,7 @@
 
   .game-page .branch-source {
     min-height: 180px;
-  }
-
-  .game-page .branch-arrow {
-    min-height: 48px;
+    margin-bottom: 12px;
   }
 
   .game-page .branch-outcomes {
@@ -228,17 +431,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* Four horizontal persistence cards are too cramped in this range. */
   .game-page .save-flow {
     grid-template-columns: minmax(0, 1fr) !important;
     max-width: 780px;
     margin-inline: auto;
-  }
-
-  .game-page .flow-arrow {
-    min-height: 30px;
-    min-width: 0;
-    transform: rotate(90deg);
   }
 
   .game-page .prompt-grid {
@@ -264,13 +460,13 @@
   }
 
   .game-page .hero h1 {
-    font-size: clamp(3.65rem, 4.65vw, 4.75rem);
-    line-height: .98;
-    letter-spacing: -.055em;
+    font-size: clamp(3.4rem, 4.3vw, 4.5rem);
+    line-height: .99;
+    letter-spacing: -.052em;
   }
 
   .game-page .hero h1 .hero-main {
-    max-width: 8.3em;
+    max-width: 9.6em;
   }
 
   .game-page .hero h1 .hero-sub {
@@ -285,11 +481,9 @@
     font-size: 1.08rem;
   }
 
-  .game-page .hero .actions {
-    max-width: 550px;
-  }
-
-  .game-page .hero-note {
+  .game-page .hero .actions,
+  .game-page .hero-note,
+  .game-page .hero-wish {
     max-width: 540px;
   }
 
@@ -324,11 +518,20 @@
   }
 
   .game-page .branch-stage {
-    grid-template-columns: 180px 44px minmax(0, 1fr) !important;
+    grid-template-columns: 190px minmax(0, 1fr) !important;
+    gap: 28px;
+    align-items: stretch;
   }
 
-  .game-page .branch-arrow::before {
-    content: "→";
+  .game-page .branch-source::after {
+    left: auto;
+    right: -28px;
+    top: 50%;
+    bottom: auto;
+    width: 28px;
+    height: 2px;
+    transform: translateY(-50%);
+    background: linear-gradient(to right, rgba(45,166,90,.75), rgba(45,166,90,.12));
   }
 
   .game-page .branch-outcomes {
@@ -349,12 +552,8 @@
   }
 
   .game-page .save-flow {
-    grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr) !important;
-  }
-
-  .game-page .flow-arrow {
-    min-width: 28px;
-    transform: none;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 18px;
   }
 
   .game-page .life-grid {
@@ -376,12 +575,12 @@
 /* Phones keep the vertical journey and avoid over-large headline wrapping. */
 @media (max-width: 640px) {
   .game-page .hero h1 {
-    font-size: clamp(2.55rem, 12vw, 4rem);
-    line-height: 1;
+    font-size: clamp(2.35rem, 11vw, 3.7rem);
+    line-height: 1.02;
   }
 
   .game-page .hero h1 .hero-main {
-    max-width: 9em;
+    max-width: 10em;
   }
 
   .game-page .hero-demo {
@@ -395,10 +594,13 @@
   .game-page .ai-orb {
     width: 88px;
   }
+
+  .game-page .branch-robot .ai-orb {
+    width: 94px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .game-page .flow-arrow,
   .game-page .ai-orb {
     transition: none;
   }
