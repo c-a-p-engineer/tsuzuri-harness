@@ -1,0 +1,171 @@
+schema_version: 1
+id: tsuzuri-harness-execution-provenance-event
+status: limited_live
+runtime_load: provenance_analysis_only
+purpose: >-
+  Portable host-observable event contract for comparing expected activation with actual
+  resource, tool, action, and validation evidence without storing chain-of-thought.
+
+canonical_record: event
+canonical_graph: false
+graph_projection: derived_on_demand
+
+required_fields:
+  - schema_version
+  - trace_id
+  - event_id
+  - actor
+  - operation
+  - result
+  - coverage
+
+fields:
+  trace_id:
+    type: string
+  event_id:
+    type: string
+  parent_event_id:
+    type: [string, null]
+    required: false
+  time:
+    type: [string, null]
+    format: iso8601_when_known
+    required: false
+  actor:
+    type: object
+    required:
+      - type
+      - id
+    properties:
+      type:
+        enum: [instance, user, tool, service, validator]
+      id:
+        type: string
+  operation:
+    type: object
+    required:
+      - type
+    properties:
+      type:
+        enum:
+          - task.start
+          - route.require
+          - resource.read
+          - memory.search
+          - tool.call
+          - tool.result
+          - claim
+          - decision
+          - action
+          - artifact
+          - validation
+          - task.complete
+  subject:
+    type: object
+    required: false
+    properties:
+      type:
+        type: [string, null]
+      ref:
+        type: [string, null]
+      revision:
+        type: [string, null]
+  reason:
+    type: object
+    required: false
+    properties:
+      code:
+        enum:
+          - required_by_router
+          - required_by_rule
+          - dependency_of
+          - explicit_user_request
+          - canonical_preflight
+          - investigate_uncertainty
+          - failure_diagnosis
+          - validation
+          - follow_up
+          - source_of_truth_check
+          - null
+      source_event_id:
+        type: [string, null]
+  result:
+    type: object
+    required:
+      - status
+    properties:
+      status:
+        enum: [success, partial, failed, blocked, unavailable, not_observed]
+      error_class:
+        type: [string, null]
+        required: false
+  coverage:
+    type: object
+    required:
+      - source
+    properties:
+      source:
+        enum: [host_observed, harness_expected, user_supplied, derived]
+      host:
+        type: [string, null]
+        required: false
+
+evidence:
+  states: [observed, asserted, verified, inferred, contradicted, stale, invalidated, unknown]
+  relations: [SUPPORTS, CONTRADICTS, DERIVED_FROM, USED_FOR]
+  rules:
+    - SUPPORTS means used as support, not that the source is objectively true.
+    - Missing evidence relation is evidence_link_missing before it is unsupported_decision.
+    - Stale revision requires impact recheck before declaring the resulting decision wrong.
+
+diagnosis:
+  candidate_classes:
+    - activation_failure
+    - retrieval_failure
+    - overactivation_failure
+    - stale_evidence
+    - evidence_link_missing
+    - validation_gap
+    - insufficient_observability
+  rules:
+    - Do not diagnose activation_failure when the host cannot observe the relevant read or retrieval event.
+    - Do not diagnose overactivation from an extra read alone; check exploration, contradiction search, safety, and decision linkage.
+    - Do not convert insufficient observability into failure.
+
+privacy:
+  reference_first: true
+  forbidden_persistent_content:
+    - credentials
+    - api_keys
+    - tokens
+    - cookies
+    - full_system_or_developer_prompts
+    - chain_of_thought
+    - latent_reasoning
+    - unnecessary_personal_information
+  raw_tool_arguments_default: do_not_persist
+  raw_tool_results_default: do_not_persist
+  preferred_evidence:
+    - resource_ref
+    - immutable_revision
+    - file_or_artifact_hash
+    - short_reason_code
+    - result_status
+    - minimal_redacted_excerpt_when_strictly_needed
+
+host_coverage:
+  policy: explicit_unknowns
+  rules:
+    - Host-specific observability may differ without changing portable harness semantics.
+    - Never infer telemetry a host does not expose.
+    - Internal context injection and latent reasoning are not assumed observable.
+    - Richer hosts may emit additional compatible events.
+
+storage:
+  raw_trace_default: task_scoped_or_ephemeral
+  commit_raw_trace_to_instance: false
+  promote_only:
+    - reusable_finding
+    - eval_case
+    - evolution_evidence
+    - canonical_rule_when_validated
