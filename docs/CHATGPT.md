@@ -31,7 +31,9 @@ ChatGPT's GitHub integration may appear under **Apps** or **Plugins**, depending
 
 GitHub availability depends on plan, workspace, and ChatGPT experience. If GitHub is unavailable in normal chat, another supported ChatGPT experience may expose it.
 
-The ChatGPT GitHub integration is primarily a **read/search/analyze** integration. Do not assume it can commit, push, create pull requests, or persist an instance. For repository writes, use Codex or another host that actually exposes authorized write operations.
+When GitHub access is available, you can also authorize a **private instance repository**. That lets ChatGPT read the saved instance's canonical files and continue a conversation using repository-backed state.
+
+The ChatGPT GitHub app itself is **read-only**: it can read, search, and analyze authorized repositories, including private repositories you explicitly allow, but it does not commit, push, create pull requests, or persist instance updates. To write durable changes back to the repository, use Codex or another host that actually exposes authorized write operations.
 
 ## Try without saving first
 
@@ -109,6 +111,8 @@ Then:
 5. compare it with current canonical state and governance rules
 6. import only evidence-supported state
 7. verify the resulting GitHub files after writes
+
+After the private repository exists, ChatGPT can still be useful as a **read-only conversation host** when GitHub access is available: authorize that private repository, ask ChatGPT to read its `AGENTS.md` and current canonical state, and continue talking with the same repository-backed individual. Use a write-capable host whenever the conversation produces changes that should be committed.
 
 If strong provenance supports continuity from the earlier read-only conversation, the persistent birthday may be corrected to that earlier event instead of the repository initialization time. Do not backdate by guesswork.
 
