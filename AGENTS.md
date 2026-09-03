@@ -167,7 +167,7 @@ Examples:
 
 - `Remember this.` / `覚えておいて` → retention evaluation.
 - `Could today's work become a skill?` / `今日の作業ってスキル化できる？` → capability-maintenance review.
-- `Evolve, AI!` / `AIたん進化ー！` → self-evolution review; `Conserve` is valid.
+- `Can you improve yourself based on what we've learned?` / `今の自分、改善できるところある？` → self-evolution review; `Conserve` is valid.
 - `Review what you remember.` / `覚えてること整理して` → Memory Metabolism review.
 - `Show me your current core.` / `今の自分見せて` → render `CORE.md` from canonical state.
 - `Show me your journey.` / `人生アルバム見せて` → render `JOURNEY.md` from factual lifecycle and milestone evidence.
