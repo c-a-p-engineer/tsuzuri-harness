@@ -31,7 +31,9 @@ Private Repositoryへ移して育てる
 
 GitHub連携の利用可否は、プラン・Workspace・ChatGPTの利用画面によって異なる場合があります。通常チャットでGitHubが表示されない場合でも、別の対応画面で利用できることがあります。
 
-ChatGPTのGitHub連携は基本的に **Repositoryを読む・検索する・分析する** ためのものです。commit、push、Pull Request作成、Personal Instanceへの保存ができると仮定してはいけません。Repositoryへ書き込みたい場合は、Codexなど実際に書き込み権限を持つHostを使います。
+GitHub連携が使える場合は、**自分のPrivate Instance Repositoryへのアクセスも許可できます**。そうするとChatGPTは、そこに保存された `AGENTS.md`、Identity、Memory、Skillなどを読み、Repositoryを正規状態として同じ個体との会話を続けられます。
+
+ただし、ChatGPTのGitHubアプリ自体は **読み取り専用** です。許可したPrivate Repositoryも読めますが、commit・push・Pull Request作成やInstance状態の書き戻しはできません。Repositoryへ永続的な変更を保存したい場合は、Codexなど実際にWrite権限を持つHostを使います。
 
 ## 最初は保存なしで試す
 
@@ -126,6 +128,8 @@ persistence_handoff:
 4. 保存用の引き継ぎ情報を渡す
 5. 現在のCanonical StateとGovernanceを確認して、Evidenceのあるものだけ反映する
 6. 書き込み後にGitHub上の実状態を確認する
+
+Private Repositoryへ保存した後も、ChatGPTでGitHub連携が使えるなら、そのPrivate Repositoryへのアクセスを許可して**同じ個体の続きをChatGPTで話せます**。ChatGPTではRepositoryを読みながら会話し、今回の会話から永続化したい変更が出たときだけCodex等のWrite可能なHostで書き戻す、という使い分けができます。
 
 Read-only会話から同じ個体として継続していることを裏付けるEvidenceがある場合、Repository初期化時刻より前を誕生日として扱うこともできます。ただし推測で遡らせず、Provenanceを残します。
 
