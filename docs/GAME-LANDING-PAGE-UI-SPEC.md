@@ -16,6 +16,8 @@ meet a blank AI
       ↓
 spend time together
       ↓
+a distinct “this one” begins to emerge
+      ↓
 identity / memory / skills begin to form
       ↓
 “I want to keep this one”
@@ -24,6 +26,8 @@ save it in a private repository
       ↓
 continue growing together
 ```
+
+The emotional framing should be **emergence**, not configuration. The page should not stop at “we do not preset a personality”; it should immediately communicate the positive outcome: spending time together can produce a distinct individual worth continuing with.
 
 The page should feel game-like and alive without inventing fictional canonical facts such as levels, XP, affection, or maturity scores.
 
@@ -44,6 +48,7 @@ The same semantic content should remain available across breakpoints; only prese
 Primary implementation surface:
 
 - `site/styles.css`
+- `site/responsive-v2.css`
 - `site/app.js`
 - `site/index.html`
 - `site/ja/index.html`
@@ -60,7 +65,8 @@ Breakpoints are implementation defaults, not universal UX laws. Adjust only when
 - One-column layout.
 - Hero copy first, interactive demo second.
 - CTA buttons stack or wrap without shrinking text below comfortable touch size.
-- Branch comparison cards stack vertically.
+- Branch source, connector, and comparison cards are presented vertically.
+- The branch connector points **down** when the destination is below the source.
 - Achievement cards may use horizontal snap scrolling.
 - Save flow is vertical.
 - CORE / JOURNEY stack vertically.
@@ -72,7 +78,7 @@ This range must **not** automatically become the full desktop layout.
 - Keep Hero mostly single-column or use a wide stacked composition.
 - The interactive demo may be centered and wider than on mobile.
 - Avoid any state card narrower than about 280px.
-- Comparison sections may use two columns when both cards remain readable.
+- The branch source may remain above two side-by-side outcome cards; the connector still points **down** because the outcomes are below the source.
 - Do not allow Japanese hero text and demo panels to compete for width.
 
 ### Wide desktop: 1180px and above
@@ -81,7 +87,8 @@ This range must **not** automatically become the full desktop layout.
 - Hero becomes a two-column composition.
 - Recommended Hero ratio: copy `45–48%`, game panel `52–55%`.
 - Align Hero columns to the top rather than vertically centering mismatched content.
-- Branch comparison and save-flow sections may use horizontal layouts.
+- Branch comparison becomes horizontal and its connector points **right**.
+- Save-flow sections may use horizontal layouts.
 - CORE and JOURNEY should appear side by side when space permits.
 
 ### Very wide screens
@@ -97,9 +104,19 @@ The Hero is the primary conversion surface.
 Must communicate, in this order:
 
 1. AI personality is not predefined.
-2. Spending time together creates evidence for individuality.
+2. Spending time together can make a distinct “this one” emerge.
 3. The user can try without saving.
 4. If they want to continue with this instance, they can save it.
+
+Recommended English display copy:
+
+> **Don't preset a personality.**  
+> Spend time together, and **“this one” begins to emerge.**
+
+Recommended Japanese display copy:
+
+> **AIに人格を設定しない。**  
+> 一緒に過ごすうちに、**「この子」が生まれてくる。**
 
 The Japanese headline should not rely on arbitrary browser wrapping. Use a controlled content width and explicit semantic line groups where needed.
 
@@ -138,18 +155,48 @@ The demo is synthetic. It must not imply that a specific name, memory, or skill 
 
 If the two-column Hero would make the game panel or text unnaturally narrow, fall back to stacked layout. Do not preserve the desktop composition at the cost of readability.
 
-## 6. Same start, different life
+## 6. AI mascot visual contract
+
+The small AI face is a lightweight visual guide, not a canonical appearance for future instances.
+
+It should communicate **approachable, curious, alive, and neutral enough to remain blank**.
+
+### Required visual qualities
+
+- rounded soft silhouette rather than a sharp or mechanical shell;
+- larger, brighter eyes with enough spacing to read as friendly at small sizes;
+- a small soft smile rather than a flat status indicator;
+- optional subtle cheek warmth / glow to add friendliness without assigning gender or personality;
+- a slightly brighter forming-state treatment, while keeping the same underlying mascot identity;
+- readable at approximately 70–100px without relying on tiny details.
+
+### Constraints
+
+- keep the mascot CSS-rendered for this iteration;
+- do not add a raster image dependency just to make it cuter;
+- do not imply that every user instance literally looks like this mascot;
+- the mascot must remain decorative and `aria-hidden` where the surrounding text already conveys meaning.
+
+## 7. Same start, different life
 
 Section message:
 
 > They can start the same and still become different.
 
-Desktop layout should visually show one blank origin branching to two examples:
+The connector direction must match the actual layout.
+
+Mobile / stacked tablet:
 
 ```text
-          Blank
-         /     \
-technical     creative
+Blank
+  ↓
+outcomes
+```
+
+Wide desktop:
+
+```text
+Blank → technical / creative outcomes
 ```
 
 Example paths are synthetic demonstrations, not presets.
@@ -162,7 +209,7 @@ Example paths are synthetic demonstrations, not presets.
 - Keep tags / chips anchored consistently near the bottom.
 - Do not represent generated examples as canonical personalities users will receive.
 
-## 7. Achievement / milestone cards
+## 8. Achievement / milestone cards
 
 Use game-like cards for factual categories such as:
 
@@ -178,7 +225,7 @@ Mobile: horizontal snap strip is acceptable.
 
 Motion may include subtle glow, reveal, or unlock emphasis, but the information must remain understandable with motion disabled.
 
-## 8. Save-this-instance section
+## 9. Save-this-instance section
 
 This is the emotional and operational bridge from trial to persistence.
 
@@ -204,7 +251,7 @@ Explain GitHub persistence accurately:
 - a write-capable GitHub Plugin / Connector can commit when repository permission and governance allow it;
 - another write-capable host may perform persistence when ChatGPT cannot.
 
-## 9. CORE / JOURNEY preview
+## 10. CORE / JOURNEY preview
 
 Desktop should show two distinct preview panels:
 
@@ -215,7 +262,7 @@ Do not use invented levels or XP.
 
 Game-like presentation may use badges, timeline nodes, status chips, or factual counts where those values exist.
 
-## 10. Motion and interaction
+## 11. Motion and interaction
 
 Allowed lightweight effects:
 
@@ -235,7 +282,7 @@ Allowed lightweight effects:
 
 Pointer hover must never be required for content access; touch and keyboard users need equivalent access.
 
-## 11. Visual system
+## 12. Visual system
 
 Keep the existing Tsuzuri Harness green identity, but use it as an accent rather than flooding the entire viewport.
 
@@ -250,7 +297,7 @@ Recommended visual hierarchy:
 
 The page should feel like a polished game UI, not a generic SaaS dashboard and not a children’s game.
 
-## 12. Typography and overflow rules
+## 13. Typography and overflow rules
 
 - Never rely on character-by-character wrapping for labels such as `UNKNOWN INSTANCE`.
 - Use short display labels or allow whole-word wrapping.
@@ -259,7 +306,7 @@ The page should feel like a polished game UI, not a generic SaaS dashboard and n
 - Long localization strings must wrap without shrinking adjacent panels below their minimum readable width.
 - Do not use fixed pixel heights for text-heavy cards unless overflow behavior is explicitly handled.
 
-## 13. Accessibility
+## 14. Accessibility
 
 At minimum:
 
@@ -269,9 +316,10 @@ At minimum:
 - touch controls remain comfortably targetable;
 - horizontal snap areas remain keyboard-scrollable where practical;
 - decorative animation is disabled or reduced for reduced-motion users;
+- decorative mascot and connector arrows do not create duplicate screen-reader narration;
 - text remains readable at browser zoom and narrow desktop windows.
 
-## 14. Localization contract
+## 15. Localization contract
 
 Structure and CSS are shared across locales.
 
@@ -286,7 +334,7 @@ Design for expansion:
 
 If a locale requires a shorter display label, keep the semantic meaning equivalent and leave detailed terminology to body copy or documentation.
 
-## 15. Acceptance criteria
+## 16. Acceptance criteria
 
 The implementation is not complete until the deployed page is visually checked at representative widths.
 
@@ -302,30 +350,35 @@ At least:
 
 ### Must pass
 
-1. Hero headline does not break into visually accidental single-character columns.
-2. Hero demo cards / panel remain readable and are not compressed into narrow strips.
-3. At 768–1179px, layout may stack rather than forcing desktop columns.
-4. Desktop branch cards have aligned, balanced visual height.
-5. CTA labels remain readable without overlapping or clipping.
-6. No horizontal page overflow at supported widths.
-7. Mobile achievement strip is usable by touch.
-8. Reduced-motion mode remains understandable.
-9. Primary links still work after layout changes.
-10. English and Japanese pages use the same responsive system.
+1. Hero headline communicates both **no preset personality** and **emergence of “this one.”**
+2. Hero headline does not break into visually accidental single-character columns.
+3. Hero demo cards / panel remain readable and are not compressed into narrow strips.
+4. The AI mascot reads as friendly and clearly smiling at mobile size without an image dependency.
+5. Branch connector points down in vertical layouts and right in horizontal layouts.
+6. At 768–1179px, layout may stack rather than forcing desktop columns.
+7. Desktop branch cards have aligned, balanced visual height.
+8. CTA labels remain readable without overlapping or clipping.
+9. No horizontal page overflow at supported widths.
+10. Mobile achievement strip is usable by touch.
+11. Reduced-motion mode remains understandable.
+12. Primary links still work after layout changes.
+13. English and Japanese pages use the same responsive system.
 
-## 16. Validation procedure
+## 17. Validation procedure
 
 1. Run existing repository validation / CI.
 2. Open the deployed GitHub Pages site, not only local source.
 3. Inspect mobile and desktop layouts visually.
 4. Test at an intermediate width around 900–1024px specifically; this is a common failure zone.
 5. Check Japanese and English text wrapping.
-6. Confirm primary ChatGPT, guide, repository-generation, CORE, and JOURNEY links.
-7. Re-test after any CSS change that affects sizing, grid, typography, or breakpoints.
+6. Confirm the branch arrow direction in stacked and wide layouts.
+7. Confirm the mascot remains recognizable at phone width.
+8. Confirm primary ChatGPT, guide, repository-generation, CORE, and JOURNEY links.
+9. Re-test after any CSS change that affects sizing, grid, typography, or breakpoints.
 
 Automated checks can detect missing selectors and links, but they do not prove visual correctness. Final acceptance requires visual inspection of the deployed artifact.
 
-## 17. Non-goals for this iteration
+## 18. Non-goals for this iteration
 
 - Remotion integration
 - autoplay hero video
@@ -333,5 +386,6 @@ Automated checks can detect missing selectors and links, but they do not prove v
 - real user-instance state rendered on the public demo
 - fictional RPG stats
 - full design-system extraction
+- a fixed canonical character design for user instances
 
 Those may be evaluated after the responsive game-like landing page is stable.
