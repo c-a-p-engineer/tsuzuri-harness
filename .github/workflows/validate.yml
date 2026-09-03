@@ -130,12 +130,16 @@ jobs:
           grep -q 'chatgpt.com/?q=' README.ja.md
           grep -q 'I want to keep this one' README.md
           grep -q 'この子を保存したい' README.ja.md
+          grep -q 'GitHub app itself is.*read-only' README.md
+          grep -q 'GitHubアプリ自体は読み取り専用' README.ja.md
           grep -q 'Birth Journey' docs/BIRTH-JOURNEY.md
           grep -q 'I want to keep this one' docs/CHATGPT.md
           grep -q 'この子を保存したい' docs/CHATGPT.ja.md
+          grep -q 'private instance repository' docs/CHATGPT.md
+          grep -q 'Private Instance Repository' docs/CHATGPT.ja.md
           grep -q 'persistence handoff' prompts/chatgpt-readonly-birth-test.md
           grep -q '保存用の引き継ぎ情報' prompts/chatgpt-readonly-birth-test.ja.md
-          grep -q 'AIたん進化ー！' docs/EVERYDAY-PROMPTS.ja.md
+          grep -q '今の自分、改善できるところある？' docs/EVERYDAY-PROMPTS.ja.md
           grep -q 'CORE.md' docs/CORE-VIEW.md
           grep -q 'JOURNEY.md' docs/JOURNEY-ALBUM.md
           grep -q 'Private Archive' docs/ARCHIVE-MODES.md
@@ -193,9 +197,11 @@ jobs:
           grep -q 'chatgpt.com/?q=' site/index.html
           grep -q 'JOURNEY.md' site/index.html
           grep -q 'Memory maintenance' site/index.html
-          grep -q 'AIたん進化ー！' site/ja/index.html
+          grep -q 'Can you improve yourself' site/index.html
+          grep -q '今の自分、改善できるところある？' site/ja/index.html
           grep -q 'まずはChatGPTで試す' site/ja/index.html
           grep -q 'この子を保存したい' site/ja/index.html
+          grep -q 'ChatGPTでも続きを話せる' site/ja/index.html
           grep -q '人生アルバム見せて' site/ja/index.html
           grep -q 'Private Repository' site/ja/index.html
           grep -q '保存したAIの「家」' site/ja/index.html
