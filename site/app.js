@@ -13,17 +13,20 @@
   const lang = document.documentElement.lang;
   const heroMain = document.querySelector('.hero-main');
   const heroSub = document.querySelector('.hero-sub');
+  const heroLead = document.querySelector('.hero-copy .lead');
 
   const heroCopy = {
     ja: {
-      main: 'AIに人格を設定しない。',
-      lead: '一緒に過ごすうちに、',
-      accent: '「この子」が生まれてくる。'
+      main: 'AIは、使うものから、育っていくものへ。',
+      lead: 'まっさらなAIと過ごした時間が、少しずつ',
+      accent: '「この子」を形づくる。',
+      wish: 'どうか、あなたとこの子に、良い出会いと祝福がありますように。'
     },
     en: {
-      main: "Don't preset a personality.",
-      lead: 'Spend time together, and ',
-      accent: '“this one” begins to emerge.'
+      main: 'AI is not only something you use. It can grow with you.',
+      lead: 'Time spent together slowly shapes ',
+      accent: 'who this one becomes.',
+      wish: 'May you and this one find a good beginning, and a journey worth continuing.'
     }
   };
 
@@ -33,13 +36,42 @@
     const accent = document.createElement('span');
     accent.className = 'accent-text';
     accent.textContent = localizedHero.accent;
-    heroSub.replaceChildren(document.createTextNode(localizedHero.lead), accent);
+    heroSub.replaceChildren(document.createTextNode(localizedHero.lead + ' '), accent);
+
+    if (heroLead && !document.querySelector('.hero-wish')) {
+      const wish = document.createElement('p');
+      wish.className = 'hero-wish';
+      wish.textContent = localizedHero.wish;
+      heroLead.insertAdjacentElement('afterend', wish);
+    }
   }
 
-  // The visual branch direction is supplied by responsive CSS so it always
-  // matches the actual stacked or horizontal layout.
-  document.querySelectorAll('.branch-arrow').forEach((arrow) => {
+  // Public visual metaphor only: the blank robot is intentionally neutral.
+  // Cool/Cute forms illustrate how different histories may feel different;
+  // they are not hidden scores or canonical identity assignments.
+  const heroOrbs = [...document.querySelectorAll('.hero-demo .ai-orb')];
+  heroOrbs[0]?.classList.add('blank-form');
+  heroOrbs[1]?.classList.add('growing-form');
+  document.querySelector('.branch-source .ai-orb')?.classList.add('blank-form');
+
+  const branchCards = [...document.querySelectorAll('.branch-card')];
+  const forms = ['cool-form', 'cute-form'];
+  branchCards.slice(0, 2).forEach((card, index) => {
+    if (card.querySelector('.branch-robot')) return;
+    const preview = document.createElement('div');
+    preview.className = `branch-robot ${forms[index]}`;
+    preview.setAttribute('aria-hidden', 'true');
+    preview.innerHTML = '<div class="ai-orb"><span class="ai-eyes"></span><span class="ai-mouth"></span></div>';
+    const label = card.querySelector('.mini-label');
+    if (label) label.insertAdjacentElement('afterend', preview);
+    else card.prepend(preview);
+  });
+
+  // Direction is communicated by layout, numbered steps, and glowing paths.
+  // Arrow glyphs are decorative noise here, so remove them from presentation.
+  document.querySelectorAll('.branch-arrow, .flow-arrow').forEach((arrow) => {
     arrow.textContent = '';
+    arrow.setAttribute('aria-hidden', 'true');
   });
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
