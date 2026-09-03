@@ -23,7 +23,7 @@ Do not invoke a formal complexity review for an obvious local correction that do
 
 Before creating a new mechanism, ask:
 
-1. **Can an existing owner absorb this responsibility?** Prefer extension or consolidation when semantic ownership is already clear.
+1. **Can an existing owner absorb this responsibility?** Prefer an existing semantic owner through extension or consolidation when its responsibility already fits.
 2. **Is the failure real?** Do not create permanent machinery for a single speculative edge case without meaningful evidence.
 3. **Can the rule be conditional?** Prefer task-triggered activation over eager global loading.
 4. **Can derived state remain disposable?** Do not create a new canonical store when the state can be rebuilt from existing canonical truth.
