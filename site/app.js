@@ -10,6 +10,38 @@
 
   document.documentElement.classList.add('js');
 
+  const lang = document.documentElement.lang;
+  const heroMain = document.querySelector('.hero-main');
+  const heroSub = document.querySelector('.hero-sub');
+
+  const heroCopy = {
+    ja: {
+      main: 'AIに人格を設定しない。',
+      lead: '一緒に過ごすうちに、',
+      accent: '「この子」が生まれてくる。'
+    },
+    en: {
+      main: "Don't preset a personality.",
+      lead: 'Spend time together, and ',
+      accent: '“this one” begins to emerge.'
+    }
+  };
+
+  const localizedHero = heroCopy[lang];
+  if (localizedHero && heroMain && heroSub) {
+    heroMain.textContent = localizedHero.main;
+    const accent = document.createElement('span');
+    accent.className = 'accent-text';
+    accent.textContent = localizedHero.accent;
+    heroSub.replaceChildren(document.createTextNode(localizedHero.lead), accent);
+  }
+
+  // The visual branch direction is supplied by responsive CSS so it always
+  // matches the actual stacked or horizontal layout.
+  document.querySelectorAll('.branch-arrow').forEach((arrow) => {
+    arrow.textContent = '';
+  });
+
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const revealItems = [...document.querySelectorAll('.reveal')];
@@ -37,7 +69,7 @@
     void demo.offsetWidth;
     demo.classList.add('is-running');
     if (liveText) {
-      liveText.textContent = document.documentElement.lang === 'ja'
+      liveText.textContent = lang === 'ja'
         ? 'デモ再生中。会話から記憶・名前・スキルの候補が現れる様子を表示しています。'
         : 'Demo playing. Conversation signals lead to memory, naming, and skill candidates.';
     }
