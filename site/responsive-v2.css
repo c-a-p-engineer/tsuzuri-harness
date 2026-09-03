@@ -1,0 +1,249 @@
+/* Responsive game landing page corrections.
+   Canonical design contract: docs/GAME-LANDING-PAGE-UI-SPEC.md */
+
+/* Prevent grid/flex intrinsic sizing from creating narrow overflow columns. */
+.game-page .hero,
+.game-page .hero-copy,
+.game-page .hero-demo,
+.game-page .instance-card,
+.game-page .instance-body,
+.game-page .branch-stage,
+.game-page .branch-outcomes,
+.game-page .branch-card,
+.game-page .achievement-card,
+.game-page .flow-card,
+.game-page .life-panel,
+.game-page .prompt-chip {
+  min-width: 0;
+}
+
+/* Generic heading wrapping is intentionally aggressive in the base sheet.
+   Status labels are UI labels, so keep whole words instead of breaking letters. */
+.game-page .instance-title,
+.game-page .demo-label,
+.game-page .status-pill,
+.game-page .unlock,
+.game-page .mini-label,
+.game-page .tag,
+.game-page .unlock-badge {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.game-page .instance-title {
+  max-width: 72%;
+  line-height: 1.15;
+}
+
+/* Mobile and narrow desktop share the same semantic order.
+   The hero does not become two columns until enough width exists for both
+   readable copy and a useful game panel. */
+.game-page .hero {
+  grid-template-columns: minmax(0, 1fr) !important;
+  align-items: start;
+}
+
+.game-page .hero-copy {
+  width: 100%;
+  max-width: 780px;
+}
+
+.game-page .hero h1 {
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+.game-page .hero h1 .hero-main,
+.game-page .hero h1 .hero-sub {
+  overflow-wrap: normal;
+}
+
+.game-page .hero-demo {
+  width: 100%;
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+/* Tablet / narrow desktop: keep the page spacious rather than forcing a
+   desktop composition into a window that cannot support it. */
+@media (min-width: 760px) and (max-width: 1179px) {
+  .game-page .hero {
+    gap: 34px;
+    padding: 64px 0 76px;
+  }
+
+  .game-page .hero-copy {
+    max-width: 820px;
+  }
+
+  .game-page .hero h1 {
+    font-size: clamp(3.5rem, 7vw, 5.15rem);
+    line-height: 1;
+    letter-spacing: -.055em;
+  }
+
+  .game-page .hero h1 .hero-sub {
+    max-width: 760px;
+  }
+
+  .game-page .hero-demo {
+    grid-template-columns: minmax(240px, 1fr) minmax(96px, 118px) minmax(240px, 1fr);
+  }
+
+  .game-page .instance-card {
+    min-height: 300px;
+  }
+
+  .game-page .achievement-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Four horizontal persistence cards are too cramped in this range. */
+  .game-page .save-flow {
+    grid-template-columns: minmax(0, 1fr) !important;
+    max-width: 780px;
+    margin-inline: auto;
+  }
+
+  .game-page .flow-arrow {
+    min-height: 30px;
+    min-width: 0;
+    transform: rotate(90deg);
+  }
+
+  .game-page .prompt-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Wide desktop: now there is enough room for a true game-screen composition. */
+@media (min-width: 1180px) {
+  :root {
+    --max: 1220px;
+  }
+
+  .game-page .hero {
+    grid-template-columns: minmax(0, .46fr) minmax(0, .54fr) !important;
+    gap: clamp(42px, 4vw, 64px);
+    align-items: start;
+    padding: 82px 0 92px;
+  }
+
+  .game-page .hero-copy {
+    max-width: 550px;
+  }
+
+  .game-page .hero h1 {
+    font-size: clamp(3.65rem, 4.65vw, 4.75rem);
+    line-height: .98;
+    letter-spacing: -.055em;
+  }
+
+  .game-page .hero h1 .hero-main {
+    max-width: 8.3em;
+  }
+
+  .game-page .hero h1 .hero-sub {
+    max-width: 13em;
+    margin-top: 18px;
+    font-size: .48em;
+    line-height: 1.2;
+  }
+
+  .game-page .hero .lead {
+    max-width: 540px;
+    font-size: 1.08rem;
+  }
+
+  .game-page .hero .actions {
+    max-width: 550px;
+  }
+
+  .game-page .hero-note {
+    max-width: 540px;
+  }
+
+  /* The demo remains one coherent outer game panel. Its inner states may sit
+     side-by-side because the whole panel now has sufficient width. */
+  .game-page .hero-demo {
+    width: 100%;
+    max-width: none;
+    grid-template-columns: minmax(220px, 1fr) minmax(88px, 104px) minmax(220px, 1fr);
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .game-page .instance-card {
+    min-height: 348px;
+    padding: 20px;
+  }
+
+  .game-page .instance-body {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .game-page .conversation-stack {
+    width: 104px;
+  }
+
+  .game-page .conversation-chip {
+    max-width: 104px;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .game-page .achievement-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .game-page .save-flow {
+    grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr) !important;
+  }
+
+  .game-page .flow-arrow {
+    min-width: 28px;
+    transform: none;
+  }
+
+  .game-page .life-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .game-page .prompt-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Very wide screens should gain breathing room, not infinitely wider cards. */
+@media (min-width: 1540px) {
+  .game-page .wrap {
+    width: min(100% - 64px, var(--max));
+  }
+}
+
+/* Phones keep the vertical journey and avoid over-large headline wrapping. */
+@media (max-width: 640px) {
+  .game-page .hero h1 {
+    font-size: clamp(2.55rem, 12vw, 4rem);
+    line-height: 1;
+  }
+
+  .game-page .hero h1 .hero-main {
+    max-width: 9em;
+  }
+
+  .game-page .hero-demo {
+    max-width: 560px;
+  }
+
+  .game-page .instance-title {
+    max-width: 68%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-page .flow-arrow {
+    transition: none;
+  }
+}
