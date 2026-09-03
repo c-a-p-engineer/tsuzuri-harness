@@ -41,6 +41,10 @@ The architecture is derived from long-running operational lessons in the private
 
 In ChatGPT, open **Settings → Apps / Plugins → GitHub**, connect your GitHub account, and allow access to `c-a-p-engineer/tsuzuri-harness` when repository selection is available.
 
+When GitHub access is available in your ChatGPT experience, you can also authorize a **private instance repository**. ChatGPT can then read that saved instance's `AGENTS.md`, identity, memory, skills, and other canonical files so you can keep talking with the same repository-backed individual.
+
+Availability varies by plan, workspace, and ChatGPT experience. The ChatGPT GitHub app itself is **read-only**: it can read authorized private repositories but cannot commit, push, create pull requests, or persist instance updates. Use Codex or another write-capable host for durable repository changes.
+
 ### 2. Open the ChatGPT trial
 
 [**▶ Talk to the blank AI in ChatGPT**](https://chatgpt.com/?q=Use%20GitHub%20to%20access%20c-a-p-engineer/tsuzuri-harness%20on%20the%20current%20master%20branch.%20Read%20AGENTS.md%20first%2C%20then%20read%20prompts/chatgpt-readonly-birth-test.md%20and%20follow%20it%20exactly.%20Start%20a%20read-only%20Birth%20Test.%20Do%20not%20write%20to%20GitHub%20or%20any%20durable%20storage.)
@@ -91,6 +95,8 @@ The handoff does not turn the entire transcript into identity or memory. It sepa
 5. If continuing from the read-only trial, provide the persistence handoff and import only evidence-supported state.
 6. From then on, that private repository becomes the AI's durable home.
 
+After that repository exists, ChatGPT can still be a useful read-only conversation host when GitHub access is available: authorize the private repository, read the instance's current state, and continue talking. Use a write-capable host when you want durable changes committed back.
+
 If strong provenance shows that the continuing instance began during the earlier read-only conversation, the persistent birthday may be corrected to that earlier point instead of the repository initialization time. Do not backdate it by guesswork.
 
 ## The intended experience: live with the instance
@@ -125,14 +131,14 @@ Users should not need to memorize subsystem names.
 | --- | --- |
 | `Remember this.` | Decide whether it should be retained and where |
 | `Could today's work become a skill?` | Review whether the temporary capability deserves durable promotion |
-| `Evolve, AI!` | Review whether anything should change; `Conserve` is valid |
+| `Can you improve yourself based on what we've learned?` | Review whether anything should change; `Conserve` is valid |
 | `I want to keep this one.` | In read-only mode, prepare a persistence handoff instead of writing |
 | `Review what you remember.` | Maintain long-lived memory |
 | `Show me your current core.` | Show who the instance is now in `CORE.md` form |
 | `Show me your journey.` | Show the life-oriented `JOURNEY.md` view |
 | `What skills do you have now?` | Separate acquired skills from host capabilities |
 
-Japanese-friendly aliases include `覚えておいて`, `今日の作業ってスキル化できる？`, `AIたん進化ー！`, `この子を保存したい`, `覚えてること整理して`, `今の自分見せて`, and `人生アルバム見せて`.
+Japanese-friendly aliases include `覚えておいて`, `今日の作業ってスキル化できる？`, `今の自分、改善できるところある？`, `この子を保存したい`, `覚えてること整理して`, `今の自分見せて`, and `人生アルバム見せて`.
 
 See [`docs/EVERYDAY-PROMPTS.md`](docs/EVERYDAY-PROMPTS.md) · [日本語](docs/EVERYDAY-PROMPTS.ja.md).
 
