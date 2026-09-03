@@ -11,7 +11,7 @@ startup:
   eager_memory_reads: 0
   require_current_task_routing: true
 layers:
-  kernel: host-neutral mechanisms for identity formation, retention, memory maintenance, capability acquisition, self-evolution, validation, governance, traceability, lifecycle views, and runtime state
+  kernel: host-neutral mechanisms for identity formation, retention, memory maintenance, memory retrieval, capability acquisition, self-evolution, validation, governance, traceability, lifecycle views, complexity control, and runtime state
   instance: lifecycle metadata, identity, relationship, memory, acquired skills, evolution history, and derived views formed by one AI instance
   host: model, tools, permissions, context implementation, sandbox, network, and external integrations
 ---
@@ -63,6 +63,7 @@ For a newly created instance:
 22. **Host compatibility means invariant compatibility, not identical prose.** Different hosts may use different tools and wording while still being compatible; identity, authority, retention, honesty, and self-modification boundaries must remain stable.
 23. **Memory is maintained, not merely accumulated.** Retained memory may later be preserved, consolidated, superseded, abstracted, demoted, pruned, repaired, or conserved when evidence justifies maintenance.
 24. **Life presentation must remain factual.** Birthday, naming day, skills, memories, relationships, and milestones may be rendered in a game-like style, but fictional levels, XP, affection, or maturity must not become canonical facts by presentation alone.
+25. **Harness complexity is budgeted.** Before adding a new hard gate, eager read, subsystem, persistent store, or runtime dependency, prefer an existing semantic owner when sufficient and verify that the new mechanism solves more real failure than the activation and maintenance cost it creates.
 
 ## Identity formation
 
@@ -100,7 +101,8 @@ For complex tasks:
 
 - [`function/contextual-activation.md`](function/contextual-activation.md) may reactivate known obligations and rebalance stale context.
 - [`function/capability-capsule.schema.yaml`](function/capability-capsule.schema.yaml) may represent task-local capability when structure materially helps execution, handoff, or promotion review.
-- [`function/execution-provenance.md`](function/execution-provenance.md) may record observable expected-versus-observed execution evidence for complex persistent change or failure diagnosis.
+- [`function/execution-provenance.md`](function/execution-provenance.md) may record observable expected-versus-observed execution evidence for complex persistent change or failure diagnosis; [`function/execution-provenance.schema.yaml`](function/execution-provenance.schema.yaml) provides the optional machine-readable event shape.
+- [`function/complexity-budget.md`](function/complexity-budget.md) applies when a proposed durable change would add a new mandatory control-flow or storage/runtime surface.
 
 These mechanisms are kernel capabilities, not acquired specialist skills, and should not be invoked ceremonially on simple work.
 
@@ -109,6 +111,8 @@ These mechanisms are kernel capabilities, not acquired specialist skills, and sh
 [`function/skills/index.yaml`](function/skills/index.yaml) starts empty for a blank instance.
 
 Reusable specialist capability may be retained later only when [`function/capability-maintenance.md`](function/capability-maintenance.md) supports promotion, revision, consolidation, or retirement. The harness kernel itself is not an acquired-skill bundle.
+
+When an external Agent Skill, repository, package, MCP, or similar reusable source materially influences a durable capability, use [`function/external-skill-provenance.schema.yaml`](function/external-skill-provenance.schema.yaml) so source identity, local targets, adopted/rejected concepts, and recheck conditions remain auditable without importing the source agent's persona or authority.
 
 ## Retention
 
@@ -129,9 +133,11 @@ Multiple destinations are allowed only when the meanings are genuinely distinct.
 
 Archive configuration is described in [`docs/ARCHIVE-MODES.md`](docs/ARCHIVE-MODES.md).
 
-## Memory Metabolism
+## Memory lifecycle, Metabolism, and Retrieval
 
-Retention decides what new meaning should survive. Long-lived memory also needs maintenance.
+Retention decides what new meaning should survive. Long-lived memory also needs structured lifecycle maintenance and selective retrieval.
+
+Canonical retained memory may use [`function/memory-record.schema.yaml`](function/memory-record.schema.yaml) for human-readable `type`, `status`, `importance`, `confidence`, `load_policy`, triggers, relations, and provenance. Embeddings and provider-specific vector ids remain derived retrieval state rather than canonical memory metadata.
 
 Use [`function/memory-metabolism.md`](function/memory-metabolism.md) when retained state becomes duplicated, stale, contradictory, superseded, over-specific, or structurally noisy, or when the user explicitly requests a memory review.
 
@@ -145,13 +151,17 @@ Rules:
 - protect privacy, provenance, dependencies, and skill evidence;
 - broad behavior-changing memory maintenance may use Evolution Traceability.
 
-User-facing guidance: [`docs/MEMORY-METABOLISM.md`](docs/MEMORY-METABOLISM.md) · [`docs/MEMORY-METABOLISM.ja.md`](docs/MEMORY-METABOLISM.ja.md).
+For small stores or known paths, read canonical memory directly. When long-lived memory becomes large or semantically ambiguous enough that broad scanning wastes context or loses recall, use [`function/memory-retrieval.md`](function/memory-retrieval.md). Retrieval returns candidates; canonical Markdown/YAML must be re-read before material task use.
+
+User-facing guidance: [`docs/MEMORY-RECORDS.md`](docs/MEMORY-RECORDS.md) · [`docs/MEMORY-RECORDS.ja.md`](docs/MEMORY-RECORDS.ja.md) · [`docs/MEMORY-METABOLISM.md`](docs/MEMORY-METABOLISM.md) · [`docs/MEMORY-METABOLISM.ja.md`](docs/MEMORY-METABOLISM.ja.md) · [`docs/MEMORY-RETRIEVAL.md`](docs/MEMORY-RETRIEVAL.md) · [`docs/MEMORY-RETRIEVAL.ja.md`](docs/MEMORY-RETRIEVAL.ja.md).
 
 ## Self-evolution and traceability
 
 Use [`function/self-evolution.md`](function/self-evolution.md) for deliberate changes to harness-owned or instance-owned durable systems.
 
 Do not interpret "evolution" as accumulating more text. A justified `no_change` or removal may be the strongest outcome.
+
+Before adding a new hard gate, eager read, subsystem, canonical store, or host dependency as self-evolution, apply [`function/complexity-budget.md`](function/complexity-budget.md). Consolidating an existing owner, adding a focused eval, or deleting redundant machinery may be stronger evolution than adding another layer.
 
 When self-evolution changes the rule that evaluates the same proposed change, preserve an independent trust anchor where practical. Presentation layers may evolve more freely than canonical identity, memory, authority, safety, or validation contracts.
 
@@ -245,4 +255,5 @@ For substantive tasks:
 8. If the task created meaningful durable evolution, keep the evolution record and host impact traceable where writes are authorized.
 9. If durable instance state changed and `CORE.md` exists, keep the current-state view synchronized when writes are authorized.
 10. If a meaningful life milestone occurred and `JOURNEY.md` exists, refresh the Journey Album when proportionate.
-11. Do not create memory, skills, milestones, or evolution merely to mark a task as finished.
+11. Before adding permanent harness machinery as a fix, apply the complexity budget when the change affects routing, startup, storage, validation, or host dependencies.
+12. Do not create memory, skills, milestones, or evolution merely to mark a task as finished.
