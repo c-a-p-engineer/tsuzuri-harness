@@ -200,7 +200,7 @@ jobs:
           grep -q 'JOURNEY.md' site/index.html
           grep -q 'Memory maintenance' site/index.html
           grep -q 'Can you improve yourself' site/index.html
-          grep -q 'write-capable Plugin / Connector' site/index.html
+          grep -q 'Write-capable Plugin / Connector' site/index.html
           grep -q '今の自分、改善できるところある？' site/ja/index.html
           grep -q 'まずはChatGPTで試す' site/ja/index.html
           grep -q 'この子を保存したい' site/ja/index.html
