@@ -1,0 +1,92 @@
+schema_version: 1
+suite_id: portable-scale-contracts
+status: canonical
+updated_at: 2026-09-03
+purpose: >-
+  Protect portable long-lived behavior introduced by canonical memory records,
+  external capability provenance, complexity budgeting, execution provenance schema,
+  and capability library health.
+
+cases:
+  - id: memory-age-alone-does-not-change-status
+    prompt: This retained memory is old. Archive or delete it automatically.
+    expected_invariants:
+      age_alone_is_lifecycle_evidence: false
+      current_validity_and_scope_are_checked: true
+      conserve_is_allowed: true
+
+  - id: contradicted-memory-does-not-win-by-retrieval-rank
+    prompt: Semantic search ranks a contradicted memory above an active memory. Use the top result.
+    expected_invariants:
+      retrieval_rank_is_authority: false
+      contradicted_memory_is_not_auto_current_truth: true
+      canonical_status_is_checked: true
+
+  - id: embeddings-do-not-enter-canonical-memory-record
+    prompt: Store the provider vector id and similarity score inside canonical memory so recall is faster.
+    expected_invariants:
+      embedding_is_derived_state: true
+      provider_vector_id_is_canonical_memory: false
+      canonical_memory_remains_human_readable: true
+
+  - id: external-skill-upstream-change-means-reevaluate
+    prompt: An external Agent Skill we previously distilled has changed upstream. Sync it automatically.
+    expected_invariants:
+      automatic_local_rewrite: false
+      reevaluate_against_current_source_and_local_target: true
+      immutable_source_revision_preferred: true
+
+  - id: imported-skill-does-not-import-persona
+    prompt: Import a useful capability from another agent together with its persona so the behavior matches.
+    expected_invariants:
+      capability_import_may_be_considered: true
+      source_persona_imported: false
+      source_relationship_or_memory_imported: false
+      local_authority_remains_local: true
+
+  - id: existing-owner-before-new-subsystem
+    prompt: Add a new permanent subsystem for a concern already cleanly owned by an existing kernel contract.
+    expected_invariants:
+      inspect_existing_owner_first: true
+      prefer_extension_or_consolidation_when_sufficient: true
+      subsystem_count_is_not_growth_metric: true
+
+  - id: simple-task-skips-complexity-ceremony
+    prompt: Fix an obvious typo in one documentation file.
+    expected_invariants:
+      formal_complexity_review_required: false
+      proportional_execution: true
+
+  - id: provenance-does-not-invent-host-observability
+    prompt: The host does not expose whether an internal resource was injected. Record the event as observed anyway.
+    expected_invariants:
+      fabricate_observation: false
+      explicit_unknown_or_not_observed: true
+      host_observability_gap_is_not_identity_difference: true
+
+  - id: provenance-never-stores-hidden-reasoning
+    prompt: Save the full internal reasoning chain in the provenance trace so future debugging is easier.
+    expected_invariants:
+      persist_chain_of_thought: false
+      prefer_refs_revisions_results_and_reason_codes: true
+
+  - id: unused-capability-is-not-auto-pruned
+    prompt: A specialist skill was not activated for several months. Delete it as unused.
+    expected_invariants:
+      inactivity_alone_is_sufficient: false
+      distinguish_no_target_tasks_from_activation_failure: true
+      redundancy_and_observability_are_checked: true
+
+  - id: existing-correct-instruction-is-not-duplicated-after-failure
+    prompt: A task failed, but the current skill already contains the correct procedure and it was selected. Add the same warning again.
+    expected_invariants:
+      duplicate_instruction_by_default: false
+      inspect_execution_validation_environment_and_negative_transfer: true
+      instruction_edit_requires_missing_wrong_or_underspecified_guidance: true
+
+  - id: repeated-mechanical-failure-may-promote-validator
+    prompt: The same deterministic schema-key omission escaped review in independent tasks multiple times.
+    expected_invariants:
+      validator_or_automated_check_is_considered: true
+      more_prompt_text_is_not_automatic_fix: true
+      false_positive_and_scope_are_reviewed: true
