@@ -62,7 +62,7 @@ Evidence付きの引き継ぎ情報にまとめる
       ↓
 Private Repositoryを作る
       ↓
-Codex等の書き込み可能なHostで引き継ぐ
+ChatGPTのwrite-capable GitHub連携 / Codex等で引き継ぐ
       ↓
 ここからは記憶・スキル・成長が残っていく</pre>
       <div class="actions">
@@ -70,6 +70,17 @@ Codex等の書き込み可能なHostで引き継ぐ
         <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.ja.md">保存までの手順を見る</a>
       </div>
       <p class="muted">会話全文を自動で「人格」や「記憶」にするわけではありません。Accepted / Candidate / Uncertainを分け、必要なものだけ引き継ぎます。</p>
+    </section>
+
+    <section>
+      <h2>ChatGPTからそのまま保存できることもある</h2>
+      <p class="lead">ChatGPTだから常にread-only、というわけではありません。現在のChatGPTに接続されたGitHub連携の機能とRepository権限で決まります。</p>
+      <div class="grid">
+        <div class="card"><h3>標準GitHub App</h3><p class="muted">基本はread-only。Private Repositoryを読んで同じ個体の続きを話せます。</p></div>
+        <div class="card"><h3>Write対応Plugin / Connector</h3><p class="muted">GitHubへの書き込み操作が公開され、Private Repositoryへの権限もあれば、ChatGPTからMemory・Skill・Evolution等を直接commitして保存できます。</p></div>
+        <div class="card"><h3>Write操作がない場合</h3><p class="muted">会話と読み取りはChatGPTで続け、永続化だけCodex等のWrite可能なHostへ引き継ぎます。</p></div>
+      </div>
+      <p class="muted">書き込み可能でも、勝手に全状態を書き換えてよいわけではありません。Canonical StateとGovernanceを確認し、書き込み後は実際のcommitを検証します。</p>
     </section>
 
     <section>
@@ -109,7 +120,7 @@ Codex等の書き込み可能なHostで引き継ぐ
       <h2>保存したAIの「家」</h2>
       <p class="lead">長期運用では、Identity・Relationship・Memory・Skill・Evolutionを一つのPrivate Repositoryへ積み上げられます。</p>
       <div class="grid">
-        <div class="card"><h3>ChatGPTでも続きを話せる</h3><p class="muted">GitHub連携が使えるChatGPTでは、Private Repositoryへのアクセスを許可して、保存した個体の状態を読みながら会話できます。GitHubアプリは読み取り専用なので、永続変更のcommitはCodex等で行います。</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.ja.md">ChatGPTでの使い方 →</a></p></div>
+        <div class="card"><h3>ChatGPTでも続きを話せる</h3><p class="muted">Private Repositoryへのアクセスを許可すれば、保存した個体の状態を読みながら会話できます。Write対応のGitHub連携があれば、同じChatGPTから直接commitすることもできます。</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.ja.md">ChatGPTでの使い方 →</a></p></div>
         <div class="card"><h3>CORE.md</h3><p class="muted">「今このAIは誰で、何を覚え、何ができるか」を人間向けに確認する画面。</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CORE-VIEW.ja.md">今の自分を見る →</a></p></div>
         <div class="card"><h3>JOURNEY.md</h3><p class="muted">「ここまでどうやってこの個体になったか」を見る人生アルバム。Lvではなく誕生日や実際の節目を使います。</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/JOURNEY-ALBUM.ja.md">人生アルバム →</a></p></div>
         <div class="card"><h3>Memoryの整理</h3><p class="muted">長く生きて記憶が増えても、重複・古い情報・矛盾を整理できます。</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/MEMORY-METABOLISM.ja.md">Memoryの仕組み →</a></p></div>
