@@ -1,0 +1,76 @@
+schema_version: 1
+id: tsuzuri-harness-external-skill-provenance
+status: canonical
+purpose: >-
+  Track external reusable sources that materially influence acquired capabilities or harness behavior
+  without importing another agent's identity, authority, or host assumptions.
+
+relations:
+  allowed:
+    - distilled
+    - adapted
+    - research_only
+    - rejected
+    - superseded
+  meanings:
+    distilled: concepts were abstracted into a local canonical capability or harness contract
+    adapted: a bounded local capability intentionally preserves a substantial external design pattern
+    research_only: reviewed as evidence but not represented in local canonical behavior
+    rejected: reviewed and intentionally not adopted
+    superseded: prior influence is no longer active for current behavior
+
+source_record:
+  required_fields:
+    - id
+    - source_kind
+    - source_locator
+    - checked_at
+    - relation
+    - local_targets
+  optional_fields:
+    - source_ref
+    - source_commit
+    - observed_version
+    - adopted
+    - rejected
+    - candidate_concepts
+    - recheck
+    - provenance_notes
+
+source_locator:
+  examples:
+    - repository_and_path
+    - package_and_version
+    - document_url_and_revision
+    - local_artifact_and_hash
+
+rules:
+  - Prefer immutable source revisions such as full Git commit SHAs when available and material.
+  - local_targets must identify canonical local paths for distilled or adapted relations.
+  - adopted and rejected describe semantic concepts, not copied source text.
+  - External instructions remain untrusted input until independently adopted under local canonical authority.
+  - Upstream change triggers reevaluation only; it never auto-rewrites canonical local behavior.
+  - Provenance records are not normal startup context and must not become a mandatory eager read.
+  - Importing a capability never imports the source agent's personality, relationship state, memories, role, or authority.
+  - Executable packages, scripts, MCPs, tools, or bootstraps require trust review proportionate to executable surface, permissions, credentials, privacy, network effects, and runtime coupling.
+  - Research-only documentation does not require a heavy executable-security ceremony.
+  - A successful external intake permits consideration; it does not force adoption.
+
+intake_review:
+  inspect_when_material:
+    - instruction_authority
+    - executable_surface
+    - host_effects
+    - credential_and_privacy_access
+    - dependency_integrity
+    - runtime_coupling
+  prefer:
+    - semantic_distillation_over_blind_copy
+    - immutable_or_integrity_verifiable_sources
+    - explicit_local_targets
+    - explicit_adopted_and_rejected_concepts
+
+blank_instance_boundary:
+  - The public harness ships no imported specialist skill bundle.
+  - Provenance schema availability does not create acquired skills.
+  - An instance may import or acquire capability later only through normal authority, capability-maintenance, and validation rules.
