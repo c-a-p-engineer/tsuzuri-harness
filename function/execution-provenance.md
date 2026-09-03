@@ -90,7 +90,7 @@ Do not promote an unvalidated effect to verified merely because a tool call was 
 
 ## Minimal event shape
 
-Use only fields the host can honestly provide.
+Use only fields the host can honestly provide. When a machine-readable event is useful, use [`execution-provenance.schema.yaml`](execution-provenance.schema.yaml); the schema is optional runtime structure, not an instruction to persist traces for every task.
 
 ```yaml
 schema_version: 1
@@ -103,7 +103,7 @@ subject_ref: string | null
 revision: string | null
 reason_code: string | null
 result: success | partial | failed | blocked | unavailable | not_observed
-coverage: host_observed | core_expected | user_supplied | derived
+coverage: host_observed | harness_expected | user_supplied | derived
 ```
 
 Unknown values may remain unknown. Do not fabricate completeness.
