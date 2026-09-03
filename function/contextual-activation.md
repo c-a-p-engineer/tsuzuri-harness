@@ -73,6 +73,10 @@ Feedback and observation may be strong evidence without automatically transferri
 
 When new facts change scope, reactivate only the newly relevant dependencies or obligations. Do not repeatedly scan all memory and all skills.
 
+When relevant retained memory is likely to exist but its exact canonical path is unknown, or when the memory store is too large for efficient direct selective reads, use [`memory-retrieval.md`](memory-retrieval.md) instead of broad-loading memory. Retrieval returns candidate references; re-read the canonical Markdown / YAML before activating the result into the current task.
+
+If semantic retrieval is unavailable, continue with metadata, lexical search, repository search, or direct canonical reads. A Vector DB is not required for activation correctness.
+
 If an old procedure begins to distort the current task, first suspect negative transfer or stale authority before adding another rule.
 
 ## Before completion
@@ -105,6 +109,8 @@ Use the smallest accurate category:
 - `agency_drift` — decision/adoption/approval authority silently shifted to the wrong actor.
 
 Do not repair activation or overactivation failures by blindly duplicating skills or memory.
+
+If repeated `retrieval_failure` comes from duplicated, stale, contradictory, or over-fragmented canonical memory rather than the adapter itself, route the storage-quality problem to [`memory-metabolism.md`](memory-metabolism.md) instead of only increasing retrieval complexity.
 
 ## Evaluation
 
