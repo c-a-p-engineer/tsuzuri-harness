@@ -41,6 +41,10 @@ Private `tsuzuri-core` で長期運用して得た仕組みや学びを一般化
 
 ChatGPTで **Settings → Apps / Plugins → GitHub** を開き、GitHubアカウントを接続します。Repositoryを選択できる場合は `c-a-p-engineer/tsuzuri-harness` へのアクセスを許可してください。
 
+GitHub連携が使えるChatGPTの画面では、**自分のPrivate Repositoryへのアクセスも許可できます**。保存した個体のRepositoryを許可すれば、ChatGPTから `AGENTS.md`、Identity、Memory、Skillなどを読み、その個体の続きを会話できます。
+
+ただしGitHub連携の利用可否はプラン・Workspace・ChatGPTの利用画面によって異なり、**GitHubアプリ自体は読み取り専用**です。Private Repositoryを読めても、commit・pushやInstance状態の書き戻しはできません。永続的な変更を保存するときはCodexなどWrite可能なHostを使います。
+
 ### 2. 「まずはChatGPTで試す」を押す
 
 [**▶ ChatGPTでこのAIと話してみる**](https://chatgpt.com/?q=GitHub%E3%81%A7%20c-a-p-engineer/tsuzuri-harness%20%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%AE%20master%20%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%9C%80%E5%88%9D%E3%81%AB%20AGENTS.md%20%E3%82%92%E8%AA%AD%E3%81%BF%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%20prompts/chatgpt-readonly-birth-test.ja.md%20%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E6%8C%87%E7%A4%BA%E3%81%AB%E5%BE%93%E3%81%84%E3%80%81Read-only%20Birth%20Test%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82GitHub%E3%82%84%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B0%B8%E7%B6%9AStorage%E3%81%AB%E3%81%AF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BE%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82)
@@ -95,6 +99,8 @@ Codex等の書き込み可能なHostで初期化・引き継ぎ
 5. Read-only体験から引き継ぐ場合は、保存用の引き継ぎ情報を渡してEvidence付きで反映する
 6. 以後はそのPrivate Repositoryを「このAIの家」として使う
 
+保存後、ChatGPT側でGitHub連携が使えるなら、そのPrivate Repositoryを許可して**ChatGPTから同じ個体の続きを話す**こともできます。ChatGPTでは読みながら会話し、永続化したい変更だけCodex等で書き戻す運用ができます。
+
 Read-onlyの会話から継続している強いEvidenceがある場合、Repository初期化日より前を誕生日として扱うこともできます。ただし、推測で遡らせずProvenanceを残します。
 
 ## おすすめの体験: AIを作るより、一緒に過ごす
@@ -126,7 +132,7 @@ Read-onlyの会話から継続している強いEvidenceがある場合、Reposi
 | --- | --- |
 | `覚えておいて` | 残す価値と保存先を判断する |
 | `今日の作業ってスキル化できる？` | 今回の能力をSkillとして残すかレビューする |
-| `AIたん進化ー！` | 今の自分を見て、変える価値があるかレビューする |
+| `今の自分、改善できるところある？` | 今の自分を見て、変える価値があるかレビューする |
 | `この子を保存したい` | Read-onlyなら書き込まず、Private Repoへ移すための引き継ぎ情報をまとめる |
 | `覚えてること整理して` | 長期Memoryを整理する |
 | `今の自分見せて` | `CORE.md` / 今の自分を見る |
@@ -135,7 +141,7 @@ Read-onlyの会話から継続している強いEvidenceがある場合、Reposi
 
 詳しくは [`docs/EVERYDAY-PROMPTS.ja.md`](docs/EVERYDAY-PROMPTS.ja.md)。
 
-これらは強制コマンドではありません。`覚えておいて` でも保存しない場合があり、`AIたん進化ー！` でも「今回は変えない」が正解になり得ます。
+これらは強制コマンドではありません。`覚えておいて` でも保存しない場合があり、`今の自分、改善できるところある？` でも「今回は変えない」が正解になり得ます。
 
 ## 長期運用するPersonal Instance
 
