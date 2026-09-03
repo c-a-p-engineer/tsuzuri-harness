@@ -1,0 +1,99 @@
+schema_version: 1
+id: tsuzuri-harness-memory-retrieval
+status: canonical
+purpose: >-
+  Define a host-neutral contract for locating relevant canonical memory without
+  making any search index, embedding model, vector database, or host service authoritative.
+
+query:
+  fields:
+    text:
+      required: true
+    memory_types:
+      required: false
+    statuses:
+      required: false
+    time_range:
+      required: false
+    known_ids:
+      required: false
+    known_paths:
+      required: false
+    tags:
+      required: false
+    archive_search:
+      required: false
+      default: false
+    result_budget:
+      required: false
+      guidance: task_and_context_dependent
+
+candidate:
+  required_fields:
+    - canonical_ref
+    - retrieval_methods
+  optional_fields:
+    - rank
+    - relevance_evidence
+    - source_revision
+    - index_revision
+    - canonical_status
+    - canonical_re_read
+    - canonical_validated
+  canonical_ref:
+    allowed_forms:
+      - repository_path
+      - canonical_memory_id
+  retrieval_methods:
+    allowed_values:
+      - metadata
+      - lexical
+      - full_text
+      - semantic
+      - relationship_graph
+      - direct_read
+      - host_native
+
+rules:
+  - Retrieval output identifies candidates; it does not become canonical memory.
+  - Canonical Markdown or YAML must be re-read before a candidate materially influences the current task.
+  - Canonical state, provenance, governance, privacy, and supersession status outrank retrieval rank or similarity.
+  - Numeric similarity scores are optional and are never identity or memory facts.
+  - Semantic retrieval is optional; lexical, metadata, and direct reads remain valid compatible implementations.
+  - Result budget is derived from the current task and context rather than a universal fixed top-k.
+  - Archive search is opt-in when historical reconstruction is required and does not reactivate archive entries automatically.
+  - Missing or stale derived indexes must not make canonical memory unavailable when direct canonical access still exists.
+
+derived_index:
+  canonical: false
+  disposable: true
+  preferred_local_root: .runtime/retrieval/
+  commit_to_git_by_default: false
+  rebuild_source: canonical_repository_state
+  may_include:
+    - full_text_database
+    - metadata_index
+    - embeddings
+    - vector_index
+    - host_native_cache
+  freshness_identity:
+    allowed_examples:
+      - repository_revision
+      - file_digests
+      - adapter_defined_observable_revision
+
+host_adapter:
+  implementations_may_include:
+    - repository_search
+    - grep_or_ripgrep
+    - sqlite_fts
+    - host_native_semantic_search
+    - local_embeddings
+    - faiss_or_equivalent
+    - remote_vector_database
+  required_properties:
+    - canonical_reference_output
+    - truthful_capability_reporting
+    - privacy_boundary_respected
+    - stale_index_behavior_defined
+    - semantic_search_not_required_for_compatibility
