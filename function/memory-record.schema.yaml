@@ -1,0 +1,125 @@
+schema_version: 1
+id: tsuzuri-harness-memory-record
+status: canonical
+purpose: >-
+  Define human-readable canonical metadata for retained memory so lifecycle,
+  retrieval, provenance, and maintenance remain portable across hosts.
+
+record:
+  required_fields:
+    - id
+    - type
+    - status
+    - importance
+    - confidence
+    - load_policy
+  optional_fields:
+    - volatility
+    - created_at
+    - last_confirmed_at
+    - expires_at
+    - scope
+    - triggers
+    - relations
+    - provenance
+    - tags
+    - concepts
+
+fields:
+  id:
+    type: string
+    meaning: stable human-readable memory identifier
+  type:
+    enum:
+      - semantic
+      - procedural
+      - episodic
+      - reflective
+      - working
+  status:
+    enum:
+      - active
+      - superseded
+      - contradicted
+      - archived
+  importance:
+    enum:
+      - critical
+      - high
+      - normal
+      - low
+  confidence:
+    enum:
+      - confirmed
+      - strongly_inferred
+      - tentative
+      - disputed
+  volatility:
+    enum:
+      - immutable
+      - stable
+      - changeable
+      - ephemeral
+    required: false
+  load_policy:
+    enum:
+      - bootstrap
+      - on_match
+      - manual
+      - archived
+  scope:
+    type: list[string]
+    required: false
+  triggers:
+    type: list[string]
+    required: false
+  tags:
+    type: list[string]
+    required: false
+  concepts:
+    type: list[string]
+    required: false
+  relations:
+    type: list[relation]
+    required: false
+  provenance:
+    type: object
+    required: false
+
+relation:
+  required_fields:
+    - type
+    - target
+  type:
+    enum:
+      - derived_from
+      - supports
+      - contradicts
+      - supersedes
+      - related_to
+      - evidence_for
+  target:
+    type: string
+
+lifecycle:
+  active:
+    meaning: currently eligible for normal task use when relevant
+  superseded:
+    meaning: replaced by newer canonical memory; preserve provenance when useful
+  contradicted:
+    meaning: unresolved conflict; do not automatically use as current truth
+  archived:
+    meaning: retained for formation history or audit but excluded from normal activation
+  rules:
+    - Age alone does not change lifecycle status.
+    - Supersession should preserve a relation to the replacement when material.
+    - Contradicted memory must not silently win by retrieval rank.
+    - Archived memory does not reactivate automatically when retrieved.
+    - Incorrect, secret, or inappropriately sensitive material may be corrected or deleted instead of preserved for history.
+
+boundaries:
+  - Canonical memory content and metadata remain human-readable Markdown or YAML.
+  - Embeddings, similarity scores, provider-specific vector ids, and generated search caches are derived retrieval state, not canonical record fields.
+  - Working memory is for bounded instance-level hypotheses or pending validation, not project TODOs, session handoff, or hidden chain-of-thought.
+  - Identity and relationship state keep their own canonical contracts; memory metadata must not silently rewrite them.
+  - Blank instances contain zero memory records; this schema does not manufacture starter memories.
