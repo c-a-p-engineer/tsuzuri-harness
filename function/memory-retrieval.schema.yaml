@@ -5,6 +5,38 @@ purpose: >-
   Define a host-neutral contract for locating relevant canonical memory without
   making any search index, embedding model, vector database, or host service authoritative.
 
+canonical_memory_metadata:
+  purpose: >-
+    Allow scalable filtering without turning retrieval-engine state into canonical memory.
+    Existing small instances may remain minimal; these fields are optional unless an owning
+    memory schema or host requires them.
+  recommended_fields:
+    id:
+      meaning: stable canonical memory identifier
+    path:
+      meaning: repository path to the canonical entry
+    type:
+      examples: [semantic, episodic, reflective, procedural]
+    status:
+      examples: [active, superseded, archived]
+    created_at:
+      meaning: creation or retention time when known
+    updated_at:
+      meaning: last canonical meaning change when known
+    tags:
+      meaning: explicit human-readable retrieval labels
+    concepts:
+      meaning: optional broader semantic concepts useful for lexical or metadata filtering
+    related:
+      meaning: optional canonical ids or paths with a meaningful relation
+    provenance:
+      meaning: enough source context to evaluate authority and historical scope
+  forbidden_as_canonical_metadata:
+    - embedding_vector
+    - opaque_similarity_score
+    - provider_specific_vector_id_as_only_identity
+    - generated_full_text_index_payload
+
 query:
   fields:
     text:
@@ -63,6 +95,7 @@ rules:
   - Result budget is derived from the current task and context rather than a universal fixed top-k.
   - Archive search is opt-in when historical reconstruction is required and does not reactivate archive entries automatically.
   - Missing or stale derived indexes must not make canonical memory unavailable when direct canonical access still exists.
+  - Canonical metadata stays human-readable and host-neutral; provider-specific retrieval state stays derived.
 
 derived_index:
   canonical: false
