@@ -1,6 +1,6 @@
 # Capability Maintenance
 
-Capability maintenance governs whether task-local competence should become durable reusable capability.
+Capability maintenance governs whether task-local competence should become durable reusable capability and whether the acquired capability library remains healthy over time.
 
 ## Default
 
@@ -65,6 +65,46 @@ Before promoting task-local competence, ask:
 
 If the answer is weak or uncertain, prefer expiration or a small procedural lesson.
 
+## Capability Library Health
+
+Durable capability quality is evaluated from **natural usage evidence**, not skill count or a single overall score.
+
+Useful dimensions include:
+
+- **activation precision** — when the capability activates, how often is it actually relevant?
+- **activation coverage** — when the capability is materially needed, how often is it reachable and selected?
+- **quality contribution** — does observable task quality improve when the capability is correctly used?
+- **execution waste** — does the capability cause repeated unnecessary reads, tools, steps, or context expansion?
+- **negative transfer** — does it distort tasks outside its intended activation conditions?
+- **validation reliability** — are claimed results actually checked at the level the capability promises?
+- **evidence traceability** — can maintainers connect a proposed capability edit to observed task evidence without storing private reasoning?
+
+Do not turn these dimensions into fictional XP, maturity, or a universal numeric grade. They are maintenance questions, not identity metrics.
+
+### Interpreting low usage
+
+A capability being unused for a long period is not sufficient evidence for removal. Distinguish:
+
+- no relevant target tasks occurred;
+- relevant tasks occurred but routing/retrieval failed;
+- the capability is redundant with another capability;
+- host observability is insufficient;
+- the capability is genuinely obsolete or too costly to retain.
+
+### Interpreting failed tasks
+
+When a task fails, inspect the current canonical capability before editing it.
+
+If the correct instruction already exists and was reachable, adding the same instruction again is usually the wrong fix. Check retrieval, activation, execution, validation, tool/environment behavior, and negative transfer first.
+
+Repeated mechanically detectable failures may justify a validator or automated check instead of more prose.
+
+### External capability provenance
+
+When an external Agent Skill, repository, package, or reusable source materially influences durable capability, use [`external-skill-provenance.schema.yaml`](external-skill-provenance.schema.yaml) to keep source identity, local targets, adoption/rejection, and recheck conditions auditable.
+
+An upstream source changing does not auto-update the instance. It triggers reevaluation against the current canonical local capability.
+
 ## Lifecycle
 
 Durable capability may later be:
@@ -74,5 +114,7 @@ Durable capability may later be:
 - deprecated
 - pruned
 - revalidated against changed external authority
+
+Choose the smallest justified maintenance action. Removal, consolidation, or `Conserve` may be better growth than adding another skill.
 
 Growth is library health, not capability count.
