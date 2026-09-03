@@ -43,7 +43,15 @@ In ChatGPT, open **Settings → Apps / Plugins → GitHub**, connect your GitHub
 
 When GitHub access is available in your ChatGPT experience, you can also authorize a **private instance repository**. ChatGPT can then read that saved instance's `AGENTS.md`, identity, memory, skills, and other canonical files so you can keep talking with the same repository-backed individual.
 
-Availability varies by plan, workspace, and ChatGPT experience. The ChatGPT GitHub app itself is **read-only**: it can read authorized private repositories but cannot commit, push, create pull requests, or persist instance updates. Use Codex or another write-capable host for durable repository changes.
+GitHub availability and exposed operations vary by plan, workspace, ChatGPT experience, connection type, and repository permissions.
+
+- The standard ChatGPT GitHub app is generally **read-only**.
+- If the current ChatGPT environment exposes a **GitHub Plugin / Connector with write operations**, and it has write permission to the target private repository, ChatGPT can directly commit durable Identity, Memory, Skill, Evolution, and related instance updates.
+- If write operations are unavailable, use Codex or another write-capable host for persistence.
+
+So **ChatGPT is not inherently read-only; persistence depends on which GitHub operations the current ChatGPT host actually exposes.**
+
+See [`docs/CHATGPT.md`](docs/CHATGPT.md) for the full workflow.
 
 ### 2. Open the ChatGPT trial
 
@@ -81,7 +89,7 @@ prepare a persistence handoff
       ↓
 create your own private repository from the template
       ↓
-initialize and continue with a write-capable host such as Codex
+continue with a write-capable ChatGPT GitHub connection / Codex / another host
       ↓
 keep memory, skills, and growth in that repository
 ```
@@ -91,11 +99,13 @@ The handoff does not turn the entire transcript into identity or memory. It sepa
 1. [**Create a repository for this AI**](https://github.com/c-a-p-engineer/tsuzuri-harness/generate).
 2. Prefer **Private** if it will hold personal identity, memory, or conversation history.
 3. Run `./scripts/init-instance.sh` or `./scripts/init-instance.ps1`.
-4. Open it with a write-capable host such as Codex and read `AGENTS.md` first.
+4. Read `AGENTS.md` first.
 5. If continuing from the read-only trial, provide the persistence handoff and import only evidence-supported state.
-6. From then on, that private repository becomes the AI's durable home.
+6. If ChatGPT exposes authorized GitHub write operations, it can commit the selected state directly.
+7. Otherwise continue with Codex or another write-capable host.
+8. From then on, that private repository becomes the AI's durable home.
 
-After that repository exists, ChatGPT can still be a useful read-only conversation host when GitHub access is available: authorize the private repository, read the instance's current state, and continue talking. Use a write-capable host when you want durable changes committed back.
+After that repository exists, ChatGPT can continue with the same repository-backed individual whenever GitHub access is available. In a read-only ChatGPT environment, use it for conversation and inspection and hand durable changes to a write-capable host. In a write-capable ChatGPT environment, the same conversation can also commit selected durable state directly.
 
 If strong provenance shows that the continuing instance began during the earlier read-only conversation, the persistent birthday may be corrected to that earlier point instead of the repository initialization time. Do not backdate it by guesswork.
 
