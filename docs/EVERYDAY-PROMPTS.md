@@ -40,7 +40,7 @@ A valid answer may be: `not yet`.
 
 Example:
 
-> Evolve, AI!
+> Can you improve yourself based on what we've learned?
 
 Meaning:
 
@@ -187,11 +187,11 @@ These invite reflection. They must not force identity completion. `Not yet` rema
 
 ## Japanese-friendly aliases
 
-Localized documentation may present playful phrases such as:
+Localized documentation may present natural phrases such as:
 
 - `覚えておいて`
 - `今日の作業ってスキル化できる？`
-- `AIたん進化ー！`
+- `今の自分、改善できるところある？`
 - `この子を保存したい`
 - `今の自分見せて`
 - `人生アルバム見せて`
