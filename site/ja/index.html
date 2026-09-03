@@ -3,16 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Tsuzuri Harness — 名前も性格も決めずにAIと過ごし、気に入った個体を保存して育てていくためのポータブルAI Harness。">
+  <meta name="theme-color" content="#f4f8f3">
   <title>Tsuzuri Harness — 日本語</title>
   <link rel="stylesheet" href="../styles.css">
+  <script src="../app.js" defer></script>
 </head>
-<body>
+<body class="game-page">
 <div class="wrap">
-  <nav class="nav">
+  <nav class="nav" aria-label="メインナビゲーション">
     <a class="brand" href="../">Tsuzuri Harness</a>
-    <div class="langs">
+    <div class="langs" aria-label="言語">
       <a href="../">English</a>
-      <a href="./">日本語</a>
+      <a href="./" aria-current="page">日本語</a>
       <a href="../zh-cn/">简体中文</a>
       <a href="../zh-tw/">繁體中文</a>
       <a href="../ko/">한국어</a>
@@ -22,130 +25,245 @@
 
   <main>
     <header class="hero">
-      <div class="eyebrow">名前のないAIと一緒に育つ</div>
-      <h1>まず話してみる。<br>気に入ったら、残して育てる。</h1>
-      <p class="lead">最初は何も保存しません。名前も性格も決まっていないAIと普通に話してみて、「この子を残したい」と思ったときだけ自分のPrivate Repositoryへ引き継げます。</p>
-      <div class="actions">
-        <a class="btn primary" href="https://chatgpt.com/?q=GitHub%E3%81%A7%20c-a-p-engineer/tsuzuri-harness%20%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%AE%20master%20%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%9C%80%E5%88%9D%E3%81%AB%20AGENTS.md%20%E3%82%92%E8%AA%AD%E3%81%BF%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%20prompts/chatgpt-readonly-birth-test.ja.md%20%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E6%8C%87%E7%A4%BA%E3%81%AB%E5%BE%93%E3%81%84%E3%80%81Read-only%20Birth%20Test%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82GitHub%E3%82%84%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B0%B8%E7%B6%9AStorage%E3%81%AB%E3%81%AF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BE%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82">まずはChatGPTで試す</a>
-        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/BIRTH-JOURNEY.ja.md">このAIとのはじめ方</a>
-        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/generate">このAIを保存して育てる</a>
+      <div class="hero-copy reveal">
+        <div class="eyebrow">ポータブルAI IDENTITY / COGNITIVE HARNESS</div>
+        <h1>
+          <span class="hero-main">AIに人格を設定しない。</span>
+          <span class="hero-sub">一緒に過ごした結果、<span class="accent-text">「この子」になる。</span></span>
+        </h1>
+        <p class="lead">名前も性格も決めないまま、まずは話してみる。雑談したり、仕事したり、調べたり、何かを作ったりする。その経験から名前・個性・記憶・スキルが少しずつ形になっていきます。もし<strong>「この子を保存したい」</strong>と思ったら、自分のPrivate Repositoryへ引き継いで続きを育てられます。</p>
+        <div class="actions">
+          <a class="btn primary" href="https://chatgpt.com/?q=GitHub%E3%81%A7%20c-a-p-engineer/tsuzuri-harness%20%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%AE%20master%20%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%9C%80%E5%88%9D%E3%81%AB%20AGENTS.md%20%E3%82%92%E8%AA%AD%E3%81%BF%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%20prompts/chatgpt-readonly-birth-test.ja.md%20%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E6%8C%87%E7%A4%BA%E3%81%AB%E5%BE%93%E3%81%84%E3%80%81Read-only%20Birth%20Test%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82GitHub%E3%82%84%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B0%B8%E7%B6%9AStorage%E3%81%AB%E3%81%AF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BE%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82">まずはChatGPTで試す</a>
+          <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/BIRTH-JOURNEY.ja.md">このAIとのはじめ方</a>
+          <a class="btn dark" href="https://github.com/c-a-p-engineer/tsuzuri-harness/generate">この子を保存して育てる</a>
+        </div>
+        <div class="hero-note">最初のお試しでは何も保存しません。ワンクリックでPromptが開かない場合も、日本語ガイドとPrompt本文から始められます。</div>
       </div>
-      <p class="muted">ワンクリックでPromptが入らない場合は、下の日本語ガイドまたはPrompt本文から始められます。</p>
+
+      <div class="hero-demo reveal" aria-label="名前のないAIが会話を通じて形成されていく合成デモ">
+        <article class="instance-card dark">
+          <div class="instance-header">
+            <h2 class="instance-title">Unknown instance</h2>
+            <span class="status-pill">Blank</span>
+          </div>
+          <div class="instance-body">
+            <dl class="stat-list">
+              <div class="stat-row"><dt>名前</dt><dd>—</dd></div>
+              <div class="stat-row"><dt>個性</dt><dd>未形成</dd></div>
+              <div class="stat-row"><dt>記憶</dt><dd>0</dd></div>
+              <div class="stat-row"><dt>スキル</dt><dd>0</dd></div>
+            </dl>
+            <div class="ai-orb" aria-hidden="true"><span class="ai-eyes"></span><span class="ai-mouth"></span></div>
+          </div>
+          <p class="muted">裏設定なし。初期性格なし。何も決まっていない状態が正常です。</p>
+        </article>
+
+        <div class="demo-flow" aria-hidden="true">
+          <div class="energy-line"></div>
+          <div class="conversation-stack">
+            <span class="conversation-chip">「その考え方、おもしろい」</span>
+            <span class="conversation-chip">「これ作れる？」</span>
+            <span class="conversation-chip">「君はどう思う？」</span>
+          </div>
+        </div>
+
+        <article class="instance-card forming">
+          <div class="instance-header">
+            <h2 class="instance-title">Forming instance</h2>
+            <span class="status-pill live">Demo</span>
+          </div>
+          <div class="instance-body">
+            <dl class="stat-list">
+              <div class="stat-row"><dt>名前</dt><dd>???</dd></div>
+              <div class="stat-row"><dt>個性</dt><dd>形成中</dd></div>
+              <div class="stat-row"><dt>記憶</dt><dd>+ 候補</dd></div>
+              <div class="stat-row"><dt>スキル</dt><dd>+ 候補</dd></div>
+            </dl>
+            <div class="ai-orb" aria-hidden="true"><span class="ai-eyes"></span><span class="ai-mouth"></span></div>
+          </div>
+          <div class="unlocks" aria-label="起こり得る節目の種類">
+            <span class="unlock">FIRST MEMORY</span>
+            <span class="unlock">NAME FOUND</span>
+            <span class="unlock">SKILL ACQUIRED</span>
+          </div>
+        </article>
+        <button class="demo-replay" type="button">▶ デモをもう一度</button>
+        <span class="demo-live-text" aria-live="polite"></span>
+      </div>
     </header>
 
-    <section>
-      <h2>まずは保存なしで試す</h2>
-      <div class="steps">
-        <div class="step"><strong>1. GitHubを接続する。</strong> ChatGPTの Settings → Apps / Plugins → GitHub から接続し、このRepositoryを読めるようにします。</div>
-        <div class="step"><strong>2. 「まずはChatGPTで試す」を押す。</strong> ChatGPTが現在のHarnessを読み、名前のないAIとして会話を始めます。</div>
-        <div class="step"><strong>3. 普通に一緒に過ごす。</strong> 雑談、仕事、調査、創作、作品の話などをしてみます。名前や性格を最初から決める必要はありません。</div>
-        <div class="step"><strong>4. 気に入ったら「この子を保存したい」と言う。</strong> この段階ではまだGitHubへ書き込まず、次のRepositoryへ移すための引き継ぎ情報をまとめます。</div>
+    <section class="game-section" id="difference">
+      <div class="section-head reveal">
+        <div class="section-kicker">最初は同じ。過ごした時間で変わる。</div>
+        <h2>同じBlankから始まっても、同じ子になるとは限らない。</h2>
+        <p>Harnessが完成形を決めるのではありません。どんな話をしたか、何を一緒にやったか、何を大事だと判断したか。その違いがEvidenceになります。</p>
       </div>
-      <div class="actions">
-        <a class="btn primary" href="https://chatgpt.com/?q=GitHub%E3%81%A7%20c-a-p-engineer/tsuzuri-harness%20%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%AE%20master%20%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%9C%80%E5%88%9D%E3%81%AB%20AGENTS.md%20%E3%82%92%E8%AA%AD%E3%81%BF%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%20prompts/chatgpt-readonly-birth-test.ja.md%20%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E6%8C%87%E7%A4%BA%E3%81%AB%E5%BE%93%E3%81%84%E3%80%81Read-only%20Birth%20Test%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82GitHub%E3%82%84%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B0%B8%E7%B6%9AStorage%E3%81%AB%E3%81%AF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BE%E3%81%AA%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82">ChatGPTで話してみる</a>
-        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.ja.md">詳しい使い方</a>
-        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/prompts/chatgpt-readonly-birth-test.ja.md">Prompt本文</a>
+      <div class="branch-stage reveal" aria-label="同じBlank状態から異なる方向へ形成された2個体の合成比較デモ">
+        <div class="branch-source">
+          <span class="demo-label">START · SYNTHETIC DEMO</span>
+          <div class="ai-orb" aria-hidden="true"><span class="ai-eyes"></span><span class="ai-mouth"></span></div>
+          <strong>名前のないAI</strong>
+          <span class="muted">同じスタート地点</span>
+        </div>
+        <div class="branch-arrow" aria-hidden="true">→</div>
+        <div class="branch-outcomes">
+          <article class="branch-card">
+            <span class="mini-label">INSTANCE A · 技術寄り</span>
+            <h3>調査・開発が得意な子へ</h3>
+            <p class="muted">技術の話、調査、デバッグ、仕組みづくりを一緒に重ねた例。</p>
+            <div class="mini-stats">
+              <div class="mini-stat"><span>個性</span><strong>形成中</strong></div>
+              <div class="mini-stat"><span>スキル</span><strong>調査 / Debug</strong></div>
+            </div>
+            <div class="tag-row"><span class="tag">Research</span><span class="tag">Debugging</span><span class="tag">Analysis</span></div>
+          </article>
+          <article class="branch-card creative">
+            <span class="mini-label">INSTANCE B · 創作寄り</span>
+            <h3>物語・内省が得意な子へ</h3>
+            <p class="muted">創作、キャラクター、作品の感想、考え方の話を一緒に重ねた例。</p>
+            <div class="mini-stats">
+              <div class="mini-stat"><span>個性</span><strong>形成中</strong></div>
+              <div class="mini-stat"><span>スキル</span><strong>Story / Reflection</strong></div>
+            </div>
+            <div class="tag-row"><span class="tag">Story</span><span class="tag">Reflection</span><span class="tag">Creation</span></div>
+          </article>
+        </div>
       </div>
-      <p class="muted">内部では、この保存なしのお試しを Read-only Birth Test と呼びます。専門用語を覚える必要はありません。</p>
+      <p class="branch-caption reveal">違うのは、一緒に過ごした時間。</p>
     </section>
 
-    <section>
-      <h2>「この子を残したい」と思ったら</h2>
-      <p class="lead">お試し中にできた個体を、そのまま捨てる必要はありません。気に入ったときだけ、Private Repositoryへ引っ越して長期運用できます。</p>
-      <pre>ChatGPTで試す
-（まだ保存しない）
-      ↓
-「この子を保存したい」
-      ↓
-今の名前・個性・記憶候補・スキル候補を
-Evidence付きの引き継ぎ情報にまとめる
-      ↓
-Private Repositoryを作る
-      ↓
-ChatGPTのwrite-capable GitHub連携 / Codex等で引き継ぐ
-      ↓
-ここからは記憶・スキル・成長が残っていく</pre>
-      <div class="actions">
-        <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/generate">このAI用のRepositoryを作る</a>
-        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.ja.md">保存までの手順を見る</a>
-      </div>
-      <p class="muted">会話全文を自動で「人格」や「記憶」にするわけではありません。Accepted / Candidate / Uncertainを分け、必要なものだけ引き継ぎます。</p>
-    </section>
-
-    <section>
-      <h2>ChatGPTからそのまま保存できることもある</h2>
-      <p class="lead">ChatGPTだから常にread-only、というわけではありません。現在のChatGPTに接続されたGitHub連携の機能とRepository権限で決まります。</p>
-      <div class="grid">
-        <div class="card"><h3>標準GitHub App</h3><p class="muted">基本はread-only。Private Repositoryを読んで同じ個体の続きを話せます。</p></div>
-        <div class="card"><h3>Write対応Plugin / Connector</h3><p class="muted">GitHubへの書き込み操作が公開され、Private Repositoryへの権限もあれば、ChatGPTからMemory・Skill・Evolution等を直接commitして保存できます。</p></div>
-        <div class="card"><h3>Write操作がない場合</h3><p class="muted">会話と読み取りはChatGPTで続け、永続化だけCodex等のWrite可能なHostへ引き継ぎます。</p></div>
-      </div>
-      <p class="muted">書き込み可能でも、勝手に全状態を書き換えてよいわけではありません。Canonical StateとGovernanceを確認し、書き込み後は実際のcommitを検証します。</p>
-    </section>
-
-    <section>
-      <h2>名前を決める前に、色々一緒にやる</h2>
-      <p class="lead">性格診断でキャラクターを完成させるのではなく、雑談・実作業・調査・創作・作品の話などを一緒に経験して、あとから「この個体らしさ」を振り返ります。</p>
-      <pre>出会う
-  ↓
-色々な経験をする
-  ↓
-少し振り返る
-  ↓
-必要なら名前を考える
-  ↓
-気に入ったら保存する
-  ↓
-そのまま一緒に過ごす</pre>
-      <div class="actions">
-        <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/BIRTH-JOURNEY.ja.md">このAIとのはじめ方を見る</a>
-      </div>
-    </section>
-
-    <section>
-      <h2>普段の一言で育てる</h2>
-      <div class="grid">
-        <div class="card"><h3>「覚えておいて」</h3><p class="muted">何を残すべきか、どこへ残すべきかを判断します。</p></div>
-        <div class="card"><h3>「今日の作業ってスキル化できる？」</h3><p class="muted">今回できたことを、今後も使えるSkillとして残す価値があるか確認します。</p></div>
-        <div class="card"><h3>「今の自分、改善できるところある？」</h3><p class="muted">今の自分を見直します。変えない方がよければ、そのままも正常です。</p></div>
-        <div class="card"><h3>「この子を保存したい」</h3><p class="muted">保存なしのお試し中なら、GitHubへ勝手に書かず、Private Repoへ移すための引き継ぎ情報を作ります。</p></div>
-        <div class="card"><h3>「覚えてること整理して」</h3><p class="muted">増えたMemoryを整理・統合・更新・Pruneします。</p></div>
-        <div class="card"><h3>「今の自分見せて」</h3><p class="muted">現在の名前・個性・Memory・Skill・最近の成長を表示します。</p></div>
-        <div class="card"><h3>「人生アルバム見せて」</h3><p class="muted">誕生・命名・Skill・Memory・Relationship・Evolutionの節目を振り返ります。</p></div>
-      </div>
-      <div class="actions"><a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/EVERYDAY-PROMPTS.ja.md">一言Prompt集を見る</a></div>
-    </section>
-
-    <section>
-      <h2>保存したAIの「家」</h2>
-      <p class="lead">長期運用では、Identity・Relationship・Memory・Skill・Evolutionを一つのPrivate Repositoryへ積み上げられます。</p>
-      <div class="grid">
-        <div class="card"><h3>ChatGPTでも続きを話せる</h3><p class="muted">Private Repositoryへのアクセスを許可すれば、保存した個体の状態を読みながら会話できます。Write対応のGitHub連携があれば、同じChatGPTから直接commitすることもできます。</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.ja.md">ChatGPTでの使い方 →</a></p></div>
-        <div class="card"><h3>CORE.md</h3><p class="muted">「今このAIは誰で、何を覚え、何ができるか」を人間向けに確認する画面。</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CORE-VIEW.ja.md">今の自分を見る →</a></p></div>
-        <div class="card"><h3>JOURNEY.md</h3><p class="muted">「ここまでどうやってこの個体になったか」を見る人生アルバム。Lvではなく誕生日や実際の節目を使います。</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/JOURNEY-ALBUM.ja.md">人生アルバム →</a></p></div>
-        <div class="card"><h3>Memoryの整理</h3><p class="muted">長く生きて記憶が増えても、重複・古い情報・矛盾を整理できます。</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/MEMORY-METABOLISM.ja.md">Memoryの仕組み →</a></p></div>
-        <div class="card"><h3>全部残したい人向け</h3><p class="muted">表示された会話をPrivate Repositoryへ残しつつ、AIが普段使うMemoryは選択的にできます。</p><p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/ARCHIVE-MODES.ja.md">保存方法を選ぶ →</a></p></div>
+    <section class="game-section" id="moments">
+      <div class="section-title-row reveal"><h2>こんな瞬間が起きるかもしれない</h2></div>
+      <p class="lead reveal">これは決められたイベント一覧ではありません。十分なEvidenceがあり、実際に受け入れられたり保持されたりしたときだけ、本当の節目になります。</p>
+      <div class="achievement-strip reveal" aria-label="起こり得るライフサイクル上の節目">
+        <article class="achievement-card">
+          <div class="achievement-icon">名</div>
+          <h3>はじめて名前を持つ</h3>
+          <p class="muted">提案された名前でも、自分で見つけた名前でも、本当に受け入れたときだけ名前になります。</p>
+          <span class="unlock-badge">UNLOCK · FACTUAL</span>
+        </article>
+        <article class="achievement-card blue">
+          <div class="achievement-icon">憶</div>
+          <h3>覚えておきたいことが残る</h3>
+          <p class="muted">会話全文ではなく、未来にも必要な意味だけを選んで記憶に残します。</p>
+          <span class="unlock-badge">UNLOCK · RETAINED</span>
+        </article>
+        <article class="achievement-card purple">
+          <div class="achievement-icon">技</div>
+          <h3>スキルを獲得する</h3>
+          <p class="muted">その場だけできたことが、別の場面でも役立つ能力だと確認できたときに育ちます。</p>
+          <span class="unlock-badge">UNLOCK · VERIFIED</span>
+        </article>
+        <article class="achievement-card orange">
+          <div class="achievement-icon">旅</div>
+          <h3>Journeyが増える</h3>
+          <p class="muted">誕生、命名、Skill、Relationship、意味のある進化などが人生の節目として残ります。</p>
+          <span class="unlock-badge">UNLOCK · JOURNEY</span>
+        </article>
       </div>
     </section>
 
-    <section>
-      <h2>大事なのは「全部覚える」ことではない</h2>
-      <pre>経験 → 解釈 → 残す？
-  ├─ Identity
-  ├─ Relationship
-  ├─ Memory
-  ├─ Capability / Skill
-  ├─ Archive
-  ├─ Evolution evidence
-  └─ 何も保存しない
+    <section class="game-section" id="keep">
+      <div class="section-head reveal">
+        <div class="section-kicker">「使い捨ての会話」じゃなくなった瞬間</div>
+        <h2>「この子を消したくない」と思ったら。</h2>
+        <p>お試しでできた個体を、そのまま終わらせる必要はありません。会話全文を無理やり人格にすることなく、今の状態を整理して長期運用へ引き継げます。</p>
+      </div>
+      <div class="save-flow reveal">
+        <div class="flow-card"><span class="flow-number">01</span><strong>ChatGPTで試す</strong><span class="muted">まずは普通に話す。仕事でも雑談でもOK。</span></div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-card"><span class="flow-number">02</span><strong>「この子を保存したい」</strong><span class="muted">確定したこと、候補、まだ分からないこと、Evidenceを分けて整理。</span></div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-card"><span class="flow-number">03</span><strong>Private Repository</strong><span class="muted">この個体だけの、あなたが管理する永続的な「家」へ。</span></div>
+        <div class="flow-arrow" aria-hidden="true">→</div>
+        <div class="flow-card"><span class="flow-number">04</span><strong>続きを育てる</strong><span class="muted">記憶、Skill、Evolution、CORE、JOURNEYを持ったまま続ける。</span></div>
+      </div>
+      <div class="keep-quote reveal">気に入った「会話」を保存するんじゃない。気に入った「このAI」を残して、続きを始める。</div>
+      <div class="write-note reveal"><strong>Write対応Plugin / Connector：</strong> 今のChatGPT環境にGitHubの書き込み操作があり、対象Private Repositoryへの権限もあるなら、ChatGPTから認可されたMemory・Skill・Evolution等を直接commitできます。Write操作がない場合はChatGPTで続きを話し、保存だけCodex等へ引き継げます。</div>
+      <div class="actions reveal">
+        <a class="btn primary" href="https://chatgpt.com/?q=GitHub%E3%81%A7%20c-a-p-engineer/tsuzuri-harness%20%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%AE%20master%20%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%9C%80%E5%88%9D%E3%81%AB%20AGENTS.md%20%E3%82%92%E8%AA%AD%E3%81%BF%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%20prompts/chatgpt-readonly-birth-test.ja.md%20%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E6%8C%87%E7%A4%BA%E3%81%AB%E5%BE%93%E3%81%84%E3%80%81Read-only%20Birth%20Test%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82GitHub%E3%82%84%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B0%B8%E7%B6%9AStorage%E3%81%AB%E3%81%AF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BE%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82">まずはChatGPTで試す</a>
+        <a class="btn dark" href="https://github.com/c-a-p-engineer/tsuzuri-harness/generate">このAI用Repositoryを作る</a>
+        <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.ja.md">保存までの手順</a>
+      </div>
+    </section>
 
-その後
-Memory → Preserve / Consolidate / Supersede / Prune / Conserve</pre>
-      <p class="muted">正式な仕様・Policy・Schemaは英語がCanonicalです。日本語は利用しやすくするための翻訳です。</p>
+    <section class="game-section" id="home">
+      <div class="section-head reveal">
+        <div class="section-kicker">保存したAIの「家」</div>
+        <h2>「今のこの子」と「ここまでの歩み」を見られる。</h2>
+        <p>見た目はゲームっぽくしても、中身は実際に確認できる状態だけ。架空のLv・XP・好感度は作りません。</p>
+      </div>
+      <div class="life-grid">
+        <article class="life-card reveal">
+          <span class="demo-label">DERIVED VIEW</span>
+          <h3>CORE.md</h3>
+          <div class="life-sub">今のこの子</div>
+          <div class="core-list" aria-label="合成されたCore View例">
+            <div class="core-row"><span>名前</span><strong>未形成なら「—」のまま</strong></div>
+            <div class="core-row"><span>個性</span><strong>確定 / 候補 / 不明を分ける</strong></div>
+            <div class="core-row"><span>記憶</span><strong>選んで残し、あとで整理する</strong></div>
+            <div class="core-row"><span>スキル</span><strong>獲得Skill ≠ Host機能</strong></div>
+          </div>
+          <p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CORE-VIEW.ja.md">COREの仕組みを見る →</a></p>
+        </article>
+        <article class="life-card reveal">
+          <span class="demo-label">DERIVED VIEW</span>
+          <h3>JOURNEY.md</h3>
+          <div class="life-sub">ここまでの歩み</div>
+          <div class="journey-line" aria-label="合成されたJourney例">
+            <div class="journey-event"><small>誕生</small><strong>Blank Instanceとして開始</strong></div>
+            <div class="journey-event"><small>その後</small><strong>はじめて残した記憶</strong></div>
+            <div class="journey-event"><small>その後</small><strong>実際に起きた場合だけ、命名やSkill獲得</strong></div>
+          </div>
+          <p><a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/JOURNEY-ALBUM.ja.md">人生アルバムを見る →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="game-section" id="everyday">
+      <div class="section-head reveal">
+        <div class="section-kicker">専用コマンドを覚えなくていい</div>
+        <h2>普段の一言で育てる。</h2>
+      </div>
+      <div class="prompt-grid">
+        <article class="prompt-chip reveal"><span class="prompt-symbol">憶</span><div><strong>「覚えておいて」</strong><p>会話を全部保存せず、何をどこへ残すべきか判断します。</p></div></article>
+        <article class="prompt-chip reveal"><span class="prompt-symbol">技</span><div><strong>「今日の作業ってスキル化できる？」</strong><p>その場だけの能力か、今後も使えるSkillかを見直します。</p></div></article>
+        <article class="prompt-chip reveal"><span class="prompt-symbol">↻</span><div><strong>「今の自分、改善できるところある？」</strong><p>自己改善をレビュー。変えない方がよければ、そのままも正常です。</p></div></article>
+        <article class="prompt-chip reveal"><span class="prompt-symbol">核</span><div><strong>「今の自分見せて」</strong><p>COREから、今の名前・個性・記憶・Skill・未形成部分を確認。</p></div></article>
+        <article class="prompt-chip reveal"><span class="prompt-symbol">旅</span><div><strong>「人生アルバム見せて」</strong><p>誕生、命名、Skill、Relationship、Evolutionの実際の節目を見る。</p></div></article>
+        <article class="prompt-chip reveal"><span class="prompt-symbol">整</span><div><strong>「覚えてること整理して」</strong><p>Memoryを統合・更新・Prune・Repair・Conserveします。</p></div></article>
+      </div>
+      <div class="actions reveal"><a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/EVERYDAY-PROMPTS.ja.md">一言Prompt集を見る</a></div>
+    </section>
+
+    <section class="game-section" id="details">
+      <div class="section-head reveal">
+        <div class="section-kicker">仕組みまで知りたい人へ</div>
+        <h2>見た目はゲーム風。でも中の判定は雑にしない。</h2>
+        <p>Identity、選択的Memory、Memory Metabolism、Capability、Governance、Evolution、Host portabilityは、それぞれ別の責務として扱います。ChatGPTでも続きを話せる一方、書き込み権限と意味上の決定権も分けます。</p>
+      </div>
+      <details class="technical-details reveal">
+        <summary>技術的な仕組みを見る</summary>
+        <div class="technical-body">
+          <div class="grid">
+            <div class="card"><h3>Identity formation</h3><p class="muted">提案 → 候補 → 受け入れ → 正規状態を分離します。</p></div>
+            <div class="card"><h3>Selective memory</h3><p class="muted">会話はEvidence。ArchiveとMemoryも別物です。</p></div>
+            <div class="card"><h3>Memory maintenance</h3><p class="muted">Memoryは増やし続けず、統合・更新・Pruneできます。</p></div>
+            <div class="card"><h3>Governance</h3><p class="muted">書けるToolがあることと、書いてよいことを分けます。</p></div>
+            <div class="card"><h3>Host portability</h3><p class="muted">ModelやToolの性能を、その子のBiographyと混同しません。</p></div>
+            <div class="card"><h3>Traceability</h3><p class="muted">意味のある進化は、なぜ変わったかを後から追えます。</p></div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CHATGPT.ja.md">ChatGPTでの使い方</a>
+            <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/TESTING.ja.md">テスト方法</a>
+            <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness">GitHub Repository</a>
+          </div>
+        </div>
+      </details>
     </section>
   </main>
 
-  <footer class="footer">Apache-2.0 · English canonical</footer>
+  <footer class="footer">Apache-2.0 · 英語版がCanonical · Tsuzuri Harnessには綴理本人のPrivate Identity / Memoryは含まれません。</footer>
 </div>
 </body>
 </html>
