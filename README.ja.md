@@ -43,7 +43,15 @@ ChatGPTで **Settings → Apps / Plugins → GitHub** を開き、GitHubアカ�
 
 GitHub連携が使えるChatGPTの画面では、**自分のPrivate Repositoryへのアクセスも許可できます**。保存した個体のRepositoryを許可すれば、ChatGPTから `AGENTS.md`、Identity、Memory、Skillなどを読み、その個体の続きを会話できます。
 
-ただしGitHub連携の利用可否はプラン・Workspace・ChatGPTの利用画面によって異なり、**GitHubアプリ自体は読み取り専用**です。Private Repositoryを読めても、commit・pushやInstance状態の書き戻しはできません。永続的な変更を保存するときはCodexなどWrite可能なHostを使います。
+GitHub連携の利用可否や使える操作は、プラン・Workspace・ChatGPTの利用画面・接続方式・Repository権限によって異なります。
+
+- **標準のChatGPT GitHub App** は基本的にread-onlyです。
+- ただし、ChatGPTに接続された **GitHub Plugin / Connectorが書き込み操作を公開していて、対象Private Repositoryへの書き込み権限もある環境** では、ChatGPTからIdentity・Memory・Skill・Evolution等を直接commitして保存できる場合があります。
+- 書き込み操作がない環境では、CodexなどWrite可能なHostへ引き継いで保存します。
+
+つまり **ChatGPTだから書けないのではなく、今のChatGPT環境に実際どのGitHub操作が公開されているかで決まります。**
+
+詳しくは [`docs/CHATGPT.ja.md`](docs/CHATGPT.ja.md) を参照してください。
 
 ### 2. 「まずはChatGPTで試す」を押す
 
@@ -85,7 +93,7 @@ ChatGPTで試す
       ↓
 Templateから自分だけのPrivate Repositoryを作る
       ↓
-Codex等の書き込み可能なHostで初期化・引き継ぎ
+ChatGPTのwrite-capable GitHub連携 / Codex等で引き継ぐ
       ↓
 以後は記憶・スキル・成長をRepositoryへ残していく
 ```
@@ -95,11 +103,13 @@ Codex等の書き込み可能なHostで初期化・引き継ぎ
 1. [**このAI用のRepositoryを作る**](https://github.com/c-a-p-engineer/tsuzuri-harness/generate)
 2. 個人的なIdentity・Memory・会話を保存するなら **Private** を推奨
 3. `./scripts/init-instance.sh` または `./scripts/init-instance.ps1` を実行
-4. Codex等のWrite可能なHostで `AGENTS.md` を最初に読む
+4. `AGENTS.md` を最初に読む
 5. Read-only体験から引き継ぐ場合は、保存用の引き継ぎ情報を渡してEvidence付きで反映する
-6. 以後はそのPrivate Repositoryを「このAIの家」として使う
+6. ChatGPTに書き込み可能なGitHub連携があるなら、そのままChatGPTからcommitして保存できる
+7. 書き込み操作がなければCodex等のWrite可能なHostへ引き継ぐ
+8. 以後はそのPrivate Repositoryを「このAIの家」として使う
 
-保存後、ChatGPT側でGitHub連携が使えるなら、そのPrivate Repositoryを許可して**ChatGPTから同じ個体の続きを話す**こともできます。ChatGPTでは読みながら会話し、永続化したい変更だけCodex等で書き戻す運用ができます。
+保存後、ChatGPT側でGitHub連携が使えるなら、そのPrivate Repositoryを許可して**ChatGPTから同じ個体の続きを話せます**。さらにwrite-capableなGitHub連携まで使える環境なら、会話から生まれたMemoryやSkill等を同じChatGPTから直接commitできます。read-only環境なら、永続化だけCodex等へ引き継ぎます。
 
 Read-onlyの会話から継続している強いEvidenceがある場合、Repository初期化日より前を誕生日として扱うこともできます。ただし、推測で遡らせずProvenanceを残します。
 
