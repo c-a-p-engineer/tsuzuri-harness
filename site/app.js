@@ -1,4 +1,13 @@
 (() => {
+  const scriptUrl = document.currentScript?.src;
+  if (scriptUrl && !document.querySelector('link[data-tsuzuri-responsive]')) {
+    const responsiveStyles = document.createElement('link');
+    responsiveStyles.rel = 'stylesheet';
+    responsiveStyles.href = new URL('responsive-v2.css', scriptUrl).href;
+    responsiveStyles.dataset.tsuzuriResponsive = 'v2';
+    document.head.appendChild(responsiveStyles);
+  }
+
   document.documentElement.classList.add('js');
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
