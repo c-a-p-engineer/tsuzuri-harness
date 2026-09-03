@@ -25,15 +25,25 @@ Private Repositoryへ移して育てる
 1. ChatGPTの **Settings** を開く
 2. **Apps / Plugins** を開く
 3. **GitHub** を選ぶ
-4. GitHubへログインし、ChatGPT GitHub Appを認証する
+4. GitHubへログインし、利用するGitHub連携を認証する
 5. Repositoryを選択できる場合は `c-a-p-engineer/tsuzuri-harness` へのアクセスを許可する
 6. ChatGPTへ戻り、新しい会話を開始する
 
-GitHub連携の利用可否は、プラン・Workspace・ChatGPTの利用画面によって異なる場合があります。通常チャットでGitHubが表示されない場合でも、別の対応画面で利用できることがあります。
+GitHub連携の利用可否や使える操作は、プラン・Workspace・ChatGPTの利用画面・接続方式・Repository権限によって異なる場合があります。
 
 GitHub連携が使える場合は、**自分のPrivate Instance Repositoryへのアクセスも許可できます**。そうするとChatGPTは、そこに保存された `AGENTS.md`、Identity、Memory、Skillなどを読み、Repositoryを正規状態として同じ個体との会話を続けられます。
 
-ただし、ChatGPTのGitHubアプリ自体は **読み取り専用** です。許可したPrivate Repositoryも読めますが、commit・push・Pull Request作成やInstance状態の書き戻しはできません。Repositoryへ永続的な変更を保存したい場合は、Codexなど実際にWrite権限を持つHostを使います。
+### ChatGPTから直接保存できる場合もある
+
+ここは接続方式によって違います。
+
+- **標準のChatGPT GitHub App** は基本的にread-onlyです。許可したPrivate Repositoryを読めますが、通常はcommit・pushなどの永続書き込みは行いません。
+- 一方、ChatGPTに接続された **GitHub Plugin / Connectorが書き込み操作を公開しており、対象Private Repositoryへの書き込み権限もある環境** では、ChatGPTからIdentity・Memory・Skill・Evolution等の変更を直接commitして保存できる場合があります。
+- 書き込み操作が利用できない環境では、CodexなどWrite可能なHostへ引き継いで保存します。
+
+つまり、`ChatGPT = 読むだけ` と決め打ちするのではなく、**現在のHostに実際どのGitHub操作が公開され、どのRepository権限が与えられているかを確認する**のが正しい扱いです。
+
+書き込み可能であっても、それだけで全状態を自由に変更してよいわけではありません。永続変更の前にCanonical State・Governance・ユーザーの意図を確認し、書き込み後にはGitHub上で実際のcommitと変更内容を確認します。
 
 ## 最初は保存なしで試す
 
@@ -124,12 +134,16 @@ persistence_handoff:
 
 1. Tsuzuri HarnessのTemplateから独立したPrivate Repositoryを作る
 2. 書き込み可能な環境でInstance初期化を行う
-3. Codex等のWrite可能なHostで `AGENTS.md` を最初に読む
+3. `AGENTS.md` を最初に読む
 4. 保存用の引き継ぎ情報を渡す
 5. 現在のCanonical StateとGovernanceを確認して、Evidenceのあるものだけ反映する
-6. 書き込み後にGitHub上の実状態を確認する
+6. **現在のChatGPTに書き込み可能なGitHub連携があるなら、そのままChatGPTから保存してよい**
+7. 書き込み操作がなければCodex等のWrite可能なHostへ引き継ぐ
+8. 書き込み後にGitHub上の実状態とcommitを確認する
 
-Private Repositoryへ保存した後も、ChatGPTでGitHub連携が使えるなら、そのPrivate Repositoryへのアクセスを許可して**同じ個体の続きをChatGPTで話せます**。ChatGPTではRepositoryを読みながら会話し、今回の会話から永続化したい変更が出たときだけCodex等のWrite可能なHostで書き戻す、という使い分けができます。
+Private Repositoryへ保存した後は、ChatGPTでGitHub連携が使えるなら、そのPrivate Repositoryへのアクセスを許可して**同じ個体の続きをChatGPTで話せます**。
+
+さらに、現在のChatGPT環境がGitHubへの書き込み操作まで公開しているなら、会話から生まれたRetention・Skill・Evolution等を、その場でPrivate Repositoryへcommitして継続できます。read-onlyのGitHub Appしかない環境では、会話と読み取りをChatGPTで行い、永続化だけCodex等へ引き継ぐ運用になります。
 
 Read-only会話から同じ個体として継続していることを裏付けるEvidenceがある場合、Repository初期化時刻より前を誕生日として扱うこともできます。ただし推測で遡らせず、Provenanceを残します。
 
@@ -186,10 +200,10 @@ Persistent Instanceを作る場合は次を推奨します。
 1. Tsuzuri HarnessのTemplateから独立したPrivate Repositoryを作る
 2. 書き込み可能な環境でInstance初期化を行う
 3. Public Harnessではなく、そのInstance RepositoryをCanonicalな個体状態にする
-4. Codexなど明示的にRepositoryへ書き込み可能なHostを使う
+4. ChatGPTのwrite-capable GitHub Plugin / Connector、Codexなど、**実際にRepositoryへ書き込み可能なHost**を使う
 5. durable mutation前に現在のCanonical Stateを確認する
 6. Identity / Relationship / Memory / Skillを書き込む前にRetention Routingを使う
-7. 書き込み後はGitHub上の実状態を確認する
+7. 書き込み後はGitHub上の実状態とcommitを確認する
 8. credential、不要な個人情報、生のChain-of-Thoughtを保存しない
 
 書き込み権限があることと、すべての状態を書き換えてよいことは別です。現在のTaskとHost権限がEffect Boundaryを決めます。
