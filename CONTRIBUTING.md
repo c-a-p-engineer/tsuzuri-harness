@@ -29,17 +29,23 @@ For those changes, include:
 
 Do not add permanent gates, mandatory reads, or new state layers merely because they sound useful. `Conserve` and `no_change` are valid outcomes.
 
-<!-- FEATURE-DOC-SYNC:START -->
 ## Public capability documentation
 
 `docs/CAPABILITIES.md` is the canonical **public human-readable capability inventory**. Normative behavior remains owned by `AGENTS.md`, `function/`, schemas, and evals.
 
-When a change **adds, removes, renames, deprecates, merges, or materially changes a public capability**, review `docs/CAPABILITIES.md` in the same change. Update `docs/CAPABILITIES.ja.md` when the affected Japanese explanation exists, and review README / GitHub Pages when the change affects what an ordinary user should understand before trying the Harness.
+When a public Harness capability is **added, removed, renamed, deprecated, merged, or materially changes user-visible behavior**, review the capability inventory in the same change.
+
+Also review the discovery surfaces when their summary would otherwise become stale or misleading:
+
+- `README.md`
+- `README.ja.md`
+- `site/index.html`
+- `site/ja/index.html`
+- `docs/CAPABILITIES.ja.md`
+
+If persisted state, compatibility, migration, privacy, authority, host requirements, or release semantics change, review those focused documents too.
 
 Internal refactors and bug fixes with no public capability impact do not require ceremonial documentation edits. `no_public_doc_change` is a valid conclusion when justified.
-
-Follow [`docs/DOCUMENTATION-SYNC.md`](docs/DOCUMENTATION-SYNC.md) for the full source-of-truth hierarchy and review sequence.
-<!-- FEATURE-DOC-SYNC:END -->
 
 ## Pull requests
 
@@ -48,6 +54,7 @@ Follow [`docs/DOCUMENTATION-SYNC.md`](docs/DOCUMENTATION-SYNC.md) for the full s
 - Mark breaking changes clearly.
 - Update release-facing documentation when public contracts change.
 - Add or update evals when changing normative behavior.
+- Review `docs/CAPABILITIES.md` whenever the public capability surface changes.
 - Never include real personal identity, relationship history, credentials, private memory, or private reference-instance data.
 
 ## AI-assisted contributions
