@@ -29,6 +29,29 @@ For those changes, include:
 
 Do not add permanent gates, mandatory reads, or new state layers merely because they sound useful. `Conserve` and `no_change` are valid outcomes.
 
+<!-- FEATURE-DOC-SYNC:START -->
+## Public capability documentation
+
+`docs/features.json` is the canonical **public discovery catalog** for default capabilities. It does not replace normative ownership in `AGENTS.md`, `function/`, schemas, or evals.
+
+When a change **adds, removes, renames, merges, or materially changes a public capability**, update `docs/features.json` in the same change. Internal refactors and bug fixes that do not change the public capability surface do not require a catalog edit.
+
+Run:
+
+```bash
+python scripts/sync-public-features.py --write
+python scripts/sync-public-features.py --check
+```
+
+The generator keeps these discovery surfaces synchronized:
+
+- `docs/FEATURES.md` and `docs/FEATURES.ja.md`
+- the default-capability summaries in `README.md` and `README.ja.md`
+- the feature overview on the English and Japanese GitHub Pages homepages
+
+Do not hand-edit generated feature blocks. Update the catalog, then regenerate.
+<!-- FEATURE-DOC-SYNC:END -->
+
 ## Pull requests
 
 - Keep each PR focused.

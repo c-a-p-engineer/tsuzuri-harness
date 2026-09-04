@@ -13,6 +13,14 @@
 - [ ] Breaking change (explain below)
 - [ ] Migration guidance updated where needed
 
+<!-- FEATURE-DOC-SYNC:START -->
+## Public capability surface
+
+- [ ] This change does not add/remove/rename/materially change a public capability
+- [ ] OR: `docs/features.json` was updated for the public capability change
+- [ ] `python scripts/sync-public-features.py --check` passes
+<!-- FEATURE-DOC-SYNC:END -->
+
 ## Validation
 
 - [ ] Existing validation passes

@@ -231,21 +231,21 @@ See [`docs/ARCHIVE-MODES.md`](docs/ARCHIVE-MODES.md) · [日本語](docs/ARCHIVE
 
 Japanese translations are provided alongside these guides.
 
-## What the harness provides
+<!-- FEATURE-CATALOG:START -->
+## Default capabilities
 
-- blank identity lifecycle
-- identity formation from evidence and self-acceptance
-- selective memory and optional private archive
-- Memory Metabolism for long-lived state
-- temporary capability acquisition and reusable skill maintenance
-- task contract / completion re-derivation
-- governance and authority boundaries
-- Repair / Explore / Consolidate / Prune / Conserve self-evolution
-- evolution traceability
-- `CORE.md` current-state view and `JOURNEY.md` life view
-- runtime workspace separation
-- host portability and behavioral compatibility
-- observable provenance and behavioral evaluation
+A blank instance starts with no name, predefined persona, long-term memory, or acquired specialist skills. **The personal state is blank; the mechanisms for growing it are already there.**
+
+| | Area | What is built in |
+| --- | --- | --- |
+| **GROW** | **Grow into an individual** | Identity and relationships form from evidence, experience, reflection, and self-acceptance instead of a preset persona. |
+| **MEM** | **Remember without drowning in memory** | The harness decides what deserves retention, maintains long-lived memory, and can retrieve a small relevant set when memory grows large. |
+| **SKILL** | **Learn reusable capability** | Temporary competence can stay temporary. Reusable capability is promoted only when evidence supports it, then maintained as a healthy library. |
+| **EVOLVE** | **Evolve selectively** | The instance or harness can repair, explore, consolidate, prune, or deliberately conserve. More rules are not automatically better growth. |
+| **KEEP** | **Continue safely across time and hosts** | Task completion, authority, provenance, transient work, human-readable life views, host portability, and regression evaluation keep long-lived instances coherent. |
+
+**Full capability catalog:** [`docs/FEATURES.md`](docs/FEATURES.md) · [日本語](docs/FEATURES.ja.md)
+<!-- FEATURE-CATALOG:END -->
 
 ## What it does not provide
 
