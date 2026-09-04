@@ -131,7 +131,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          grep -Fq 'public capability surface changes' CONTRIBUTING.md
+          grep -Fq 'Public capability documentation' CONTRIBUTING.md
           grep -Fq 'Public capability surface' .github/PULL_REQUEST_TEMPLATE.md
+          grep -Fq 'Public capability documentation' AGENTS.md
           grep -Fq 'no_public_doc_change' docs/CAPABILITIES.md
           grep -Fq 'no_public_doc_change' docs/CAPABILITIES.ja.md
