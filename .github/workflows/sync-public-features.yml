@@ -4,11 +4,10 @@ on:
   push:
     branches: [master]
     paths:
+      - 'AGENTS.md'
       - 'function/**'
       - 'docs/CAPABILITIES.md'
       - 'docs/CAPABILITIES.ja.md'
-      - 'docs/DOCUMENTATION-SYNC.md'
-      - 'docs/DOCUMENTATION-SYNC.ja.md'
       - 'README.md'
       - 'README.ja.md'
       - 'site/index.html'
@@ -19,11 +18,10 @@ on:
   pull_request:
     branches: [master]
     paths:
+      - 'AGENTS.md'
       - 'function/**'
       - 'docs/CAPABILITIES.md'
       - 'docs/CAPABILITIES.ja.md'
-      - 'docs/DOCUMENTATION-SYNC.md'
-      - 'docs/DOCUMENTATION-SYNC.ja.md'
       - 'README.md'
       - 'README.ja.md'
       - 'site/index.html'
@@ -44,69 +42,96 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Validate capability inventory surfaces
+      - name: Validate capability inventory and discovery links
         shell: bash
         run: |
           set -euo pipefail
 
-          for f in \
-            docs/CAPABILITIES.md docs/CAPABILITIES.ja.md \
-            docs/DOCUMENTATION-SYNC.md docs/DOCUMENTATION-SYNC.ja.md; do
-            test -f "$f" || { echo "Missing public capability document: $f" >&2; exit 1; }
-          done
+          test -f docs/CAPABILITIES.md
+          test -f docs/CAPABILITIES.ja.md
 
           for capability in \
+            'Identity Formation' \
+            'Relationship Lifecycle' \
+            'Retention Routing' \
+            'Memory Record Lifecycle' \
+            'Memory Metabolism' \
             'Memory Retrieval' \
-            'Memory Record' \
             'Capability Library Health' \
             'External Skill Provenance' \
-            'Execution Provenance' \
-            'Harness Complexity Budget' \
+            'Self-Evolution' \
             'Evolution Traceability' \
-            'Host Portability'; do
-            grep -Fq "$capability" docs/CAPABILITIES.md || { echo "Canonical capability inventory is missing: $capability" >&2; exit 1; }
-            grep -Fq "$capability" docs/CAPABILITIES.ja.md || { echo "Japanese capability inventory is missing: $capability" >&2; exit 1; }
+            'Harness Complexity Budget' \
+            'Task Contract' \
+            'Contextual Activation' \
+            'Governance' \
+            'Execution Provenance' \
+            'CORE View' \
+            'JOURNEY Album' \
+            'Host Portability' \
+            'Regression Evaluation'; do
+            grep -Fq "$capability" docs/CAPABILITIES.md || {
+              echo "English capability inventory is missing: $capability" >&2
+              exit 1
+            }
+            grep -Fq "$capability" docs/CAPABILITIES.ja.md || {
+              echo "Japanese capability inventory is missing: $capability" >&2
+              exit 1
+            }
           done
 
           grep -Fq 'docs/CAPABILITIES.md' README.md
           grep -Fq 'docs/CAPABILITIES.ja.md' README.ja.md
           grep -Fq 'docs/CAPABILITIES.md' site/index.html
           grep -Fq 'docs/CAPABILITIES.ja.md' site/ja/index.html
-          grep -Fq 'docs/DOCUMENTATION-SYNC.md' CONTRIBUTING.md
-          grep -Fq 'docs/DOCUMENTATION-SYNC.md' .github/PULL_REQUEST_TEMPLATE.md
+          grep -Fq 'docs/CAPABILITIES.md' CONTRIBUTING.md
+          grep -Fq 'docs/CAPABILITIES.md' .github/PULL_REQUEST_TEMPLATE.md
 
-      - name: Require inventory review for top-level function surface changes
-        if: github.event_name == 'pull_request'
+      - name: Require inventory review for top-level function contract shape changes
         shell: bash
-        env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
           set -euo pipefail
 
-          changes="$(git diff --name-status "$BASE_SHA" "$GITHUB_SHA" -- 'function/*.md' 'function/*.schema.yaml')"
-          if ! printf '%s\n' "$changes" | awk '$1 ~ /^(A|D|R)/ { found=1 } END { exit(found ? 0 : 1) }'; then
-            echo 'No added/deleted/renamed top-level function contract.'
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            base="${{ github.event.pull_request.base.sha }}"
+            head="${{ github.event.pull_request.head.sha }}"
+          elif [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+            base="${{ github.event.before }}"
+            head="${{ github.sha }}"
+          else
+            echo 'Manual run: diff guard skipped.'
+            exit 0
+          fi
+
+          if [[ -z "$base" || "$base" =~ ^0+$ ]]; then
+            echo 'No comparable base commit; diff guard skipped.'
+            exit 0
+          fi
+
+          contract_changes="$(git diff --name-status "$base" "$head" -- 'function/*.md' 'function/*.schema.yaml' | awk '$1 ~ /^(A|D|R)/ { print }')"
+          if [[ -z "$contract_changes" ]]; then
+            echo 'No added/deleted/renamed top-level function contracts.'
             exit 0
           fi
 
           echo 'Top-level function contract surface changed:'
-          printf '%s\n' "$changes"
+          printf '%s\n' "$contract_changes"
 
-          changed_files="$(git diff --name-only "$BASE_SHA" "$GITHUB_SHA")"
-          printf '%s\n' "$changed_files" | grep -Fxq 'docs/CAPABILITIES.md' || {
-            echo 'Top-level function surface changed without reviewing docs/CAPABILITIES.md.' >&2
+          changed_docs="$(git diff --name-only "$base" "$head" -- docs/CAPABILITIES.md docs/CAPABILITIES.ja.md)"
+          printf '%s\n' "$changed_docs" | grep -Fxq 'docs/CAPABILITIES.md' || {
+            echo 'Review/update docs/CAPABILITIES.md in the same change.' >&2
             exit 1
           }
-          printf '%s\n' "$changed_files" | grep -Fxq 'docs/CAPABILITIES.ja.md' || {
-            echo 'Top-level function surface changed without reviewing docs/CAPABILITIES.ja.md.' >&2
+          printf '%s\n' "$changed_docs" | grep -Fxq 'docs/CAPABILITIES.ja.md' || {
+            echo 'Review/update docs/CAPABILITIES.ja.md in the same change.' >&2
             exit 1
           }
 
-      - name: Documentation synchronization policy is explicit
+      - name: Validate maintenance rule is explicit
         shell: bash
         run: |
           set -euo pipefail
-          grep -Fq 'no_public_doc_change' docs/DOCUMENTATION-SYNC.md
-          grep -Fq 'README.md' docs/DOCUMENTATION-SYNC.md
-          grep -Fq 'site/index.html' docs/DOCUMENTATION-SYNC.md
-          grep -Fq 'Regression' docs/DOCUMENTATION-SYNC.ja.md
+          grep -Fq 'public capability surface changes' CONTRIBUTING.md
+          grep -Fq 'Public capability surface' .github/PULL_REQUEST_TEMPLATE.md
+          grep -Fq 'no_public_doc_change' docs/CAPABILITIES.md
+          grep -Fq 'no_public_doc_change' docs/CAPABILITIES.ja.md
