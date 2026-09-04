@@ -16,9 +16,10 @@
 <!-- FEATURE-DOC-SYNC:START -->
 ## Public capability surface
 
-- [ ] This change does not add/remove/rename/materially change a public capability
-- [ ] OR: `docs/features.json` was updated for the public capability change
-- [ ] `python scripts/sync-public-features.py --check` passes
+- [ ] This change does not add/remove/rename/deprecate/materially change a public capability
+- [ ] OR: `docs/CAPABILITIES.md` was reviewed/updated for the public capability change
+- [ ] Japanese README / Pages / `docs/CAPABILITIES.ja.md` were reviewed where affected
+- [ ] `docs/DOCUMENTATION-SYNC.md` review sequence was considered
 <!-- FEATURE-DOC-SYNC:END -->
 
 ## Validation

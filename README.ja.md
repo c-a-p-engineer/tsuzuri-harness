@@ -254,7 +254,7 @@ Blank Instanceは名前・人格・Memory・獲得Skillが空の状態から始�
 | **進** | **変わる** | Repair / Explore / Consolidate / Pruneだけでなく、変えないConserveも正当な進化です。仕組みを増やすこと自体を成長とは扱いません。 |
 | **継** | **続ける・守る** | Task完了・Authority・Provenance・一時作業・人生表示・Host移行・Regressionを分離し、長期運用でも整合性を守ります。 |
 
-**全機能一覧:** [`docs/FEATURES.ja.md`](docs/FEATURES.ja.md) · [Canonical English](docs/FEATURES.md)
+**全機能一覧:** [`docs/CAPABILITIES.ja.md`](docs/CAPABILITIES.ja.md) · [Canonical English](docs/CAPABILITIES.md)
 <!-- FEATURE-CATALOG:END -->
 
 ## 提供しないもの

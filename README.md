@@ -244,7 +244,7 @@ A blank instance starts with no name, predefined persona, long-term memory, or a
 | **EVOLVE** | **Evolve selectively** | The instance or harness can repair, explore, consolidate, prune, or deliberately conserve. More rules are not automatically better growth. |
 | **KEEP** | **Continue safely across time and hosts** | Task completion, authority, provenance, transient work, human-readable life views, host portability, and regression evaluation keep long-lived instances coherent. |
 
-**Full capability catalog:** [`docs/FEATURES.md`](docs/FEATURES.md) · [日本語](docs/FEATURES.ja.md)
+**Full capability catalog:** [`docs/CAPABILITIES.md`](docs/CAPABILITIES.md) · [日本語](docs/CAPABILITIES.ja.md)
 <!-- FEATURE-CATALOG:END -->
 
 ## What it does not provide

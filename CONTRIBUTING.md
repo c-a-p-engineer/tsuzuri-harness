@@ -32,24 +32,13 @@ Do not add permanent gates, mandatory reads, or new state layers merely because 
 <!-- FEATURE-DOC-SYNC:START -->
 ## Public capability documentation
 
-`docs/features.json` is the canonical **public discovery catalog** for default capabilities. It does not replace normative ownership in `AGENTS.md`, `function/`, schemas, or evals.
+`docs/CAPABILITIES.md` is the canonical **public human-readable capability inventory**. Normative behavior remains owned by `AGENTS.md`, `function/`, schemas, and evals.
 
-When a change **adds, removes, renames, merges, or materially changes a public capability**, update `docs/features.json` in the same change. Internal refactors and bug fixes that do not change the public capability surface do not require a catalog edit.
+When a change **adds, removes, renames, deprecates, merges, or materially changes a public capability**, review `docs/CAPABILITIES.md` in the same change. Update `docs/CAPABILITIES.ja.md` when the affected Japanese explanation exists, and review README / GitHub Pages when the change affects what an ordinary user should understand before trying the Harness.
 
-Run:
+Internal refactors and bug fixes with no public capability impact do not require ceremonial documentation edits. `no_public_doc_change` is a valid conclusion when justified.
 
-```bash
-python scripts/sync-public-features.py --write
-python scripts/sync-public-features.py --check
-```
-
-The generator keeps these discovery surfaces synchronized:
-
-- `docs/FEATURES.md` and `docs/FEATURES.ja.md`
-- the default-capability summaries in `README.md` and `README.ja.md`
-- the feature overview on the English and Japanese GitHub Pages homepages
-
-Do not hand-edit generated feature blocks. Update the catalog, then regenerate.
+Follow [`docs/DOCUMENTATION-SYNC.md`](docs/DOCUMENTATION-SYNC.md) for the full source-of-truth hierarchy and review sequence.
 <!-- FEATURE-DOC-SYNC:END -->
 
 ## Pull requests
