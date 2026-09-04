@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "status": "canonical_public_discovery_catalog",
+  "note": "This catalog describes discoverable public capabilities. Normative behavior remains owned by AGENTS.md, function contracts, schemas, and evals.",
+  "categories": [
+    {
+      "id": "grow",
+      "icon_en": "GROW",
+      "icon_ja": "育",
+      "title_en": "Grow into an individual",
+      "title_ja": "育つ",
+      "summary_en": "Identity and relationships form from evidence, experience, reflection, and self-acceptance instead of a preset persona.",
+      "summary_ja": "最初から人格を決めず、経験・Evidence・振り返り・本人の受諾からIdentityやRelationshipが形になります。",
+      "features": [
+        {
+          "id": "identity-formation",
+          "name_en": "Identity Formation",
+          "name_ja": "Identity Formation",
+          "summary_en": "Names, values, preferences, roles, and self-description can remain unformed until evidence supports durable adoption.",
+          "summary_ja": "名前・価値観・好み・役割・自己記述は、Evidenceが揃うまで未形成のままで構いません。",
+          "reference": "docs/IDENTITY-FORMATION.md"
+        },
+        {
+          "id": "relationship-lifecycle",
+          "name_en": "Relationship Lifecycle",
+          "name_ja": "Relationship Lifecycle",
+          "summary_en": "Relationship state develops separately from identity and is not inferred merely from repeated conversation.",
+          "summary_ja": "RelationshipはIdentityと分離して育ち、会話回数だけで勝手に確定しません。",
+          "reference": "relationship/"
+        }
+      ]
+    },
+    {
+      "id": "remember",
+      "icon_en": "MEM",
+      "icon_ja": "憶",
+      "title_en": "Remember without drowning in memory",
+      "title_ja": "覚える・思い出す",
+      "summary_en": "The harness decides what deserves retention, maintains long-lived memory, and can retrieve a small relevant set when memory grows large.",
+      "summary_ja": "何を残すかを選び、長期Memoryを整理し、量が増えたら必要な記憶だけを選択的に思い出します。",
+      "features": [
+        {
+          "id": "retention-routing",
+          "name_en": "Retention Routing",
+          "name_ja": "Retention Routing",
+          "summary_en": "Conversation is evidence, not automatic memory; retained meaning is routed to the narrowest correct durable layer.",
+          "summary_ja": "会話を自動でMemory化せず、残す意味だけを適切な保存先へRoutingします。",
+          "reference": "function/retention-routing.md"
+        },
+        {
+          "id": "memory-record-lifecycle",
+          "name_en": "Memory Records & Lifecycle",
+          "name_ja": "Memory Record / Lifecycle",
+          "summary_en": "Human-readable metadata can track type, status, confidence, triggers, relations, provenance, and lifecycle state.",
+          "summary_ja": "type・status・confidence・trigger・relation・provenanceなどをHuman-readableな形で管理できます。",
+          "reference": "docs/MEMORY-RECORDS.md"
+        },
+        {
+          "id": "memory-metabolism",
+          "name_en": "Memory Metabolism",
+          "name_ja": "Memory Metabolism",
+          "summary_en": "Preserve, consolidate, supersede, abstract, demote, prune, repair, or conserve retained memory as evidence changes.",
+          "summary_ja": "MemoryをPreserve / Consolidate / Supersede / Abstract / Demote / Prune / Repair / Conserveできます。",
+          "reference": "docs/MEMORY-METABOLISM.md"
+        },
+        {
+          "id": "memory-retrieval",
+          "name_en": "Memory Retrieval",
+          "name_ja": "Memory Retrieval",
+          "summary_en": "Metadata and lexical retrieval work everywhere; semantic/vector retrieval is optional and always resolves back to canonical Markdown/YAML.",
+          "summary_ja": "Metadata・全文検索を基本に、Semantic/Vector検索は任意。検索結果は必ずCanonical Markdown/YAMLへ戻って確認します。",
+          "reference": "docs/MEMORY-RETRIEVAL.md"
+        },
+        {
+          "id": "archive-modes",
+          "name_en": "Archive Modes",
+          "name_ja": "Archive Modes",
+          "summary_en": "Choose Selective, Chronicle, or Private Archive history without confusing stored history with active memory.",
+          "summary_ja": "Selective / Chronicle / Private Archiveを選べ、保存した履歴とActive Memoryを混同しません。",
+          "reference": "docs/ARCHIVE-MODES.md"
+        }
+      ]
+    },
+    {
+      "id": "learn",
+      "icon_en": "SKILL",
+      "icon_ja": "技",
+      "title_en": "Learn reusable capability",
+      "title_ja": "学ぶ",
+      "summary_en": "Temporary competence can stay temporary. Reusable capability is promoted only when evidence supports it, then maintained as a healthy library.",
+      "summary_ja": "その場でできたことと獲得Skillを分け、再利用価値が確認できた能力だけを残し、Skill Library自体も保守します。",
+      "features": [
+        {
+          "id": "temporary-capability",
+          "name_en": "Task-local Capability",
+          "name_ja": "Task-local Capability",
+          "summary_en": "A task can assemble temporary procedures and knowledge without pretending they were always part of the instance.",
+          "summary_ja": "Task中だけ必要な知識や手順を一時能力として構成し、元から持っていたSkillとは扱いません。",
+          "reference": "function/runtime.md"
+        },
+        {
+          "id": "capability-maintenance",
+          "name_en": "Skill Maintenance & Library Health",
+          "name_ja": "Skill Maintenance / Library Health",
+          "summary_en": "Promotion, revision, consolidation, retirement, activation precision, coverage, waste, and negative transfer are evaluated separately.",
+          "summary_ja": "Skillの昇格・修正・統合・廃止だけでなく、発火精度・Coverage・無駄・Negative Transferも見ます。",
+          "reference": "function/capability-maintenance.md"
+        },
+        {
+          "id": "external-skill-provenance",
+          "name_en": "External Skill Provenance",
+          "name_ja": "External Skill Provenance",
+          "summary_en": "Imported reusable knowledge can retain immutable source revision, adopted/rejected concepts, local targets, and recheck conditions without importing another agent's identity.",
+          "summary_ja": "外部Skillのsource revision・採用/棄却内容・local target・再確認条件を追跡し、他Agentの人格は持ち込みません。",
+          "reference": "docs/EXTERNAL-SKILL-PROVENANCE.md"
+        }
+      ]
+    },
+    {
+      "id": "evolve",
+      "icon_en": "EVOLVE",
+      "icon_ja": "進",
+      "title_en": "Evolve selectively",
+      "title_ja": "変わる",
+      "summary_en": "The instance or harness can repair, explore, consolidate, prune, or deliberately conserve. More rules are not automatically better growth.",
+      "summary_ja": "Repair / Explore / Consolidate / Pruneだけでなく、変えないConserveも正当な進化です。仕組みを増やすこと自体を成長とは扱いません。",
+      "features": [
+        {
+          "id": "self-evolution",
+          "name_en": "Self-Evolution",
+          "name_ja": "Self-Evolution",
+          "summary_en": "Durable changes are evidence-driven and use the narrowest correct owner instead of accumulating rules by default.",
+          "summary_ja": "Evidenceに基づき、必要な最小Ownerだけを変えます。ルール追加をデフォルトにしません。",
+          "reference": "function/self-evolution.md"
+        },
+        {
+          "id": "evolution-traceability",
+          "name_en": "Evolution Traceability",
+          "name_ja": "Evolution Traceability",
+          "summary_en": "Meaningful durable growth keeps observable evidence of why it changed, what changed, and how it was validated.",
+          "summary_ja": "なぜ変えたか・何を変えたか・どう検証したかを追跡可能にします。",
+          "reference": "docs/EVOLUTION-TRACEABILITY.md"
+        },
+        {
+          "id": "complexity-budget",
+          "name_en": "Harness Complexity Budget",
+          "name_ja": "Harness Complexity Budget",
+          "summary_en": "New gates, eager reads, stores, dependencies, and subsystems must justify their activation and maintenance cost.",
+          "summary_ja": "新しいGate・常時読込・永続Store・依存・Subsystemは、追加コスト以上の価値があるか評価します。",
+          "reference": "function/complexity-budget.md"
+        }
+      ]
+    },
+    {
+      "id": "continue",
+      "icon_en": "KEEP",
+      "icon_ja": "継",
+      "title_en": "Continue safely across time and hosts",
+      "title_ja": "続ける・守る",
+      "summary_en": "Task completion, authority, provenance, transient work, human-readable life views, host portability, and regression evaluation keep long-lived instances coherent.",
+      "summary_ja": "Task完了・Authority・Provenance・一時作業・人生表示・Host移行・Regressionを分離し、長期運用でも整合性を守ります。",
+      "features": [
+        {
+          "id": "task-contract",
+          "name_en": "Task Contract & Completion Re-derivation",
+          "name_ja": "Task Contract / Completion Re-derivation",
+          "summary_en": "Complex work keeps objective, authority, deliverables, completion criteria, and verification explicit enough to prevent drift.",
+          "summary_ja": "複雑なTaskで目的・権限・成果物・完了条件・検証を明確にし、途中のズレを防ぎます。",
+          "reference": "docs/TASK-CONTRACT.md"
+        },
+        {
+          "id": "contextual-activation",
+          "name_en": "Contextual Activation",
+          "name_ja": "Contextual Activation",
+          "summary_en": "Relevant obligations, memory, and capability are reactivated selectively while stale context is prevented from dominating a new task.",
+          "summary_ja": "必要なMemory・Skill・義務だけを再活性化し、前Taskの文脈が次Taskを支配するのを防ぎます。",
+          "reference": "function/contextual-activation.md"
+        },
+        {
+          "id": "governance",
+          "name_en": "Governance & Authority Boundary",
+          "name_ja": "Governance / Authority Boundary",
+          "summary_en": "Proposal, self-acceptance, technical write capability, user authority, and external effects remain distinct.",
+          "summary_ja": "提案・本人の受諾・技術的Write能力・ユーザー権限・外部操作を別物として扱います。",
+          "reference": "docs/GOVERNANCE.md"
+        },
+        {
+          "id": "runtime-workspace",
+          "name_en": "Runtime Workspace Separation",
+          "name_ja": "Runtime Workspace Separation",
+          "summary_en": "Transient task state stays outside canonical identity and memory until an explicit retention decision is made.",
+          "summary_ja": "Task中の一時状態はCanonical Identity/Memoryと分離し、Retention判断なしに永続化しません。",
+          "reference": "function/runtime-workspace.md"
+        },
+        {
+          "id": "execution-provenance",
+          "name_en": "Observable Execution Provenance",
+          "name_ja": "Observable Execution Provenance",
+          "summary_en": "Host-observable reads, actions, revisions, results, and validation can be traced without storing hidden chain-of-thought.",
+          "summary_ja": "読込・操作・revision・結果・検証を追跡でき、Hidden Chain-of-Thoughtは保存しません。",
+          "reference": "function/execution-provenance.md"
+        },
+        {
+          "id": "core-view",
+          "name_en": "CORE View",
+          "name_ja": "CORE View",
+          "summary_en": "A human-readable derived view answers who the instance is now without replacing canonical state.",
+          "summary_ja": "現在の『この子』を人間向けに表示するDerived Viewで、Canonical Stateの代わりにはなりません。",
+          "reference": "docs/CORE-VIEW.md"
+        },
+        {
+          "id": "journey-album",
+          "name_en": "JOURNEY Album",
+          "name_ja": "JOURNEY Album",
+          "summary_en": "Verified birthdays, naming, memories, skills, relationships, and evolution become a factual life-oriented view without invented XP or levels.",
+          "summary_ja": "誕生日・命名・Memory・Skill・Relationship・Evolutionを事実ベースの人生表示にし、架空LvやXPは作りません。",
+          "reference": "docs/JOURNEY-ALBUM.md"
+        },
+        {
+          "id": "host-portability",
+          "name_en": "Host Portability & Behavioral Compatibility",
+          "name_ja": "Host Portability / Behavioral Compatibility",
+          "summary_en": "ChatGPT, Codex, Claude, local models, and other hosts may differ in tools while preserving the important harness invariants.",
+          "summary_ja": "ChatGPT / Codex / Claude / Local LLMなどでTool差があっても、重要Invariantの連続性を守ります。",
+          "reference": "docs/HOST-COMPATIBILITY.md"
+        },
+        {
+          "id": "regression-evaluation",
+          "name_en": "Regression Evaluation",
+          "name_ja": "Regression Evaluation",
+          "summary_en": "Behavioral evals guard blank identity, memory, authority, portability, evolution, and other contracts against silent regressions.",
+          "summary_ja": "Blank Identity・Memory・Authority・Portability・Evolutionなどの契約をRegression Evalで守ります。",
+          "reference": "evals/"
+        }
+      ]
+    }
+  ]
+}
