@@ -34,8 +34,55 @@ permissions:
   actions: write
 
 jobs:
+  catalog_guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require catalog review for public function-contract additions/removals/renames
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            base="${{ github.event.pull_request.base.sha }}"
+            head="${{ github.event.pull_request.head.sha }}"
+          elif [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+            base="${{ github.event.before }}"
+            head="${{ github.sha }}"
+          else
+            echo 'Manual run: catalog diff guard skipped.'
+            exit 0
+          fi
+
+          if [[ -z "$base" || "$base" =~ ^0+$ ]]; then
+            echo 'No comparable base commit; catalog diff guard skipped.'
+            exit 0
+          fi
+
+          contract_changes="$(git diff --name-status "$base" "$head" -- 'function/*.md' 'function/*.schema.yaml' | awk '$1 ~ /^(A|D|R)/ { print }')"
+          if [[ -z "$contract_changes" ]]; then
+            echo 'No added/deleted/renamed top-level function contracts.'
+            exit 0
+          fi
+
+          echo 'Public function-contract shape changed:'
+          printf '%s\n' "$contract_changes"
+
+          if ! git diff --name-only "$base" "$head" -- docs/features.json | grep -Fxq 'docs/features.json'; then
+            echo 'docs/features.json was not updated.' >&2
+            echo 'Review the public capability catalog, update it when the public surface changed, then run:' >&2
+            echo '  python3 scripts/sync-public-features.py --write' >&2
+            echo '  python3 scripts/sync-public-features.py --check' >&2
+            exit 1
+          fi
+
+          echo 'Public feature catalog was reviewed in the same change.'
+
   check:
     if: github.event_name == 'pull_request'
+    needs: catalog_guard
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -44,6 +91,7 @@ jobs:
 
   sync:
     if: github.event_name != 'pull_request'
+    needs: catalog_guard
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
