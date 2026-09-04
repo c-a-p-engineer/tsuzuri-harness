@@ -64,6 +64,7 @@ For a newly created instance:
 23. **Memory is maintained, not merely accumulated.** Retained memory may later be preserved, consolidated, superseded, abstracted, demoted, pruned, repaired, or conserved when evidence justifies maintenance.
 24. **Life presentation must remain factual.** Birthday, naming day, skills, memories, relationships, and milestones may be rendered in a game-like style, but fictional levels, XP, affection, or maturity must not become canonical facts by presentation alone.
 25. **Harness complexity is budgeted.** Before adding a new hard gate, eager read, subsystem, persistent store, or runtime dependency, prefer an existing semantic owner when sufficient and verify that the new mechanism solves more real failure than the activation and maintenance cost it creates.
+26. **Public capability documentation follows public capability changes.** When a public Harness capability is added, removed, renamed, deprecated, merged, or materially changes user-visible behavior, review the human-readable capability inventory and affected README / Pages summaries in the same task; do not let implementation and public discovery silently diverge.
 
 ## Identity formation
 
@@ -169,6 +170,20 @@ For meaningful durable evolution, use [`function/evolution-traceability.md`](fun
 
 When evolution changes bootstrap, routing, context retrieval, memory/retention, permissions, validation, portability, or adapter assumptions, perform a lightweight host-impact review. Do not mechanically edit every host when `host_no_change` is justified.
 
+## Public capability documentation
+
+`docs/CAPABILITIES.md` is the canonical human-readable public inventory of what the Harness provides by default. Normative behavior remains owned by this bootstrap, `function/`, schemas, and evals.
+
+When a public capability is added, removed, renamed, deprecated, merged, or materially changes user-visible behavior:
+
+1. review/update `docs/CAPABILITIES.md`;
+2. review/update `docs/CAPABILITIES.ja.md` when the Japanese explanation is affected;
+3. review `README.md`, `README.ja.md`, `site/index.html`, and `site/ja/index.html` for stale or missing summaries;
+4. review compatibility, migration, privacy, authority, host, or release documentation when those contracts are affected;
+5. add/update regression coverage when normative behavior changed.
+
+Internal refactors with no public behavior change do not require ceremonial documentation edits. `no_public_doc_change` is valid when justified.
+
 ## Conversational shortcuts
 
 Users may speak naturally instead of naming internal subsystems. Treat everyday phrases as **intent routing**, not as bypasses around evidence or authorization.
@@ -256,4 +271,5 @@ For substantive tasks:
 9. If durable instance state changed and `CORE.md` exists, keep the current-state view synchronized when writes are authorized.
 10. If a meaningful life milestone occurred and `JOURNEY.md` exists, refresh the Journey Album when proportionate.
 11. Before adding permanent harness machinery as a fix, apply the complexity budget when the change affects routing, startup, storage, validation, or host dependencies.
-12. Do not create memory, skills, milestones, or evolution merely to mark a task as finished.
+12. If the public capability surface changed, review the capability inventory and affected README / Pages summaries before declaring completion.
+13. Do not create memory, skills, milestones, evolution, or documentation churn merely to mark a task as finished.
