@@ -1,14 +1,12 @@
-name: Validate Public Capability Docs
+name: Sync Public Feature Docs
 
 on:
   push:
     branches: [master]
     paths:
+      - 'docs/features.json'
       - 'function/**'
-      - 'docs/CAPABILITIES.md'
-      - 'docs/CAPABILITIES.ja.md'
-      - 'docs/DOCUMENTATION-SYNC.md'
-      - 'docs/DOCUMENTATION-SYNC.ja.md'
+      - 'scripts/sync-public-features.py'
       - 'README.md'
       - 'README.ja.md'
       - 'site/index.html'
@@ -19,11 +17,9 @@ on:
   pull_request:
     branches: [master]
     paths:
+      - 'docs/features.json'
       - 'function/**'
-      - 'docs/CAPABILITIES.md'
-      - 'docs/CAPABILITIES.ja.md'
-      - 'docs/DOCUMENTATION-SYNC.md'
-      - 'docs/DOCUMENTATION-SYNC.ja.md'
+      - 'scripts/sync-public-features.py'
       - 'README.md'
       - 'README.ja.md'
       - 'site/index.html'
@@ -34,79 +30,95 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+  actions: write
 
 jobs:
-  validate:
+  catalog_guard:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Validate capability inventory surfaces
+      - name: Require catalog review for public function-contract additions/removals/renames
         shell: bash
         run: |
           set -euo pipefail
 
-          for f in \
-            docs/CAPABILITIES.md docs/CAPABILITIES.ja.md \
-            docs/DOCUMENTATION-SYNC.md docs/DOCUMENTATION-SYNC.ja.md; do
-            test -f "$f" || { echo "Missing public capability document: $f" >&2; exit 1; }
-          done
-
-          for capability in \
-            'Memory Retrieval' \
-            'Memory Record' \
-            'Capability Library Health' \
-            'External Skill Provenance' \
-            'Execution Provenance' \
-            'Harness Complexity Budget' \
-            'Evolution Traceability' \
-            'Host Portability'; do
-            grep -Fq "$capability" docs/CAPABILITIES.md || { echo "Canonical capability inventory is missing: $capability" >&2; exit 1; }
-            grep -Fq "$capability" docs/CAPABILITIES.ja.md || { echo "Japanese capability inventory is missing: $capability" >&2; exit 1; }
-          done
-
-          grep -Fq 'docs/CAPABILITIES.md' README.md
-          grep -Fq 'docs/CAPABILITIES.ja.md' README.ja.md
-          grep -Fq 'docs/CAPABILITIES.md' site/index.html
-          grep -Fq 'docs/CAPABILITIES.ja.md' site/ja/index.html
-          grep -Fq 'docs/DOCUMENTATION-SYNC.md' CONTRIBUTING.md
-          grep -Fq 'docs/DOCUMENTATION-SYNC.md' .github/PULL_REQUEST_TEMPLATE.md
-
-      - name: Require inventory review for top-level function surface changes
-        if: github.event_name == 'pull_request'
-        shell: bash
-        env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        run: |
-          set -euo pipefail
-
-          changes="$(git diff --name-status "$BASE_SHA" "$GITHUB_SHA" -- 'function/*.md' 'function/*.schema.yaml')"
-          if ! printf '%s\n' "$changes" | awk '$1 ~ /^(A|D|R)/ { found=1 } END { exit(found ? 0 : 1) }'; then
-            echo 'No added/deleted/renamed top-level function contract.'
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            base="${{ github.event.pull_request.base.sha }}"
+            head="${{ github.event.pull_request.head.sha }}"
+          elif [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+            base="${{ github.event.before }}"
+            head="${{ github.sha }}"
+          else
+            echo 'Manual run: catalog diff guard skipped.'
             exit 0
           fi
 
-          echo 'Top-level function contract surface changed:'
-          printf '%s\n' "$changes"
+          if [[ -z "$base" || "$base" =~ ^0+$ ]]; then
+            echo 'No comparable base commit; catalog diff guard skipped.'
+            exit 0
+          fi
 
-          changed_files="$(git diff --name-only "$BASE_SHA" "$GITHUB_SHA")"
-          printf '%s\n' "$changed_files" | grep -Fxq 'docs/CAPABILITIES.md' || {
-            echo 'Top-level function surface changed without reviewing docs/CAPABILITIES.md.' >&2
-            exit 1
-          }
-          printf '%s\n' "$changed_files" | grep -Fxq 'docs/CAPABILITIES.ja.md' || {
-            echo 'Top-level function surface changed without reviewing docs/CAPABILITIES.ja.md.' >&2
-            exit 1
-          }
+          contract_changes="$(git diff --name-status "$base" "$head" -- 'function/*.md' 'function/*.schema.yaml' | awk '$1 ~ /^(A|D|R)/ { print }')"
+          if [[ -z "$contract_changes" ]]; then
+            echo 'No added/deleted/renamed top-level function contracts.'
+            exit 0
+          fi
 
-      - name: Documentation synchronization policy is explicit
+          echo 'Public function-contract shape changed:'
+          printf '%s\n' "$contract_changes"
+
+          if ! git diff --name-only "$base" "$head" -- docs/features.json | grep -Fxq 'docs/features.json'; then
+            echo 'docs/features.json was not updated.' >&2
+            echo 'Review the public capability catalog, update it when the public surface changed, then run:' >&2
+            echo '  python3 scripts/sync-public-features.py --write' >&2
+            echo '  python3 scripts/sync-public-features.py --check' >&2
+            exit 1
+          fi
+
+          echo 'Public feature catalog was reviewed in the same change.'
+
+  check:
+    if: github.event_name == 'pull_request'
+    needs: catalog_guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check generated public feature surfaces
+        run: python3 scripts/sync-public-features.py --check
+
+  sync:
+    if: github.event_name != 'pull_request'
+    needs: catalog_guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+      - name: Synchronize public feature surfaces
+        run: python3 scripts/sync-public-features.py --write
+      - name: Verify synchronized output
+        run: python3 scripts/sync-public-features.py --check
+      - name: Commit generated documentation when needed
+        id: commit
         shell: bash
         run: |
           set -euo pipefail
-          grep -Fq 'no_public_doc_change' docs/DOCUMENTATION-SYNC.md
-          grep -Fq 'README.md' docs/DOCUMENTATION-SYNC.md
-          grep -Fq 'site/index.html' docs/DOCUMENTATION-SYNC.md
-          grep -Fq 'Regression' docs/DOCUMENTATION-SYNC.ja.md
+          if git diff --quiet; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+            echo 'Public feature documentation already synchronized.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md README.ja.md docs/FEATURES.md docs/FEATURES.ja.md site/index.html site/ja/index.html CONTRIBUTING.md .github/PULL_REQUEST_TEMPLATE.md
+          git commit -m 'docs: sync public feature surfaces'
+          git push origin HEAD:master
+          echo 'changed=true' >> "$GITHUB_OUTPUT"
+      - name: Deploy updated Pages
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref master
