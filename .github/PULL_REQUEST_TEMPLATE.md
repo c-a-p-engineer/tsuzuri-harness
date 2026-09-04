@@ -13,14 +13,12 @@
 - [ ] Breaking change (explain below)
 - [ ] Migration guidance updated where needed
 
-<!-- FEATURE-DOC-SYNC:START -->
 ## Public capability surface
 
-- [ ] This change does not add/remove/rename/deprecate/materially change a public capability
+- [ ] This change does not add/remove/rename/deprecate/merge/materially change a public capability
 - [ ] OR: `docs/CAPABILITIES.md` was reviewed/updated for the public capability change
-- [ ] Japanese README / Pages / `docs/CAPABILITIES.ja.md` were reviewed where affected
-- [ ] `docs/DOCUMENTATION-SYNC.md` review sequence was considered
-<!-- FEATURE-DOC-SYNC:END -->
+- [ ] Japanese `docs/CAPABILITIES.ja.md`, README, and Pages were reviewed where affected
+- [ ] Any compatibility / migration / release impact is documented where needed
 
 ## Validation
 
