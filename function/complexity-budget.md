@@ -31,6 +31,35 @@ Before creating a new mechanism, ask:
 6. **Does the mechanism preserve host portability?** Host-specific optimization should remain an adapter when possible.
 7. **What can be removed or merged at the same time?** Growth may be net-neutral or negative in rule count.
 
+## Instruction-to-enforcement promotion
+
+When the same important instruction or mechanically detectable failure recurs across independent tasks, do not default to adding another warning, prompt paragraph, or duplicate rule.
+
+Consider promoting the requirement to the narrowest executable enforcement layer that actually owns the invariant, for example:
+
+- schema validation
+- deterministic test or regression fixture
+- lint or static analysis
+- state/precondition check
+- artifact validator
+- CI assertion
+- permission or environment guard
+
+Promotion is not automatic. Before adding a durable gate, evaluate:
+
+- **mechanical detectability** — can the failure be recognized reliably without subjective semantic judgment?
+- **false positives** — will valid alternatives be rejected?
+- **false negatives** — can the harmful pattern still pass while appearing compliant?
+- **scope** — can enforcement stay close to the owning boundary instead of becoming a global gate?
+- **maintenance cost** — will the check remain understandable and cheap enough to keep current?
+- **blast radius** — what otherwise valid work can the gate block when it is wrong or stale?
+- **escape hatch** — if exceptions are legitimate, can they be explicit, narrow, reasoned, and reviewable?
+- **host portability** — is the invariant canonical while the enforcement mechanism may remain host- or repository-specific?
+
+Prefer executable enforcement when repeated failure is important, deterministic, and cheaper to prevent than repeatedly rediscover. Prefer prompts, rubrics, model judgment, or human review when correctness is meaning-dependent, context-sensitive, aesthetic, or otherwise not safely reducible to a deterministic gate.
+
+Do not weaken the original requirement merely to make a validator easier to implement. A check should encode the invariant, not launder the failure into a different representation.
+
 ## Failure modes created by complexity
 
 Watch for:
@@ -59,7 +88,7 @@ A durable new subsystem should normally have:
 
 ## Relationship to self-evolution
 
-Self-evolution must not optimize for number of mechanisms. When a proposed improvement can be expressed by simplifying routing, strengthening an existing contract, adding a focused eval, or removing duplicated state, prefer the smallest durable change that fixes the observed problem.
+Self-evolution must not optimize for number of mechanisms. When a proposed improvement can be expressed by simplifying routing, strengthening an existing contract, adding a focused eval, promoting a repeated deterministic failure into a bounded executable check, or removing duplicated state, prefer the smallest durable change that fixes the observed problem.
 
 ## Blank-instance invariant
 
