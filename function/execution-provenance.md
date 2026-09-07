@@ -88,6 +88,37 @@ validation
 
 Do not promote an unvalidated effect to verified merely because a tool call was attempted.
 
+## Evidence preservation across handoff
+
+Once execution evidence has been observed or verified at a useful level of specificity, do not unnecessarily degrade it into a generic, unknown, or source-less representation and then reconstruct the missing certainty later from memory, fallback assumptions, or assertions.
+
+Preserve the minimum specificity that downstream verification, diagnosis, or handoff materially needs, such as:
+
+- canonical source or subject reference
+- branch, revision, commit, file SHA, record id, timestamp, or equivalent anchor
+- schema/type/structure that was actually validated
+- observed versus asserted versus verified state
+- source/provenance and the boundary at which validation occurred
+- artifact or external-state reference used for completion evidence
+
+Avoid **evidence laundering** patterns such as:
+
+```text
+verified revision / validated structure / observed state
+        ↓
+generic value with provenance removed
+        ↓
+unknown or ambiguous downstream representation
+        ↓
+assertion / fallback / remembered assumption restores certainty
+```
+
+If a transformation intentionally removes detail for privacy, context economy, portability, or interface simplicity, keep enough reference or validation metadata to state truthfully what remains known and what was discarded. Lossy compaction must not silently upgrade back into certainty later.
+
+External ambiguity should be normalized or validated at the narrowest meaningful boundary when practical. After that boundary, preserve the stronger internal evidence rather than repeatedly widening and re-inferring it.
+
+Evidence preservation is not a requirement to copy full payloads. Prefer compact references, revisions, hashes, schemas, validation states, and source anchors over raw tool output.
+
 ## Minimal event shape
 
 Use only fields the host can honestly provide. When a machine-readable event is useful, use [`execution-provenance.schema.yaml`](execution-provenance.schema.yaml); the schema is optional runtime structure, not an instruction to persist traces for every task.
@@ -131,6 +162,7 @@ Reason codes are not summaries of private reasoning.
 - Observed capability/resource has no current-task justification and materially distorted output → `overactivation_failure` candidate.
 - Durable action was claimed complete without required validation → `closure_failure` or validation gap.
 - Observed revision differs from current canonical revision → stale-evidence candidate; verify whether the difference matters before declaring failure.
+- Previously verified evidence reaches a later stage without the source/revision/validation state required to justify the same certainty → evidence-preservation failure candidate; do not restore certainty by assumption.
 
 ## Storage
 
