@@ -57,6 +57,61 @@ Recent success, frequent use, personal interest, or prior activation is not suff
 
 Do not deactivate durable safety/authority constraints, current explicit user instructions, or canonical identity state merely because task-local context changed.
 
+## Required dependency closure
+
+Context economy is an efficiency mechanism, not a correctness boundary.
+
+After routing identifies a dependency as materially required for task success, safety, canonical consistency, authority, or completion, retrieve the required dependency closure before relying on it. Do not drop known must-have skills, memory, configuration, schemas, source files, or validation contracts merely to satisfy an arbitrary item count or context budget.
+
+A useful distinction is:
+
+- **must-have** — required before the relevant substantive decision or action;
+- **retrieve-on-demand** — weakly related or contingent material that can wait until a branch actually needs it;
+- **external-state** — durable or large state that can remain outside model context and be read by reference;
+- **discard/compact** — duplicate or exhausted raw output that no longer carries decision value.
+
+Do not interpret `must-have` as `eagerly load everything`. First route narrowly; then complete the dependencies of what was actually selected.
+
+If a required dependency is unavailable, classify the real failure as retrieval, authority, host-capability, or missing-knowledge failure rather than silently proceeding from a partial context while claiming the full contract was applied.
+
+## Progressive-fidelity inspection
+
+For large, expensive, or multimodal inputs, first use a lower-cost representation that preserves meaning, location, and provenance when that can narrow the inspection target. Then escalate only the relevant regions to the fidelity required by the decision.
+
+Typical patterns include:
+
+```text
+repository
+  tree / index / symbols / diff
+    ↓
+  relevant files / exact code
+
+PDF or document
+  text / headings / extracted structure
+    ↓
+  relevant original page / layout
+
+video or audio-visual media
+  transcript / timestamps / scene index
+    ↓
+  relevant frames / rendered boundary
+
+logs or data
+  schema / grouping / statistics / samples
+    ↓
+  relevant raw records / exact range
+```
+
+The lower-cost representation is an **inspection router**, not a replacement authority.
+
+- Preserve anchors such as source, file path, page, timestamp, record id, revision, or range when available.
+- Escalate to original or exact evidence when layout, exact wording, boundary behavior, raw values, visual state, or implementation details can change the conclusion.
+- If the lightweight representation is incomplete, ambiguous, contradictory, or lossy in a material way, do not fill the gap by guess; inspect the higher-fidelity source.
+- Do not skip required original evidence because of token, latency, or cost savings when completion or safety depends on it.
+- For small inputs, direct inspection may be cheaper and clearer than constructing an intermediate representation. Do not make progressive fidelity ceremonial.
+
+Progressive fidelity does not weaken required dependency closure: narrowing what must be inspected is different from failing to inspect evidence once it is known to be required.
+
 ## Agency root
 
 When authority changes the meaning of an action, distinguish roles such as:
