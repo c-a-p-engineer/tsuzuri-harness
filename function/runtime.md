@@ -55,6 +55,37 @@ A host may support one or more modes:
 
 Creation and audit should be separated when doing so materially improves reliability.
 
+## Stateful external interaction
+
+When an authorized action changes a repository, external service, UI, account state, durable file, or other stateful target, prefer an observable interaction loop:
+
+```text
+observe current state
+        ↓
+choose smallest authorized action
+        ↓
+act
+        ↓
+observe resulting state
+        ↓
+verify intended effect
+```
+
+The purpose is not to add ceremony to every tool call. Use the loop when pre-state or post-state can materially change correctness, safety, authority, or completion.
+
+Rules:
+
+1. **Observe before acting when state matters.** Use the current source of truth rather than a stale conversational assumption.
+2. **Choose the smallest authorized effect.** Tool availability and broad technical permission do not expand the current task's authority.
+3. **Re-observe after a meaningful mutation.** A tool's success return is useful evidence, but it is not always proof that the intended durable state now exists.
+4. **Verify the intended effect, not only transport success.** Check the actual file, record, service state, repository revision, artifact, or other relevant observable state when the task requires it.
+5. **Do not blindly retry divergence.** If the observed post-state differs materially from expectation, re-observe and re-plan before another mutation.
+6. **Keep read-only work read-only.** Research, inspection, comparison, or diagnosis does not gain an `act` step merely because a write-capable tool exists.
+7. **Preserve uncertainty.** If post-state cannot be observed, report the effect as unverified or partially verified rather than claiming completion from an unobservable result.
+8. **Do not over-apply the loop.** Consecutive mechanical steps inside one already-observed atomic or transactional operation do not each require redundant full-state inspection unless risk or divergence justifies it.
+
+This loop is host-neutral. Browsers, APIs, repositories, file systems, and connected apps may expose different observation and mutation surfaces while preserving the same semantic boundary.
+
 ## Observable execution provenance
 
 For complex, persistent, self-modifying, or failure-diagnosis work, [`execution-provenance.md`](execution-provenance.md) may compare what current contracts expected with what the host actually exposed as executed.
@@ -66,6 +97,8 @@ Raw traces are task-scoped by default and should not become long-term memory mer
 ## Runtime workspace
 
 Long or multi-stage tasks may use [`runtime-workspace.md`](runtime-workspace.md). Simple tasks should not create workspace state ceremonially.
+
+When delegated child sessions are available, use the bounded-handoff, authority-ceiling, capability-projection, and evidence-bearing-return rules defined there. Delegation is an optional host/runtime capability, not a new identity layer.
 
 ## Completion
 
