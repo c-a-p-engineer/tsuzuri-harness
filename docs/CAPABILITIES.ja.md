@@ -47,13 +47,14 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 
 ## 5. 安全に続ける — Runtime / Governance / Portability
 
-- **Task Contract & Completion Re-derivation** — 複雑TaskのObjective・Authority・Deliverable・Completion Criteria・Verificationを明確にし、現在のSource of Truthから完了条件を再確認します。
-- **Contextual Activation** — 必要な義務・Memory・Capabilityだけを再活性化し、前Taskの文脈が次Taskを支配するのを防ぎます。
-- **Runtime Workspace Separation** — 一時作業StateをCanonical Identity / Memoryから分離し、Retention判断なしに永続化しません。
+- **Task Contract / Delegated Implementation Ownership / Completion Re-derivation** — 複雑TaskのObjective・Authority・Deliverable・Completion Criteria・Verificationを明確にします。Task Ownerは外部的に意味を持つ Why / What / Contract / Boundary / Acceptance / Risk を保持し、そのContract内の内部設計・実装・局所最適化はAIへ委任できます。完了時は現在のSource of TruthからCompletionを再確認します。
+- **Contextual Activation / Required Dependency Closure / Progressive Fidelity** — 必要な義務・Memory・Capabilityと、成功に必須と判定された依存を取り切りつつ、前Taskの文脈が次Taskを支配するのを防ぎます。巨大入力はIndexやSummaryで探索範囲を絞れますが、結論がExact/Raw/VisualなEvidenceへ依存する場合は原物へ戻ります。
+- **Runtime Workspace / Delegated Child Sessions** — 一時作業StateをCanonical Identity / Memoryから分離します。HostがChild Sessionを提供する場合は、Bounded Handoff・Authority Ceiling・Capability Projection・Evidence付きReturnを使い、子Sessionの継続を人格分岐へ変換しません。
+- **Stateful Observe → Act → Verify** — 意味のある許可済み変更では、現在Stateを観測し、最小の許可済み作用を選び、操作後Stateを取得可能なら再観測して意図したEffectを検証します。Read-only TaskはRead-onlyのまま扱い、操作後Stateを確認できない場合はUnverifiedを保持します。
 - **Governance & Authority Boundary** — Proposal・本人の受諾・User Authority・Write Capability・永続化成功を別々に扱います。
 - **Observable Execution Provenance** — Hidden Chain-of-Thoughtではなく、Hostから観測できるRead / Action / Revision / Result / Validationを追跡します。
-- **Host Portability & Behavioral Compatibility** — ChatGPT / Codex / Claude / Local LLM等でTool差があっても、重要なHarness Invariantを維持します。
-- **Regression Evaluation** — Blank Identity・Memory・Authority・Portability・Evolution等の重要ContractをEvalで守ります。
+- **Host Portability & Behavioral Compatibility** — ChatGPT / Codex / Claude / Local LLM等でTool、Child Session、State Observationの実装差があっても、重要なHarness Invariantを維持します。
+- **Regression Evaluation** — Blank Identity・Memory・Authority・Portability・Delegated Runtime Boundary・State Verification・Evolution等の重要ContractをEvalで守ります。
 
 ## 技術機能一覧
 
@@ -70,9 +71,10 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 | Capability Capsule | `function/capability-capsule.schema.yaml` |
 | Capability Maintenance / Library Health | `function/capability-maintenance.md` |
 | External Skill Provenance | `function/external-skill-provenance.schema.yaml` |
-| Task Contract | `function/task-contract.md` |
-| Contextual Activation | `function/contextual-activation.md` |
-| Runtime Workspace | `function/runtime-workspace.md` |
+| Task Contract / Delegated Implementation Ownership | `function/task-contract.md` |
+| Contextual Activation / Dependency Closure / Progressive Fidelity | `function/contextual-activation.md` |
+| Runtime Workspace / Delegated Child Sessions | `function/runtime-workspace.md` |
+| Stateful Observe → Act → Verify | `function/runtime.md` |
 | Governance | `function/governance.md` |
 | Execution Provenance | `function/execution-provenance.md`, `function/execution-provenance.schema.yaml` |
 | Self-Evolution | `function/self-evolution.md` |
@@ -88,11 +90,11 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 - 完成済みPersona / Character
 - 綴理本人のPrivate Identity / Relationship / Memory / Visual / 獲得済み専門Skill
 - Base Model
-- Terminal / Browser / Sandbox / Scheduler / Messaging Service等のHost Runtime
+- Terminal / Browser / Sandbox / Scheduler / Messaging Service / Child Session Provider等のHost Runtime
 - 外部Vector DBの必須依存
 - 全InstanceへのPersistence強制
 
-Hostが使えるToolはRuntime Capabilityです。現在のHostで使えるからといって、その個体のBiography・Identity・獲得Skillにはなりません。
+Hostが使えるToolやChild Session機構はRuntime Capabilityです。現在のHostで使えるからといって、その個体のBiography・Identity・Relationship Branch・獲得Skillにはなりません。
 
 ## この一覧の更新ルール
 
