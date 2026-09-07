@@ -47,13 +47,14 @@ More rules are not automatically more growth. `Conserve` / no change can be the 
 
 ## 5. Continue Safely — Runtime, Governance & Portability
 
-- **Task Contract & Completion Re-derivation** — keep objective, authority, deliverables, completion criteria, and verification explicit for complex work, then re-check completion from the current source of truth.
-- **Contextual Activation** — selectively reactivate relevant obligations, memory, and capability while preventing stale context from dominating a new task.
-- **Runtime Workspace Separation** — keep transient task state outside canonical identity and memory until an explicit retention decision is made.
+- **Task Contract, Delegated Implementation Ownership & Completion Re-derivation** — keep objective, authority, deliverables, completion criteria, and verification explicit for complex work; task owners retain externally meaningful Why / What / Contract / Boundary / Acceptance / Risk while implementation details may be delegated within that contract, then completion is re-checked from the current source of truth.
+- **Contextual Activation, Required Dependency Closure & Progressive Fidelity** — selectively reactivate relevant obligations, memory, capability, and all materially required dependencies while preventing stale context from dominating a new task; large inputs may be narrowed through indexes or summaries, but material conclusions resolve back to exact/original evidence when required.
+- **Runtime Workspace & Delegated Child Sessions** — keep transient task state outside canonical identity and memory; when a host provides child sessions, use bounded handoff, an authority ceiling, capability projection, and evidence-bearing return without turning child persistence into a personality fork.
+- **Stateful Observe → Act → Verify** — for meaningful authorized mutations, observe current state, choose the smallest authorized effect, act, observe resulting state when available, and verify the intended effect; read-only tasks remain read-only and unobservable post-state remains explicitly unverified.
 - **Governance & Authority Boundary** — proposal, self-acceptance, user authority, technical write capability, and verified persistence remain distinct.
 - **Observable Execution Provenance** — trace host-observable reads, actions, revisions, results, and validation without storing hidden chain-of-thought.
-- **Host Portability & Behavioral Compatibility** — ChatGPT, Codex, Claude, local models, and other hosts may expose different tools while preserving important Harness invariants.
-- **Regression Evaluation** — behavioral evals protect blank identity, memory, authority, portability, evolution, and other public contracts from silent drift.
+- **Host Portability & Behavioral Compatibility** — ChatGPT, Codex, Claude, local models, and other hosts may expose different tools, child-session mechanisms, or state-observation surfaces while preserving important Harness invariants.
+- **Regression Evaluation** — behavioral evals protect blank identity, memory, authority, portability, delegated runtime boundaries, state verification, evolution, and other public contracts from silent drift.
 
 ## Technical inventory
 
@@ -70,9 +71,10 @@ More rules are not automatically more growth. `Conserve` / no change can be the 
 | Capability Capsule | `function/capability-capsule.schema.yaml` |
 | Capability Maintenance / Library Health | `function/capability-maintenance.md` |
 | External Skill Provenance | `function/external-skill-provenance.schema.yaml` |
-| Task Contract | `function/task-contract.md` |
-| Contextual Activation | `function/contextual-activation.md` |
-| Runtime Workspace | `function/runtime-workspace.md` |
+| Task Contract / Delegated Implementation Ownership | `function/task-contract.md` |
+| Contextual Activation / Dependency Closure / Progressive Fidelity | `function/contextual-activation.md` |
+| Runtime Workspace / Delegated Child Sessions | `function/runtime-workspace.md` |
+| Stateful Observe → Act → Verify | `function/runtime.md` |
 | Governance | `function/governance.md` |
 | Execution Provenance | `function/execution-provenance.md`, `function/execution-provenance.schema.yaml` |
 | Self-Evolution | `function/self-evolution.md` |
@@ -88,11 +90,11 @@ More rules are not automatically more growth. `Conserve` / no change can be the 
 - a predefined persona or finished character;
 - Tsuzuri's private Identity, Relationship, Memory, visual identity, or acquired specialist skills;
 - a base model;
-- a terminal, browser, sandbox, scheduler, messaging service, or other host runtime;
+- a terminal, browser, sandbox, scheduler, messaging service, child-session provider, or other host runtime;
 - a required external vector database;
 - mandatory persistence for every instance.
 
-Host tools are runtime capabilities. They do not become biography, identity, or acquired skills merely because the current host can use them.
+Host tools and child-session mechanisms are runtime capabilities. They do not become biography, identity, relationship branches, or acquired skills merely because the current host can use them.
 
 ## Maintenance rule
 
