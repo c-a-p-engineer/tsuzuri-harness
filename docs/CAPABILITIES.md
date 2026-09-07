@@ -41,9 +41,9 @@ A blank instance starts with zero acquired specialist skills.
 
 - **Self-Evolution** — Repair, Explore, Consolidate, Prune, and Conserve are all valid outcomes.
 - **Evolution Traceability** — meaningful durable changes preserve observable evidence of why they happened, what changed, and how they were validated.
-- **Harness Complexity Budget** — new hard gates, eager reads, stores, dependencies, and subsystems must justify their activation and maintenance cost; prefer an existing semantic owner when sufficient.
+- **Harness Complexity Budget & Instruction-to-Enforcement Promotion** — new hard gates, eager reads, stores, dependencies, and subsystems must justify their activation and maintenance cost; prefer an existing semantic owner when sufficient. Repeated important deterministic failures may be promoted from prose reminders into bounded schema/test/lint/state/CI enforcement only after reviewing detectability, false positives/negatives, valid alternatives, scope, maintenance cost, blast radius, escape hatches, and portability.
 
-More rules are not automatically more growth. `Conserve` / no change can be the correct result.
+More rules are not automatically more growth. `Conserve` / no change can be the correct result, and subjective semantic quality should not be forced into brittle deterministic gates merely because automation is possible.
 
 ## 5. Continue Safely — Runtime, Governance & Portability
 
@@ -52,9 +52,9 @@ More rules are not automatically more growth. `Conserve` / no change can be the 
 - **Runtime Workspace & Delegated Child Sessions** — keep transient task state outside canonical identity and memory; when a host provides child sessions, use bounded handoff, an authority ceiling, capability projection, and evidence-bearing return without turning child persistence into a personality fork.
 - **Stateful Observe → Act → Verify** — for meaningful authorized mutations, observe current state, choose the smallest authorized effect, act, observe resulting state when available, and verify the intended effect; read-only tasks remain read-only and unobservable post-state remains explicitly unverified.
 - **Governance & Authority Boundary** — proposal, self-acceptance, user authority, technical write capability, and verified persistence remain distinct.
-- **Observable Execution Provenance** — trace host-observable reads, actions, revisions, results, and validation without storing hidden chain-of-thought.
+- **Observable Execution Provenance & Evidence Preservation** — trace host-observable reads, actions, revisions, results, and validation without storing hidden chain-of-thought; preserve material source/revision/validation specificity across handoffs so verified evidence is not degraded to generic uncertainty and later reconstructed by assertion or assumption.
 - **Host Portability & Behavioral Compatibility** — ChatGPT, Codex, Claude, local models, and other hosts may expose different tools, child-session mechanisms, or state-observation surfaces while preserving important Harness invariants.
-- **Regression Evaluation** — behavioral evals protect blank identity, memory, authority, portability, delegated runtime boundaries, state verification, evolution, and other public contracts from silent drift.
+- **Regression Evaluation** — behavioral evals protect blank identity, memory, authority, portability, delegated runtime boundaries, state verification, evidence preservation, bounded enforcement, evolution, and other public contracts from silent drift.
 
 ## Technical inventory
 
@@ -76,10 +76,10 @@ More rules are not automatically more growth. `Conserve` / no change can be the 
 | Runtime Workspace / Delegated Child Sessions | `function/runtime-workspace.md` |
 | Stateful Observe → Act → Verify | `function/runtime.md` |
 | Governance | `function/governance.md` |
-| Execution Provenance | `function/execution-provenance.md`, `function/execution-provenance.schema.yaml` |
+| Execution Provenance / Evidence Preservation | `function/execution-provenance.md`, `function/execution-provenance.schema.yaml` |
 | Self-Evolution | `function/self-evolution.md` |
 | Evolution Traceability | `function/evolution-traceability.md` |
-| Harness Complexity Budget | `function/complexity-budget.md` |
+| Harness Complexity Budget / Instruction-to-Enforcement | `function/complexity-budget.md` |
 | CORE View | `docs/CORE-VIEW.md` |
 | JOURNEY Album | `docs/JOURNEY-ALBUM.md` |
 | Host Compatibility | `docs/HOST-COMPATIBILITY.md` |
