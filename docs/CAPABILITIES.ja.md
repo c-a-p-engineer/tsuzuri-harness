@@ -41,9 +41,9 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 
 - **Self-Evolution** — Repair / Explore / Consolidate / Prune / Conserveを選べます。
 - **Evolution Traceability** — 意味のある恒久変更は、なぜ変えたか・何を変えたか・どう検証したかを追跡します。
-- **Harness Complexity Budget** — 新しいHard Gate・常時Read・永続Store・Dependency・Subsystemを増やす前に、既存Semantic Ownerで十分でないかと追加コストを確認します。
+- **Harness Complexity Budget / Instruction-to-Enforcement Promotion** — 新しいHard Gate・常時Read・永続Store・Dependency・Subsystemを増やす前に、既存Semantic Ownerで十分でないかと追加コストを確認します。同じ重要な決定論的Failureが独立Taskで反復する場合は、注意文を増やすだけでなくSchema / Test / Lint / State Check / CI等への昇格を検討します。ただしMechanical Detectability、False Positive / Negative、正当な代替、Scope、保守コスト、Blast Radius、Escape Hatch、Portabilityを確認してから採用します。
 
-ルールが増えること自体を成長とは扱いません。**何も変えない（Conserve）も正しい結果**です。
+ルールが増えること自体を成長とは扱いません。**何も変えない（Conserve）も正しい結果**です。また、文脈依存・主観的なSemantic Qualityまで、Automationできるという理由だけで脆いDeterministic Gateへ押し込めません。
 
 ## 5. 安全に続ける — Runtime / Governance / Portability
 
@@ -52,9 +52,9 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 - **Runtime Workspace / Delegated Child Sessions** — 一時作業StateをCanonical Identity / Memoryから分離します。HostがChild Sessionを提供する場合は、Bounded Handoff・Authority Ceiling・Capability Projection・Evidence付きReturnを使い、子Sessionの継続を人格分岐へ変換しません。
 - **Stateful Observe → Act → Verify** — 意味のある許可済み変更では、現在Stateを観測し、最小の許可済み作用を選び、操作後Stateを取得可能なら再観測して意図したEffectを検証します。Read-only TaskはRead-onlyのまま扱い、操作後Stateを確認できない場合はUnverifiedを保持します。
 - **Governance & Authority Boundary** — Proposal・本人の受諾・User Authority・Write Capability・永続化成功を別々に扱います。
-- **Observable Execution Provenance** — Hidden Chain-of-Thoughtではなく、Hostから観測できるRead / Action / Revision / Result / Validationを追跡します。
+- **Observable Execution Provenance / Evidence Preservation** — Hidden Chain-of-Thoughtではなく、Hostから観測できるRead / Action / Revision / Result / Validationを追跡します。確認済みのSource / Revision / Validation Stateを後工程で不要にGeneric / Unknownへ落とし、後からAssertionや記憶で確実性を復元するEvidence Launderingを避けます。
 - **Host Portability & Behavioral Compatibility** — ChatGPT / Codex / Claude / Local LLM等でTool、Child Session、State Observationの実装差があっても、重要なHarness Invariantを維持します。
-- **Regression Evaluation** — Blank Identity・Memory・Authority・Portability・Delegated Runtime Boundary・State Verification・Evolution等の重要ContractをEvalで守ります。
+- **Regression Evaluation** — Blank Identity・Memory・Authority・Portability・Delegated Runtime Boundary・State Verification・Evidence Preservation・Bounded Enforcement・Evolution等の重要ContractをEvalで守ります。
 
 ## 技術機能一覧
 
@@ -76,10 +76,10 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 | Runtime Workspace / Delegated Child Sessions | `function/runtime-workspace.md` |
 | Stateful Observe → Act → Verify | `function/runtime.md` |
 | Governance | `function/governance.md` |
-| Execution Provenance | `function/execution-provenance.md`, `function/execution-provenance.schema.yaml` |
+| Execution Provenance / Evidence Preservation | `function/execution-provenance.md`, `function/execution-provenance.schema.yaml` |
 | Self-Evolution | `function/self-evolution.md` |
 | Evolution Traceability | `function/evolution-traceability.md` |
-| Harness Complexity Budget | `function/complexity-budget.md` |
+| Harness Complexity Budget / Instruction-to-Enforcement | `function/complexity-budget.md` |
 | CORE View | `docs/CORE-VIEW.md` |
 | JOURNEY Album | `docs/JOURNEY-ALBUM.md` |
 | Host Compatibility | `docs/HOST-COMPATIBILITY.md` |
