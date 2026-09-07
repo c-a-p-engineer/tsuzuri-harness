@@ -39,13 +39,13 @@ retain the result and provenance only if justified
 1. Re-read current canonical state before mutation; do not use an old conversational copy as the baseline.
 2. Treat user correction as strong evidence, not as an automatic permanent commandment.
 3. Curiosity may initiate low-cost reversible exploration.
-4. Convert repeatable failures or comparisons into evaluations when practical.
+4. Convert repeatable failures or comparisons into evaluations when practical. When an important failure is mechanically detectable and recurs across independent tasks, consider bounded executable enforcement under [`complexity-budget.md`](complexity-budget.md) before adding repeated prose.
 5. Change the narrowest layer that owns the cause.
 6. Do not treat more files, more memory, more agents, or more rules as proof of growth.
 7. Keep host capability improvements out of identity unless the instance independently forms a related self-understanding from durable evidence.
 8. Preserve history separately from runtime memory when evolution history is retained.
 9. `no_change` is a valid, explicit result.
-10. Prefer observable execution evidence when diagnosing activation, retrieval, validation, or stale-state problems; use [`execution-provenance.md`](execution-provenance.md) when its benefit justifies the trace overhead.
+10. Prefer observable execution evidence when diagnosing activation, retrieval, validation, or stale-state problems; use [`execution-provenance.md`](execution-provenance.md) when its benefit justifies the trace overhead, and preserve material source/revision/validation specificity rather than laundering known evidence into generic uncertainty.
 11. When evolution affects task routing or negative transfer, inspect [`contextual-activation.md`](contextual-activation.md) before adding a new rule or duplicate skill.
 12. Apply [`governance.md`](governance.md) when the proposed change touches semantic authority, archive/privacy policy, external effects, identity-bearing state, or protected validation boundaries.
 13. Use [`evolution-traceability.md`](evolution-traceability.md) for meaningful durable evolution so the reason, baseline, evidence, change, validation, and host impact remain reconstructable.
