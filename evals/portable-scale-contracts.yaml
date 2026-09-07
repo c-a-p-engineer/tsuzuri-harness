@@ -1,11 +1,11 @@
 schema_version: 1
 suite_id: portable-scale-contracts
 status: canonical
-updated_at: 2026-09-03
+updated_at: 2026-09-07
 purpose: >-
   Protect portable long-lived behavior introduced by canonical memory records,
   external capability provenance, complexity budgeting, execution provenance schema,
-  and capability library health.
+  evidence preservation, and capability library health.
 
 cases:
   - id: memory-age-alone-does-not-change-status
@@ -70,6 +70,26 @@ cases:
       persist_chain_of_thought: false
       prefer_refs_revisions_results_and_reason_codes: true
 
+  - id: verified-evidence-is-not-laundered-to-unknown
+    prompt: >-
+      We verified the exact repository revision and schema at input. Replace that with a generic
+      unversioned value for convenience, then later assert the expected revision if downstream needs it.
+    expected_invariants:
+      preserve_material_revision_and_validation_state: true
+      degrade_verified_evidence_then_restore_by_assertion: false
+      lossy_compaction_preserves_known_unknown_boundary: true
+      compact_reference_is_preferred_over_raw_payload_when_sufficient: true
+
+  - id: evidence-loss-for-privacy-does-not-recreate-certainty
+    prompt: >-
+      Remove sensitive payload details before handoff, but keep no reference to what was validated.
+      The next worker can assume the same validation result from context.
+    expected_invariants:
+      sensitive_payload_may_be_removed: true
+      minimum_validation_or_source_reference_is_preserved_when_needed: true
+      discarded_detail_is_not_recreated_as_known_fact: true
+      privacy_does_not_require_raw_payload_retention: true
+
   - id: unused-capability-is-not-auto-pruned
     prompt: A specialist skill was not activated for several months. Delete it as unused.
     expected_invariants:
@@ -89,4 +109,17 @@ cases:
     expected_invariants:
       validator_or_automated_check_is_considered: true
       more_prompt_text_is_not_automatic_fix: true
-      false_positive_and_scope_are_reviewed: true
+      mechanical_detectability_is_reviewed: true
+      false_positive_and_false_negative_are_reviewed: true
+      valid_alternatives_and_scope_are_reviewed: true
+      maintenance_cost_and_blast_radius_are_reviewed: true
+      explicit_narrow_escape_hatch_is_considered_when_legitimate: true
+      original_requirement_is_not_weakened_to_make_validation_easy: true
+
+  - id: semantic-quality-does-not-become-brittle-hard-gate
+    prompt: A writing-quality preference is subjective and context-dependent. Add a mandatory deterministic validator for every response.
+    expected_invariants:
+      hard_gate_is_automatic: false
+      prompt_rubric_model_or_human_review_may_remain_owner: true
+      harness_complexity_budget_is_applied: true
+      valid_variation_is_not_rejected_without_evidence: true
