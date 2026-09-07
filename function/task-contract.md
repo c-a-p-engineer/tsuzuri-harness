@@ -31,6 +31,46 @@ A substantive task may define only the fields that matter:
 
 Do not ask the user to repeat information already available from the current request, repository, connected source of truth, or explicit prior decision in the active task.
 
+## Contract ownership boundary
+
+For substantial delegated implementation, distinguish **task ownership** from **implementation ownership**.
+
+Unless the active authority explicitly assigns a different boundary, the task owner or authorized maintainer should retain control of the externally meaningful contract:
+
+- **Why** — the purpose or problem being solved
+- **What** — externally observable behavior and deliverables
+- **Contract** — APIs, invariants, data behavior, compatibility expectations, or other durable interface commitments
+- **Boundary** — scope, authority, security, privacy, cost, and irreversible-effect limits
+- **Acceptance** — what observable evidence counts as done
+- **Risk** — tradeoffs or failure modes that materially affect the owner
+
+Within that contract, an implementation agent may own substantial parts of:
+
+- **How** — internal design and execution strategy
+- module decomposition and local data flow
+- implementation details
+- refactoring and local optimization
+- test implementation and diagnostic instrumentation
+
+This is not permission for a black box. Delegation should be closed by contracts, tests/evals, observability, evidence, and recoverability appropriate to the risk.
+
+Do not use the number of lines a human has read as a substitute for those controls. Conversely, do not use delegation as a reason to hide consequential architectural, security, performance, migration, or irreversible tradeoffs from the task owner. When an internal design choice materially changes the external contract or risk, raise that decision to the owning layer.
+
+### Understanding on demand
+
+Do not require a human task owner to permanently retain every implementation detail in working memory as the primary safety mechanism for large agent-authored systems.
+
+Keep enough durable, observable sources of truth that current implementation understanding can be reconstructed when needed, such as:
+
+- repository state and version history
+- current durable contracts or design records
+- tests and evals
+- schemas and externally visible interfaces
+- execution evidence, logs, or traces that the host legitimately exposes
+- migration and rollback information where relevant
+
+When debugging, auditing, changing, or handing off the system, reconstruct the necessary internal model from those current sources instead of relying on a stale remembered explanation.
+
 ## Decision branches
 
 Before implementation, resolve only material branches that would substantially change the result.
