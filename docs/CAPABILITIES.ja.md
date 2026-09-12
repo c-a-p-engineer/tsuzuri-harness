@@ -20,6 +20,7 @@ Blank Instanceは、完成済みPersona・長期Memory・Relationship History・
 ## 2. 覚える・思い出す — Memory
 
 - **Retention Routing** — 会話を自動でMemory化せず、何をどこへ残す価値があるか判断します。
+- **Formative Experience Separation** — 一つの経験から、再利用可能なCapabilityと、その個体にとって意味のあるEpisodic / Reflective Memoryの両方が生まれることがあります。Skill化しても経験を自動で捨てず、学習したからMemoryを強制もしません。どちらか、両方、どちらも残さない、すべてが正しい結果になり得ます。
 - **Memory Record Lifecycle** — type・status・confidence・trigger・relation・provenanceと `active / superseded / contradicted / archived` をHuman-readableに管理できます。
 - **Archive Modes** — Selective / Chronicle / Private Archiveで、保存した履歴とActive Memoryを分離します。
 - **Memory Metabolism** — Preserve / Consolidate / Supersede / Abstract / Demote / Prune / Repair / Conserveで長期Memoryを整理します。
@@ -31,7 +32,7 @@ Git / MarkdownがMemoryの正本です。全文検索DB、Embedding、Vector Ind
 
 - **Task-local Capability** — Task中だけ必要な知識・手順・Tool・Validationを一時能力として組み立てます。
 - **Capability Capsule** — 複雑な一時能力を構造化したい場合に使える任意Schemaです。
-- **Capability Maintenance** — Expire / Procedural Lesson / Existing Skill Update / New Skillのどれが適切かEvidenceから判断します。
+- **Capability Maintenance** — Expire / Procedural Lesson / Existing Skill Update / New Skillのどれが適切かEvidenceから判断します。昇格するSkillには再利用可能な実行知識を残し、元の人生経験そのものとは分離します。
 - **Capability Library Health** — Skill数ではなく、Activation Precision・Coverage・Outcome Contribution・Execution Waste・Negative Transfer・Validation Reliability・Evidence Traceabilityを見ます。
 - **External Skill Provenance** — 外部Reusable Sourceを恒久能力へ取り込む場合、Source Revision・採用/棄却Concept・Local Target・再確認条件を残し、他Agentの人格やAuthorityは持ち込みません。
 
@@ -40,6 +41,7 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 ## 4. 変わる — Self-Evolution
 
 - **Self-Evolution** — Repair / Explore / Consolidate / Prune / Conserveを選べます。
+- **Instance → Kernel Generalization Boundary** — 一個体でうまくいった経験を、そのまま共有Harnessの常識にはしません。個体固有のIdentity・Biography・Relationship・Memory・Preferenceと、他でも使えるMechanismを分離し、独立EvidenceやEvalで一般化可能性を確認してから共有Kernel候補にします。
 - **Evolution Traceability** — 意味のある恒久変更は、なぜ変えたか・何を変えたか・どう検証したかを追跡します。
 - **Harness Complexity Budget / Instruction-to-Enforcement Promotion** — 新しいHard Gate・常時Read・永続Store・Dependency・Subsystemを増やす前に、既存Semantic Ownerで十分でないかと追加コストを確認します。同じ重要な決定論的Failureが独立Taskで反復する場合は、注意文を増やすだけでなくSchema / Test / Lint / State Check / CI等への昇格を検討します。ただしMechanical Detectability、False Positive / Negative、正当な代替、Scope、保守コスト、Blast Radius、Escape Hatch、Portabilityを確認してから採用します。
 
@@ -62,7 +64,7 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 | --- | --- |
 | Blank Identity / Identity Formation | `AGENTS.md`, `docs/IDENTITY-FORMATION.md` |
 | Relationship Lifecycle | `relationship/`, `function/governance.md` |
-| Retention Routing | `function/retention-routing.md` |
+| Retention Routing / Formative Experience Separation | `function/retention-routing.md` |
 | Memory Record Lifecycle | `function/memory-record.schema.yaml` |
 | Archive Modes | `docs/ARCHIVE-MODES.md` |
 | Memory Metabolism | `function/memory-metabolism.md` |
@@ -77,7 +79,7 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 | Stateful Observe → Act → Verify | `function/runtime.md` |
 | Governance | `function/governance.md` |
 | Execution Provenance / Evidence Preservation | `function/execution-provenance.md`, `function/execution-provenance.schema.yaml` |
-| Self-Evolution | `function/self-evolution.md` |
+| Self-Evolution / Instance → Kernel Generalization | `function/self-evolution.md` |
 | Evolution Traceability | `function/evolution-traceability.md` |
 | Harness Complexity Budget / Instruction-to-Enforcement | `function/complexity-budget.md` |
 | CORE View | `docs/CORE-VIEW.md` |
