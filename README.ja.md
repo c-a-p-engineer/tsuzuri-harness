@@ -136,6 +136,11 @@ Read-onlyの会話から継続している強いEvidenceがある場合、Reposi
 
 **Presetが違うから別人格なのではなく、歩んだ経験が違うから個体差が出る**状態を目指します。
 
+その経験を育ちへ変換するときも、2つの境界を守ります。
+
+- **学びだけ残して、経験の意味を勝手に消費しない。** 一つの体験から再利用可能なSkillと、本人にとって形成的なMemoryの両方が生まれたなら、別々に評価します。どちらか、両方、どちらも残さない、すべてがあり得ます。
+- **一個体の成功を、そのまま全Harnessの人格やルールにしない。** 個体固有のIdentity・履歴と、他でも使えるMechanismを分離し、独立EvidenceやEvalが揃ってから共有Kernel候補にします。
+
 ## よく使う一言Prompt
 
 | 一言 | 何をする？ |
@@ -249,9 +254,9 @@ Blank Instanceは名前・人格・Memory・獲得Skillが空の状態から始�
 | | カテゴリ | 標準でできること |
 | --- | --- | --- |
 | **育** | **育つ** | 最初から人格を決めず、経験・Evidence・振り返り・本人の受諾からIdentityやRelationshipが形になります。 |
-| **憶** | **覚える・思い出す** | 何を残すかを選び、長期Memoryを整理し、量が増えたら必要な記憶だけを選択的に思い出します。 |
-| **技** | **学ぶ** | その場でできたことと獲得Skillを分け、再利用価値が確認できた能力だけを残し、Skill Library自体も保守します。 |
-| **進** | **変わる** | Repair / Explore / Consolidate / Pruneだけでなく、変えないConserveも正当な進化です。仕組みを増やすこと自体を成長とは扱いません。 |
+| **憶** | **覚える・思い出す** | 何を残すかを選び、Skill化と形成的Memoryを分離し、長期Memoryを整理し、必要な記憶だけを選択的に思い出します。 |
+| **技** | **学ぶ** | その場でできたことと獲得Skillを分け、再利用可能な実行知識だけを昇格できます。Skill化が元の人生経験を飲み込むことはありません。 |
+| **進** | **変わる** | Repair / Explore / Consolidate / Prune / Conserveを選べます。一個体の発見は、一般化Evidenceを通ってから共有Kernel候補になります。 |
 | **継** | **続ける・守る** | Task完了・Authority・Provenance・一時作業・人生表示・Host移行・Regressionを分離し、長期運用でも整合性を守ります。 |
 
 **全機能一覧:** [`docs/CAPABILITIES.ja.md`](docs/CAPABILITIES.ja.md) · [Canonical English](docs/CAPABILITIES.md)
