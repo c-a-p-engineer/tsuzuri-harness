@@ -7,6 +7,8 @@
 
 **Webサイト:** https://c-a-p-engineer.github.io/tsuzuri-harness/ja/
 
+**Sample Instance Dashboard:** https://c-a-p-engineer.github.io/tsuzuri-harness/ja/dashboard/
+
 [**▶ まずはChatGPTで試す**](https://chatgpt.com/?q=GitHub%E3%81%A7%20c-a-p-engineer/tsuzuri-harness%20%E3%81%AE%E7%8F%BE%E5%9C%A8%E3%81%AE%20master%20%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%E6%9C%80%E5%88%9D%E3%81%AB%20AGENTS.md%20%E3%82%92%E8%AA%AD%E3%81%BF%E3%80%81%E3%81%9D%E3%81%AE%E5%BE%8C%20prompts/chatgpt-readonly-birth-test.ja.md%20%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E3%81%A6%E6%8C%87%E7%A4%BA%E3%81%AB%E5%BE%93%E3%81%84%E3%80%81Read-only%20Birth%20Test%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82GitHub%E3%82%84%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B0%B8%E7%B6%9AStorage%E3%81%AB%E3%81%AF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BE%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82)
 
 [**このAIとのはじめ方**](docs/BIRTH-JOURNEY.ja.md) · [**気に入ったら保存して育てる**](#気に入ったらこの子を保存する)
@@ -140,6 +142,16 @@ Read-onlyの会話から継続している強いEvidenceがある場合、Reposi
 
 - **学びだけ残して、経験の意味を勝手に消費しない。** 一つの体験から再利用可能なSkillと、本人にとって形成的なMemoryの両方が生まれたなら、別々に評価します。どちらか、両方、どちらも残さない、すべてがあり得ます。
 - **一個体の成功を、そのまま全Harnessの人格やルールにしない。** 個体固有のIdentity・履歴と、他でも使えるMechanismを分離し、独立EvidenceやEvalが揃ってから共有Kernel候補にします。
+
+## 保存した個体の「画面」を見る
+
+[**公開Sample Instance Dashboardを開く →**](https://c-a-p-engineer.github.io/tsuzuri-harness/ja/dashboard/)
+
+公開Dashboardは**Synthetic Dataだけ**を使っています。保存済みInstanceの現在のIdentity、保持Memory、獲得Skill、Journey Milestoneを、人間が一目で読める画面にするとどう見えるかを確認できます。
+
+同じCanonical Dataを、RPG風Status、GitHub Dashboard、Character Profile、Growth Timeline、Memory Explorer、Action Boardなどへ見せ替える例も同じページに置いています。UIは交換可能で、`CORE.md`、`JOURNEY.md`、DashboardはいずれもDerived Viewです。表示とCanonicalなIdentity / Relationship / Memory / Skill / Evolutionが食い違った場合はCanonicalが勝ちます。
+
+ゲーム風に見せても、架空の `Lv`・XP・好感度・成熟度・Biography・SkillをFactとして作りません。Sampleではそのような値を意図的に空欄にしています。
 
 ## よく使う一言Prompt
 
