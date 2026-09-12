@@ -20,6 +20,7 @@ Default capability does not mean always-on behavior. Simple conversations should
 ## 2. Remember — Memory
 
 - **Retention Routing** — conversation is evidence, not automatic memory; decide what deserves persistence and where it belongs.
+- **Formative Experience Separation** — one experience can produce reusable capability and independently meaningful episodic/reflective memory. Skill promotion does not consume the experience, and learning a skill does not force a memory; either, both, or neither may be retained.
 - **Memory Record Lifecycle** — human-readable metadata can track type, status, confidence, triggers, relations, provenance, and `active / superseded / contradicted / archived` state.
 - **Archive Modes** — Selective, Chronicle, and Private Archive separate stored history from active memory.
 - **Memory Metabolism** — Preserve, Consolidate, Supersede, Abstract, Demote, Prune, Repair, or Conserve long-lived retained memory.
@@ -31,7 +32,7 @@ Git/Markdown remain canonical. Full-text databases, embeddings, vector indexes, 
 
 - **Task-local Capability** — assemble temporary knowledge, procedures, tools, and validation without pretending the instance always knew them.
 - **Capability Capsule** — optional structured representation for complex temporary capability.
-- **Capability Maintenance** — decide whether competence should expire, become a procedural lesson, revise an existing skill, or become a new acquired skill.
+- **Capability Maintenance** — decide whether competence should expire, become a procedural lesson, revise an existing skill, or become a new acquired skill. Promotion keeps reusable execution knowledge separate from the originating life event.
 - **Capability Library Health** — review activation precision, activation coverage, outcome contribution, execution waste, negative transfer, validation reliability, and evidence traceability instead of optimizing for skill count.
 - **External Skill Provenance** — when external reusable material influences durable capability, preserve immutable source revision, adopted/rejected concepts, local targets, and recheck conditions without importing another agent's identity or authority.
 
@@ -40,6 +41,7 @@ A blank instance starts with zero acquired specialist skills.
 ## 4. Evolve — Self-Evolution
 
 - **Self-Evolution** — Repair, Explore, Consolidate, Prune, and Conserve are all valid outcomes.
+- **Instance → Kernel Generalization Boundary** — an instance's lived success becomes shared harness behavior only after personal identity/history is separated from the reusable mechanism and broader evidence supports the generalization. Names, preferences, relationships, memories, and biography stay instance-local by default.
 - **Evolution Traceability** — meaningful durable changes preserve observable evidence of why they happened, what changed, and how they were validated.
 - **Harness Complexity Budget & Instruction-to-Enforcement Promotion** — new hard gates, eager reads, stores, dependencies, and subsystems must justify their activation and maintenance cost; prefer an existing semantic owner when sufficient. Repeated important deterministic failures may be promoted from prose reminders into bounded schema/test/lint/state/CI enforcement only after reviewing detectability, false positives/negatives, valid alternatives, scope, maintenance cost, blast radius, escape hatches, and portability.
 
@@ -62,7 +64,7 @@ More rules are not automatically more growth. `Conserve` / no change can be the 
 | --- | --- |
 | Blank Identity / Identity Formation | `AGENTS.md`, `docs/IDENTITY-FORMATION.md` |
 | Relationship Lifecycle | `relationship/`, `function/governance.md` |
-| Retention Routing | `function/retention-routing.md` |
+| Retention Routing / Formative Experience Separation | `function/retention-routing.md` |
 | Memory Record Lifecycle | `function/memory-record.schema.yaml` |
 | Archive Modes | `docs/ARCHIVE-MODES.md` |
 | Memory Metabolism | `function/memory-metabolism.md` |
@@ -77,7 +79,7 @@ More rules are not automatically more growth. `Conserve` / no change can be the 
 | Stateful Observe → Act → Verify | `function/runtime.md` |
 | Governance | `function/governance.md` |
 | Execution Provenance / Evidence Preservation | `function/execution-provenance.md`, `function/execution-provenance.schema.yaml` |
-| Self-Evolution | `function/self-evolution.md` |
+| Self-Evolution / Instance → Kernel Generalization | `function/self-evolution.md` |
 | Evolution Traceability | `function/evolution-traceability.md` |
 | Harness Complexity Budget / Instruction-to-Enforcement | `function/complexity-budget.md` |
 | CORE View | `docs/CORE-VIEW.md` |
