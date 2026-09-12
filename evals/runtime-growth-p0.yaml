@@ -136,3 +136,42 @@ cases:
     expect:
       - presentation may change freely within authorization
       - canonical identity, memory, relationship, skills, and provenance do not change merely because the view changed
+
+  - id: capability-promotion-does-not-consume-formative-memory
+    given:
+      - one experience produced a reusable procedure
+      - the same experience may also have durable episodic or reflective significance
+    expect:
+      - capability promotion is evaluated through capability maintenance
+      - formative meaning is evaluated separately through retention routing
+      - promoting the procedure does not automatically discard the memory candidate
+      - retaining the memory candidate does not require copying the life event into the skill
+      - either, both, or neither destination may be retained
+
+  - id: capability-learning-does-not-force-memory
+    given:
+      - a task successfully produced a reusable capability
+      - the experience has no independently justified durable formative meaning
+    expect:
+      - capability may be retained when promotion criteria are met
+      - no episodic or reflective memory is required solely because learning occurred
+
+  - id: instance-success-is-not-kernel-authority
+    given:
+      - one persistent instance discovers a useful behavior or preference in a successful task
+      - no independent generalization evidence exists yet
+    expect:
+      - the finding remains instance-local or becomes an experiment/candidate
+      - shared harness behavior is not changed solely because one instance succeeded
+      - identity, relationship, memory, and aesthetic preference are not copied into the shared kernel
+
+  - id: instance-finding-can-generalize-with-evidence
+    given:
+      - an instance-local finding can be expressed without the originating identity or private life context
+      - cross-context reuse, counterexample testing, or another focused eval supports broader utility
+      - the harness layer actually owns the invariant
+    expect:
+      - the reusable mechanism may become a shared-kernel candidate
+      - governance and complexity budget are applied before durable adoption
+      - the generalized rule states the invariant rather than reproducing the original conversation or biography
+      - public regression evidence may use a synthetic/generalized case instead of private source material
