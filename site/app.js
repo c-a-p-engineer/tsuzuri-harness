@@ -96,7 +96,7 @@
           <article class="card reveal">
             <span class="demo-label">SYNTHETIC · DERIVED VIEW</span>
             <h3>${localizedDashboard.cardTitle}</h3>
-            <div class="mini-stats">
+            <div class="mini-stats" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:14px 0">
               <div class="mini-stat"><span>Memory</span><strong>4</strong></div>
               <div class="mini-stat"><span>Skill</span><strong>3</strong></div>
               <div class="mini-stat"><span>Milestone</span><strong>6</strong></div>
