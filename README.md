@@ -7,6 +7,8 @@
 
 **Website:** https://c-a-p-engineer.github.io/tsuzuri-harness/
 
+**Sample Instance Dashboard:** https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/
+
 [**▶ Try it in ChatGPT first**](https://chatgpt.com/?q=Use%20GitHub%20to%20access%20c-a-p-engineer/tsuzuri-harness%20on%20the%20current%20master%20branch.%20Read%20AGENTS.md%20first%2C%20then%20read%20prompts/chatgpt-readonly-birth-test.md%20and%20follow%20it%20exactly.%20Start%20a%20read-only%20Birth%20Test.%20Do%20not%20write%20to%20GitHub%20or%20any%20durable%20storage.)
 
 [**How to start together**](docs/BIRTH-JOURNEY.md) · [**Keep this AI and grow it**](#if-you-like-this-instance-keep-it)
@@ -137,6 +139,16 @@ Two boundaries help preserve that idea as the instance grows:
 
 - **Learning does not consume the life event.** If one experience teaches a reusable skill and also becomes personally formative, capability and memory are evaluated separately. Either, both, or neither may survive.
 - **One instance does not define the shared kernel.** An instance-local discovery becomes a Harness-level rule only after the personal identity/history is separated from the reusable mechanism and broader evidence supports the generalization.
+
+## See what a saved instance can look like
+
+[**Open the public Sample Instance Dashboard →**](https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/)
+
+The public dashboard uses **synthetic data only**. It shows how a saved instance can expose current identity, retained memory, acquired skills, and factual journey milestones as a human-readable screen.
+
+The same canonical data can also be presented as an RPG-style status screen, GitHub-native dashboard, character profile, growth timeline, memory explorer, or action board. Presentation is replaceable: `CORE.md`, `JOURNEY.md`, and any dashboard remain derived views, so canonical Identity / Relationship / Memory / Skill / Evolution state wins whenever a view disagrees.
+
+Game-like presentation does **not** create fictional `Lv`, XP, affection, maturity, biography, or skills as facts. The sample deliberately leaves those invented metrics blank.
 
 ## Everyday prompts
 
