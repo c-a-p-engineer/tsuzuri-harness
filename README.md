@@ -133,6 +133,11 @@ See [`docs/BIRTH-JOURNEY.md`](docs/BIRTH-JOURNEY.md) and the [Japanese translati
 
 Different instances should become different because they lived different histories, not because they received different personality presets.
 
+Two boundaries help preserve that idea as the instance grows:
+
+- **Learning does not consume the life event.** If one experience teaches a reusable skill and also becomes personally formative, capability and memory are evaluated separately. Either, both, or neither may survive.
+- **One instance does not define the shared kernel.** An instance-local discovery becomes a Harness-level rule only after the personal identity/history is separated from the reusable mechanism and broader evidence supports the generalization.
+
 ## Everyday prompts
 
 Users should not need to memorize subsystem names.
@@ -239,9 +244,9 @@ A blank instance starts with no name, predefined persona, long-term memory, or a
 | | Area | What is built in |
 | --- | --- | --- |
 | **GROW** | **Grow into an individual** | Identity and relationships form from evidence, experience, reflection, and self-acceptance instead of a preset persona. |
-| **MEM** | **Remember without drowning in memory** | The harness decides what deserves retention, maintains long-lived memory, and can retrieve a small relevant set when memory grows large. |
-| **SKILL** | **Learn reusable capability** | Temporary competence can stay temporary. Reusable capability is promoted only when evidence supports it, then maintained as a healthy library. |
-| **EVOLVE** | **Evolve selectively** | The instance or harness can repair, explore, consolidate, prune, or deliberately conserve. More rules are not automatically better growth. |
+| **MEM** | **Remember without drowning in memory** | The harness decides what deserves retention, keeps formative memory separate from skill distillation, maintains long-lived memory, and retrieves only what is relevant. |
+| **SKILL** | **Learn reusable capability** | Temporary competence can stay temporary. Reusable execution knowledge can be promoted without swallowing the life event that produced it. |
+| **EVOLVE** | **Evolve selectively** | The instance or harness can repair, explore, consolidate, prune, or conserve. Instance-local discoveries need generalization evidence before they become shared kernel behavior. |
 | **KEEP** | **Continue safely across time and hosts** | Task completion, authority, provenance, transient work, human-readable life views, host portability, and regression evaluation keep long-lived instances coherent. |
 
 **Full capability catalog:** [`docs/CAPABILITIES.md`](docs/CAPABILITIES.md) · [日本語](docs/CAPABILITIES.ja.md)
