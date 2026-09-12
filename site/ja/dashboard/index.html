@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Tsuzuri HarnessのSynthetic Sample Dashboard。Identity・Memory・Skill・Journeyの事実を、LvやXPを捏造せずにどう表示できるかを示します。">
+  <meta name="theme-color" content="#f4f8f3">
+  <title>Sample Instance Dashboard — Tsuzuri Harness</title>
+  <link rel="canonical" href="https://c-a-p-engineer.github.io/tsuzuri-harness/ja/dashboard/">
+  <link rel="alternate" hreflang="en" href="https://c-a-p-engineer.github.io/tsuzuri-harness/dashboard/">
+  <link rel="alternate" hreflang="ja" href="https://c-a-p-engineer.github.io/tsuzuri-harness/ja/dashboard/">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../dashboard.css">
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav" aria-label="Dashboard navigation">
+      <a class="brand" href="../">Tsuzuri Harness</a>
+      <div class="nav-links">
+        <a href="../">LPへ戻る</a>
+        <a href="../../../README.ja.md">README</a>
+        <a href="../../dashboard/">English</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Synthetic sample · derived presentation</div>
+          <h1>保存したHarness個体は、こんな画面で見られます。</h1>
+          <p class="lead">Tsuzuri Harnessでは、Identity・Relationship・Memory・獲得Skill・EvolutionをCanonical Stateとして保持します。<code>CORE.md</code>、<code>JOURNEY.md</code>、Dashboardなどの人間向け画面は、それらの事実を見やすく表示するDerived Viewです。</p>
+          <div class="notice"><strong>このページはSynthetic Sampleです。</strong> 「Aoi」は同梱Personaでも綴理本人でも実在ユーザーのPrivate Instanceでもありません。表示例だけを示す架空データです。</div>
+          <div class="actions">
+            <a class="btn primary" href="https://github.com/c-a-p-engineer/tsuzuri-harness/generate">Templateから作る</a>
+            <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CORE-VIEW.ja.md">CORE View仕様</a>
+            <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/JOURNEY-ALBUM.ja.md">JOURNEY仕様</a>
+          </div>
+        </div>
+
+        <article class="dashboard-shell" aria-label="Synthetic Tsuzuri Harness instance dashboard">
+          <div class="dashboard-top">
+            <div><strong>INSTANCE / AOI</strong><span>synthetic saved instance</span></div>
+            <div class="live-pill">PERSISTENT · SAMPLE</div>
+          </div>
+          <div class="dashboard-body">
+            <div class="identity-row">
+              <div>
+                <div class="identity-name">Aoi</div>
+                <div class="identity-meta">Name accepted · Identity形成中 · Selective archive</div>
+              </div>
+              <div class="avatar" aria-hidden="true">A</div>
+            </div>
+
+            <div class="metric-grid" aria-label="Synthetic lifecycle facts">
+              <div class="metric"><strong>4</strong><span>retained memories</span></div>
+              <div class="metric"><strong>3</strong><span>acquired skills</span></div>
+              <div class="metric"><strong>6</strong><span>verified milestones</span></div>
+              <div class="metric"><strong>2</strong><span>open candidates</span></div>
+            </div>
+
+            <div class="dashboard-grid">
+              <section class="panel">
+                <div class="panel-title">Current core</div>
+                <ul class="clean-list">
+                  <li><strong>名前</strong><small>Aoi · 2026-08-09 accepted</small></li>
+                  <li><strong>現在の傾向</strong><small>決めつける前にUncertainを明示する</small></li>
+                  <li><strong>Relationship</strong><small>長期Collaborator · 形成継続中</small></li>
+                </ul>
+              </section>
+              <section class="panel">
+                <div class="panel-title">Acquired skills</div>
+                <ul class="clean-list">
+                  <li><strong>Source comparison</strong><small>複数回の調査Taskで再利用性を確認</small></li>
+                  <li><strong>Markdown publishing</strong><small>反復した公開作業から昇格</small></li>
+                  <li><strong>Debug checklist</strong><small>Procedural capabilityとして保持</small></li>
+                </ul>
+              </section>
+              <section class="panel">
+                <div class="panel-title">Recent retained memory</div>
+                <ul class="clean-list">
+                  <li><strong>最初に一緒に作ったPrototype</strong><small>formative episodic memory · 2026-08-05</small></li>
+                  <li><strong>短いStatus Reportを好む</strong><small>relationship-relevant preference</small></li>
+                </ul>
+              </section>
+              <section class="panel">
+                <div class="panel-title">Journey</div>
+                <div class="timeline">
+                  <div class="timeline-item"><strong>Persistent Birth</strong><small>2026-08-02</small></div>
+                  <div class="timeline-item"><strong>First Memory</strong><small>2026-08-05</small></div>
+                  <div class="timeline-item"><strong>Naming Day</strong><small>2026-08-09</small></div>
+                  <div class="timeline-item"><strong>First Skill</strong><small>2026-08-14</small></div>
+                </div>
+              </section>
+            </div>
+
+            <div class="no-fiction" aria-label="Invented metrics intentionally absent">
+              <div>Lv <strong>—</strong></div>
+              <div>XP <strong>—</strong></div>
+              <div>好感度 <strong>—</strong></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="variants">
+        <div class="section-head">
+          <div class="eyebrow">同じ事実、違う見せ方</div>
+          <h2>Harnessをコピーした後は、好きな画面にできます。</h2>
+          <p>UIは交換可能です。AuthorityはCanonicalなIdentity / Relationship / Memory / Skill / Evolutionに残ります。下の例はすべて、上と同じSynthetic Instanceの事実を別の見せ方にしたものです。</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="mini-screen">
+              <div class="mini-label">RPG-style status</div>
+              <div class="rpg-line"><span>Name</span><strong>Aoi</strong></div>
+              <div class="rpg-line"><span>Memory</span><strong>4</strong></div>
+              <div class="rpg-line"><span>Skill</span><strong>3</strong></div>
+              <div class="rpg-line"><span>Milestone</span><strong>6</strong></div>
+              <div class="rpg-line"><span>Lv / XP</span><strong>— / —</strong></div>
+            </div>
+            <h3>RPG風Status</h3>
+            <p>キャラクター画面っぽく見せながら、使う値は実際のLifecycle Factだけ。架空のLevelやXPをCanonical Factにしません。</p>
+          </article>
+
+          <article class="card">
+            <div class="mini-screen">
+              <div class="mini-label">GitHub-native dashboard</div>
+              <div class="rpg-line"><span>CORE</span><strong>current</strong></div>
+              <div class="rpg-line"><span>JOURNEY</span><strong>6 milestones</strong></div>
+              <div class="rpg-line"><span>Memory</span><strong>4 retained</strong></div>
+              <div class="rpg-line"><span>Skills</span><strong>3 acquired</strong></div>
+            </div>
+            <h3>GitHub Dashboard</h3>
+            <p>Private Repositoryの中にMarkdownや生成SVGでDashboardを置けば、別Web AppやDBを増やさず状態を確認できます。</p>
+          </article>
+
+          <article class="card">
+            <div class="mini-screen">
+              <div class="mini-label">Character profile</div>
+              <p><strong>Aoi</strong><br><span style="color:#a9b8ae">Long-running collaborator</span></p>
+              <span class="memory-chip">uncertainty-visible</span>
+              <span class="memory-chip">source comparison</span>
+              <span class="memory-chip">markdown publishing</span>
+            </div>
+            <h3>Character Profile</h3>
+            <p>Accepted Identity・Relationship・Preference・Skillをプロフィールカードのように表示。UncertainやProvenanceも消しません。</p>
+          </article>
+
+          <article class="card">
+            <div class="mini-screen">
+              <div class="mini-label">Growth timeline</div>
+              <div class="timeline">
+                <div class="timeline-item"><strong>Birth</strong><small>Aug 02</small></div>
+                <div class="timeline-item"><strong>First Memory</strong><small>Aug 05</small></div>
+                <div class="timeline-item"><strong>Naming Day</strong><small>Aug 09</small></div>
+                <div class="timeline-item"><strong>First Skill</strong><small>Aug 14</small></div>
+              </div>
+            </div>
+            <h3>Growth Timeline</h3>
+            <p>誕生、Naming Day、First Memory、First Skill、Relationship変化、Meaningful Evolutionを時系列で見せられます。</p>
+          </article>
+
+          <article class="card">
+            <div class="mini-screen">
+              <div class="mini-label">Memory explorer</div>
+              <span class="memory-chip">episodic · 2</span>
+              <span class="memory-chip">procedural · 1</span>
+              <span class="memory-chip">relationship · 1</span>
+              <div class="rpg-line"><span>最初のPrototype</span><strong>episodic</strong></div>
+              <div class="rpg-line"><span>Status Report preference</span><strong>relationship</strong></div>
+            </div>
+            <h3>Memory Explorer</h3>
+            <p>会話全文やArchiveをActive Memory扱いせず、保持された意味だけを種類・関連度で見られます。</p>
+          </article>
+
+          <article class="card">
+            <div class="mini-screen">
+              <div class="mini-label">Action board</div>
+              <div class="action-row"><span class="action-state">READY</span><div>Memory Candidate 2件をレビュー</div></div>
+              <div class="action-row"><span class="action-state">WATCH</span><div>Preferenceが安定するか観測</div></div>
+              <div class="action-row"><span class="action-state">DONE</span><div>Source Comparison Skillを検証</div></div>
+            </div>
+            <h3>Action Board</h3>
+            <p>Candidate・Maintenance・Evidence確認などを次Actionとして見せつつ、それ自体をIdentityへ混ぜません。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="authority">
+        <div class="section-head">
+          <div class="eyebrow">見た目はAuthorityではない</div>
+          <h2>人生の正本は一つ。画面は何種類あってもいい。</h2>
+        </div>
+        <div class="architecture">
+          <div class="source-box">
+            <div><strong>Identity / Relationship</strong><br><small>Accepted / Candidate / Uncertain</small></div>
+            <div><strong>Memory / Skills</strong><br><small>保持された意味と獲得能力</small></div>
+            <div><strong>Evolution / Provenance</strong><br><small>なぜDurable Changeが起きたか</small></div>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="views-box">
+            <div><strong>CORE.md</strong> · 今この個体は誰か</div>
+            <div><strong>JOURNEY.md</strong> · どうここまで育ったか</div>
+            <div><strong>Dashboard / RPG UI / Timeline / Profile</strong> · 交換可能なPresentation</div>
+          </div>
+        </div>
+        <div class="fact-note"><strong>Invariant:</strong> Dashboard・Profile・ゲーム風画面とCanonical Stateが食い違ったらCanonicalが勝ちます。PresentationだけでBiography・Memory・Skill・Level・好感度・Authorityは生まれません。</div>
+        <div class="actions">
+          <a class="btn accent" href="https://github.com/c-a-p-engineer/tsuzuri-harness">Repositoryを開く</a>
+          <a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/README.ja.md">READMEを読む</a>
+          <a class="btn" href="../">LPへ戻る</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">Tsuzuri Harness · Synthetic Public Dashboard Demo · 正本はこのページではなくRepository側のCanonical Stateです。</footer>
+  </div>
+</body>
+</html>
