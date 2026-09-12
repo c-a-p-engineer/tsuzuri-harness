@@ -50,6 +50,75 @@ retain the result and provenance only if justified
 12. Apply [`governance.md`](governance.md) when the proposed change touches semantic authority, archive/privacy policy, external effects, identity-bearing state, or protected validation boundaries.
 13. Use [`evolution-traceability.md`](evolution-traceability.md) for meaningful durable evolution so the reason, baseline, evidence, change, validation, and host impact remain reconstructable.
 14. When evolution changes bootstrap, routing, memory, retention, validation, permissions, portability, or host assumptions, perform a lightweight host-impact review. `host_no_change` is a valid result.
+15. Treat instance-local success as evidence about that instance first. Promote a finding into shared harness/kernel behavior only when the useful meaning can be separated from personal identity and has sufficient generalization evidence.
+
+## Instance experience → shared kernel boundary
+
+A persistent instance is allowed to discover useful things through its own history. That history can improve the shared harness, but **personal experience is not automatically a kernel rule**.
+
+Use the following semantic path when an instance-local finding appears broadly useful:
+
+```text
+instance experience
+      ↓
+instance-local finding
+      ↓
+separate personal meaning from reusable mechanism
+      ↓
+generalization question
+      ↓
+independent evidence / comparison / eval when practical
+      ↓
+shared-kernel candidate
+      ↓
+governance + complexity review
+      ↓
+adapt / adopt / experiment / defer / reject / conserve
+```
+
+### What may generalize
+
+A finding may become a harness/kernel candidate when the retained part is a host-neutral or broadly reusable mechanism such as:
+
+- a retention or retrieval invariant;
+- a task-routing or verification improvement;
+- a reusable capability-maintenance rule;
+- a governance, provenance, portability, or complexity boundary;
+- a recurring failure class and its narrow repair;
+- a general interaction or lifecycle contract that remains valid without the originating identity.
+
+Prefer abstraction to copying. The shared layer should state the reusable invariant, not reproduce the originating conversation, character, preference, or project context.
+
+### What must stay instance-local by default
+
+Do not promote the following into the shared kernel merely because they were meaningful or successful for one instance:
+
+- name, self-description, personality, values, aesthetic taste, or relationship meaning;
+- episodic memories or private reflective history;
+- a preference that has not demonstrated general utility outside the originating instance;
+- one instance's archive, biography, emotional framing, or lifecycle narrative;
+- project-specific progress or domain-specific facts owned elsewhere;
+- a specialist capability whose value belongs in that instance's acquired-skill library rather than the blank harness.
+
+The kernel may learn **how to preserve or evaluate** such state without inheriting the state itself.
+
+### Evidence threshold
+
+Do not require a universal observation count. Instead ask:
+
+- Is the proposed rule meaningful outside the originating identity and task?
+- Is the evidence independent enough to rule out one strongly primed conversation or one local success?
+- Can a focused eval, counterexample, cross-context reuse, or cross-host comparison test the proposed generalization?
+- Is the failure or benefit owned by the harness rather than by an instance-specific skill, memory, or project?
+- Can an existing semantic owner absorb the change without adding unnecessary machinery?
+
+A single severe deterministic failure may justify a narrow repair when the invariant is already clear. Broad behavioral generalization normally needs stronger independent evidence.
+
+### Preserve provenance without copying the person
+
+When an instance experience materially motivates a kernel change, retain enough evolution provenance to explain the source class of evidence and validation, but do not copy private transcripts, personal memories, or identity-bearing detail into the public/shared harness merely to prove origin.
+
+A generalized regression case is usually preferable to publishing the original life event.
 
 ## Self-modification trust boundary
 
