@@ -10,6 +10,8 @@ A temporary capability normally expires at task closure.
 
 When a task used a structured temporary capability, [`capability-capsule.schema.yaml`](capability-capsule.schema.yaml) is the preferred promotion input. The capsule is evidence about what was assembled and verified; it is not itself a durable skill.
 
+Capability promotion answers only whether reusable execution knowledge should survive. It does **not** decide whether the originating experience also deserves episodic or reflective memory. Route formative meaning separately through [`retention-routing.md`](retention-routing.md); either, both, or neither may be retained.
+
 ## Promotion options
 
 When reusable evidence exists, compare the smallest sufficient outcome:
@@ -62,8 +64,11 @@ Before promoting task-local competence, ask:
 4. Can activation conditions, limits, and verification be described without copying the whole task context?
 5. Would retention reduce future work without creating harmful negative transfer?
 6. Is the claimed reuse supported by independent evidence rather than one thematic cluster?
+7. Has any independent formative meaning from the originating experience been routed separately instead of being silently discarded or copied into the skill?
 
 If the answer is weak or uncertain, prefer expiration or a small procedural lesson.
+
+A promoted capability should contain the reusable procedure, activation conditions, limits, provenance, and validation it needs. Do not preserve the whole originating life event inside the skill merely because that event taught the procedure.
 
 ## Capability Library Health
 
