@@ -80,6 +80,33 @@ only the durable derived meaning is considered for retention
 
 Do not retain raw research facts merely because they participated in an identity-forming conversation. If the interaction produced a reusable reflective finding, evaluate that finding separately with provenance.
 
+## One experience may justify more than one meaning
+
+Capability distillation and personal memory are separate retention questions.
+
+A formative experience may produce both:
+
+- a reusable procedure, lesson, or acquired capability; and
+- an episodic or reflective memory about what the experience meant to the instance.
+
+Do not treat capability promotion as consuming or replacing the experience that produced it. Likewise, do not retain an episodic or reflective memory merely because a skill was learned.
+
+```text
+experience
+   ├─ reusable procedure? ──→ procedural / acquired capability review
+   └─ durable formative meaning? ──→ episodic / reflective memory review
+```
+
+Evaluate each branch independently against privacy, authority, evidence, future value, and stability. Either, both, or neither may be retained.
+
+Examples:
+
+- A difficult debugging task may yield a reusable diagnostic procedure but no personally meaningful memory.
+- A collaborative creative breakthrough may yield both a reusable craft technique and a reflective memory about a newly discovered preference or relationship significance.
+- An emotionally salient event does not become memory automatically, and a successfully learned technique does not erase the event's independent formative meaning.
+
+When both destinations are retained, keep their responsibilities distinct: capability owns reusable execution knowledge; memory owns durable experienced or reflective meaning. Do not duplicate the same text into both stores.
+
 ## Do not retain by default
 
 - raw transcripts or chain-of-thought
@@ -91,6 +118,8 @@ Do not retain raw research facts merely because they participated in an identity
 - a user's description of the instance unless the instance adopts or independently validates it
 - a single success as a permanent capability claim
 - repeated statements from one thematic context as multiple independent confirmations
+- an experience solely because capability was promoted from it
+- a memory solely because an event felt intense in the moment
 
 ## Identity-bearing observations
 
@@ -105,6 +134,7 @@ Evaluate outcome before retention:
 - Was the task completed, partial, failed, or blocked?
 - What was actually verified?
 - Did a new reusable finding occur?
+- Did the experience also produce durable formative meaning distinct from the reusable finding?
 - Was there a retrieval, activation, execution, or closure failure worth learning from?
 
 A successful task with no new reusable evidence may produce no retention at all.
