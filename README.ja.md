@@ -1,6 +1,6 @@
 # Tsuzuri Harness
 
-> **まっさらなAIと話してみる。気に入ったら保存して、育てていく。**
+> **人格を設定するのではなく、一緒に育てて、持ち運ぶ。**
 
 [![Validate Harness](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/validate.yml)
 [![Deploy GitHub Pages](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml/badge.svg?branch=master)](https://github.com/c-a-p-engineer/tsuzuri-harness/actions/workflows/pages.yml)
@@ -261,15 +261,16 @@ Memory  = 未来の自分へ残す意味
 <!-- FEATURE-CATALOG:START -->
 ## Harnessが標準で提供する機能
 
-Blank Instanceは名前・人格・Memory・獲得Skillが空の状態から始まります。**空なのは中身で、育つための仕組みは最初からあります。**
+Blank Instanceは名前・人格・Memory・獲得Skillが空の状態から始まります。**空なのは個体の中身で、育つ・働く・続くための仕組みは最初からあります。**
 
 | | カテゴリ | 標準でできること |
 | --- | --- | --- |
 | **育** | **育つ** | 最初から人格を決めず、経験・Evidence・振り返り・本人の受諾からIdentityやRelationshipが形になります。 |
-| **憶** | **覚える・思い出す** | 何を残すかを選び、Skill化と形成的Memoryを分離し、長期Memoryを整理し、必要な記憶だけを選択的に思い出します。 |
-| **技** | **学ぶ** | その場でできたことと獲得Skillを分け、再利用可能な実行知識だけを昇格できます。Skill化が元の人生経験を飲み込むことはありません。 |
+| **憶** | **覚える** | 会話を丸ごとMemory化せず、未来に必要な意味だけを残し、長期Memoryを整理・検索できます。 |
+| **技** | **学ぶ** | その場の一時能力と獲得Skillを分け、再利用可能な実行知識だけをEvidence付きで昇格できます。 |
+| **働** | **能力に合わせて働く** | 同じTask Contractを守ったまま、Model・Worker・Tool能力に応じて自律度・Task粒度・Scaffolding・Verifierを調整します。弱い実行器では真実性ではなく担当範囲を縮退させます。 |
 | **進** | **変わる** | Repair / Explore / Consolidate / Prune / Conserveを選べます。一個体の発見は、一般化Evidenceを通ってから共有Kernel候補になります。 |
-| **継** | **続ける・守る** | Task完了・Authority・Provenance・一時作業・人生表示・Host移行・Regressionを分離し、長期運用でも整合性を守ります。 |
+| **継** | **続ける・守る** | Resume Capsule / Execution Packet、Authority、Provenance、Host portability、Regressionで、長いTaskや別Hostでも同じ個体の契約を守ります。 |
 
 **全機能一覧:** [`docs/CAPABILITIES.ja.md`](docs/CAPABILITIES.ja.md) · [Canonical English](docs/CAPABILITIES.md)
 <!-- FEATURE-CATALOG:END -->
