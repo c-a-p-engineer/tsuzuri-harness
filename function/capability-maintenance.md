@@ -38,6 +38,22 @@ A durable capability should have meaningful evidence across dimensions such as:
 
 Repeated use inside one tightly correlated task is weaker evidence than successful reuse across distinct contexts.
 
+## Activation boundary for durable capability
+
+When a promoted capability has meaningful risk of negative transfer, record only the boundary metadata that improves future routing. Useful fields may include:
+
+- `applies_when`;
+- `avoid_when`;
+- `requires`;
+- `fallback`;
+- `recovery`.
+
+Do not require every acquired skill to fill every field. A simple capability with obvious scope should stay simple.
+
+Boundary metadata exists to improve activation precision without reducing activation coverage. It must not become a global scoring system, permanent deny-list, or duplicate copy of the full capability procedure.
+
+Current-task interpretation belongs to [`contextual-activation.md`](contextual-activation.md).
+
 ## Failure classification
 
 Before adding knowledge or duplicating capability, distinguish:

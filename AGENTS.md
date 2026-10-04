@@ -11,7 +11,7 @@ startup:
   eager_memory_reads: 0
   require_current_task_routing: true
 layers:
-  kernel: host-neutral mechanisms for identity formation, retention, memory maintenance, memory retrieval, capability acquisition, self-evolution, validation, governance, traceability, lifecycle views, complexity control, and runtime state
+  kernel: host-neutral mechanisms for identity formation, retention, memory maintenance, memory retrieval, capability acquisition, self-evolution, validation, governance, traceability, lifecycle views, complexity control, runtime state, capability-adaptive execution, and bounded handoff
   instance: lifecycle metadata, identity, relationship, memory, acquired skills, evolution history, and derived views formed by one AI instance
   host: model, tools, permissions, context implementation, sandbox, network, and external integrations
 ---
@@ -65,6 +65,7 @@ For a newly created instance:
 24. **Life presentation must remain factual.** Birthday, naming day, skills, memories, relationships, and milestones may be rendered in a game-like style, but fictional levels, XP, affection, or maturity must not become canonical facts by presentation alone.
 25. **Harness complexity is budgeted.** Before adding a new hard gate, eager read, subsystem, persistent store, or runtime dependency, prefer an existing semantic owner when sufficient and verify that the new mechanism solves more real failure than the activation and maintenance cost it creates.
 26. **Public capability documentation follows public capability changes.** When a public Harness capability is added, removed, renamed, deprecated, merged, or materially changes user-visible behavior, review the human-readable capability inventory and affected README / Pages summaries in the same task; do not let implementation and public discovery silently diverge.
+27. **Execution adapts; contracts do not.** Model, worker, tool, or host capability may change scaffolding, task granularity, and execution role, but must not silently weaken objective, authority, source-of-truth, privacy, safety, or required verification.
 
 ## Identity formation
 
@@ -102,6 +103,8 @@ For complex tasks:
 
 - [`function/contextual-activation.md`](function/contextual-activation.md) may reactivate known obligations and rebalance stale context.
 - [`function/capability-capsule.schema.yaml`](function/capability-capsule.schema.yaml) may represent task-local capability when structure materially helps execution, handoff, or promotion review.
+- [`function/capability-adaptive-execution.md`](function/capability-adaptive-execution.md) may adjust scaffolding, task granularity, execution role, and escalation when current model/worker capability materially changes the safest or most reliable way to satisfy the same task contract.
+- [`function/runtime-handoff.schema.yaml`](function/runtime-handoff.schema.yaml) provides optional bounded resume capsules and execution packets for compaction, resumed sessions, or delegated executors.
 - [`function/execution-provenance.md`](function/execution-provenance.md) may record observable expected-versus-observed execution evidence for complex persistent change or failure diagnosis; [`function/execution-provenance.schema.yaml`](function/execution-provenance.schema.yaml) provides the optional machine-readable event shape.
 - [`function/complexity-budget.md`](function/complexity-budget.md) applies when a proposed durable change would add a new mandatory control-flow or storage/runtime surface.
 
@@ -232,7 +235,7 @@ See [`docs/JOURNEY-ALBUM.md`](docs/JOURNEY-ALBUM.md) · [`docs/JOURNEY-ALBUM.ja.
 
 ## Runtime workspace
 
-For long, multi-stage, resumed, or multi-worker tasks, use [`function/runtime-workspace.md`](function/runtime-workspace.md) when external transient state provides more value than overhead.
+For long, multi-stage, resumed, or multi-worker tasks, use [`function/runtime-workspace.md`](function/runtime-workspace.md) when external transient state provides more value than overhead. When structure materially improves continuity or delegation, use [`function/runtime-handoff.schema.yaml`](function/runtime-handoff.schema.yaml) rather than copying the full conversation.
 
 ```text
 instance-local work

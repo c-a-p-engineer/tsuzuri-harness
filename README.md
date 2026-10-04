@@ -249,19 +249,20 @@ See [`docs/ARCHIVE-MODES.md`](docs/ARCHIVE-MODES.md) · [日本語](docs/ARCHIVE
 Japanese translations are provided alongside these guides.
 
 <!-- FEATURE-CATALOG:START -->
-## Default capabilities
+## What ships with the Harness
 
-A blank instance starts with no name, predefined persona, long-term memory, or acquired specialist skills. **The personal state is blank; the mechanisms for growing it are already there.**
+A Blank Instance begins with no name, preset persona, long-term memory, or acquired specialist skills. **The personal state starts empty; the mechanisms for growing, working, and continuing do not.**
 
-| | Area | What is built in |
+| | Category | Default capability |
 | --- | --- | --- |
-| **GROW** | **Grow into an individual** | Identity and relationships form from evidence, experience, reflection, and self-acceptance instead of a preset persona. |
-| **MEM** | **Remember without drowning in memory** | The harness decides what deserves retention, keeps formative memory separate from skill distillation, maintains long-lived memory, and retrieves only what is relevant. |
-| **SKILL** | **Learn reusable capability** | Temporary competence can stay temporary. Reusable execution knowledge can be promoted without swallowing the life event that produced it. |
-| **EVOLVE** | **Evolve selectively** | The instance or harness can repair, explore, consolidate, prune, or conserve. Instance-local discoveries need generalization evidence before they become shared kernel behavior. |
-| **KEEP** | **Continue safely across time and hosts** | Task completion, authority, provenance, transient work, human-readable life views, host portability, and regression evaluation keep long-lived instances coherent. |
+| **GROW** | **Form** | Identity and relationship form from experience, evidence, reflection, and acceptance instead of a preset character sheet. |
+| **REMEMBER** | **Retain** | Conversation is not automatically memory. Keep only durable meaning, maintain long-lived memory, and retrieve a small relevant set. |
+| **LEARN** | **Acquire capability** | Separate task-local competence from acquired skills and promote reusable execution knowledge only when evidence supports it. |
+| **WORK** | **Adapt execution** | Preserve the same task contract while changing autonomy, task granularity, scaffolding, verifier strength, and escalation to fit the current model / worker / tools. |
+| **EVOLVE** | **Change selectively** | Repair, Explore, Consolidate, Prune, or Conserve. Instance-local discoveries need broader evidence before becoming shared kernel behavior. |
+| **CONTINUE** | **Stay coherent** | Resume capsules, execution packets, authority boundaries, provenance, host portability, and regression protect continuity across long tasks and different runtimes. |
 
-**Full capability catalog:** [`docs/CAPABILITIES.md`](docs/CAPABILITIES.md) · [日本語](docs/CAPABILITIES.ja.md)
+**Full inventory:** [`docs/CAPABILITIES.md`](docs/CAPABILITIES.md) · [日本語](docs/CAPABILITIES.ja.md)
 <!-- FEATURE-CATALOG:END -->
 
 ## What it does not provide

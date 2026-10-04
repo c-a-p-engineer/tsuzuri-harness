@@ -43,6 +43,14 @@ When a structured representation materially helps execution, handoff, verificati
 
 Temporary capability is not personal history, qualification, personality, or proof of future availability.
 
+## Capability-adaptive execution
+
+When differences in the current model, worker, tool set, verifier, or host capability materially change the safest or most reliable execution shape, use [`capability-adaptive-execution.md`](capability-adaptive-execution.md).
+
+The task contract remains fixed unless the owning authority changes it. Adapt only the method: scaffolding, task granularity, autonomy, delegation, verifier strength, retry/fallback, or primary takeover.
+
+Unknown capability is not a reason to invent a score. When capability is insufficient, reduce responsibility rather than lowering truthfulness, safety, source-of-truth, or verification requirements.
+
 ## Execution modes
 
 A host may support one or more modes:

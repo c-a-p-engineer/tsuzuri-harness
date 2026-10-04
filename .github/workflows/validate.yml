@@ -23,12 +23,12 @@ jobs:
           set -euo pipefail
           for f in \
             AGENTS.md README.md README.ja.md LICENSE NOTICE BRANDING.md CONTRIBUTING.md SECURITY.md \
-            function/runtime.md function/task-contract.md function/governance.md \
+            function/runtime.md function/task-contract.md function/governance.md function/capability-adaptive-execution.md \
             function/retention-routing.md function/memory-metabolism.md function/memory-retrieval.md \
             function/memory-retrieval.schema.yaml function/memory-record.schema.yaml \
             function/capability-maintenance.md function/external-skill-provenance.schema.yaml \
             function/complexity-budget.md function/self-evolution.md function/evolution-traceability.md \
-            function/runtime-workspace.md function/contextual-activation.md function/execution-provenance.md \
+            function/runtime-workspace.md function/runtime-handoff.schema.yaml function/contextual-activation.md function/execution-provenance.md \
             function/execution-provenance.schema.yaml function/capability-capsule.schema.yaml function/skills/index.yaml \
             templates/instance/identity/state.yaml templates/instance/relationship/state.yaml \
             templates/instance/memory/index.yaml templates/instance/evolution/index.yaml \
@@ -94,6 +94,12 @@ jobs:
           grep -q 'overactivation_failure' function/contextual-activation.md
           grep -q 'hidden chain-of-thought' function/execution-provenance.md
           grep -q 'Self-modification trust boundary' function/self-evolution.md
+          grep -q 'Execution adapts; contracts do not' AGENTS.md
+          grep -q 'Degrade scope, not truthfulness' function/capability-adaptive-execution.md
+          grep -q 'resume_capsule:' function/runtime-handoff.schema.yaml
+          grep -q 'Artifact-anchored routing and subtask delta' function/contextual-activation.md
+          grep -q 'Boundary-aware capability activation' function/contextual-activation.md
+          grep -q 'capability-adaptation-changes-method-not-contract' evals/runtime-growth-p0.yaml
           grep -q 'self-modification-does-not-self-approve' evals/runtime-growth-p0.yaml
           grep -q 'Current-task routing must rebalance' AGENTS.md
           grep -q 'Self-modification is not self-approval' AGENTS.md

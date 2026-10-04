@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="名前も性格も決めずにAIと過ごし、経験からIdentity・Memory・Skillを形成。気に入った個体はPrivate Repositoryへ引き継いで育てられるポータブルAI Harness。">
+  <meta name="description" content="人格を先に設定しない。AIと一緒に働き、経験からIdentity・Memory・Skillを形成し、モデルやHostが変わっても同じ個体の契約を持ち運ぶためのAI Harness。">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#f4f8f3">
 
-  <title>Tsuzuri Harness — AIは、使うものから、育っていくものへ。</title>
+  <title>Tsuzuri Harness — 人格を設定するのではなく、一緒に育てて、持ち運ぶ。</title>
   <link rel="canonical" href="https://c-a-p-engineer.github.io/tsuzuri-harness/ja/">
   <link rel="alternate" hreflang="en" href="https://c-a-p-engineer.github.io/tsuzuri-harness/">
   <link rel="alternate" hreflang="ja" href="https://c-a-p-engineer.github.io/tsuzuri-harness/ja/">
@@ -20,8 +20,8 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Tsuzuri Harness">
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:title" content="Tsuzuri Harness — AIは、使うものから、育っていくものへ。">
-  <meta property="og:description" content="名前も性格も決めずに始める。経験からIdentity・Memory・Skillが形になり、気に入った個体はPrivate Repositoryへ引き継いで育てられます。">
+  <meta property="og:title" content="Tsuzuri Harness — 人格を設定するのではなく、一緒に育てて、持ち運ぶ。">
+  <meta property="og:description" content="名前も人格もSkillも0から。会話や仕事をEvidenceとして必要なものだけ残し、モデルやHostが変わっても同じ個体を続けられます。">
   <meta property="og:url" content="https://c-a-p-engineer.github.io/tsuzuri-harness/ja/">
   <meta property="og:image" content="https://c-a-p-engineer.github.io/tsuzuri-harness/og/tsuzuri-harness-ja.png">
   <meta property="og:image:type" content="image/png">
@@ -30,8 +30,8 @@
   <meta property="og:image:alt" content="Tsuzuri Harness — AIに人格を設定しない。一緒に過ごした結果、この子になる。">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tsuzuri Harness — AIは、使うものから、育っていくものへ。">
-  <meta name="twitter:description" content="名前も性格も決めずに始める。経験からIdentity・Memory・Skillが形になり、気に入った個体はPrivate Repositoryへ引き継いで育てられます。">
+  <meta name="twitter:title" content="Tsuzuri Harness — 人格を設定するのではなく、一緒に育てて、持ち運ぶ。">
+  <meta name="twitter:description" content="名前も人格もSkillも0から。会話や仕事をEvidenceとして必要なものだけ残し、モデルやHostが変わっても同じ個体を続けられます。">
   <meta name="twitter:image" content="https://c-a-p-engineer.github.io/tsuzuri-harness/og/tsuzuri-harness-ja.png">
   <meta name="twitter:image:alt" content="Tsuzuri Harness — AIに人格を設定しない。一緒に過ごした結果、この子になる。">
 
@@ -56,16 +56,17 @@
   <main>
     <header class="hero">
       <div class="hero-copy reveal">
-        <div class="eyebrow">PORTABLE AI IDENTITY / COGNITIVE HARNESS</div>
+        <div class="eyebrow">AI IDENTITY · MEMORY · SKILL · ADAPTIVE RUNTIME</div>
         <h1>
-          <span class="hero-main">AIは、使うものから、育っていくものへ。</span>
-          <span class="hero-sub">まっさらなAIと過ごした時間が、少しずつ <span class="accent-text">「この子」を形づくる。</span></span>
+          <span class="hero-main">人格を設定するのではなく、</span>
+          <span class="hero-sub"><span class="accent-text">一緒に育てて、持ち運ぶ。</span></span>
         </h1>
-        <p class="lead">Tsuzuri Harnessは、名前や性格を先に設定せず、会話・仕事・創作などの経験をEvidenceとして、Identity・Memory・Skillを少しずつ形成していくためのポータブルAI Harnessです。気に入った個体は、自分のPrivate Repositoryへ引き継いで続きを育てられます。</p>
+        <p class="lead">名前も人格もMemoryも獲得Skillも0から。会話・仕事・創作をEvidenceとして、残す価値のあるものだけを選びます。さらに、ModelやWorkerの能力が変わっても、同じTask Contractを守ったまま仕事の任せ方を調整します。</p>
         <div class="tag-row" aria-label="Tsuzuri Harnessの要点">
           <span class="tag">初期人格なし</span>
-          <span class="tag">保存なしで試せる</span>
-          <span class="tag">Private Repositoryで継続</span>
+          <span class="tag">選択的Memory</span>
+          <span class="tag">SkillをEvidenceで獲得</span>
+          <span class="tag">能力に合わせて実行を適応</span>
           <span class="tag">HostとIdentityを分離</span>
         </div>
         <div class="actions">
@@ -150,6 +151,20 @@
       </div>
     </section>
 
+    <section class="game-section" id="why">
+      <div class="section-head reveal">
+        <div class="section-kicker">何が違う？</div>
+        <h2>Promptでキャラを固定する仕組みでも、会話履歴を全部抱える仕組みでもない。</h2>
+        <p>Tsuzuri Harnessが管理するのは「今どんな人格っぽいか」だけではなく、何を正本にし、何を覚え、何をSkill化し、どう働き、どう検証して次へ持ち越すかです。</p>
+      </div>
+      <div class="contrast-grid">
+        <article class="contrast-card reveal"><span>Preset Persona</span><h3>最初に性格を決めない</h3><p>空欄・未形成・まだ分からないを正当な状態として扱います。</p></article>
+        <article class="contrast-card reveal"><span>Chat History</span><h3>全部を記憶にしない</h3><p>会話はEvidence。未来の判断を変える意味だけをRetentionします。</p></article>
+        <article class="contrast-card reveal"><span>Agent Runtime</span><h3>実行環境と個体を分ける</h3><p>Model・Tool・SandboxはHost能力。IdentityやBiographyへ自動昇格しません。</p></article>
+        <article class="contrast-card reveal"><span>Fixed Workflow</span><h3>能力に合わせて任せ方を変える</h3><p>強い実行器には余計なScaffoldingを減らし、弱い実行器には担当範囲を狭めます。契約は変えません。</p></article>
+      </div>
+    </section>
+
     <section class="game-section" id="difference">
       <div class="section-head reveal">
         <div class="section-kicker">最初は同じ。過ごした時間で変わる。</div>
@@ -194,39 +209,41 @@
     <section class="game-section" id="features">
       <div class="section-head reveal">
         <div class="section-kicker">空なのは人格。仕組みは空ではない。</div>
-        <h2>育つ・覚える・学ぶ・変わる・守る。</h2>
-        <p>名前・Memory・獲得Skillは0から始まります。その一方で、形成した個体を長く扱うためのKernel機能は標準で備わっています。</p>
+        <h2>育つ、覚える、学ぶ、働く、変わる、続く。</h2>
+        <p>Tsuzuri Harnessは「人格の保存箱」ではなく、長く一緒に使うAI個体のControl Planeです。</p>
       </div>
       <div class="achievement-strip reveal" aria-label="Tsuzuri Harnessの標準機能カテゴリ">
-        <article class="achievement-card">
-          <div class="achievement-icon">育</div>
-          <h3>Identityを形成する</h3>
-          <p class="muted">提案、候補、受諾、正規状態を分け、先回りで人格を確定しません。</p>
-        </article>
-        <article class="achievement-card blue">
-          <div class="achievement-icon">憶</div>
-          <h3>Memoryを選ぶ</h3>
-          <p class="muted">Skill化と形成的Memoryを分離します。学んだから必ず覚えるのでも、Skill化したから経験を捨てるのでもありません。</p>
-        </article>
-        <article class="achievement-card purple">
-          <div class="achievement-icon">技</div>
-          <h3>Skillを獲得する</h3>
-          <p class="muted">再利用可能な実行知識だけを昇格し、元の人生経験そのものをSkillへ飲み込ませません。</p>
-        </article>
-        <article class="achievement-card orange">
-          <div class="achievement-icon">進</div>
-          <h3>選択的に進化する</h3>
-          <p class="muted">Repair / Explore / Consolidate / Prune / Conserve。一個体の発見は一般化Evidenceを通ってから共有Kernel候補になります。</p>
-        </article>
-        <article class="achievement-card orange">
-          <div class="achievement-icon">継</div>
-          <h3>長く続ける</h3>
-          <p class="muted">Governance、Provenance、Evolution、CORE、JOURNEY、Host portabilityを分離して扱います。</p>
-        </article>
+        <article class="achievement-card"><div class="achievement-icon">育</div><h3>Identityを形成する</h3><p class="muted">提案・候補・受諾・正規状態を分け、先回りで人格を確定しません。</p></article>
+        <article class="achievement-card blue"><div class="achievement-icon">憶</div><h3>Memoryを選び直す</h3><p class="muted">覚えるだけでなく、統合・更新・Prune・検索まで含めて長期Memoryを維持します。</p></article>
+        <article class="achievement-card purple"><div class="achievement-icon">技</div><h3>Skillを獲得する</h3><p class="muted">その場の能力と恒久Skillを分け、再利用可能な実行知識だけをEvidence付きで残します。</p></article>
+        <article class="achievement-card adaptive"><div class="achievement-icon">働</div><h3>能力に合わせて働く</h3><p class="muted">Model / Worker / Toolに応じて自律度・Task粒度・Verifierを変えます。能力不足時は真実性ではなく担当範囲を縮退。</p></article>
+        <article class="achievement-card orange"><div class="achievement-icon">進</div><h3>選択的に進化する</h3><p class="muted">Repair / Explore / Consolidate / Prune / Conserve。増やすことだけを進化にしません。</p></article>
+        <article class="achievement-card"><div class="achievement-icon">継</div><h3>長いTaskを続ける</h3><p class="muted">Resume Capsule / Execution Packet / Provenanceで、CompactionやWorker委譲でも必要な契約とEvidenceを渡します。</p></article>
       </div>
       <p class="branch-caption reveal"><a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CAPABILITIES.ja.md">標準機能を全部見る</a></p>
     </section>
     <!-- FEATURE-CATALOG:END -->
+
+    <section class="game-section" id="adaptive-runtime">
+      <div class="runtime-showcase reveal">
+        <div>
+          <div class="section-kicker">同じ個体、違う実行器</div>
+          <h2>強いモデルでも、軽いWorkerでも、守る契約は同じ。</h2>
+          <p>能力差は人格差ではありません。Tsuzuri Harnessは、現在の実行能力に応じて「どこまで任せるか」を変えます。</p>
+          <div class="runtime-rule"><strong>変えてよい:</strong> Scaffolding / Task粒度 / 自律度 / Tool投影 / Verifier / Escalation</div>
+          <div class="runtime-rule"><strong>変えない:</strong> Objective / Authority / Source of Truth / Safety / Privacy / 必要なVerification</div>
+        </div>
+        <div class="runtime-track" aria-label="Capability degradation ladder">
+          <div class="runtime-node"><small>01</small><strong>Autonomous</strong><span>十分な能力がある</span></div>
+          <div class="runtime-arrow">↓</div>
+          <div class="runtime-node"><small>02</small><strong>Guided</strong><span>主要手順を明示</span></div>
+          <div class="runtime-arrow">↓</div>
+          <div class="runtime-node"><small>03</small><strong>Bounded</strong><span>判断範囲を限定</span></div>
+          <div class="runtime-arrow">↓</div>
+          <div class="runtime-node"><small>04</small><strong>Split / Takeover</strong><span>Task分割・Primaryへ戻す</span></div>
+        </div>
+      </div>
+    </section>
 
     <section class="game-section" id="keep">
       <div class="section-head reveal">

@@ -1,0 +1,108 @@
+schema_version: 1
+id: tsuzuri-runtime-handoff
+status: canonical
+owner: function/runtime-workspace.md
+
+purpose: >-
+  Provide bounded, host-neutral task handoff for compaction, resumed sessions,
+  delegated workers, browser/work executors, or other task-local runtime boundaries
+  without cloning a full conversation, identity state, or hidden reasoning.
+
+authority:
+  classification: coordination_hint
+  source_of_truth: false
+  canonical_memory: false
+  rules:
+    - handoff state does not prove task completion
+    - stale, missing, or conflicting anchors require targeted return to current source of truth
+    - hidden chain-of-thought is never a handoff field
+    - token or context savings must not remove task-critical evidence
+    - delegation never expands the task authority ceiling
+
+storage:
+  lifetime: task_local
+  canonical: false
+  preferred_when_available:
+    - .runtime/share/<task-id>/handoff/
+    - host-private ephemeral task state
+
+resume_capsule:
+  use_when:
+    - session compaction or resume would otherwise lose material task state
+    - re-reading all prior conversation or repository context would be wasteful
+  fields:
+    schema_version: 1
+    task_id: string
+    objective: string
+    success_criteria: [string]
+    authority_boundary: string_or_null
+    canonical_anchors:
+      - source: string
+        location: string_or_null
+        revision: string_or_null
+        role: string
+    completed:
+      - item: string
+        evidence_ref: string_or_null
+    pending:
+      - item: string
+        blocker: string_or_null
+    validation:
+      - check: string
+        status: passed_or_failed_or_partial_or_not_run
+        evidence_ref: string_or_null
+    next_action: string_or_null
+    uncertainty: [string]
+  rules:
+    - if canonical anchors still match and required content remains available, compaction alone does not require ceremonial full re-reading
+    - if anchors changed or are unknown, rebuild the affected task context from current source of truth
+    - final completion still uses task-contract completion re-derivation
+
+execution_packet:
+  use_when:
+    - a bounded worker or external executor receives an already-scoped task
+  fields:
+    schema_version: 1
+    task_id: string
+    objective: string
+    target:
+      system: string
+      resource: string_or_null
+    action: string
+    input_refs:
+      - name: string
+        source: string
+        location: string_or_null
+    required_values: object
+    constraints: [string]
+    decision_boundary: string_or_null
+    effect_boundary:
+      external_side_effect: boolean
+      approval_required: boolean
+      approval_state: granted_or_missing_or_not_required
+    verification:
+      expected_state: [string]
+      evidence_to_collect: [string]
+    stop_conditions: [string]
+    return_fields:
+      - result
+      - evidence
+      - artifact_or_diff
+      - validation_status
+      - blocker_or_uncertainty
+    uncertainty: [string]
+  rules:
+    - do not execute an approval-required side effect when approval_state is not granted
+    - return to the integration owner when new material architecture, scope, authority, or irreversible-effect judgment is required
+    - pass exact values and source references instead of unnecessary narrative when they are available
+    - return bounded evidence instead of a full raw browser or worker transcript by default
+    - secrets and credentials belong in host-provided secret surfaces, not plaintext packet fields
+
+common_exclusions:
+  - full_conversation_transcript
+  - hidden_chain_of_thought
+  - unrelated_memory
+  - unrelated_repository_files
+  - completed_raw_tool_output
+  - unnecessary_personal_data
+  - plaintext_secrets_or_credentials

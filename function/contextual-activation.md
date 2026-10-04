@@ -57,6 +57,45 @@ Recent success, frequent use, personal interest, or prior activation is not suff
 
 Do not deactivate durable safety/authority constraints, current explicit user instructions, or canonical identity state merely because task-local context changed.
 
+## Artifact-anchored routing and subtask delta
+
+When complex work converges on a concrete final artifact or durable state, keep that **parent artifact** as the routing anchor even while current subtasks change.
+
+Examples include a repository release that temporarily enters documentation work, a report that temporarily enters research, or a publication task that temporarily enters image or metadata editing.
+
+At the start of a materially different subtask, check only whether the following changed enough to alter routing:
+
+- objective;
+- final artifact or durable deliverable;
+- medium / structure / representation;
+- authority, privacy, safety, or compatibility constraints;
+- completion / verification;
+- required specialist capability.
+
+Add or remove only the capability delta implied by those changes. Do not rescan the entire capability library for every subtask.
+
+Before final completion, return from the local subtask to the parent artifact and re-derive its acceptance and verification conditions. Local success is not automatically parent-task completion.
+
+If the routing delta materially changes required autonomy, task granularity, scaffolding, verifier strength, or worker capability, hand that signal to [`capability-adaptive-execution.md`](capability-adaptive-execution.md).
+
+## Boundary-aware capability activation
+
+Trigger similarity or prior success is not sufficient reason to activate an acquired capability.
+
+When a retained capability defines material activation boundaries, evaluate only the fields needed for the current task:
+
+- **applies_when** — positive conditions for use;
+- **avoid_when** — conditions where use would create negative transfer;
+- **requires** — source, tool, permission, state, or prerequisite needed before use;
+- **fallback** — narrower path when prerequisites or fit are insufficient;
+- **recovery** — what to do after a material failure.
+
+These fields are optional metadata, not a second central router. The capability's own canonical procedure remains authoritative.
+
+An `avoid_when` result is not a permanent deny-list. Re-evaluate when the artifact, evidence, authority, or task shape materially changes.
+
+A wrongly suppressed required capability is an activation/retrieval failure candidate. An irrelevant capability that distorted the task is an overactivation failure candidate.
+
 ## Required dependency closure
 
 Context economy is an efficiency mechanism, not a correctness boundary.

@@ -36,9 +36,11 @@ It owns:
 - Memory Metabolism
 - host-neutral memory retrieval semantics
 - temporary capability acquisition
+- capability-adaptive execution across models/workers
 - acquired-capability maintenance
 - evidence-driven self-evolution
-- transient runtime workspace semantics
+- transient runtime workspace and bounded handoff semantics
+- artifact-anchored / boundary-aware contextual activation
 - verification and authority boundaries
 
 ## Instance
@@ -68,7 +70,7 @@ The host owns execution capability:
 - UI and session lifecycle
 - optional lexical, full-text, semantic, or vector retrieval implementation
 
-Host capabilities may change what an instance can execute or how efficiently it can retrieve state, but do not automatically rewrite who the instance is.
+Host capabilities may change what an instance can execute, how work should be delegated, or how efficiently it can retrieve state, but do not automatically rewrite who the instance is. The Harness may adapt scaffolding, task granularity, and execution role while preserving the same objective, authority, safety, source-of-truth, and verification contract.
 
 ## Memory retrieval boundary
 
