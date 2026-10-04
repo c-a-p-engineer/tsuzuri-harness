@@ -13,4 +13,5 @@ rules:
   - Temporary task competence does not automatically become a durable skill.
   - Prefer updating or consolidating an existing skill over creating redundant skills.
   - Keep project-specific procedures in the owning project when they are not cross-project capabilities.
+  - Acquired capabilities may define optional applies_when, avoid_when, requires, fallback, or recovery boundaries when those materially improve activation precision without creating a second central router.
 acquired_skills: []
