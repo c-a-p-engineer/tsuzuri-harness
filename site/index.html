@@ -195,7 +195,28 @@
   <p class="branch-caption reveal"><a class="btn" href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/docs/CAPABILITIES.md">See every default capability</a></p>
 </section>
 <!-- FEATURE-CATALOG:END -->
-<section class="game-section" id="keep">
+<section class="game-section" id="adaptive-runtime">
+      <div class="runtime-showcase reveal">
+        <div>
+          <div class="section-kicker">Same instance, different executor</div>
+          <h2>Strong model or small worker: keep the contract, change the job shape.</h2>
+          <p>Capability differences are runtime facts, not personality traits. The Harness adjusts how much autonomy and scaffolding the executor receives.</p>
+          <div class="runtime-rule"><strong>May change:</strong> scaffolding / task granularity / autonomy / tool projection / verifier / escalation</div>
+          <div class="runtime-rule"><strong>Must stay:</strong> objective / authority / source of truth / safety / privacy / required verification</div>
+        </div>
+        <div class="runtime-track" aria-label="Capability degradation ladder">
+          <div class="runtime-node"><small>01</small><strong>Autonomous</strong><span>capability is sufficient</span></div>
+          <div class="runtime-arrow">↓</div>
+          <div class="runtime-node"><small>02</small><strong>Guided</strong><span>key procedure is explicit</span></div>
+          <div class="runtime-arrow">↓</div>
+          <div class="runtime-node"><small>03</small><strong>Bounded</strong><span>decision scope is narrow</span></div>
+          <div class="runtime-arrow">↓</div>
+          <div class="runtime-node"><small>04</small><strong>Split / Takeover</strong><span>divide work or return to primary</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-section" id="keep">
       <div class="section-head reveal">
         <div class="section-kicker">The moment it stops feeling disposable</div>
         <h2>If you think “I want to keep this one”</h2>
