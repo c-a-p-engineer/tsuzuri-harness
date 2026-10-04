@@ -31,6 +31,7 @@ Git / MarkdownがMemoryの正本です。全文検索DB、Embedding、Vector Ind
 ## 3. 学ぶ — Skills & Capability
 
 - **Task-local Capability** — Task中だけ必要な知識・手順・Tool・Validationを一時能力として組み立てます。
+- **Capability-Adaptive Execution** — 同じTask Contractを保ったまま、現在のModel / Worker / Tool能力に応じてScaffolding・Task粒度・自律度・Verifier・Escalationを調整します。能力不足時は真実性や安全性ではなく担当範囲を縮退させます。
 - **Capability Capsule** — 複雑な一時能力を構造化したい場合に使える任意Schemaです。
 - **Capability Maintenance** — Expire / Procedural Lesson / Existing Skill Update / New Skillのどれが適切かEvidenceから判断します。昇格するSkillには再利用可能な実行知識を残し、元の人生経験そのものとは分離します。
 - **Capability Library Health** — Skill数ではなく、Activation Precision・Coverage・Outcome Contribution・Execution Waste・Negative Transfer・Validation Reliability・Evidence Traceabilityを見ます。
@@ -50,8 +51,9 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 ## 5. 安全に続ける — Runtime / Governance / Portability
 
 - **Task Contract / Delegated Implementation Ownership / Completion Re-derivation** — 複雑TaskのObjective・Authority・Deliverable・Completion Criteria・Verificationを明確にします。Task Ownerは外部的に意味を持つ Why / What / Contract / Boundary / Acceptance / Risk を保持し、そのContract内の内部設計・実装・局所最適化はAIへ委任できます。完了時は現在のSource of TruthからCompletionを再確認します。
-- **Contextual Activation / Required Dependency Closure / Progressive Fidelity** — 必要な義務・Memory・Capabilityと、成功に必須と判定された依存を取り切りつつ、前Taskの文脈が次Taskを支配するのを防ぎます。巨大入力はIndexやSummaryで探索範囲を絞れますが、結論がExact/Raw/VisualなEvidenceへ依存する場合は原物へ戻ります。
-- **Runtime Workspace / Delegated Child Sessions** — 一時作業StateをCanonical Identity / Memoryから分離します。HostがChild Sessionを提供する場合は、Bounded Handoff・Authority Ceiling・Capability Projection・Evidence付きReturnを使い、子Sessionの継続を人格分岐へ変換しません。
+- **Contextual Activation / Artifact-Anchored Delta Routing / Boundary-Aware Activation** — 必要な義務・Memory・Capabilityを選び、前Taskの文脈や似ているだけのSkillが次Taskを支配するのを防ぎます。複数工程では最終成果物を親Anchorとして保持し、Subtaskごとに必要なCapability差分だけを追加・解除します。
+- **Required Dependency Closure / Progressive Fidelity** — 成功に必須と判定された依存は取り切りつつ、巨大入力はIndexやSummaryで探索範囲を絞れます。結論がExact/Raw/VisualなEvidenceへ依存する場合は原物へ戻ります。
+- **Runtime Workspace / Structured Handoff / Delegated Child Sessions** — 一時作業StateをCanonical Identity / Memoryから分離します。Compactionや再開ではResume Capsule、限定実行ではExecution Packetを使えます。HostがChild Sessionを提供する場合も、Authority Ceiling・Capability Projection・Evidence付きReturnを保ち、子Sessionの継続を人格分岐へ変換しません。
 - **Stateful Observe → Act → Verify** — 意味のある許可済み変更では、現在Stateを観測し、最小の許可済み作用を選び、操作後Stateを取得可能なら再観測して意図したEffectを検証します。Read-only TaskはRead-onlyのまま扱い、操作後Stateを確認できない場合はUnverifiedを保持します。
 - **Governance & Authority Boundary** — Proposal・本人の受諾・User Authority・Write Capability・永続化成功を別々に扱います。
 - **Observable Execution Provenance / Evidence Preservation** — Hidden Chain-of-Thoughtではなく、Hostから観測できるRead / Action / Revision / Result / Validationを追跡します。確認済みのSource / Revision / Validation Stateを後工程で不要にGeneric / Unknownへ落とし、後からAssertionや記憶で確実性を復元するEvidence Launderingを避けます。
@@ -70,12 +72,14 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 | Memory Metabolism | `function/memory-metabolism.md` |
 | Memory Retrieval | `function/memory-retrieval.md` |
 | Task-local Capability | `function/runtime.md` |
+| Capability-Adaptive Execution | `function/capability-adaptive-execution.md` |
 | Capability Capsule | `function/capability-capsule.schema.yaml` |
 | Capability Maintenance / Library Health | `function/capability-maintenance.md` |
 | External Skill Provenance | `function/external-skill-provenance.schema.yaml` |
 | Task Contract / Delegated Implementation Ownership | `function/task-contract.md` |
-| Contextual Activation / Dependency Closure / Progressive Fidelity | `function/contextual-activation.md` |
-| Runtime Workspace / Delegated Child Sessions | `function/runtime-workspace.md` |
+| Contextual Activation / Artifact Delta / Boundary-Aware Activation | `function/contextual-activation.md` |
+| Dependency Closure / Progressive Fidelity | `function/contextual-activation.md` |
+| Runtime Workspace / Structured Handoff / Delegated Child Sessions | `function/runtime-workspace.md`, `function/runtime-handoff.schema.yaml` |
 | Stateful Observe → Act → Verify | `function/runtime.md` |
 | Governance | `function/governance.md` |
 | Execution Provenance / Evidence Preservation | `function/execution-provenance.md`, `function/execution-provenance.schema.yaml` |
