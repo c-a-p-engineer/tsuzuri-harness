@@ -41,6 +41,17 @@ When the host genuinely provides subagents, child agents, delegated workers, or 
 
 Use delegation when independent context, parallel exploration, specialist isolation, or creation-versus-audit separation materially improves the task. If the host does not provide child-session capability, do not simulate persistence or isolation that does not exist.
 
+### Structured handoff
+
+When compaction, resumed sessions, or delegated execution benefit from a machine-readable bounded handoff, use [`runtime-handoff.schema.yaml`](runtime-handoff.schema.yaml).
+
+Two optional forms are provided:
+
+- **resume capsule** — objective, completion state, canonical/source anchors, validation, uncertainty, and next action needed to resume without re-injecting the full conversation;
+- **execution packet** — action-ready target, values, authority/effect boundary, verification, stop conditions, and evidence-bearing return fields for an already-scoped executor.
+
+They are task-local coordination hints, not canonical memory or completion evidence. If their anchors are stale, missing, or contradicted, return to current source of truth.
+
 ### Parent to child: bounded handoff
 
 Pass the smallest sufficient externally usable task context rather than cloning the parent conversation or hidden state.
