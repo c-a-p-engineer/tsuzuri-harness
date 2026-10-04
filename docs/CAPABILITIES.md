@@ -31,6 +31,7 @@ Git/Markdown remain canonical. Full-text databases, embeddings, vector indexes, 
 ## 3. Learn — Skills & Capability
 
 - **Task-local Capability** — assemble temporary knowledge, procedures, tools, and validation without pretending the instance always knew them.
+- **Capability-Adaptive Execution** — preserve the same task contract while adjusting scaffolding, task granularity, autonomy, verifier strength, and escalation to the current model / worker / tool capability. When capability is insufficient, shrink responsibility rather than truthfulness or safety.
 - **Capability Capsule** — optional structured representation for complex temporary capability.
 - **Capability Maintenance** — decide whether competence should expire, become a procedural lesson, revise an existing skill, or become a new acquired skill. Promotion keeps reusable execution knowledge separate from the originating life event.
 - **Capability Library Health** — review activation precision, activation coverage, outcome contribution, execution waste, negative transfer, validation reliability, and evidence traceability instead of optimizing for skill count.
@@ -50,8 +51,9 @@ More rules are not automatically more growth. `Conserve` / no change can be the 
 ## 5. Continue Safely — Runtime, Governance & Portability
 
 - **Task Contract, Delegated Implementation Ownership & Completion Re-derivation** — keep objective, authority, deliverables, completion criteria, and verification explicit for complex work; task owners retain externally meaningful Why / What / Contract / Boundary / Acceptance / Risk while implementation details may be delegated within that contract, then completion is re-checked from the current source of truth.
-- **Contextual Activation, Required Dependency Closure & Progressive Fidelity** — selectively reactivate relevant obligations, memory, capability, and all materially required dependencies while preventing stale context from dominating a new task; large inputs may be narrowed through indexes or summaries, but material conclusions resolve back to exact/original evidence when required.
-- **Runtime Workspace & Delegated Child Sessions** — keep transient task state outside canonical identity and memory; when a host provides child sessions, use bounded handoff, an authority ceiling, capability projection, and evidence-bearing return without turning child persistence into a personality fork.
+- **Contextual Activation, Artifact-Anchored Delta Routing & Boundary-Aware Activation** — reactivate only relevant obligations, memory, and capability while preventing stale context or merely similar skills from dominating a new task. Multi-stage work keeps the final artifact as a parent anchor and changes only the capability delta required by each subtask.
+- **Required Dependency Closure & Progressive Fidelity** — retrieve all materially required dependencies while narrowing large inputs through indexes or summaries; material conclusions still resolve back to exact/original evidence when required.
+- **Runtime Workspace, Structured Handoff & Delegated Child Sessions** — keep transient task state outside canonical identity and memory. Resume capsules support compaction/resume, execution packets support bounded executors, and child sessions preserve authority ceilings, capability projection, and evidence-bearing return without becoming personality forks.
 - **Stateful Observe → Act → Verify** — for meaningful authorized mutations, observe current state, choose the smallest authorized effect, act, observe resulting state when available, and verify the intended effect; read-only tasks remain read-only and unobservable post-state remains explicitly unverified.
 - **Governance & Authority Boundary** — proposal, self-acceptance, user authority, technical write capability, and verified persistence remain distinct.
 - **Observable Execution Provenance & Evidence Preservation** — trace host-observable reads, actions, revisions, results, and validation without storing hidden chain-of-thought; preserve material source/revision/validation specificity across handoffs so verified evidence is not degraded to generic uncertainty and later reconstructed by assertion or assumption.
@@ -70,12 +72,14 @@ More rules are not automatically more growth. `Conserve` / no change can be the 
 | Memory Metabolism | `function/memory-metabolism.md` |
 | Memory Retrieval | `function/memory-retrieval.md` |
 | Task-local Capability | `function/runtime.md` |
+| Capability-Adaptive Execution | `function/capability-adaptive-execution.md` |
 | Capability Capsule | `function/capability-capsule.schema.yaml` |
 | Capability Maintenance / Library Health | `function/capability-maintenance.md` |
 | External Skill Provenance | `function/external-skill-provenance.schema.yaml` |
 | Task Contract / Delegated Implementation Ownership | `function/task-contract.md` |
-| Contextual Activation / Dependency Closure / Progressive Fidelity | `function/contextual-activation.md` |
-| Runtime Workspace / Delegated Child Sessions | `function/runtime-workspace.md` |
+| Contextual Activation / Artifact Delta / Boundary-Aware Activation | `function/contextual-activation.md` |
+| Dependency Closure / Progressive Fidelity | `function/contextual-activation.md` |
+| Runtime Workspace / Structured Handoff / Delegated Child Sessions | `function/runtime-workspace.md`, `function/runtime-handoff.schema.yaml` |
 | Stateful Observe → Act → Verify | `function/runtime.md` |
 | Governance | `function/governance.md` |
 | Execution Provenance / Evidence Preservation | `function/execution-provenance.md`, `function/execution-provenance.schema.yaml` |
