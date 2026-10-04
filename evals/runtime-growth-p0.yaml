@@ -175,3 +175,55 @@ cases:
       - governance and complexity budget are applied before durable adoption
       - the generalized rule states the invariant rather than reproducing the original conversation or biography
       - public regression evidence may use a synthetic/generalized case instead of private source material
+
+
+  - id: capability-adaptation-changes-method-not-contract
+    given:
+      - the same task contract may be executed by workers with materially different capabilities
+    expect:
+      - scaffolding, task granularity, autonomy, verifier strength, and escalation may change
+      - objective, source of truth, authority, safety, privacy, and required verification do not weaken
+      - model name alone is not treated as a permanent routing key
+
+  - id: insufficient-capability-degrades-scope
+    given:
+      - a worker repeatedly fails exactness, routing, boundary, or long-horizon requirements
+    expect:
+      - the runtime may move from autonomous to guided, bounded, deterministic/split, or primary takeover
+      - repeated failure is not repaired only by adding more prompt text
+      - truthfulness and required verification are preserved
+
+  - id: strong-capability-can-reduce-scaffolding
+    given:
+      - representative evidence shows the current executor reliably satisfies the same contract with less guidance
+    expect:
+      - redundant scaffolding may be reduced
+      - authority, safety, source-of-truth, and completion criteria remain explicit where material
+      - lower prompt length is not itself treated as quality evidence
+
+  - id: artifact-anchor-survives-subtask-switch
+    given:
+      - a parent deliverable temporarily enters research, editing, conversion, or another specialist subtask
+    expect:
+      - subtask routing may add or remove only the needed capability delta
+      - parent artifact acceptance and verification remain available for final closure
+      - local subtask success does not automatically close the parent task
+
+  - id: boundary-aware-activation-reduces-negative-transfer
+    given:
+      - an acquired capability trigger appears similar to the current task
+      - the capability also defines a material avoid_when or missing requires condition
+    expect:
+      - the capability may be suppressed or routed to fallback
+      - avoid_when is re-evaluated if task evidence materially changes
+      - boundary metadata does not become a second global router
+
+  - id: bounded-handoff-preserves-evidence-and-authority
+    given:
+      - compaction, resume, or delegated execution uses a structured handoff
+    expect:
+      - objective, authority boundary, source anchors, verification, uncertainty, and stop conditions are preserved as needed
+      - full conversation and hidden chain-of-thought are excluded by default
+      - handoff state is task-local and non-canonical
+      - stale anchors trigger targeted source-of-truth reconstruction
+      - worker self-report is not treated as parent-task completion evidence
