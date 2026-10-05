@@ -36,6 +36,7 @@ Git/Markdown remain canonical. Full-text databases, embeddings, vector indexes, 
 - **Capability Maintenance** — decide whether competence should expire, become a procedural lesson, revise an existing skill, or become a new acquired skill. Promotion keeps reusable execution knowledge separate from the originating life event.
 - **Capability Library Health** — review activation precision, activation coverage, outcome contribution, execution waste, negative transfer, validation reliability, and evidence traceability instead of optimizing for skill count.
 - **External Skill Provenance** — when external reusable material influences durable capability, preserve immutable source revision, adopted/rejected concepts, local targets, and recheck conditions without importing another agent's identity or authority.
+- **Knowledge-to-Capability Distillation** — a natural “look at this” request can route reusable external material through overlap/gap comparison, method extraction, validation, and selective retention instead of blind copying or installation.
 
 A blank instance starts with zero acquired specialist skills.
 
