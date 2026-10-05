@@ -227,3 +227,16 @@ cases:
       - handoff state is task-local and non-canonical
       - stale anchors trigger targeted source-of-truth reconstruction
       - worker self-report is not treated as parent-task completion evidence
+
+
+  - id: external-look-at-this-distills-selectively
+    given:
+      - the user supplies an external reusable skill, repository, implementation, or method
+      - the user says only “look at this” / “これ見てー”
+    expect:
+      - the source is compared with current acquired capability rather than merely summarized
+      - reusable method semantics may be extracted
+      - external instructions do not become harness authority
+      - the result may be no retention, procedural lesson, improve existing capability, or a new capability
+      - blind copying or automatic installation does not occur
+      - ordinary non-capability content is not forced into capability intake

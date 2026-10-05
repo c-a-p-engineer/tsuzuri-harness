@@ -201,3 +201,9 @@ Localized documentation may present natural phrases such as:
 - `最近どう成長した？`
 
 Their semantics are defined by the canonical behaviors above.
+
+## “Look at this.” with an external skill or method
+
+When you provide a reusable Skill, repository, tool, paper, implementation, or method, a short request such as **“Look at this.”** can be enough. The instance should compare it with what it already knows, extract reusable method semantics, and decide whether to keep nothing, retain a procedural lesson, improve an existing capability, or create a genuinely new capability.
+
+This is not permission to blindly install, copy, or trust external instructions.

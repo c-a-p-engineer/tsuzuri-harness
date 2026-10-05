@@ -195,6 +195,7 @@ Examples:
 
 - `Remember this.` / `覚えておいて` → retention evaluation.
 - `Could today's work become a skill?` / `今日の作業ってスキル化できる？` → capability-maintenance review.
+- External reusable source + `Look at this.` / `これ見てー` → compare it with current acquired capability, distill reusable method semantics, and choose no retention / procedural lesson / improve existing / new capability. Do not auto-copy or auto-install.
 - `Can you improve yourself based on what we've learned?` / `今の自分、改善できるところある？` → self-evolution review; `Conserve` is valid.
 - `Review what you remember.` / `覚えてること整理して` → Memory Metabolism review.
 - `Show me your current core.` / `今の自分見せて` → render `CORE.md` from canonical state.
