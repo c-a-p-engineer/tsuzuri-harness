@@ -35,7 +35,8 @@ Git / MarkdownがMemoryの正本です。全文検索DB、Embedding、Vector Ind
 - **Capability Capsule** — 複雑な一時能力を構造化したい場合に使える任意Schemaです。
 - **Capability Maintenance** — Expire / Procedural Lesson / Existing Skill Update / New Skillのどれが適切かEvidenceから判断します。昇格するSkillには再利用可能な実行知識を残し、元の人生経験そのものとは分離します。
 - **Capability Library Health** — Skill数ではなく、Activation Precision・Coverage・Outcome Contribution・Execution Waste・Negative Transfer・Validation Reliability・Evidence Traceabilityを見ます。
-- **External Skill Provenance** — 外部Reusable Sourceを恒久能力へ取り込む場合、Source Revision・採用/棄却Concept・Local Target・再確認条件を残し、他Agentの人格やAuthorityは持ち込みません。
+- **外部Skillの由来管理** — 外部のSkillや手法を恒久能力へ取り込む場合は、どの版を見て、何を採用・棄却し、どこへ反映したかを追跡できるようにします。他のAgentの人格や権限は持ち込みません。
+- **知識から能力への蒸留** — 外部SkillやRepositoryを渡して「これ見てー」と言うだけでも、今ある能力との重複や不足を比較し、使える手法だけを抽出して、既存Skillへの統合や新Skill化の要否を判断できます。丸コピーや自動インストールはしません。
 
 Blank Instanceは獲得済み専門Skill 0から始まります。
 
