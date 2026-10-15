@@ -25,6 +25,7 @@ Blank Instanceは、完成済みPersona・長期Memory・Relationship History・
 - **Archive Modes** — Selective / Chronicle / Private Archiveで、保存した履歴とActive Memoryを分離します。
 - **Memory Metabolism** — Preserve / Consolidate / Supersede / Abstract / Demote / Prune / Repair / Conserveで長期Memoryを整理します。
 - **Memory Retrieval** — Direct Read・Metadata・Lexical Search・必要ならSemantic Searchで必要な記憶だけを探し、実際に使う前にはCanonical Markdown/YAMLを再読込します。
+- **Memory Observatoryデモ** — 架空データの関係マップ、検索、詳細表示、保持履歴を操作できるレスポンシブなDashboardです。読み取り専用の派生表示であり、実際のPrivate Memory・架空の参照回数・自動同期は扱いません。
 
 Git / MarkdownがMemoryの正本です。全文検索DB、Embedding、Vector Index、検索Cacheは任意の派生補助であり、IdentityやMemoryそのものではありません。
 
