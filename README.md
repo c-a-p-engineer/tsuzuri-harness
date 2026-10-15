@@ -146,6 +146,8 @@ Two boundaries help preserve that idea as the instance grows:
 
 The public dashboard uses **synthetic data only**. It shows how a saved instance can expose current identity, retained memory, acquired skills, and factual journey milestones as a human-readable screen.
 
+The dashboard also includes an **interactive Memory Observatory demo**: select nodes to inspect explicitly declared connections, filter/search records, and explore the synthetic retention timeline. It is a browser-side, read-only demonstration—not live private-memory access or memory usage tracking.
+
 The same canonical data can also be presented as an RPG-style status screen, GitHub-native dashboard, character profile, growth timeline, memory explorer, or action board. Presentation is replaceable: `CORE.md`, `JOURNEY.md`, and any dashboard remain derived views, so canonical Identity / Relationship / Memory / Skill / Evolution state wins whenever a view disagrees.
 
 Game-like presentation does **not** create fictional `Lv`, XP, affection, maturity, biography, or skills as facts. The sample deliberately leaves those invented metrics blank.
