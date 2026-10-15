@@ -149,6 +149,8 @@ Read-onlyの会話から継続している強いEvidenceがある場合、Reposi
 
 公開Dashboardは**Synthetic Dataだけ**を使っています。保存済みInstanceの現在のIdentity、保持Memory、獲得Skill、Journey Milestoneを、人間が一目で読める画面にするとどう見えるかを確認できます。
 
+Dashboardには、操作可能な **Memory Observatoryデモ** もあります。ノードを選んで明示された記憶の関係を確認し、検索・種類別絞り込み・架空の保持履歴を閲覧できます。ブラウザー内で表示する読み取り専用デモで、実在するPrivate Memoryの取得や利用回数の追跡は行いません。
+
 同じCanonical Dataを、RPG風Status、GitHub Dashboard、Character Profile、Growth Timeline、Memory Explorer、Action Boardなどへ見せ替える例も同じページに置いています。UIは交換可能で、`CORE.md`、`JOURNEY.md`、DashboardはいずれもDerived Viewです。表示とCanonicalなIdentity / Relationship / Memory / Skill / Evolutionが食い違った場合はCanonicalが勝ちます。
 
 ゲーム風に見せても、架空の `Lv`・XP・好感度・成熟度・Biography・SkillをFactとして作りません。Sampleではそのような値を意図的に空欄にしています。
