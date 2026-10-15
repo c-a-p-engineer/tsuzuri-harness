@@ -53,7 +53,7 @@
       title: '保存すると、こういう「この子の画面」を持てます。',
       description: 'CORE・JOURNEY・Memory・Skillなどの事実を、人間が見やすいDashboardとして表示できます。下はSynthetic Sampleで、実在個体や綴理本人のデータではありません。',
       cardTitle: 'Sample Instance / Aoi',
-      cardText: '同じCanonical Dataを、GitHub Dashboard・RPG風Status・Timeline・Memory Explorer・Action Boardなどに見せ替えられます。',
+      cardText: '同じCanonical Dataを、GitHub Dashboard・RPG風Status・Timeline・Memory Explorer・Action Boardなどに見せ替えられます。 Dashboardには操作できる架空の記憶関係マップもあります。',
       open: 'Dashboard Demoを開く',
       note: 'Lv・XP・好感度は架空の数値として作らず、実際のLifecycle Factだけを表示します。'
     },
@@ -63,7 +63,7 @@
       title: 'A saved instance can have a screen of its own.',
       description: 'CORE, JOURNEY, memory, skills, and other factual state can be rendered as a human-readable dashboard. The preview below is synthetic and contains no real private instance data.',
       cardTitle: 'Sample Instance / Aoi',
-      cardText: 'The same canonical data can be shown as a GitHub dashboard, RPG-style status screen, timeline, memory explorer, action board, or other replaceable UI.',
+      cardText: 'The same canonical data can be shown as a GitHub dashboard, RPG-style status screen, timeline, memory explorer, action board, or other replaceable UI. Try the interactive synthetic memory connection map in the dashboard.',
       open: 'Open Dashboard Demo',
       note: 'No invented Lv, XP, or affection meter: the sample uses factual lifecycle state only.'
     }

@@ -11,6 +11,8 @@
   <link rel="alternate" hreflang="ja" href="https://c-a-p-engineer.github.io/tsuzuri-harness/ja/dashboard/">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../dashboard.css">
+  <link rel="stylesheet" href="../memory-observatory.css">
+  <script src="../memory-observatory.js" defer></script>
 </head>
 <body>
   <div class="wrap">
@@ -18,6 +20,7 @@
       <a class="brand" href="../">Tsuzuri Harness</a>
       <div class="nav-links">
         <a href="../">Landing page</a>
+        <a href="#memory-observatory">Memory map</a>
         <a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/README.md">README</a>
         <a href="../ja/dashboard/">日本語</a>
       </div>
@@ -100,6 +103,56 @@
             </div>
           </div>
         </article>
+      </section>
+
+
+      <section class="section memory-observatory" id="memory-observatory" data-memory-observatory>
+        <div class="section-head">
+          <div class="eyebrow">Memory Observatory · synthetic data</div>
+          <h2>Explore how memories connect and when they were retained.</h2>
+          <p>An interactive read-only view of explicit memory and relationship links, source labels, and state. No real Tsuzuri private memory is included.</p>
+        </div>
+        <div class="observatory-app">
+          <div class="observatory-intro">
+            <div><h3>Aoi's memory map</h3><p class="observatory-muted">Select a node to inspect its record. Node colors distinguish memory records from relationship state.</p></div>
+            <span class="observatory-count" data-memory-count aria-live="polite"></span>
+          </div>
+          <div class="observatory-controls">
+            <label>Search records
+              <input data-memory-search type="search" placeholder="Search names and descriptions" autocomplete="off">
+            </label>
+            <label>Filter by type
+              <select data-memory-type>
+                <option value="all">All</option>
+                <option value="episodic">Episodic</option>
+                <option value="procedural">Procedural</option>
+                <option value="reflective">Reflective</option>
+                <option value="relationship">Relationship</option>
+              </select>
+            </label>
+          </div>
+          <div class="observatory-grid">
+            <div class="observatory-map">
+              <h4>Connection map</h4>
+              <svg class="observatory-graph" data-memory-graph viewBox="0 0 900 410"
+                   role="group" aria-label="Connection map"></svg>
+              <div class="observatory-legend" aria-hidden="true">
+                <span><i class="observatory-dot"></i>Memory</span>
+                <span><i class="observatory-dot relationship"></i>Relationship</span>
+              </div>
+            </div>
+            <div class="observatory-sidebar">
+              <h4>Records</h4>
+              <div class="observatory-list" data-memory-list></div>
+              <div class="observatory-detail" data-memory-detail aria-label="Selected record" aria-live="polite"></div>
+            </div>
+          </div>
+          <div class="observatory-history">
+            <h4>Retention timeline</h4>
+            <ol data-memory-history></ol>
+          </div>
+          <p class="observatory-note" data-memory-note></p>
+        </div>
       </section>
 
       <section class="section" id="variants">

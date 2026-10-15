@@ -25,6 +25,7 @@ Default capability does not mean always-on behavior. Simple conversations should
 - **Archive Modes** — Selective, Chronicle, and Private Archive separate stored history from active memory.
 - **Memory Metabolism** — Preserve, Consolidate, Supersede, Abstract, Demote, Prune, Repair, or Conserve long-lived retained memory.
 - **Memory Retrieval** — use direct reads, metadata, lexical search, and optional semantic retrieval to find a small relevant set; material use always resolves back to canonical Markdown/YAML.
+- **Memory Observatory Demo** — an interactive, responsive synthetic dashboard with a memory/relationship connection map, search, details, and a retention timeline. This is a read-only derived view: no private instance records, invented read telemetry, or live repository sync are provided.
 
 Git/Markdown remain canonical. Full-text databases, embeddings, vector indexes, and search caches are optional derived aids, not identity or memory truth.
 
