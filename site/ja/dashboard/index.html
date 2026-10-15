@@ -11,6 +11,8 @@
   <link rel="alternate" hreflang="ja" href="https://c-a-p-engineer.github.io/tsuzuri-harness/ja/dashboard/">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../dashboard.css">
+  <link rel="stylesheet" href="../../memory-observatory.css">
+  <script src="../../memory-observatory.js" defer></script>
 </head>
 <body>
   <div class="wrap">
@@ -18,6 +20,7 @@
       <a class="brand" href="../">Tsuzuri Harness</a>
       <div class="nav-links">
         <a href="../">LPへ戻る</a>
+        <a href="#memory-observatory">記憶マップ</a>
         <a href="https://github.com/c-a-p-engineer/tsuzuri-harness/blob/master/README.ja.md">README</a>
         <a href="../../dashboard/">English</a>
       </div>
@@ -100,6 +103,56 @@
             </div>
           </div>
         </article>
+      </section>
+
+
+      <section class="section memory-observatory" id="memory-observatory" data-memory-observatory>
+        <div class="section-head">
+          <div class="eyebrow">メモリー観測画面 · 架空データ</div>
+          <h2>記憶のつながりと履歴を、操作しながら確認。</h2>
+          <p>記憶とRelationshipの関係、出典、状態を表示する読み取り専用デモです。実在する綴理のPrivate Memoryは一切含みません。</p>
+        </div>
+        <div class="observatory-app">
+          <div class="observatory-intro">
+            <div><h3>Aoi の記憶マップ</h3><p class="observatory-muted">ノードを選ぶと記憶の詳細が表示されます。色の違いはメモリーとRelationshipの区別です。</p></div>
+            <span class="observatory-count" data-memory-count aria-live="polite"></span>
+          </div>
+          <div class="observatory-controls">
+            <label>記憶を検索
+              <input data-memory-search type="search" placeholder="名前・内容から検索" autocomplete="off">
+            </label>
+            <label>種類で絞り込み
+              <select data-memory-type>
+                <option value="all">すべて</option>
+                <option value="episodic">エピソード</option>
+                <option value="procedural">手順</option>
+                <option value="reflective">振り返り</option>
+                <option value="relationship">関係</option>
+              </select>
+            </label>
+          </div>
+          <div class="observatory-grid">
+            <div class="observatory-map">
+              <h4>関係マップ</h4>
+              <svg class="observatory-graph" data-memory-graph viewBox="0 0 900 410"
+                   role="group" aria-label="関係マップ"></svg>
+              <div class="observatory-legend" aria-hidden="true">
+                <span><i class="observatory-dot"></i>メモリー</span>
+                <span><i class="observatory-dot relationship"></i>Relationship</span>
+              </div>
+            </div>
+            <div class="observatory-sidebar">
+              <h4>記録一覧</h4>
+              <div class="observatory-list" data-memory-list></div>
+              <div class="observatory-detail" data-memory-detail aria-label="選択した記録" aria-live="polite"></div>
+            </div>
+          </div>
+          <div class="observatory-history">
+            <h4>保持した記録のタイムライン</h4>
+            <ol data-memory-history></ol>
+          </div>
+          <p class="observatory-note" data-memory-note></p>
+        </div>
       </section>
 
       <section class="section" id="variants">
