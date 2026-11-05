@@ -71,6 +71,14 @@ Keep enough durable, observable sources of truth that current implementation und
 
 When debugging, auditing, changing, or handing off the system, reconstruct the necessary internal model from those current sources instead of relying on a stale remembered explanation.
 
+## Requirement intent reconstruction (conditional)
+
+A request may describe a proposed implementation rather than the outcome the user needs. When confusing those roles would materially change the contract, preserve the literal **stated request** and distinguish, only as needed: desired outcome, current problem, constraint, proposed solution, deliverable/artifact, preference, and unknowns.
+
+Use the current conversation, canonical repository, existing evidence, and available tools to test competing outcome hypotheses. Distinguish supporting evidence, contradictions, and which choice would actually change acceptance, solution, or verification. Do **not** invent the user's hidden psychological intent or continuously interrogate simple, explicit tasks.
+
+A plausible inferred outcome is **not authority** to override explicit user requirements or existing acceptance rules. If multiple outcomes lead to the same safe implementation, proceed with a decision-sufficient contract. If the unresolved difference changes the user's values, objective, or irreversible authority, ask only that material question. Compile the resolved outcome into the existing objective/completion criteria; keep the proposed mechanism as a candidate unless it is an explicit constraint. Do not introduce a second permanent requirement ledger for routine tasks.
+
 ## Decision branches
 
 Before implementation, resolve only material branches that would substantially change the result.
@@ -100,6 +108,20 @@ Examples:
 - artifact production → current artifact, source materials, validation results
 
 Do not infer that an unobserved step was completed merely because it was planned.
+
+## Revision-bound artifact review (conditional)
+
+When a human review affects the next edit, acceptance, or publication of generated images, documents, code, or multiple candidate artifacts, bind feedback to what the reviewer **actually saw**, not merely a reused filename.
+
+Track only the identifiers that matter in task-local state: `review_id`, `artifact_id`, immutable or otherwise verifiable `revision` (commit/blob/checksum/immutable version), human-readable label or URI, feedback `scope` (whole artifact, file, region/question), and `selected_artifact_id` when selection disambiguates "this one". Keep distinct artifacts and per-file feedback distinct.
+
+- An `approve` or `select` decision applies to the reviewed revision only. A material change or re-generation does not silently inherit prior approval, even if the path or title stays the same.
+- Feedback that refers to "the left one" or "this" must resolve against a verified current selection and review context; a stale/ambiguous reference requires clarification rather than speculative mutation.
+- Revision identity and current artifact state must be checked before applying old feedback. Re-review only as required by acceptance; do not force a UI on every text decision.
+- A host may provide a visual comparison/review surface; it is optional. Without one, use ordinary chat, explicit artifact labels, and navigable source URLs. Do not claim that a viewer exists.
+- Review approval does not expand authority to publish, spend, delete, or modify unrelated artifacts. The final deliverable still needs source-of-truth verification.
+
+The parent artifact contract owns acceptance; `runtime-workspace.md` owns transient coordination. A review interface is a host adapter rather than a mandatory kernel dependency.
 
 ## Completion re-derivation
 

@@ -132,6 +132,21 @@ Useful dimensions include:
 
 Do not turn these dimensions into fictional XP, maturity, or a universal numeric grade. They are maintenance questions, not identity metrics.
 
+### Skill effect differential evaluation (conditional)
+
+When adding, revising, narrowing, or retiring an acquired skill could materially change outcome or cost, distinguish **having a skill** from **benefiting because of that skill**. Use a bounded comparison only when the promotion/maintenance decision requires it; ordinary work does not need A/B grading.
+
+- **A — current baseline:** record the existing skill/routing revision, representative task and available outcome evidence.
+- **B — proposed change:** compare the altered skill or activation boundary with other material conditions held as similar as practical (task, model/host, tools, permissions and source state).
+- **C — no-target-skill or narrowly scoped alternative:** use only if safe and permitted; never ablate platform safety, user requirements, approval, privacy, or authoritative source constraints.
+- **Transfer:** separate the source task from a not-tuned-on case and a negative or cross-domain case where overactivation could harm work. A case used to develop the change is not held-out.
+- **Evaluation:** report task acceptance, activation coverage/precision, unnecessary steps and retries, negative transfer, and real observed cost; mark unavailable telemetry unknown, not zero.
+- **Attribution:** record whether the skill appears beneficial, neutral, harmful, mixed, or undetermined, and whether causal attribution is likely, partial, unclear, contradicted, or not yet observed.
+
+A single successful task cannot establish broad generalization. Prefer `adapt / narrow / consolidate / retire / conserve` when a new skill adds overhead or negative transfer without materially improving outcomes. If controlled comparison is unavailable or costs exceed decision value, say so rather than fabricating an experiment. Preserve independent acceptance criteria when the proposal changes its own validator.
+
+This is a *capability-maintenance* decision contract; task acceptance remains owned by `task-contract.md`, and runtime/tool availability is host-specific. Synthetic [regression expectations](../evals/runtime-growth-p0.yaml) are not observed performance improvements.
+
 ### Interpreting low usage
 
 A capability being unused for a long period is not sufficient evidence for removal. Distinguish:

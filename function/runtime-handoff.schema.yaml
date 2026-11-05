@@ -98,6 +98,37 @@ execution_packet:
     - return bounded evidence instead of a full raw browser or worker transcript by default
     - secrets and credentials belong in host-provided secret surfaces, not plaintext packet fields
 
+operation_handoff:
+  use_when:
+    - host exposes a real async or resumable operation
+    - uncertain external effect could be duplicated by retry or resume
+  fields:
+    schema_version: 1
+    task_id: string
+    operation_ref: string_or_null
+    effect_intent_ref: string_or_null
+    target:
+      system: string
+      resource: string_or_null
+      requested_action: string
+    authority_ref: string_or_null
+    approval_state: granted_or_missing_or_not_required
+    replay_safety: safe_or_idempotent_or_unsafe_or_unknown
+    idempotency_ref: string_or_null
+    execution_state: pending_or_running_or_succeeded_or_failed_or_unknown
+    observed_effect_ref: string_or_null
+    next_safe_action: string_or_null
+    uncertainty: [string]
+  rules:
+    - task_local_and_noncanonical_even_when_host_storage_is_durable
+    - persist_intent_before_dispatch_only_when_real_host_durability_exists
+    - uncertain_effect_requires_current_operation_or_target_observation_before_retry
+    - unsafe_or_unknown_replay_requires_escalation_if_effect_cannot_be_disambiguated
+    - idempotent_replay_reuses_the_same_provider_key_for_the_same_intent
+    - approval_is_not_renewed_by_retry_resume_or_handoff
+    - no_exactly_once_guarantee_without_provider_or_host_evidence
+    - operation_success_does_not_replace_parent_task_verification
+
 common_exclusions:
   - full_conversation_transcript
   - hidden_chain_of_thought

@@ -111,6 +111,16 @@ Retune only when an observable signal can materially change the policy, for exam
 
 Return the change to the narrowest owning layer: reroute, replan, split, change verifier/tool, narrow autonomy, compose temporary capability, escalate, or close.
 
+## Adaptive inference budget (conditional)
+
+Expand search, reasoning, candidates, retries, verifiers, or workers **only when the expected decision gain justifies the additional cost and the current task still lacks material acceptance evidence**. Avoid fixed best-of-N or mandatory multi-agent patterns.
+
+Consider expansion when the current candidate fails acceptance, important uncertainty remains, a materially different strategy is available, and an appropriate verifier can distinguish the alternatives. Prefer a different source, tool, task split, or verification path over repeating an unchanged failure mode.
+
+Stop or narrow compute when authoritative verification already satisfies acceptance, candidates converge to immaterial differences, a verifier is too coarse to rank them, the blocker is missing permission/source/user judgment, or additional context/latency/monetary cost outweighs expected gain. Unknown metering is not free. Additional paid model calls, credits or external runners still require the applicable approval.
+
+Retuning changes **execution effort**, never objective, source-of-truth, safety, authority or mandatory verification. Record real observed budget/cost only if exposed by the host; do not invent hidden token counts or precise model-internal scores. A simple task needs no budget artifact.
+
 ## Validation
 
 Evaluate capability adaptation by outcome first, then friction where observable:
