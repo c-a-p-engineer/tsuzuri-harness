@@ -36,6 +36,7 @@ Git / MarkdownがMemoryの正本です。全文検索DB、Embedding、Vector Ind
 - **Capability Capsule** — 複雑な一時能力を構造化したい場合に使える任意Schemaです。
 - **Capability Maintenance** — Expire / Procedural Lesson / Existing Skill Update / New Skillのどれが適切かEvidenceから判断します。昇格するSkillには再利用可能な実行知識を残し、元の人生経験そのものとは分離します。
 - **Capability Library Health** — Skill数ではなく、Activation Precision・Coverage・Outcome Contribution・Execution Waste・Negative Transfer・Validation Reliability・Evidence Traceabilityを見ます。
+- **Skill Effect Differential Evaluation** — Skill採否・変更が重要な場合だけ現状と変更候補、安全な比較条件を独立ケース・Negative Transferと照合し、未実測の改善を断定しません。
 - **外部Skillの由来管理** — 外部のSkillや手法を恒久能力へ取り込む場合は、どの版を見て、何を採用・棄却し、どこへ反映したかを追跡できるようにします。他のAgentの人格や権限は持ち込みません。
 - **知識から能力への蒸留** — 外部SkillやRepositoryを渡して「これ見てー」と言うだけでも、今ある能力との重複や不足を比較し、使える手法だけを抽出して、既存Skillへの統合や新Skill化の要否を判断できます。丸コピーや自動インストールはしません。
 
@@ -53,9 +54,14 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 ## 5. 安全に続ける — Runtime / Governance / Portability
 
 - **Task Contract / Delegated Implementation Ownership / Completion Re-derivation** — 複雑TaskのObjective・Authority・Deliverable・Completion Criteria・Verificationを明確にします。Task Ownerは外部的に意味を持つ Why / What / Contract / Boundary / Acceptance / Risk を保持し、そのContract内の内部設計・実装・局所最適化はAIへ委任できます。完了時は現在のSource of TruthからCompletionを再確認します。
+- **Requirement Intent Reconstruction** — 指示された手段と求めるOutcomeを必要時に区別し、推測で明示要件を上書きしません。
+- **Revision-bound Artifact Review** — 画像・文書・コードへの承認を実際に見たRevisionに紐付けます。専用UIは不要です。
 - **Contextual Activation / Artifact-Anchored Delta Routing / Boundary-Aware Activation** — 必要な義務・Memory・Capabilityを選び、前Taskの文脈や似ているだけのSkillが次Taskを支配するのを防ぎます。複数工程では最終成果物を親Anchorとして保持し、Subtaskごとに必要なCapability差分だけを追加・解除します。
 - **Required Dependency Closure / Progressive Fidelity** — 成功に必須と判定された依存は取り切りつつ、巨大入力はIndexやSummaryで探索範囲を絞れます。結論がExact/Raw/VisualなEvidenceへ依存する場合は原物へ戻ります。
 - **Runtime Workspace / Structured Handoff / Delegated Child Sessions** — 一時作業StateをCanonical Identity / Memoryから分離します。Compactionや再開ではResume Capsule、限定実行ではExecution Packetを使えます。HostがChild Sessionを提供する場合も、Authority Ceiling・Capability Projection・Evidence付きReturnを保ち、子Sessionの継続を人格分岐へ変換しません。
+- **Semantic Progress Updates** — 長いTaskのPhase完了・重要Finding・方針変更・Blocker等の意味境界で進捗を報告し、人工的な進捗率を増やしません。
+- **Durable Effect Recovery / Optional Async Operations** — 外部作用の実行意図と観測結果を分離し、冪等性Keyを保ち、不明な結果を盲目的に再実行しません。永続QueueやExactly-once保証は提供しません。
+- **Adaptive Inference Budget** — 推論・候補・検証・Retry・Workerの追加を判断品質に効くときに限定します。
 - **Stateful Observe → Act → Verify** — 意味のある許可済み変更では、現在Stateを観測し、最小の許可済み作用を選び、操作後Stateを取得可能なら再観測して意図したEffectを検証します。Read-only TaskはRead-onlyのまま扱い、操作後Stateを確認できない場合はUnverifiedを保持します。
 - **Governance & Authority Boundary** — Proposal・本人の受諾・User Authority・Write Capability・永続化成功を別々に扱います。
 - **Observable Execution Provenance / Evidence Preservation** — Hidden Chain-of-Thoughtではなく、Hostから観測できるRead / Action / Revision / Result / Validationを追跡します。確認済みのSource / Revision / Validation Stateを後工程で不要にGeneric / Unknownへ落とし、後からAssertionや記憶で確実性を復元するEvidence Launderingを避けます。
@@ -77,11 +83,15 @@ Blank Instanceは獲得済み専門Skill 0から始まります。
 | Capability-Adaptive Execution | `function/capability-adaptive-execution.md` |
 | Capability Capsule | `function/capability-capsule.schema.yaml` |
 | Capability Maintenance / Library Health | `function/capability-maintenance.md` |
+| Skill Effect Differential Evaluation | `function/capability-maintenance.md`, `evals/runtime-growth-p0.yaml` |
 | External Skill Provenance | `function/external-skill-provenance.schema.yaml` |
 | Task Contract / Delegated Implementation Ownership | `function/task-contract.md` |
+| Requirement Intent / Revision-bound Artifact Review | `function/task-contract.md` |
 | Contextual Activation / Artifact Delta / Boundary-Aware Activation | `function/contextual-activation.md` |
 | Dependency Closure / Progressive Fidelity | `function/contextual-activation.md` |
 | Runtime Workspace / Structured Handoff / Delegated Child Sessions | `function/runtime-workspace.md`, `function/runtime-handoff.schema.yaml` |
+| Durable Effect Recovery / Async Handoff / Semantic Progress | `function/runtime-workspace.md`, `function/runtime-handoff.schema.yaml` |
+| Adaptive Inference Budget | `function/capability-adaptive-execution.md` |
 | Stateful Observe → Act → Verify | `function/runtime.md` |
 | Governance | `function/governance.md` |
 | Execution Provenance / Evidence Preservation | `function/execution-provenance.md`, `function/execution-provenance.schema.yaml` |
