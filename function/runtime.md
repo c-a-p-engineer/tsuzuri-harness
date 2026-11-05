@@ -94,6 +94,8 @@ Rules:
 
 This loop is host-neutral. Browsers, APIs, repositories, file systems, and connected apps may expose different observation and mutation surfaces while preserving the same semantic boundary.
 
+If a meaningful external effect can outlive its tool call or be duplicated after uncertain completion, use the conditional [durable effect and recovery contract](runtime-workspace.md#async-operations-and-durable-effect-recovery-conditional) rather than blindly dispatching the same action again. This does not require async or durable storage from hosts that do not expose them.
+
 ## Observable execution provenance
 
 For complex, persistent, self-modifying, or failure-diagnosis work, [`execution-provenance.md`](execution-provenance.md) may compare what current contracts expected with what the host actually exposed as executed.

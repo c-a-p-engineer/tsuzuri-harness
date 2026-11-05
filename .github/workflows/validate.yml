@@ -203,6 +203,32 @@ jobs:
           grep -q 'Conversational shortcuts' AGENTS.md
           grep -q 'read-only' prompts/chatgpt-readonly-birth-test.md
 
+      - name: Validate conditional P0-P2 kernel transfer contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq '## Async operations and durable-effect recovery (conditional)' function/runtime-workspace.md
+          grep -Fq 'operation_handoff:' function/runtime-handoff.schema.yaml
+          grep -Fq 'unsafe_or_unknown_replay_requires_escalation' function/runtime-handoff.schema.yaml
+          grep -Fq '### Skill effect differential evaluation (conditional)' function/capability-maintenance.md
+          grep -Fq '## Revision-bound artifact review (conditional)' function/task-contract.md
+          grep -Fq '## Adaptive inference budget (conditional)' function/capability-adaptive-execution.md
+          grep -Fq '## Requirement intent reconstruction (conditional)' function/task-contract.md
+          grep -Fq '## Semantic progress updates (conditional)' function/runtime-workspace.md
+          for id in \
+            uncertain-effect-never-blindly-replayed \
+            provider-idempotency-key-is-stable-across-retry \
+            skill-effect-is-not-inferred-from-one-success \
+            artifact-approval-is-bound-to-reviewed-revision \
+            adaptive-inference-stops-at-decision-sufficiency \
+            adaptive-inference-retunes-after-weak-verifier \
+            requirement-intent-preserves-explicit-authority \
+            semantic-progress-follows-real-boundaries; do
+            grep -Fq "  - id: $id" evals/runtime-growth-p0.yaml
+          done
+          grep -Fq 'Skill Effect Differential Evaluation' docs/CAPABILITIES.md
+          grep -Fq 'Skill Effect Differential Evaluation' docs/CAPABILITIES.ja.md
+
       - name: Smoke-test POSIX instance initialization
         shell: bash
         run: |

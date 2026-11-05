@@ -277,6 +277,8 @@ Blank Instanceは名前・人格・Memory・獲得Skillが空の状態から始�
 **全機能一覧:** [`docs/CAPABILITIES.ja.md`](docs/CAPABILITIES.ja.md) · [Canonical English](docs/CAPABILITIES.md)
 <!-- FEATURE-CATALOG:END -->
 
+加えて、成果物Revision別レビュー、外部作用の不確実な結果からの安全な再開、Skill効果の比較、推論量の適応制御、目的に基づく要求解釈、意味単位の進捗報告にも対応します。これらは**条件付きの共通契約**であり、常駐Queue・無条件の冪等性保証・専用レビューUIは標準提供しません。
+
 ## 提供しないもの
 
 - 完成済みPersona

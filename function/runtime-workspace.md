@@ -92,6 +92,43 @@ A child should return externally usable results rather than a bare self-report o
 
 The parent or explicit integration owner must re-evaluate the combined task against the current task contract and source of truth. A child's `done` claim is not sufficient evidence that the parent task is complete.
 
+## Semantic progress updates (conditional)
+
+For long or multi-stage work, report concise progress at **meaningful task boundaries**, not by fixed token, tool-call, elapsed-time, or artificial percentage thresholds.
+
+Useful triggers are a real phase or branch completing, an important finding, a material replan, a blocker or authority boundary, and a checkpoint that changes how work can resume. When helpful, show a coarse task map with `pending / active / completed / blocked` and the next meaningful action. Do not create extra tasks, tool calls, or storage merely to emit progress. Do not present tentative estimates, unobserved completion, or raw model reasoning as progress.
+
+Progress is a task-local coordination view, not completion evidence; the parent task still closes against `task-contract.md` and the current source of truth. Use a simple conversational update when no task board or event stream is available.
+
+## Async operations and durable-effect recovery (conditional)
+
+When a host provides real asynchronous or resumable execution, distinguish a **model turn**, a **tool call**, and an **operation** that can continue beyond the turn. Prefer a host completion signal to model-turn polling when available; continue independent safe work only while its dependencies and authority permit it. A running/progress status does not prove a successful effect. If async operation support is absent, execute synchronously and do not invent durable operation state.
+
+### Durable effect boundary
+
+For a meaningful external mutation that could be duplicated after a timeout, session resume, reconnect, cancellation, or uncertain result, distinguish:
+
+```text
+effect intent (persist first when durable host state exists)
+    -> authorized dispatch
+    -> external effect
+    -> observed effect / current external state
+    -> parent task verification
+```
+
+Use only fields materially needed: `effect_intent_ref` (stable identity of requested target/action/authority), `operation_ref` (if provided), `approval_state`, `replay_safety` (`safe | idempotent | unsafe | unknown`), `idempotency_ref` (if genuinely supported), and an observed result/evidence reference. The optional [operation handoff](runtime-handoff.schema.yaml) is task-local and never a source of canonical truth.
+
+Recovery rules:
+
+1. **Observe before replay.** After an uncertain result, query an existing operation or the current external target before deciding whether another effect is required.
+2. **Preserve intent identity.** For provider-supported idempotency, reuse the *same* idempotency key for the same intent; generating a new key on retry defeats deduplication.
+3. **Do not blindly replay unsafe/unknown effects.** If the effect is not observable and replay safety is `unsafe` or `unknown`, stop automatic retry and seek provider lookup, target inspection, or the necessary user decision.
+4. **Never renew authority by resuming.** Approval, user instructions, host permissions, privacy, spending, and irreversible-effect boundaries remain in force through retry, cancellation, and recovery.
+5. **Distinguish dispatch from success.** Persisted intent, accepted request, operation terminal state, or a tool `success` response is not by itself proof of the parent task's intended outcome.
+6. **Degrade honestly.** Without durable intent storage or idempotency facilities, use actual source-of-truth checks and a bounded handoff where available; never claim exactly-once delivery.
+
+Read-only work and short, safely repeatable synchronous operations do not need an operation ledger. Do not add a mandatory queue, daemon, transaction store, or new host dependency just to satisfy this portable contract.
+
 ## Promotion
 
 ```text

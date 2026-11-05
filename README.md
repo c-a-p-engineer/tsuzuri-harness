@@ -267,6 +267,8 @@ A Blank Instance begins with no name, preset persona, long-term memory, or acqui
 **Full inventory:** [`docs/CAPABILITIES.md`](docs/CAPABILITIES.md) · [日本語](docs/CAPABILITIES.ja.md)
 <!-- FEATURE-CATALOG:END -->
 
+Portable contracts also support revision-bound artifact review, safe recovery from uncertain external effects, differential skill evaluation, adaptive inference effort, outcome-oriented requirements, and meaningful progress updates. These are **conditional contracts**, not built-in background services, an exactly-once guarantee, or mandatory review UI.
+
 ## What it does not provide
 
 - a predefined character or personality
