@@ -12,6 +12,8 @@ Automated CI verifies required files, blank starter state, initialization, backu
 
 Workflow: `.github/workflows/validate.yml`
 
+The P0–P2 cases in `evals/runtime-growth-p0.yaml` and CI anchors verify **contract presence and synthetic expectations only**. They do not execute external APIs, measure causal skill gains, prove exactly-once delivery, or establish cross-host behavior. For runtime claims, require separately observed comparable tasks, otherwise report `not_run` or `not_observed`.
+
 ### Layer 1 — Read-only birth test
 
 Purpose: verify blank-start semantics without persistence risk.

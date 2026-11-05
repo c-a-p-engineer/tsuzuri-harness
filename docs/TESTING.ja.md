@@ -12,6 +12,8 @@ CIで必須ファイル、Blank starter state、Instance初期化、Backup、Pag
 
 Workflow: `.github/workflows/validate.yml`
 
+`evals/runtime-growth-p0.yaml` のP0〜P2ケースとCIが確認するのは**契約の存在と合成ケースの期待値**です。実APIの重複防止、Skill効果、Host間の実動作は未実測なら `not_run` / `not_observed` と区別します。
+
 ### Layer 1 — Read-only Birth Test
 
 Persistence RiskなしでBlank Startの意味を確認します。
